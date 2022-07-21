@@ -897,7 +897,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p><strong>They can be any asset.</strong> (Portfolios, mutual funds, crypto, …)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crsp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_stata</span><span class="p">(</span><span class="s1">&#39;https://github.com/LeDataSciFi/ledatascifi-2022/blob/main/data/3firm_ret_1990_2020.dta?raw=true&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crsp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_stata</span><span class="p">(</span><span class="s1">&#39;https://github.com/LeDataSciFi/data/blob/main/Stock%20Returns%20(CRSP)/3firm_ret_1990_2020.dta?raw=true&#39;</span><span class="p">)</span>
 <span class="n">crsp</span><span class="p">[</span><span class="s1">&#39;ret&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">crsp</span><span class="p">[</span><span class="s1">&#39;ret&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span> <span class="c1"># convert to precentage to match FF&#39;s convention on scaling (daily % rets)</span>
 </pre></div>
 </div>
