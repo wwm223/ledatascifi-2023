@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Today: &#8212; LeDataSciFi-2023</title>
+    <title>&lt;no title&gt; &#8212; LeDataSciFi-2023</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -726,9 +726,9 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/lectures/L23_optimization.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/lectures/readme.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
+                data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -746,10 +746,10 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/LeDataSciFi/ledatascifi-2023/issues/new?title=Issue%20on%20page%20%2Flectures/L23_optimization.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/LeDataSciFi/ledatascifi-2023/issues/new?title=Issue%20on%20page%20%2Flectures/readme.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/LeDataSciFi/ledatascifi-2023/edit/main/lectures/L23_optimization.ipynb"><button
+        <a class="edit-button" href="https://github.com/LeDataSciFi/ledatascifi-2023/edit/main/lectures/readme.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -764,28 +764,6 @@ const thebe_selector_output = ".output, .cell_output"
 
         <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/LeDataSciFi/ledatascifi-2023/main?urlpath=lab/tree/lectures/L23_optimization.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/LeDataSciFi/ledatascifi-2023/blob/main/lectures/L23_optimization.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
-</div>
-
     </div>
 
     <!-- Table of contents -->
@@ -795,51 +773,7 @@ const thebe_selector_output = ".output, .cell_output"
             <i class="fas fa-list"></i> Contents
         </div>
         <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Today:
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-to-optimize">
-   What to optimize
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#last-time-on-lendingclub2013">
-     Last time on “LendingClub2013”…
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercises">
-     Exercises
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#how-to-optimize-hyperparameters">
-   How to optimize (hyperparameters)
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#let-s-try-that">
-     Let’s try that…
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#imo">
-     IMO:
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#next-time-on-lendingclub2013">
-     Next time on “LendingClub2013”…
-    </a>
-   </li>
-  </ul>
- </li>
+            <ul class="simple nav section-nav flex-column">
 </ul>
 
         </nav>
@@ -851,212 +785,7 @@ const thebe_selector_output = ".output, .cell_output"
         
               <div>
                 
-  <p>To convert this for slides:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">nbconvert</span> <span class="s2">&quot;L23*.ipynb&quot;</span> <span class="o">--</span><span class="n">to</span> <span class="n">slides</span> <span class="o">--</span><span class="n">TagRemovePreprocessor</span><span class="o">.</span><span class="n">enabled</span><span class="o">=</span><span class="kc">True</span> <span class="o">--</span><span class="n">TagRemovePreprocessor</span><span class="o">.</span><span class="n">remove_input_tags</span> <span class="n">remove_input</span>  
-</pre></div>
-</div>
-<div class="section" id="today">
-<h1>Today:<a class="headerlink" href="#today" title="Permalink to this headline">¶</a></h1>
-<ol class="simple">
-<li><p><strong>What</strong> to optimize (the “scoring” param in <code class="docutils literal notranslate"><span class="pre">cross_validate</span></code> and <code class="docutils literal notranslate"><span class="pre">gridsearch</span></code>)</p></li>
-<li><p>How to optimize</p></li>
-</ol>
-</div>
-<div class="section" id="what-to-optimize">
-<h1>What to optimize<a class="headerlink" href="#what-to-optimize" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="last-time-on-lendingclub2013">
-<h2>Last time on “LendingClub2013”…<a class="headerlink" href="#last-time-on-lendingclub2013" title="Permalink to this headline">¶</a></h2>
-<p>We had two logistic models to predict loan default.</p>
-<p><strong>Model 1</strong> used the default settings:</p>
-<p><img alt="image.png" src="lectures/attachment:2a8f4469-a3d2-4b9b-ab75-8d4cc9efe055.png" /></p>
-<p><strong>Model 2</strong> “improved” on this by using one possible fix for <strong>imbalanced classes</strong>:</p>
-<p><img alt="image.png" src="lectures/attachment:886d3446-e730-425c-b992-c6a981c2b31d.png" /></p>
-</div>
-<div class="section" id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<p>Make (reasonable) assumptions as needed to compare the two models:</p>
-<ol class="simple">
-<li><p>How much money does this improved model save us relative to the prior model from reduced charge-offs?</p></li>
-<li><p>How much foregone profit does this “improved” model have relative to the prior model?</p></li>
-<li><p>How does this improved model do from the standpoint of a profit maximizing lender? Meaning: Would you rather use the first or the second model, and why?</p></li>
-<li><p>Write down a profit function for firm using the cells of the confusion matrix. (The four cells of the matrix are TN, TP, FN, and FP.)</p></li>
-<li><p>Based on your profit function, which metric(s) do you want to maximize/minimize in this model? There might not be a clean answer, if so: Discuss candidates and what they capture correctly about the profit function and what they miss.</p></li>
-</ol>
-</div>
-</div>
-<div class="section" id="how-to-optimize-hyperparameters">
-<h1>How to optimize (hyperparameters)<a class="headerlink" href="#how-to-optimize-hyperparameters" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference external" href="https://ledatascifi.github.io/ledatascifi-2022/content/05/04f_optimizing_a_model.html#tuning-hyperparameters">As the book says,</a></p>
-<ol class="simple">
-<li><p>Set up your parameter grids: Start with a wide (and sparse) net.</p></li>
-<li><p>Set up <code class="docutils literal notranslate"><span class="pre">gridsearchCV</span></code> and then <code class="docutils literal notranslate"><span class="pre">.fit()</span></code> it.</p></li>
-<li><p>Plot the performance of the models.</p></li>
-</ol>
-<p>Repeat the above steps as needed, adjusting the parameter grids to hone in on best models,  until you’ve found an optimized model.</p>
-<div class="section" id="let-s-try-that">
-<h2>Let’s try that…<a class="headerlink" href="#let-s-try-that" title="Permalink to this headline">¶</a></h2>
-<p>I’ve loaded the LC data. Let’s set up the model:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">df_after_transform</span> <span class="kn">import</span> <span class="n">df_after_transform</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">set_config</span>
-<span class="kn">from</span> <span class="nn">sklearn.calibration</span> <span class="kn">import</span> <span class="n">CalibrationDisplay</span>
-<span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">ColumnTransformer</span><span class="p">,</span>
-    <span class="n">make_column_selector</span><span class="p">,</span>
-    <span class="n">make_column_transformer</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">SimpleImputer</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">ConfusionMatrixDisplay</span><span class="p">,</span>
-    <span class="n">DetCurveDisplay</span><span class="p">,</span>
-    <span class="n">PrecisionRecallDisplay</span><span class="p">,</span>
-    <span class="n">RocCurveDisplay</span><span class="p">,</span>
-    <span class="n">classification_report</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">GridSearchCV</span><span class="p">,</span>
-    <span class="n">KFold</span><span class="p">,</span>
-    <span class="n">cross_validate</span><span class="p">,</span>
-    <span class="n">train_test_split</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span><span class="p">,</span> <span class="n">StandardScaler</span>
-
-<span class="n">set_config</span><span class="p">(</span><span class="n">display</span><span class="o">=</span><span class="s2">&quot;diagram&quot;</span><span class="p">)</span>  <span class="c1"># display=&#39;text&#39; is the default</span>
-
-<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span>
-    <span class="s2">&quot;display.max_colwidth&quot;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="s2">&quot;display.max_rows&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="s2">&quot;display.max_columns&quot;</span><span class="p">,</span> <span class="kc">None</span>
-<span class="p">)</span>
-
-<span class="kn">import</span> <span class="nn">warnings</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span> 
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load data</span>
-
-<span class="n">loans</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;ML - prof only/inputs/2013_subsample.zip&#39;</span><span class="p">)</span>
-
-<span class="c1"># create holdout sample</span>
-
-<span class="n">y</span> <span class="o">=</span> <span class="n">loans</span><span class="o">.</span><span class="n">loan_status</span> <span class="o">==</span> <span class="s2">&quot;Charged Off&quot;</span>
-<span class="n">y</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-<span class="n">loans</span> <span class="o">=</span> <span class="n">loans</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;loan_status&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
-    <span class="n">loans</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span>
-<span class="p">)</span> <span class="c1"># (stratify will make sure that test/train both have equal fractions of outcome)</span>
-
-<span class="c1"># set up pipeline to clean each type of variable (1 pipe per var type)</span>
-
-<span class="n">numer_pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">),</span> <span class="n">StandardScaler</span><span class="p">())</span>
-
-<span class="n">cat_pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="s2">&quot;first&quot;</span><span class="p">))</span>
-
-<span class="c1"># combine those (make_column_transformer is like make_pipeline, maybe easier on the eyes!)</span>
-
-<span class="n">preproc_pipe</span> <span class="o">=</span> <span class="n">make_column_transformer</span><span class="p">(</span>
-    <span class="p">(</span><span class="n">numer_pipe</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;annual_inc&quot;</span><span class="p">,</span> <span class="s2">&quot;int_rate&quot;</span><span class="p">]),</span>
-    <span class="p">(</span><span class="n">cat_pipe</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;grade&quot;</span><span class="p">]),</span>
-    <span class="n">remainder</span><span class="o">=</span><span class="s2">&quot;drop&quot;</span><span class="p">,</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf_logit</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">preproc_pipe</span><span class="p">,</span> 
-                          <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">class_weight</span><span class="o">=</span><span class="s1">&#39;balanced&#39;</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>When I use <code class="docutils literal notranslate"><span class="pre">cross_validate</span></code> or <code class="docutils literal notranslate"><span class="pre">gridsearchCV</span></code>, I need to pick a scorer to optimize on.</p>
-<p>Let’s score the models directly on profit. Following the docs, I’ll make a custom scorer:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define the profit function</span>
-
-<span class="k">def</span> <span class="nf">custom_prof_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">roa</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">haircut</span><span class="o">=</span><span class="mf">0.20</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Firm profit is this times the average loan size. We can</span>
-<span class="sd">    ignore that term for the purposes of maximization. </span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="n">TN</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">y_pred</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y</span><span class="o">==</span><span class="mi">0</span><span class="p">))</span> <span class="c1"># count loans made and actually paid back</span>
-    <span class="n">FN</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">y_pred</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y</span><span class="o">==</span><span class="mi">1</span><span class="p">))</span> <span class="c1"># count loans made and actually defaulting</span>
-    <span class="k">return</span> <span class="n">TN</span><span class="o">*</span><span class="n">roa</span> <span class="o">-</span> <span class="n">FN</span><span class="o">*</span><span class="n">haircut</span>
-
-<span class="c1"># so that we can use the fcn in sklearn, &quot;make a scorer&quot; out of that function</span>
-
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">make_scorer</span>
-<span class="n">prof_score</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">custom_prof_score</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>In this example, we will see if the “regularization” parameter in the logit function matters.</p>
-<p>Here, I’m going to try a lot of small values, and then some higher values.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span>  <span class="p">{</span><span class="s1">&#39;logisticregression__C&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.00001</span><span class="p">,</span><span class="mf">.5</span><span class="p">,</span><span class="mi">25</span><span class="p">))</span><span class="o">+</span><span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.55</span><span class="p">,</span><span class="mf">5.55</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span> <span class="p">}</span>
-
-<span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">estimator</span> <span class="o">=</span> <span class="n">clf_logit</span><span class="p">,</span> 
-                           <span class="n">param_grid</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">,</span>
-                           <span class="n">cv</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="n">prof_score</span>
-                           <span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>After fitting the <code class="docutils literal notranslate"><span class="pre">grid_search</span></code>, we examine the performance:</p>
-<div class="cell tag_remove_input docutils container">
-<div class="cell_output docutils container">
-<img alt="../_images/L23_optimization_20_0.png" src="../_images/L23_optimization_20_0.png" />
-</div>
-</div>
-<ul class="simple">
-<li><p>Do you like A or B more?</p></li>
-<li><p>How should we adjust the <code class="docutils literal notranslate"><span class="pre">parameters</span></code> grid?</p></li>
-</ul>
-</div>
-<div class="section" id="imo">
-<h2>IMO:<a class="headerlink" href="#imo" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>Option A has nearly the same performance on average with a reasonable reduction in variance</p></li>
-<li><p>Option A is probably not the optimal value: Adjust the grid around Option A to look for possible improvements</p></li>
-</ul>
-<ul class="simple">
-<li><p>To get large (not marginal) gains: We need to upgrade the model</p>
-<ul>
-<li><p>Add X vars?</p></li>
-<li><p>Different estimator?</p></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="section" id="next-time-on-lendingclub2013">
-<h2>Next time on “LendingClub2013”…<a class="headerlink" href="#next-time-on-lendingclub2013" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>Upgrading this model</p></li>
-</ul>
-</div>
-</div>
+  <p>Slides will be added here as we go.</p>
 
     <script type="text/x-thebe-config">
     {
