@@ -67,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="6.6. Summary and Resources" href="02g_summary.html" />
+    <link rel="next" title="6.6. Significant warnings about “statistical significance”" href="02f_warnings.html" />
     <link rel="prev" title="6.4. Interpreting regression coefficients" href="02d_interpretingCoefs.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -580,8 +580,17 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="02f_warnings.html">
+     6.6.
+     <em>
+      Significant
+     </em>
+     warnings about “statistical significance”
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="02g_summary.html">
-     6.6. Summary and Resources
+     6.7. Summary and Resources
     </a>
    </li>
   </ul>
@@ -807,30 +816,9 @@ const thebe_selector_output = ".output, .cell_output"
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#significant-warnings-about-statistical-significance">
-   6.5.1.
-   <em>
-    Significant
-   </em>
-   warnings about “statistical significance”
+  <a class="reference internal nav-link" href="#some-practical-guidance">
+   6.5.1. Some practical guidance
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-focus-on-p-values-can-be-dangerous-because-it-distorts-the-incentives-of-analysts">
-     6.5.1.1. The focus on p-values can be dangerous because it distorts the incentives of analysts
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#correlation-is-not-causation">
-     6.5.1.2. “Correlation is not causation”
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#common-analytical-errors">
-     6.5.1.3. Common analytical errors
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -845,13 +833,18 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="section" id="statistical-significance">
 <h1><span class="section-number">6.5. </span>Statistical significance<a class="headerlink" href="#statistical-significance" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This page is very concise and avoids derivations. The focus here is on a minimum level.</p>
+</div>
 <p><a class="reference external" href="02b_mechanics.html#including-interaction-terms">Previously,</a> we estimated</p>
 <div class="math notranslate nohighlight">
 \[
 \log(\text{price})= 8.2+ 1.53 *\log(\text{carat}) + 0.33* \text{Ideal} + 0.18* \log(\text{carat})\cdot \text{Ideal}
 \]</div>
-<p>Those coefficients are <em>estimates</em>, not gospel. There is some uncertainty about what the “true” value should be.</p>
+<p>Those coefficients are <em>estimates</em>, not gospel. They come from the sample of data we have. There is some uncertainty about what the “true” value of the coefficients is in the unseen “population.”</p>
 <img src=https://media.giphy.com/media/TIjVQiwWQFDMzjk4gU/giphy.gif width="300">
+<p>So, when we run the regression, it would be nice to get some extra info about those estimates. <code class="docutils literal notranslate"><span class="pre">sm_ols</span></code> does just that. For that regression (click the <code class="docutils literal notranslate"><span class="pre">+</span></code> sign to see the code) we get the following info:</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load some data to practice regressions</span>
@@ -876,7 +869,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="p">(</span>
 <span class="n">sm_ols</span><span class="p">(</span><span class="s1">&#39;lprice ~ lcarat + ideal + lcarat*ideal&#39;</span><span class="p">,</span> 
        <span class="n">data</span><span class="o">=</span><span class="n">diamonds2</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;cut in [&quot;Fair&quot;,&quot;Ideal&quot;]&#39;</span><span class="p">))</span>
-<span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># the summary is multipe tables stitched together. let&#39;s only print the params</span>
+<span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># the summary() is multiple tables stitched together. I only care to print the params here.</span>
 </pre></div>
 </div>
 </div>
@@ -899,7 +892,7 @@ const thebe_selector_output = ".output, .cell_output"
 </tr>
 </table></div></div>
 </div>
-<p>Thus, the table that regression produces (which you can see above by clicking the plus button) also displays information next to each coefficient about the level of precision associated with the estimated coefficients.</p>
+<p>The information next to each coefficient in this table is about the level of precision associated with the estimated coefficients.</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="text-align:left head"><p>Column</p></th>
@@ -908,10 +901,10 @@ const thebe_selector_output = ".output, .cell_output"
 </thead>
 <tbody>
 <tr class="row-even"><td class="text-align:left"><p>“std err”</p></td>
-<td class="text-align:left"><p>The standard error of the coefficient estimate</p></td>
+<td class="text-align:left"><p>The standard error of the coefficient estimate. This gives an indication of how much the estimated coefficient likely varies from the population coefficient. <em>There are several ways to compute a standard error, and the choice is important! However, it’s beyond the scope of this class, and we will use the default option throughout.</em></p></td>
 </tr>
 <tr class="row-odd"><td class="text-align:left"><p>“t”</p></td>
-<td class="text-align:left"><p>The <em><strong>“t-stat”</strong></em> = <span class="math notranslate nohighlight">\(\beta\)</span> divided by its standard error</p></td>
+<td class="text-align:left"><p>The <em><strong>“t-stat”</strong></em> = <span class="math notranslate nohighlight">\(\beta\)</span> divided by its standard error.</p></td>
 </tr>
 <tr class="row-even"><td class="text-align:left"><p>“P&gt;t”</p></td>
 <td class="text-align:left"><p>The <em><strong>“p-value”</strong></em> is the probability that the coefficient is different than zero by random chance.</p></td>
@@ -921,76 +914,29 @@ const thebe_selector_output = ".output, .cell_output"
 </tr>
 </tbody>
 </table>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>We use these columns, particularly the “t-stat” and “p-value”, to assess the probability that the coefficient is different than zero by random chance.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>We use these columns, particularly the “t-stat” and “p-value”, to assess the probability that the coefficient is different from zero by random chance.</p>
 <ul class="simple">
 <li><p>A t-stat of 1.645 corresponds to a p-value of 0.10; meaning only 10% of the time would you get that coefficient randomly</p></li>
 <li><p>A t-stat of 1.96 corresponds to a p-value of 0.05; this is a common “threshold” to say a “relationship is <em><strong>statistically</strong></em> significant” and that “the relationship between X and y is not zero”</p></li>
 <li><p>A t-stat of 2.58 corresponds to a p-value of 0.01</p></li>
 </ul>
 </div>
-<p>The “classical” approach to assess whether X is related to y is to see if the t-stat on X is above 1.96. These thresholds are important and part of a sensible approach to learning from data, but…</p>
-<p>When people say a “relationship is statistically significant”, what they often mean is
-<br></p>
-<center>"LOOK YONDER, I HAVE FOUND A NEW, MEANINGFUL  <br>
-    CORRELATION THAT IS TRUE <br> (TRULY!) (VERILY!)  <br>
-    AND KNOWING IT ... <br> WILL CHANGE THE WORLD!"</center>
-<p>Which leads me to the next section.</p>
-<div class="section" id="significant-warnings-about-statistical-significance">
-<h2><span class="section-number">6.5.1. </span><em>Significant</em> warnings about “statistical significance”<a class="headerlink" href="#significant-warnings-about-statistical-significance" title="Permalink to this headline">¶</a></h2>
-<p>The focus on t-stats p-values can be dangerous. As it turns out, “p-hacking” (finding a significant relationship) is easy for a number of reasons:</p>
-<ul class="simple">
-<li><p>If you look at enough Xs and enough ys, you, by chance alone, can find “significant” relationships where <a class="reference external" href="https://www.tylervigen.com/spurious-correlations">none exist</a></p></li>
-<li><p>Your data can be biased. <a class="reference external" href="https://en.wikipedia.org/wiki/Dewey_Defeats_Truman">Dewey Defeats Truman</a> may be the most famous example
-<img src=https://upload.wikimedia.org/wikipedia/en/2/28/Deweytruman12.jpg width="400"></p></li>
-<li><p>Your sample restrictions can generate bias: If you evaluate the trading strategy “buy and hold current S&amp;P companies” for the last 50 years, you’ll discover that this trading strategy was unbelievable!</p></li>
-<li><p>Reusing the data: If you torture the data, it will confess!</p></li>
-</ul>
-<div class="warning admonition">
-<p class="admonition-title">Torturing your data</p>
-<p>There is a <a class="reference external" href="https://fivethirtyeight.com/features/science-isnt-broken/#part1">fun game in here</a>.</p>
-<p>The point:</p>
+<div class="section" id="some-practical-guidance">
+<h2><span class="section-number">6.5.1. </span>Some practical guidance<a class="headerlink" href="#some-practical-guidance" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
-<li><p>The choices you make about what variables to include or focus on can change the <em>statistical</em> results.</p></li>
-<li><p>**And if you play with a dataset long enough, you’ll find “results”… ***</p></li>
-</ol>
-</div>
-<div class="section" id="the-focus-on-p-values-can-be-dangerous-because-it-distorts-the-incentives-of-analysts">
-<h3><span class="section-number">6.5.1.1. </span>The focus on p-values can be dangerous because it distorts the incentives of analysts<a class="headerlink" href="#the-focus-on-p-values-can-be-dangerous-because-it-distorts-the-incentives-of-analysts" title="Permalink to this headline">¶</a></h3>
+<li><p>You can focus on the p-values rather than the t-stats. Knowing the threshold values of the t-stat (those above) is useful though, as many people distribute research using those instead.</p></li>
+<li><p>If a p-value for the coefficient in a regression is below 0.05,</p>
 <ul class="simple">
-<li><p>Again: <strong>If you torture the data, it will confess (regardless of whether you or it wanted to)</strong></p></li>
-<li><p><strong>Motivated reasoning/cognitive dissonance/confirmation bias</strong>: Analysis like <a class="reference external" href="https://fivethirtyeight.com/features/science-isnt-broken/#part1">the game above</a> is fraught with temptations for humans. That 538 article mentions that about 2/3 of retractions are due to misconduct.</p></li>
-<li><p>Focus on p-value <strong>shifts attention: Statistical signicance does not mean causation nor economic significance (i.e. large/important relationships)</strong></p></li>
-</ul>
-<div class="tips admonition">
-<p class="admonition-title">Tips to avoid p-hacking</p>
-<ol class="simple">
-<li><p>Your focus should be on testing and evaluating a hypothesis, not “finding a result”</p></li>
-<li><p>Null results are fine!    Famously, Edison and his teams found a lot of wire filaments that did <em>not</em> work for a lightbulb, and this information was valuable!</p></li>
-<li><p>“Preregister” your ideas</p>
-<ul class="simple">
-<li><p>The simplest version of this: Write down your data, theory, and hypothesis (it can be short!) <strong>BEFORE</strong> you run your tests.</p></li>
-<li><p><a class="reference external" href="https://www.science.org/content/article/more-and-more-scientists-are-preregistering-their-studies-should-you">This Science article</a> covers the reasoning and intuition for it</p></li>
-<li><p><a class="reference external" href="https://www.pnas.org/content/115/11/2600">This article by Brian Nosek, one of the key voices pushing for ways to improve credibility</a> is an instant classic</p></li>
+<li><p>We say that the relationship between that variable and Y is <strong>“statistically significant”</strong> at the 5% level.</p></li>
+<li><p>Now, consider the direction: Is the coefficient positive or negative? Does this align with your intuition and economic theory?</p></li>
+<li><p>Now, <a class="reference external" href="02d_interpretingCoefs.html#comparing-the-size-of-two-coefficients">consider the size of the coefficient</a>: Is a “reasonable” change in X leading to a “small” or “big” change in Y? If the relationship is small, it may not be important enough to care about even if true.</p></li>
+<li><p>Now, take a step back: <strong>Statistically significant</strong> does NOT mean X causes Y. You need additional information to make these claims. That’s what the next page is about.</p></li>
 </ul>
 </li>
+<li><p>Practically, if the p-value is above 0.05, most researchers consider the coefficient for that variable 0 (because you can’t say the coefficient is statistically distinguishable from 0). Meaning: Ignore the sign</p></li>
 </ol>
-</div>
-</div>
-<div class="section" id="correlation-is-not-causation">
-<h3><span class="section-number">6.5.1.2. </span>“Correlation is not causation”<a class="headerlink" href="#correlation-is-not-causation" title="Permalink to this headline">¶</a></h3>
-<p>Surely, you’ve heard that. I prefer this version:</p>
-<blockquote class="epigraph">
-<div><p>Everyone who confuses correlation with causation eventually ends up dead.</p>
-<p><em>&#64;rauscher_emily</em></p>
-</div></blockquote>
-</div>
-<div class="section" id="common-analytical-errors">
-<h3><span class="section-number">6.5.1.3. </span>Common analytical errors<a class="headerlink" href="#common-analytical-errors" title="Permalink to this headline">¶</a></h3>
-<p>Let me repost this figure from <a class="reference internal" href="01a_MLgonewrong.html"><span class="doc std std-doc">an earlier page</span></a>. Notice how a focus on finding significant results can incentivize or subtly lead you towards several of these:</p>
-<a class="reference internal image-reference" href="../../_images/data_fallacies_to_avoid.jpg"><img alt="flowchart" src="../../_images/data_fallacies_to_avoid.jpg" style="width: 800px;" /></a>
-</div>
 </div>
 </div>
 
@@ -1023,7 +969,7 @@ const thebe_selector_output = ".output, .cell_output"
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="02d_interpretingCoefs.html" title="previous page"><span class="section-number">6.4. </span>Interpreting regression coefficients</a>
-    <a class='right-next' id="next-link" href="02g_summary.html" title="next page"><span class="section-number">6.6. </span>Summary and Resources</a>
+    <a class='right-next' id="next-link" href="02f_warnings.html" title="next page"><span class="section-number">6.6. </span><em>Significant</em> warnings about “statistical significance”</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
