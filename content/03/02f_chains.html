@@ -3,6 +3,16 @@
 
 <html>
   <head>
+   <!-- Global site tag (gtag.js) - Google Analytics -->
+   <script async src="https://www.googletagmanager.com/gtag/js?id=G-QHB6CBHE8P"></script>
+   <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-QHB6CBHE8P');
+   </script>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>3.2.6. Using “method chains” to create more readable code &#8212; LeDataSciFi-2023</title>
@@ -910,8 +920,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>save the dataset and then call a plot function</p></li>
 </ol>
 <div class="tabbed-set docutils">
-<input checked="checked" id="beb150fb-c186-4f06-94a9-b936738aa362" name="b1e88622-21d5-438a-9983-8604bbb203b4" type="radio">
-</input><label class="tabbed-label" for="beb150fb-c186-4f06-94a9-b936738aa362">
+<input checked="checked" id="de0bbf97-c69b-4df0-9964-fe5b77b6c401" name="ee993712-e0f7-4522-9fc5-bd9dcbccdbe0" type="radio">
+</input><label class="tabbed-label" for="de0bbf97-c69b-4df0-9964-fe5b77b6c401">
 v0.1 Without chains</label><div class="tabbed-content docutils">
 <p>On one hand, this is only “4” lines of code. On the other hand, this is as readable as I could make it!</p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1"># STEP 1: restrict by name and only keep years after 2000</span>
@@ -942,8 +952,8 @@ v0.1 Without chains</label><div class="tabbed-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="ed71d512-b9bd-4b6f-a890-763b07296569" name="b1e88622-21d5-438a-9983-8604bbb203b4" type="radio">
-</input><label class="tabbed-label" for="ed71d512-b9bd-4b6f-a890-763b07296569">
+<input id="991c7f30-892e-413d-8e93-7b6a7bf4be12" name="ee993712-e0f7-4522-9fc5-bd9dcbccdbe0" type="radio">
+</input><label class="tabbed-label" for="991c7f30-892e-413d-8e93-7b6a7bf4be12">
 v0.2 No chains but better</label><div class="tabbed-content docutils">
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -960,8 +970,8 @@ v0.2 No chains but better</label><div class="tabbed-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="767d9210-ae68-49e5-b283-5628646041dd" name="b1e88622-21d5-438a-9983-8604bbb203b4" type="radio">
-</input><label class="tabbed-label" for="767d9210-ae68-49e5-b283-5628646041dd">
+<input id="056cd5ed-4055-46ca-a75e-bfccd1e3d220" name="ee993712-e0f7-4522-9fc5-bd9dcbccdbe0" type="radio">
+</input><label class="tabbed-label" for="056cd5ed-4055-46ca-a75e-bfccd1e3d220">
 v1.0 - Using chains instead</label><div class="tabbed-content docutils">
 <p><strong>Method chaining:</strong> Call the object (<code class="docutils literal notranslate"><span class="pre">baby_names</span></code>) and then keep calling one method on it after another.</p>
 <ul class="simple">
@@ -990,8 +1000,8 @@ The code below is only 2 lines, and it produces a plot identical to V1 and V2, <
 </pre></div>
 </div>
 </div>
-<input id="06ca758d-3899-4151-920d-4ab31f84390d" name="b1e88622-21d5-438a-9983-8604bbb203b4" type="radio">
-</input><label class="tabbed-label" for="06ca758d-3899-4151-920d-4ab31f84390d">
+<input id="7dade638-7339-4ded-b85c-b3576b579061" name="ee993712-e0f7-4522-9fc5-bd9dcbccdbe0" type="radio">
+</input><label class="tabbed-label" for="7dade638-7339-4ded-b85c-b3576b579061">
 v1.1 Pretty Chains</label><div class="tabbed-content docutils">
 <p>To make this readable, we write a parentheses over multiple lines</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>

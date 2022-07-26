@@ -3,6 +3,16 @@
 
 <html>
   <head>
+   <!-- Global site tag (gtag.js) - Google Analytics -->
+   <script async src="https://www.googletagmanager.com/gtag/js?id=G-QHB6CBHE8P"></script>
+   <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-QHB6CBHE8P');
+   </script>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>3.2.2. Pandas Vocab and the Shape of Data &#8212; LeDataSciFi-2023</title>
@@ -859,8 +869,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <p>Data can be logically stored in many ways. Let’s start by showing one dataset, and three ways it can be stored.</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="3144202f-c4ba-44e3-99a8-138cd8710fc2" name="0b6e2454-a78e-4b32-af0f-1c457158a685" type="radio">
-</input><label class="tabbed-label" for="3144202f-c4ba-44e3-99a8-138cd8710fc2">
+<input checked="checked" id="92ca37ea-0543-4ef7-bdef-9c6648c7acaf" name="47e6b6ea-95e5-46b0-b018-0b56ca8cfc2b" type="radio">
+</input><label class="tabbed-label" for="92ca37ea-0543-4ef7-bdef-9c6648c7acaf">
 “Long” Data</label><div class="tabbed-content docutils">
 <p>Here is a <strong>long dataset.</strong> The “key” or “index” is the <em><strong>combination</strong> of year and firm.</em> This is what I’d refer to as a “firm-year” dataset.</p>
 <table class="colwidths-auto table">
@@ -915,8 +925,8 @@ const thebe_selector_output = ".output, .cell_output"
 </tbody>
 </table>
 </div>
-<input id="10ed17d2-ce20-4ff9-998e-855ff15ace99" name="0b6e2454-a78e-4b32-af0f-1c457158a685" type="radio">
-</input><label class="tabbed-label" for="10ed17d2-ce20-4ff9-998e-855ff15ace99">
+<input id="42f78f04-6aba-406b-b9fa-20be79859c5a" name="47e6b6ea-95e5-46b0-b018-0b56ca8cfc2b" type="radio">
+</input><label class="tabbed-label" for="42f78f04-6aba-406b-b9fa-20be79859c5a">
 Same data, but “Wide”</label><div class="tabbed-content docutils">
 <p>This is the exact same data, but stored as a <strong>wide dataset.</strong> Now, the “key” or “index” is <strong>just</strong> the <em>year</em>, and each variable is duplicated for each firm. So there is a Sales variable for GM, and a Sales variable for Ford.</p>
 <table class="colwidths-auto table">
@@ -962,8 +972,8 @@ Same data, but “Wide”</label><div class="tabbed-content docutils">
 <p>A similar case can occur for the row names/numbers. If there is one level of the row name, that’s the Index. If there are multiple levels, it is called a MultiIndex.</p>
 </div>
 </div>
-<input id="d1693d9a-2891-4bdb-8ca2-88fa23d05ddf" name="0b6e2454-a78e-4b32-af0f-1c457158a685" type="radio">
-</input><label class="tabbed-label" for="d1693d9a-2891-4bdb-8ca2-88fa23d05ddf">
+<input id="77622e12-c8d8-41ad-9506-c85b7397ce56" name="47e6b6ea-95e5-46b0-b018-0b56ca8cfc2b" type="radio">
+</input><label class="tabbed-label" for="77622e12-c8d8-41ad-9506-c85b7397ce56">
 Same data, but differently “Wide”</label><div class="tabbed-content docutils">
 <p>Now, the “key” or “index” is just the <em>firm</em>, and each variable is duplicated for each year. So there is a Sales variable for 2000, and a Sales variable for 2001.</p>
 <table class="colwidths-auto table">
