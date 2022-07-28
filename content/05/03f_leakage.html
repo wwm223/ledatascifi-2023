@@ -887,87 +887,22 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Heck yes! Our patent pending* ARIMA(3,0,1) model predicts&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;next day stock returns with an R2 of...</span><span class="se">\n\n</span><span class="s1">        R2=</span><span class="si">{</span><span class="n">r2_score</span><span class="p">(</span><span class="n">series</span><span class="p">[</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">predictions</span><span class="p">):],</span><span class="n">predictions</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">!&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Can you FEEL the excitement!?&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">Let&#39;s build this model and start trading our life&#39;s savings.</span><span class="se">\n</span><span class="s2">We can use your Grandma&#39;s heirlooms as collateral and lever up for extra earnings!&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;She would understand. In fact, she would be PROUD to contribute to the **cause**!&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">...The year is 2006, the Day is Jan 3...</span><span class="se">\n\n</span><span class="s1">...model loading...&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">...model loading...&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">...model ready! Lets start trading!...&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">...Predicting Jan 4, buy/sell based on the prediction...&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">...Now it is Jan 4, predicting Jan 5, buy/sell based on the prediction...&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">...[A montage rolls, 2 years of Wolf of Wall Str insanity, as money flows from the coffers]...&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">...We wake up on Dec 31 2007. Crazy two years. Lets see how we did!...&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">===========================================================================&#39;</span><span class="p">)</span>
-
-<span class="n">history</span>   <span class="o">=</span> <span class="n">series</span><span class="p">[:</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">predictions</span><span class="p">)]</span>
-<span class="n">test_data</span> <span class="o">=</span> <span class="n">series</span><span class="p">[</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">predictions</span><span class="p">):]</span>
-<span class="n">model_predictions</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">time_point</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">test_data</span><span class="p">)):</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">ARIMA</span><span class="p">(</span><span class="n">history</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span> <span class="c1"># use model on past</span>
-    <span class="n">model_fit</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>               <span class="c1"># predict the future</span>
-    <span class="n">model_predictions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model_fit</span><span class="o">.</span><span class="n">forecast</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># store prediction</span>
-    <span class="n">history</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">history</span><span class="p">,</span><span class="n">test_data</span><span class="p">[</span><span class="n">time_point</span><span class="p">])</span> <span class="c1"># and reality</span>
-    
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Oops... Our model, used in the real world, had an R2 of...&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">This cant be right!!!!&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">        R2=</span><span class="si">{</span><span class="n">r2_score</span><span class="p">(</span><span class="n">test_data</span><span class="p">,</span><span class="n">model_predictions</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Good thing Grandma wont know about this...&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Heck yes! Our patent pending* ARIMA(3,0,1) model predicts
-next day stock returns with an R2 of...
-
-        R2=0.013!
-
-Can you FEEL the excitement!?
-
-
-Let&#39;s build this model and start trading our life&#39;s savings.
-We can use your Grandma&#39;s heirlooms as collateral and lever up for extra earnings!
-She would understand. In fact, she would be PROUD to contribute to the **cause**!
-
-...The year is 2006, the Day is Jan 3...
-
-...model loading...
-
-...model loading...
-
-...model ready! Lets start trading!...
-
-...Predicting Jan 4, buy/sell based on the prediction...
-
-...Now it is Jan 4, predicting Jan 5, buy/sell based on the prediction...
-
-...[A montage rolls, 2 years of Wolf of Wall Str insanity, as money flows from the coffers]...
-
-...We wake up on Dec 31 2007. Crazy two years. Lets see how we did!...
-
-===========================================================================
-
-Oops... Our model, used in the real world, had an R2 of...
-
-This cant be right!!!!
-
-        R2=-0.196
-
-Good thing Grandma wont know about this...
-</pre></div>
-</div>
-</div>
-</div>
-<hr class="docutils" />
 <ul class="screenbox">
 <li class="character">(Unnamed programmer)</li>
 <li class="dialogue">It's done! Heck yes! Our patent pending* ARIMA(3,0,1) model predicts next day stock returns with an R2 of...</li>
 <li class="transition"> Cut to the screen </li>
-</ul>
-<p>print(f’R2={r2_score(series[-len(predictions):],predictions).round(3)}!’)</p>
+</ul><div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;R2=</span><span class="si">{</span><span class="n">r2_score</span><span class="p">(</span><span class="n">series</span><span class="p">[</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">predictions</span><span class="p">):],</span><span class="n">predictions</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>R2=0.013!
+</pre></div>
+</div>
+</div>
+</div>
 <ul class="screenbox">
 <li class="action">He gets frenetically excited.</li>
 <li class="character">(Unnamed programmer)</li>
@@ -985,18 +920,27 @@ Good thing Grandma wont know about this...
 <li class="character">(Unnamed programmer)</li>
 <li class="dialogue"> Crap. </li>
 <li class="transition"> Pan and zoom in on the computer screen, revealing how their model performed in the real world. </li>
-</ul>
-<p>history   = series[:-len(predictions)]
-test_data = series[-len(predictions):]
-model_predictions = []
-for time_point in range(len(test_data)):
-model = ARIMA(history, order=(4,1,0)) # use model on past
-model_fit = model.fit()               # predict the future
-model_predictions.append(model_fit.forecast()[0])  # store prediction
-history = np.append(history,test_data[time_point]) # and reality</p>
-<p>print(‘\nOops… Our model, used in the real world, had an R2 of…’)
-print(‘\nThis cant be right!!!!’)
-print(f’\n        R2={r2_score(test_data,model_predictions).round(3)}’)</p>
+</ul><div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">history</span>   <span class="o">=</span> <span class="n">series</span><span class="p">[:</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">predictions</span><span class="p">)]</span>
+<span class="n">test_data</span> <span class="o">=</span> <span class="n">series</span><span class="p">[</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">predictions</span><span class="p">):]</span>
+<span class="n">model_predictions</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">time_point</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">test_data</span><span class="p">)):</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">ARIMA</span><span class="p">(</span><span class="n">history</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span> <span class="c1"># use model on past</span>
+    <span class="n">model_fit</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>               <span class="c1"># predict the future</span>
+    <span class="n">model_predictions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model_fit</span><span class="o">.</span><span class="n">forecast</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># store prediction</span>
+    <span class="n">history</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">history</span><span class="p">,</span><span class="n">test_data</span><span class="p">[</span><span class="n">time_point</span><span class="p">])</span> <span class="c1"># and reality</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;R2=</span><span class="si">{</span><span class="n">r2_score</span><span class="p">(</span><span class="n">test_data</span><span class="p">,</span><span class="n">model_predictions</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>R2=-0.196
+</pre></div>
+</div>
+</div>
+</div>
 <ul class="screenbox">
 <li class="action">His eyes widen in horror as he begins to comprehend the magnitude of the disaster. He gulps and then turns</li>
 <li class="character">(Unnamed programmer)</li>
@@ -1005,8 +949,7 @@ print(f’\n        R2={r2_score(test_data,model_predictions).round(3)}’)</p>
 <li class="transition ">QUICK FADE TO BLACK </li>
 <li class="transition ">IMMIGRANT SONG BY LED ZEPPELIN PLAYS OVER CREDITS </li>
 </ul>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/y8OtzJtp-EM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/y8OtzJtp-EM" title="YouTube video player" frameborder="0" text-align="center" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
     <script type="text/x-thebe-config">
     {
