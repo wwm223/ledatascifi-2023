@@ -67,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="7.2. Model evaluation via cross validation (CV)" href="03c_ModelEval.html" />
+    <link rel="next" title="7.2. Data Leakage - Illustration" href="03f_leakage.html" />
     <link rel="prev" title="7. Intro to Machine Learning" href="03_ML.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -608,28 +608,33 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="03f_leakage.html">
+     7.2. Data Leakage - Illustration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03f_leakage2.html">
+     7.3. Data Leakage Defined
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="03c_ModelEval.html">
-     7.2. Model evaluation via cross validation (CV)
+     7.4. Model evaluation via cross validation (CV)
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03c1_OOS.html">
-     7.3. Model evaluation via Out-of-Sample (OOS)
+     7.5. Model evaluation via Out-of-Sample (OOS)
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03d_whatToMax.html">
-     7.4. Evaluating models
+     7.6. Evaluating models
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03e_whichModel.html">
-     7.5. Model selection
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="03f_leakage.html">
-     7.6. The Cardinal Sin of ML: Data Leakage
+     7.7. Model selection
     </a>
    </li>
   </ul>
@@ -869,8 +874,8 @@ E[\text{model error risk}] = \text{model bias}^2+\text{model variance}+\text{noi
 </div></blockquote>
 <p>I like these two graphs to see all of this discussion visually:</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="0ebe49df-14ae-4f5c-a959-4afc775c4b1a" name="d62b3832-e856-431f-9e1d-34b3bc70978e" type="radio">
-</input><label class="tabbed-label" for="0ebe49df-14ae-4f5c-a959-4afc775c4b1a">
+<input checked="checked" id="908aa6c7-eb51-4ca6-a51e-9a108477175e" name="deff0d85-010f-49f8-8f13-3c7df26fe99c" type="radio">
+</input><label class="tabbed-label" for="908aa6c7-eb51-4ca6-a51e-9a108477175e">
 The classic bias-variance tradeoff</label><div class="tabbed-content docutils">
 <ul class="simple">
 <li><p>Models that are too simple are said to be <strong>“underfit”</strong> (take steps to reduce bias)</p></li>
@@ -878,8 +883,8 @@ The classic bias-variance tradeoff</label><div class="tabbed-content docutils">
 </ul>
 <a class="reference internal image-reference" href="../../_images/bias_modeling_bias_var_plot.png"><img alt="bias_var" src="../../_images/bias_modeling_bias_var_plot.png" style="width: 500px;" /></a>
 </div>
-<input id="75f1c68b-663d-4242-9c8a-d21576ed5c79" name="d62b3832-e856-431f-9e1d-34b3bc70978e" type="radio">
-</input><label class="tabbed-label" for="75f1c68b-663d-4242-9c8a-d21576ed5c79">
+<input id="8ae4ccd7-6f4e-496f-b659-4b84f4cad706" name="deff0d85-010f-49f8-8f13-3c7df26fe99c" type="radio">
+</input><label class="tabbed-label" for="8ae4ccd7-6f4e-496f-b659-4b84f4cad706">
 Optimizing model performance via complexity</label><div class="tabbed-content docutils">
 <ul class="simple">
 <li><p>Models that are too simple perform poorly (low scores, high bias)</p></li>
@@ -939,7 +944,7 @@ Optimizing model performance via complexity</label><div class="tabbed-content do
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="03_ML.html" title="previous page"><span class="section-number">7. </span>Intro to Machine Learning</a>
-    <a class='right-next' id="next-link" href="03c_ModelEval.html" title="next page"><span class="section-number">7.2. </span>Model evaluation via cross validation (CV)</a>
+    <a class='right-next' id="next-link" href="03f_leakage.html" title="next page"><span class="section-number">7.2. </span>Data Leakage - Illustration</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

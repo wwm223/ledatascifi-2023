@@ -606,28 +606,33 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../05/03f_leakage.html">
+     7.2. Data Leakage - Illustration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/03f_leakage2.html">
+     7.3. Data Leakage Defined
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../05/03c_ModelEval.html">
-     7.2. Model evaluation via cross validation (CV)
+     7.4. Model evaluation via cross validation (CV)
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../05/03c1_OOS.html">
-     7.3. Model evaluation via Out-of-Sample (OOS)
+     7.5. Model evaluation via Out-of-Sample (OOS)
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../05/03d_whatToMax.html">
-     7.4. Evaluating models
+     7.6. Evaluating models
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../05/03e_whichModel.html">
-     7.5. Model selection
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../05/03f_leakage.html">
-     7.6. The Cardinal Sin of ML: Data Leakage
+     7.7. Model selection
     </a>
    </li>
   </ul>
@@ -835,11 +840,13 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<p>That produced “the” as a 3-letter string, but we wanted words.</p>
+<p>That produced “the” as a 3-letter string, but we wanted whole words.</p>
+<p>So let’s try this next pattern, which looks for three letters and then a space:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pattern</span> <span class="o">=</span> <span class="s2">&quot;(\w</span><span class="si">{3}</span><span class="s2">) &quot;</span> <span class="c1"># I added a space after it. </span>
-<span class="c1"># the () is a way of saying &quot;I&#39;m interested in the stuff (a word, hopefully) in inside the parens&quot; </span>
+<span class="c1"># the () is a way of saying &quot;I&#39;m interested in the stuff (a word, hopefully) inside the parenthesis</span>
+<span class="c1"># even through I need to tell you about other things to find our target words&quot; </span>
 <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span><span class="s2">&quot;hey there guy&quot;</span><span class="p">)</span> <span class="c1"># whoops, &quot;the&quot; isnt a 3 letter word</span>
 </pre></div>
 </div>
@@ -904,10 +911,10 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<p>Now, we need to get rid of “ere”. A word starts after a word boundary, right?</p>
+<p>That worked! Now, we need to get rid of “ere”. A word starts after a word boundary, right?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;\b(\w</span><span class="si">{3}</span><span class="s2">)\b&quot;</span>  <span class="c1"># make sur the word has a boundary before it</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;\b(\w</span><span class="si">{3}</span><span class="s2">)\b&quot;</span>  <span class="c1"># make sure the word has a boundary before it</span>
 <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span><span class="s2">&quot;hey there guy&quot;</span><span class="p">)</span>  <span class="c1"># got it!</span>
 </pre></div>
 </div>

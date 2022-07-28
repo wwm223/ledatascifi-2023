@@ -606,28 +606,33 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../05/03f_leakage.html">
+     7.2. Data Leakage - Illustration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/03f_leakage2.html">
+     7.3. Data Leakage Defined
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../05/03c_ModelEval.html">
-     7.2. Model evaluation via cross validation (CV)
+     7.4. Model evaluation via cross validation (CV)
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../05/03c1_OOS.html">
-     7.3. Model evaluation via Out-of-Sample (OOS)
+     7.5. Model evaluation via Out-of-Sample (OOS)
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../05/03d_whatToMax.html">
-     7.4. Evaluating models
+     7.6. Evaluating models
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../05/03e_whichModel.html">
-     7.5. Model selection
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../05/03f_leakage.html">
-     7.6. The Cardinal Sin of ML: Data Leakage
+     7.7. Model selection
     </a>
    </li>
   </ul>
@@ -929,8 +934,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>save the dataset and then call a plot function</p></li>
 </ol>
 <div class="tabbed-set docutils">
-<input checked="checked" id="876bc74b-4c92-4133-a88a-a51957e3dbf5" name="86f4b91d-4909-4298-bafc-a0cba3f85bd5" type="radio">
-</input><label class="tabbed-label" for="876bc74b-4c92-4133-a88a-a51957e3dbf5">
+<input checked="checked" id="d5a22705-a9c4-4558-9088-d23c228dd99d" name="4957a0a8-8683-4b7c-b175-155e300d58e6" type="radio">
+</input><label class="tabbed-label" for="d5a22705-a9c4-4558-9088-d23c228dd99d">
 v0.1 Without chains</label><div class="tabbed-content docutils">
 <p>On one hand, this is only “4” lines of code. On the other hand, this is as readable as I could make it!</p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1"># STEP 1: restrict by name and only keep years after 2000</span>
@@ -961,8 +966,8 @@ v0.1 Without chains</label><div class="tabbed-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="d200d642-7435-46c7-ac71-8b46c655004d" name="86f4b91d-4909-4298-bafc-a0cba3f85bd5" type="radio">
-</input><label class="tabbed-label" for="d200d642-7435-46c7-ac71-8b46c655004d">
+<input id="b1c5bc89-1519-47fc-a18a-269118ea88bc" name="4957a0a8-8683-4b7c-b175-155e300d58e6" type="radio">
+</input><label class="tabbed-label" for="b1c5bc89-1519-47fc-a18a-269118ea88bc">
 v0.2 No chains but better</label><div class="tabbed-content docutils">
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -979,8 +984,8 @@ v0.2 No chains but better</label><div class="tabbed-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="363d0909-1046-4a0b-8391-89c95efd0088" name="86f4b91d-4909-4298-bafc-a0cba3f85bd5" type="radio">
-</input><label class="tabbed-label" for="363d0909-1046-4a0b-8391-89c95efd0088">
+<input id="08f454f2-5fa8-4cdf-b97c-195321f0ee5a" name="4957a0a8-8683-4b7c-b175-155e300d58e6" type="radio">
+</input><label class="tabbed-label" for="08f454f2-5fa8-4cdf-b97c-195321f0ee5a">
 v1.0 - Using chains instead</label><div class="tabbed-content docutils">
 <p><strong>Method chaining:</strong> Call the object (<code class="docutils literal notranslate"><span class="pre">baby_names</span></code>) and then keep calling one method on it after another.</p>
 <ul class="simple">
@@ -1009,8 +1014,8 @@ The code below is only 2 lines, and it produces a plot identical to V1 and V2, <
 </pre></div>
 </div>
 </div>
-<input id="3f520077-aa12-41a0-8733-45f29fbf5e09" name="86f4b91d-4909-4298-bafc-a0cba3f85bd5" type="radio">
-</input><label class="tabbed-label" for="3f520077-aa12-41a0-8733-45f29fbf5e09">
+<input id="0e62014b-e888-4aeb-8f0d-802aa6d92c77" name="4957a0a8-8683-4b7c-b175-155e300d58e6" type="radio">
+</input><label class="tabbed-label" for="0e62014b-e888-4aeb-8f0d-802aa6d92c77">
 v1.1 Pretty Chains</label><div class="tabbed-content docutils">
 <p>To make this readable, we write a parentheses over multiple lines</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>

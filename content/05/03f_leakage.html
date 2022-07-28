@@ -15,7 +15,7 @@
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>7.6. The Cardinal Sin of ML: Data Leakage &#8212; LeDataSciFi-2023</title>
+    <title>7.2. Data Leakage - Illustration &#8212; LeDataSciFi-2023</title>
     
   <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -65,8 +65,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="8. Getting our hands dirty with ML" href="04a_SKLearn.html" />
-    <link rel="prev" title="7.5. Model selection" href="03e_whichModel.html" />
+    <link rel="next" title="7.3. Data Leakage Defined" href="03f_leakage2.html" />
+    <link rel="prev" title="7.1. The objective of machine learning" href="03a_ML_obj_and_tradeoff.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -605,29 +605,34 @@ const thebe_selector_output = ".output, .cell_output"
      7.1. The objective of machine learning
     </a>
    </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     7.2. Data Leakage - Illustration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03f_leakage2.html">
+     7.3. Data Leakage Defined
+    </a>
+   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03c_ModelEval.html">
-     7.2. Model evaluation via cross validation (CV)
+     7.4. Model evaluation via cross validation (CV)
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03c1_OOS.html">
-     7.3. Model evaluation via Out-of-Sample (OOS)
+     7.5. Model evaluation via Out-of-Sample (OOS)
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03d_whatToMax.html">
-     7.4. Evaluating models
+     7.6. Evaluating models
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03e_whichModel.html">
-     7.5. Model selection
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     7.6. The Cardinal Sin of ML: Data Leakage
+     7.7. Model selection
     </a>
    </li>
   </ul>
@@ -808,25 +813,6 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#illustration">
-   7.6.1. Illustration
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definition">
-   7.6.2. Definition
-  </a>
- </li>
-</ul>
-
-        </nav>
-        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -834,11 +820,14 @@ const thebe_selector_output = ".output, .cell_output"
         
               <div>
                 
-  <div class="section" id="the-cardinal-sin-of-ml-data-leakage">
-<h1><span class="section-number">7.6. </span>The Cardinal Sin of ML: Data Leakage<a class="headerlink" href="#the-cardinal-sin-of-ml-data-leakage" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="illustration">
-<h2><span class="section-number">7.6.1. </span>Illustration<a class="headerlink" href="#illustration" title="Permalink to this headline">¶</a></h2>
-<p>The following catastrophe is brought to you by <span class="xref myst">Data Leakage</span> (TM), the #1 enemy of machine learners everywhere, recommended by 0 out of 10 dentists, and also, our sponsor Daisy Cottage Cheese:</p>
+  <div class="section" id="data-leakage-illustration">
+<h1><span class="section-number">7.2. </span>Data Leakage - Illustration<a class="headerlink" href="#data-leakage-illustration" title="Permalink to this headline">¶</a></h1>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Data leakage is the one of the cardinal sins of ML.</p>
+</div>
+<hr class="docutils" />
+<p>The following catastrophe is brought to you by Data Leakage (TM), the #1 enemy of machine learners everywhere, recommended by 0 out of 10 dentists, and also, our sponsor Daisy Cottage Cheese:</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/mjWKddZ5vko" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <p><em>(I’m sorry for putting that jingle in your head, so so sorry.)</em></p>
 <hr class="docutils" />
@@ -848,7 +837,7 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="character">(Unnamed programmer)</li>
 <li class="dialogue">I have a plan. You and me, let's get rich! Who needs this grind?</li>
-<li class="action">He fidgets. The red bull has him a little fritzy.</li>
+<li class="action">He fidgets. The red bull has him a little fritzy. He's talking to someone just off screen.</li>
 <li class="character">(Unnamed programmer)</li>
 <li class="dialogue">Seriously! I'm super good at coding, you stake me, and I'll build a stock prediction algo with fancy ML tools. I know all the super cool and trendy words that "Wow!" investors, so we'll probably get backers too!   </li>
 <li class="action">His eyes search wantingly for any feedback from the unseen narrator. (TM-Christopher Nolan) </li>
@@ -972,42 +961,51 @@ Good thing Grandma wont know about this...
 </div>
 </div>
 </div>
+<hr class="docutils" />
 <ul class="screenbox">
+<li class="character">(Unnamed programmer)</li>
+<li class="dialogue">It's done! Heck yes! Our patent pending* ARIMA(3,0,1) model predicts next day stock returns with an R2 of...</li>
+<li class="transition"> Cut to the screen </li>
+</ul>
+<p>print(f’R2={r2_score(series[-len(predictions):],predictions).round(3)}!’)</p>
+<ul class="screenbox">
+<li class="action">He gets frenetically excited.</li>
+<li class="character">(Unnamed programmer)</li>
+<li class="dialogue">Let's start trading! I have my life's savings. We can use the heirlooms your Grandma Fama left you as collateral and lever up for extra earnings! She would understand. In fact, she would be PROUD to contribute to the <b>cause</b>!</li>
+<li class="transition"> Screen dialogue box: Jan 3, 2006, 5pm. </li>
+<li class="character">(Unnamed programmer)</li>
+<li class="dialogue"> Ok, let's see what the model says is going to happen tomorrow, and we'll buy or sell based on that...</li>
+<li class="transition"> Screen dialogue box: Jan 4, 2006, 5pm. </li>
+<li class="character">(Unnamed programmer)</li>
+<li class="dialogue"> Ok, let's see what the model says is going to happen tomorrow, and we'll buy or sell based on that...</li>
+<li class="transition"> Montage begins, Rolling Stones plays over it. </li>
+<li class="action">Montage basically follows Wolf of Wall Street.</li>
+<li class="transition"> Screen dialogue box: Dec 31, 2007, 5pm. </li>
+<li class="action">Our programmer sits at his computer. He hasn't slept in days. He is disheveled and has coffee stains on his shirt. Unsigned divorce papers are on the desk. He looks at the screen.</li>
+<li class="character">(Unnamed programmer)</li>
+<li class="dialogue"> Crap. </li>
+<li class="transition"> Pan and zoom in on the computer screen, revealing how their model performed in the real world. </li>
+</ul>
+<p>history   = series[:-len(predictions)]
+test_data = series[-len(predictions):]
+model_predictions = []
+for time_point in range(len(test_data)):
+model = ARIMA(history, order=(4,1,0)) # use model on past
+model_fit = model.fit()               # predict the future
+model_predictions.append(model_fit.forecast()[0])  # store prediction
+history = np.append(history,test_data[time_point]) # and reality</p>
+<p>print(‘\nOops… Our model, used in the real world, had an R2 of…’)
+print(‘\nThis cant be right!!!!’)
+print(f’\n        R2={r2_score(test_data,model_predictions).round(3)}’)</p>
+<ul class="screenbox">
+<li class="action">His eyes widen in horror as he begins to comprehend the magnitude of the disaster. He gulps and then turns</li>
+<li class="character">(Unnamed programmer)</li>
+<li class="dialogue">I'm sorry. I hope your grandma doesn't know about this, wherever she is.</li>
+<li class="transition"> Smash cut to a graveyard, at night. It's dark. The tombstone says "Eugenia Fama". Suddenly a skeleton of a hand bursts out of the ground! </li>
 <li class="transition ">QUICK FADE TO BLACK </li>
 <li class="transition ">IMMIGRANT SONG BY LED ZEPPELIN PLAYS OVER CREDITS </li>
 </ul>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/y8OtzJtp-EM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-<hr class="docutils" />
-<div class="section" id="definition">
-<h2><span class="section-number">7.6.2. </span>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://scikit-learn.org/stable/common_pitfalls.html#data-leakage">Data leakage</a></p>
-<blockquote>
-<div><p><strong>is when information that would not be available at prediction time is used when building the model.</strong> This results in overly optimistic performance estimates, for example from cross-validation, and thus poorer performance when the model is used on actually novel data, for example during production.</p>
-</div></blockquote>
-<p>Lessons:</p>
-<ol class="simple">
-<li><p>Keep the test and train data subsets separate</p></li>
-<li><p>Never call fit on the test data</p></li>
-<li><p>Data cleaning and transformation steps applied to the training data should not be learned from the test data</p></li>
-</ol>
-<p>The example above falls prey to data leakage because the testing data is the training data, rather than following the lessons above.</p>
-<p><a class="reference internal" href="04a_SKLearn.html"><span class="doc std std-doc">The next section</span></a> of the book will explain how exactly to avoid all of these problems <em>with code</em>, but for now, let’s just state the following warning:</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>The absolute golden rule of prediction modeling is…</p>
-<p><strong>YOUR MODEL CAN’T HAVE ACCESS TO ANY DATA THAT IT WOULDN’T HAVE IN PRACTICE WHEN IT MAKES THE PREDICTION.</strong></p>
-</div>
-<p>I know I already said that, and repetition is usually bad writing, but it must be said again. And again.</p>
-<p>That said, knowing that data leakage is bad doesn’t mean it’s easy to avoid.</p>
-<p>Data leakage can sneak into your analysis in tricky ways:</p>
-<ul class="simple">
-<li><p>The outcome variable is a predictor (implicitly or explicitly)</p></li>
-<li><p>Predictor variables that are in response to the result (after the fact) or the possibility (anticipatory)</p></li>
-<li><p>Predicting loan default, the data might include employee IDs for recent customer service contacts. But the most recent contact might be with trouble-loan specialists (because the firm anticipated possible default due to some other signal). Using that employee’s customer contacts to predict default would add no value - the lender already knew to assign that employee!</p></li>
-<li><p>The smell test: Is it too good to be true? I’ve seen some asset pricing models with suspicious out-of-sample R2s. Predicting stock prices is hard! <em>The best OOS predictive R2 for individual stocks <a class="reference external" href="https://dachxiu.chicagobooth.edu/download/ML.pdf">in this paper</a> is 1.80% per month.</em></p></li>
-</ul>
-</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -1038,8 +1036,8 @@ Good thing Grandma wont know about this...
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="03e_whichModel.html" title="previous page"><span class="section-number">7.5. </span>Model selection</a>
-    <a class='right-next' id="next-link" href="04a_SKLearn.html" title="next page"><span class="section-number">8. </span>Getting our hands dirty with ML</a>
+    <a class='left-prev' id="prev-link" href="03a_ML_obj_and_tradeoff.html" title="previous page"><span class="section-number">7.1. </span>The objective of machine learning</a>
+    <a class='right-next' id="next-link" href="03f_leakage2.html" title="next page"><span class="section-number">7.3. </span>Data Leakage Defined</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

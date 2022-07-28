@@ -606,28 +606,33 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="03f_leakage.html">
+     7.2. Data Leakage - Illustration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03f_leakage2.html">
+     7.3. Data Leakage Defined
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="03c_ModelEval.html">
-     7.2. Model evaluation via cross validation (CV)
+     7.4. Model evaluation via cross validation (CV)
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03c1_OOS.html">
-     7.3. Model evaluation via Out-of-Sample (OOS)
+     7.5. Model evaluation via Out-of-Sample (OOS)
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03d_whatToMax.html">
-     7.4. Evaluating models
+     7.6. Evaluating models
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03e_whichModel.html">
-     7.5. Model selection
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="03f_leakage.html">
-     7.6. The Cardinal Sin of ML: Data Leakage
+     7.7. Model selection
     </a>
    </li>
   </ul>
@@ -819,30 +824,40 @@ const thebe_selector_output = ".output, .cell_output"
 <h1><span class="section-number">5.3. </span>ML Gone Wrong<a class="headerlink" href="#ml-gone-wrong" title="Permalink to this headline">¶</a></h1>
 <div class="warning admonition">
 <p class="admonition-title">But just because you can, doesn’t mean you should.</p>
-<p>The classic citation for this argument is from Jurassic Park.</p>
 <img src=https://media.giphy.com/media/mCClSS6xbi8us/source.gif >
 </div>
-<p><strong>There are many examples of ML applied wrong and practitioners in the space that I talk to spend a lot of time keeping their data science teams from replicating some notable breakdowns:</strong></p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://gking.harvard.edu/files/gking/files/0314policyforumff.pdf">Google Flu Trends</a> consistently over predicted flu prevalence</p></li>
-<li><p>IBM’s Watson tried to predict cancer. How’d it go? According to internal documents: “This product is a piece of sh–.”</p></li>
-<li><p>Amazon’s engineers used ML to evaluate applicants but taught the model <a class="reference external" href="https://www.theguardian.com/technology/2018/oct/10/amazon-hiring-ai-gender-bias-recruiting-engine">that males were automatically better</a></p></li>
-<li><p>Chatbots have had many struggles. Here’s Microsoft’s <a class="reference external" href="https://medium.com/asecuritysite-when-bob-met-alice/machine-learning-gone-bad-990e132024ea">attempt at speaking like the youths</a>: <br>
-<img src=https://www.lexalytics.com/lexablog/wp-content/uploads/2018/05/TayChatbotFail-300x260.jpeg width="400"></p></li>
-<li><p>ML/AI methods replicate patterns in the data by design: <a class="reference external" href="https://arxiv.org/pdf/1608.07187.pdf">If you give it data with human biases, then the AI can easily become biased.</a> This has led to debates about how to use ML for</p>
+<li><p>ML/AI methods replicate patterns in the data by design</p>
 <ul>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1608.07187.pdf">If you give it data with human biases, then the AI can easily become biased.</a> This has led to debates about how to use ML for</p></li>
+<li><p>Amazon’s engineers used ML to evaluate applicants but taught the model <a class="reference external" href="https://www.theguardian.com/technology/2018/oct/10/amazon-hiring-ai-gender-bias-recruiting-engine">that males were automatically better</a></p></li>
 <li><p>Criminal sentencing <a class="reference external" href="https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing">based on “risk predictions”</a> overweight race</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1301.6822">Online advertising</a> - Google is more likely to serve up arrest records in searches for names assigned “primarily to black babies”</p></li>
 </ul>
 </li>
-<li><p>Google will intelligently stitch together photos, but I guess Google’s AI thought the guy was built like a mountain (congrats, I guess?): <br>
-<img src=https://i.imgur.com/60fTgCg.jpg width="400"></p></li>
+<li><p>Humans are strategic and will exploit incentives created by algos and exploit the algo itself</p>
+<ul>
+<li><p>Facebook’s targeted ad categories initially allowed hate groups to form</p></li>
+<li><p>Microsoft’s chat bot was hijacked by 4chan users to teach the bot hate speech</p></li>
+<li><p>Uber must consider how changes to its dispatch algorithm will alter driver behavior</p></li>
 </ul>
-<p><strong>Common problems with analysis (ML or otherwise)</strong></p>
-<a class="reference internal image-reference" href="../../_images/data_fallacies_to_avoid.jpg"><img alt="flowchart" src="../../_images/data_fallacies_to_avoid.jpg" style="width: 800px;" /></a>
+</li>
+<li><p>ML/AI tools are not always the right tool</p>
+<ul>
+<li><p>Zillow’s pricing model was best-in-class but <a class="reference external" href="https://donbowen.github.io/slides/slides/L01_intro_github.slides.html">still lost nearly 400m in a single quarter!</a></p></li>
+</ul>
+</li>
+<li><p>Some problems are simply hard</p>
+<ul>
+<li><p>Predicting stock prices is hard! The best predictive R2 for individual stocks <a class="reference external" href="https://academic.oup.com/rfs/article/33/5/2223/5758276">in this paper</a> (open access <a class="reference external" href="https://dachxiu.chicagobooth.edu/download/ML.pdf">here</a>) is just 1.80% per month.</p></li>
+<li><p>IBM’s Watson tried to predict cancer. How’d it go? According to internal documents: “This product is a piece of sh–.”</p></li>
+<li><p><a class="reference external" href="https://gking.harvard.edu/files/gking/files/0314policyforumff.pdf">Google Flu Trends</a> consistently over predicted flu prevalence</p></li>
+</ul>
+</li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The good news is that these problems can be avoided. Understanding how is something we will defer until we have a better understanding of the methods and processes we will follow in an ML project.</p>
+<p>Notice the company names attached to these examples! These are the creme de la creme of tech firms!</p>
 </div>
 </div>
 

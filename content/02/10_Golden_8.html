@@ -606,28 +606,33 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../05/03f_leakage.html">
+     7.2. Data Leakage - Illustration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/03f_leakage2.html">
+     7.3. Data Leakage Defined
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../05/03c_ModelEval.html">
-     7.2. Model evaluation via cross validation (CV)
+     7.4. Model evaluation via cross validation (CV)
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../05/03c1_OOS.html">
-     7.3. Model evaluation via Out-of-Sample (OOS)
+     7.5. Model evaluation via Out-of-Sample (OOS)
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../05/03d_whatToMax.html">
-     7.4. Evaluating models
+     7.6. Evaluating models
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../05/03e_whichModel.html">
-     7.5. Model selection
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../05/03f_leakage.html">
-     7.6. The Cardinal Sin of ML: Data Leakage
+     7.7. Model selection
     </a>
    </li>
   </ul>
@@ -874,8 +879,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p>There are a few popular auto-formatters (black, yapf, and autopep8). In my <a class="reference external" href="../01/05_jupyterlab.html#my-jupyter-lab-set-up">JupyterLab set up</a>, I explain how I set up Black, the “uncompromising Python code formatter” which is very opinionated (“any color you’d like, as long as it is black”).</p>
 <p>Look at what Black does to this code:</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="40b811e3-e862-4c13-945c-2301a76717e4" name="4000c558-3eaa-4e8c-a8cf-18dbf0d07e5a" type="radio">
-</input><label class="tabbed-label" for="40b811e3-e862-4c13-945c-2301a76717e4">
+<input checked="checked" id="2f7c880e-77e4-498e-8936-b59b9834c87c" name="8cf80418-aec2-4cab-b4d4-3b28ca316009" type="radio">
+</input><label class="tabbed-label" for="2f7c880e-77e4-498e-8936-b59b9834c87c">
 Ugly Code I wrote</label><div class="tabbed-content docutils">
 <p>This function is too long to even read:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">very_important_function</span><span class="p">(</span><span class="n">template</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="n">variables</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">,</span> <span class="n">engine</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">header</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
@@ -885,8 +890,8 @@ Ugly Code I wrote</label><div class="tabbed-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="a13840b9-2269-4f1a-ac2c-60a33916c35c" name="4000c558-3eaa-4e8c-a8cf-18dbf0d07e5a" type="radio">
-</input><label class="tabbed-label" for="a13840b9-2269-4f1a-ac2c-60a33916c35c">
+<input id="9bd7cc33-b29f-4551-a22f-d7d40f1a554d" name="8cf80418-aec2-4cab-b4d4-3b28ca316009" type="radio">
+</input><label class="tabbed-label" for="9bd7cc33-b29f-4551-a22f-d7d40f1a554d">
 Black fixed it</label><div class="tabbed-content docutils">
 <p>I hit CTRL+SHIFT+F and this was the result:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">very_important_function</span><span class="p">(</span>
@@ -926,8 +931,8 @@ Black fixed it</label><div class="tabbed-content docutils">
 <p>A magic number is a literal number or parameter value embedded in your code. Having numbers that act as in-line inputs and parameters can easily lead to errors and make modifying code very tough.</p>
 <p>Here is an example that tries to download and stock price data.</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="2620db3d-d64d-46de-a493-bcad519444ff" name="45e4ec59-2b7c-402d-8b91-d960932e5290" type="radio">
-</input><label class="tabbed-label" for="2620db3d-d64d-46de-a493-bcad519444ff">
+<input checked="checked" id="a83120f3-3271-43fb-9468-9bca578a7467" name="f07f528a-75d2-4bcf-a88f-efb0bc615aa3" type="radio">
+</input><label class="tabbed-label" for="a83120f3-3271-43fb-9468-9bca578a7467">
 Bad</label><div class="tabbed-content docutils">
 <p>If I want to change the stocks included, I’ll need to change the list of stocks twice.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas_datareader</span> <span class="k">as</span> <span class="nn">pdr</span>  
@@ -944,8 +949,8 @@ Bad</label><div class="tabbed-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="08f1e330-c6d2-4128-b54a-d11439f68cf1" name="45e4ec59-2b7c-402d-8b91-d960932e5290" type="radio">
-</input><label class="tabbed-label" for="08f1e330-c6d2-4128-b54a-d11439f68cf1">
+<input id="bfbb20d1-6022-4355-8b0d-41ddd2be2413" name="f07f528a-75d2-4bcf-a88f-efb0bc615aa3" type="radio">
+</input><label class="tabbed-label" for="bfbb20d1-6022-4355-8b0d-41ddd2be2413">
 Good</label><div class="tabbed-content docutils">
 <p>Now I only need to change the variable <code class="docutils literal notranslate"><span class="pre">stocks</span></code> to alter the entire code.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas_datareader</span> <span class="k">as</span> <span class="nn">pdr</span>  
