@@ -611,28 +611,33 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="03f_leakage3.html">
+     7.3. Data Leakage - Illustration 2
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="03f_leakage2.html">
-     7.3. Data Leakage Defined
+     7.4. Data Leakage Defined
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03c_ModelEval.html">
-     7.4. Model evaluation via cross validation (CV)
+     7.5. Model evaluation via cross validation (CV)
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03c1_OOS.html">
-     7.5. Model evaluation via Out-of-Sample (OOS)
+     7.6. Model evaluation via Out-of-Sample (OOS)
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03d_whatToMax.html">
-     7.6. Evaluating models
+     7.7. Evaluating models
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03e_whichModel.html">
-     7.7. Model selection
+     7.8. Model selection
     </a>
    </li>
   </ul>
@@ -841,10 +846,11 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="simple">
 <li><p>ML/AI methods replicate patterns in the data by design</p>
 <ul>
-<li><p><a class="reference external" href="https://arxiv.org/pdf/1608.07187.pdf">If you give it data with human biases, then the AI can easily become biased.</a> This has led to debates about how to use ML for</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1608.07187.pdf">If you give it data with human biases, then the AI can easily become biased.</a> This has led to debates about how to use ML (example - <a class="reference external" href="https://www.wired.com/story/algorithms-supposed-fix-bail-system-they-havent/">ML algos fail to set cash bail without bias</a>)</p></li>
 <li><p>Amazon’s engineers used ML to evaluate applicants but taught the model <a class="reference external" href="https://www.theguardian.com/technology/2018/oct/10/amazon-hiring-ai-gender-bias-recruiting-engine">that males were automatically better</a></p></li>
 <li><p>Criminal sentencing <a class="reference external" href="https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing">based on “risk predictions”</a> overweight race</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1301.6822">Online advertising</a> - Google is more likely to serve up arrest records in searches for names assigned “primarily to black babies”</p></li>
+<li><p><a class="reference external" href="https://www.wired.com/story/how-algorithm-favored-whites-over-blacks-health-care/">Medical treatments vary by race</a></p></li>
 </ul>
 </li>
 <li><p>Humans are strategic and will exploit incentives created by algos and exploit the algo itself</p>
@@ -859,6 +865,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Zillow’s pricing model was best-in-class but <a class="reference external" href="https://donbowen.github.io/slides/slides/L01_intro_github.slides.html">still lost nearly 400m in a single quarter!</a></p></li>
 </ul>
 </li>
+<li><p><a class="reference internal" href="03f_leakage3.html"><span class="doc std std-doc">It easy to misuse ML tools</span></a> to “discover” impossible performance gains</p></li>
 <li><p>Some problems are simply hard</p>
 <ul>
 <li><p>Predicting stock prices is hard! The best predictive R2 for individual stocks <a class="reference external" href="https://academic.oup.com/rfs/article/33/5/2223/5758276">in this paper</a> (open access <a class="reference external" href="https://dachxiu.chicagobooth.edu/download/ML.pdf">here</a>) is just 1.80% per month.</p></li>

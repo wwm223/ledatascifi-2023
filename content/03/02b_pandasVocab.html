@@ -611,28 +611,33 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../05/03f_leakage3.html">
+     7.3. Data Leakage - Illustration 2
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../05/03f_leakage2.html">
-     7.3. Data Leakage Defined
+     7.4. Data Leakage Defined
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../05/03c_ModelEval.html">
-     7.4. Model evaluation via cross validation (CV)
+     7.5. Model evaluation via cross validation (CV)
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../05/03c1_OOS.html">
-     7.5. Model evaluation via Out-of-Sample (OOS)
+     7.6. Model evaluation via Out-of-Sample (OOS)
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../05/03d_whatToMax.html">
-     7.6. Evaluating models
+     7.7. Evaluating models
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../05/03e_whichModel.html">
-     7.7. Model selection
+     7.8. Model selection
     </a>
    </li>
   </ul>
@@ -895,8 +900,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <p>Data can be logically stored in many ways. Let’s start by showing one dataset, and three ways it can be stored.</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="40b295e2-a896-418e-bf9a-8dd13f044b6a" name="67be1e70-3bf3-4371-8187-589a045c5c48" type="radio">
-</input><label class="tabbed-label" for="40b295e2-a896-418e-bf9a-8dd13f044b6a">
+<input checked="checked" id="d0a2f75a-e7b7-4df2-915c-1062ec805eec" name="d041e14a-dc0a-4f90-b17d-3024a9bc75ff" type="radio">
+</input><label class="tabbed-label" for="d0a2f75a-e7b7-4df2-915c-1062ec805eec">
 “Long” Data</label><div class="tabbed-content docutils">
 <p>Here is a <strong>long dataset.</strong> The “key” or “index” is the <em><strong>combination</strong> of year and firm.</em> This is what I’d refer to as a “firm-year” dataset.</p>
 <table class="colwidths-auto table">
@@ -951,8 +956,8 @@ const thebe_selector_output = ".output, .cell_output"
 </tbody>
 </table>
 </div>
-<input id="91695a36-e45c-4020-8a24-102391b709ff" name="67be1e70-3bf3-4371-8187-589a045c5c48" type="radio">
-</input><label class="tabbed-label" for="91695a36-e45c-4020-8a24-102391b709ff">
+<input id="72809ab0-3b3f-4771-bace-fd3b38129d35" name="d041e14a-dc0a-4f90-b17d-3024a9bc75ff" type="radio">
+</input><label class="tabbed-label" for="72809ab0-3b3f-4771-bace-fd3b38129d35">
 Same data, but “Wide”</label><div class="tabbed-content docutils">
 <p>This is the exact same data, but stored as a <strong>wide dataset.</strong> Now, the “key” or “index” is <strong>just</strong> the <em>year</em>, and each variable is duplicated for each firm. So there is a Sales variable for GM, and a Sales variable for Ford.</p>
 <table class="colwidths-auto table">
@@ -998,8 +1003,8 @@ Same data, but “Wide”</label><div class="tabbed-content docutils">
 <p>A similar case can occur for the row names/numbers. If there is one level of the row name, that’s the Index. If there are multiple levels, it is called a MultiIndex.</p>
 </div>
 </div>
-<input id="09578c1d-6213-471c-ab2b-1b01ea20a571" name="67be1e70-3bf3-4371-8187-589a045c5c48" type="radio">
-</input><label class="tabbed-label" for="09578c1d-6213-471c-ab2b-1b01ea20a571">
+<input id="b1ad8238-f529-4b94-8d90-706685346e00" name="d041e14a-dc0a-4f90-b17d-3024a9bc75ff" type="radio">
+</input><label class="tabbed-label" for="b1ad8238-f529-4b94-8d90-706685346e00">
 Same data, but differently “Wide”</label><div class="tabbed-content docutils">
 <p>Now, the “key” or “index” is just the <em>firm</em>, and each variable is duplicated for each year. So there is a Sales variable for 2000, and a Sales variable for 2001.</p>
 <table class="colwidths-auto table">

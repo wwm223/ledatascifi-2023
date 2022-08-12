@@ -613,28 +613,33 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="03f_leakage3.html">
+     7.3. Data Leakage - Illustration 2
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="03f_leakage2.html">
-     7.3. Data Leakage Defined
+     7.4. Data Leakage Defined
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03c_ModelEval.html">
-     7.4. Model evaluation via cross validation (CV)
+     7.5. Model evaluation via cross validation (CV)
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03c1_OOS.html">
-     7.5. Model evaluation via Out-of-Sample (OOS)
+     7.6. Model evaluation via Out-of-Sample (OOS)
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03d_whatToMax.html">
-     7.6. Evaluating models
+     7.7. Evaluating models
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03e_whichModel.html">
-     7.7. Model selection
+     7.8. Model selection
     </a>
    </li>
   </ul>
@@ -862,8 +867,8 @@ const thebe_selector_output = ".output, .cell_output"
 <h1><span class="section-number">9.1. </span>Compounding returns<a class="headerlink" href="#compounding-returns" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="the-math">
 <h2><span class="section-number">9.1.1. </span>The math<a class="headerlink" href="#the-math" title="Permalink to this headline">¶</a></h2>
-<p>Let <span class="math notranslate nohighlight">\(r_t = (P_t+D_t)/P_{t-1}\)</span> be the simple return for a single period with dividends included.</p>
-<p>Let <span class="math notranslate nohighlight">\(R_t = (1+r_t)\)</span> be the <strong>gross</strong> (thus, the capital “R”) return for a single period.</p>
+<p>Let <span class="math notranslate nohighlight">\(r_t = (P_t+D_t)/P_{t-1}\)</span> be the simple return for a single period with dividends included. E.g. <span class="math notranslate nohighlight">\(r_t=0.05\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(R_t = (1+r_t)\)</span> be the <strong>gross</strong> (thus, the capital “R”) return for a single period. E.g. <span class="math notranslate nohighlight">\(R_t=1.05\)</span>.</p>
 <p>The <strong>gross return</strong> for a number of periods is</p>
 <div class="math notranslate nohighlight">
 \[
@@ -877,12 +882,16 @@ r[0,T] = \left(\prod_{t=1}^T R_t\right) - 1
 </div>
 <div class="section" id="the-code">
 <h2><span class="section-number">9.1.2. </span>The code<a class="headerlink" href="#the-code" title="Permalink to this headline">¶</a></h2>
-<p>Assume you have simple periodic (e.g. daily) returns in a variable called “ret” in <code class="docutils literal notranslate"><span class="pre">df</span></code> for various assets and you want to compound them to a longer period of time (e.g. monthly)</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Do NOT use <code class="docutils literal notranslate"><span class="pre">.mean()</span></code> to cumulate or compound returns!!!!!</strong></p>
+</div>
+<p>Assume you have simple periodic (little <span class="math notranslate nohighlight">\(r_t\)</span>) returns in a variable called “ret” in <code class="docutils literal notranslate"><span class="pre">df</span></code> for various assets and you want to compound them to a longer period of time (e.g. monthly).</p>
 <p>To adapt the code below to your use</p>
 <ol class="simple">
 <li><p>replace “df” with the name of your dataframe</p></li>
 <li><p>replace “asset” with the name of the variable(s) identifying the assets whose returns you want to compound</p></li>
-<li><p>replace “timeperiod” with the name of the variable(s) containing the measurement of time that you want to compound to, for example, a year variable</p></li>
+<li><p>replace “timeperiod” with the name of the variable(s) containing the measurement of time <strong>that you want to compound to</strong>, for example, a year variable</p></li>
 </ol>
 <p>Here are two ways to accomplish the compounding:</p>
 <div class="cell docutils container">
@@ -919,22 +928,19 @@ r[0,T] = \left(\prod_{t=1}^T R_t\right) - 1
 </div>
 <div class="section" id="optional-log-returns">
 <h2><span class="section-number">9.1.3. </span>Optional: Log returns<a class="headerlink" href="#optional-log-returns" title="Permalink to this headline">¶</a></h2>
-<p>Just as an FYI, there is another way to compound returns you might hear about in other contexts: using log returns.</p>
-<p>A “log return” is <span class="math notranslate nohighlight">\(ln(1+r)\)</span>, using the natural log. It’s the_ <em>continuously compounded</em> rate of return. If you earned a simple return of <span class="math notranslate nohighlight">\(r=10%\)</span>, one month, the continuously compounded rate of return over that month is <span class="math notranslate nohighlight">\(ln(1+0.1)=9.5%\)</span>.</p>
+<p>Just as an FYI, there is another way to compound returns you might hear about in other contexts: using “log returns”.</p>
+<p>A “log return” is <span class="math notranslate nohighlight">\(ln(1+r)\)</span> or <span class="math notranslate nohighlight">\(ln(R)\)</span>, using the natural log. It’s the <em>continuously compounded</em> rate of return. If you earned a simple return of <span class="math notranslate nohighlight">\(r=10%\)</span>, one month, the continuously compounded rate of return over that month is <span class="math notranslate nohighlight">\(ln(1+0.1)=9.5%\)</span>.</p>
 <p>Of course, no one speaks in terms of continuously compounding returns, but log returns has its uses.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You can <strong>not</strong> add the simple rates of returns across time to get the total compounded return: <span class="math notranslate nohighlight">\(r_{[0,1]} +r_{[1,2]} \neq r_{[0,2]}\)</span></p>
-<p>But you can add log returns across time to get the correctly compounded total log return: <span class="math notranslate nohighlight">\(ln(1+r_{[0,1]}) +ln(1+r_{[1,2]}) = ln(1+ r_{[0,2]})\)</span></p>
+<p>But you <strong>can</strong> add log returns across time to get the correctly compounded total log return: <span class="math notranslate nohighlight">\(ln(1+r_{[0,1]}) +ln(1+r_{[1,2]}) = ln(1+ r_{[0,2]})\)</span></p>
 </div>
-<p>This makes it easy to compound returns in large datasets another way than what I showed above. Taking advantage of the fact that <span class="math notranslate nohighlight">\(e(ln(x))=x\)</span> (in step 2 below) and <span class="math notranslate nohighlight">\(e^a*e^b*e^c=e^{a+b+c}\)</span> (in step 3 below), we can rewrite <span class="math notranslate nohighlight">\(R[0,T]\)</span> as:</p>
+<p>This second observation makes it easy to compound returns in large datasets another way than what I showed above. Taking advantage of the fact that <span class="math notranslate nohighlight">\(e(ln(x))=x\)</span> (in step 2 below) and <span class="math notranslate nohighlight">\(e^a*e^b*e^c=e^{a+b+c}\)</span> (in step 3 below), we can rewrite <span class="math notranslate nohighlight">\(R[0,T]\)</span> as:</p>
 <div class="math notranslate nohighlight">
 \[ R[0,T] = \prod_{t=1}^T R_t = \prod_{t=1}^T ( e(ln( R_t)) ) =e(\sum_{t=1}^T ln(R_t))\]</div>
-<p>The last line shows that to compound returns, you can sum the log returns. Then to convert the compounded log return back to a simple return, just exponentiate and substract 1.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>You can add log returns across <em>time</em>, but you can’t combine log returns across assets at the time time.</p>
-</div>
+<p>The last line shows that to compound returns, you can sum the log returns. Then to convert the compounded log return back to a simple return, just exponentiate and subtract 1.</p>
+<p>The code looks like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">df</span>
@@ -943,11 +949,16 @@ r[0,T] = \left(\prod_{t=1}^T R_t\right) - 1
  <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;asset&quot;</span><span class="p">,</span> <span class="s2">&quot;timeperiod&quot;</span><span class="p">])</span>
  <span class="c1"># sum log returns</span>
  <span class="p">[</span><span class="s1">&#39;logR&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+ <span class="c1"># exponentiate and subtract 1</span>
  <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">ret</span> <span class="o">=</span> <span class="n">binlambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;logR&#39;</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>You can add log returns for <strong>one</strong> asset over <em>time</em>, but you can’t combine log returns across assets at the time time.</p>
 </div>
 </div>
 </div>
