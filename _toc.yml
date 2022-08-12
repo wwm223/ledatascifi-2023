@@ -176,6 +176,7 @@
     sections:
     - file: "content/05/03a_ML_obj_and_tradeoff"    
     - file: "content/05/03f_leakage"  
+    - file: "content/05/03f_leakage3"  
     - file: "content/05/03f_leakage2"      
     - file: "content/05/03c_ModelEval" 
     - file: "content/05/03c1_OOS"  
