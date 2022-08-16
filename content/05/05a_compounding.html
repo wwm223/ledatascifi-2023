@@ -134,6 +134,11 @@ const thebe_selector_output = ".output, .cell_output"
    Gratitude
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/hall_of_awesomeness.html">
+   The Hall of Awesomeness
+  </a>
+ </li>
 </ul>
 <p class="caption collapsible-parent">
  <span class="caption-text">
@@ -722,13 +727,18 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p class="caption collapsible-parent">
  <span class="caption-text">
-  Slides
+  Slides and Memes
  </span>
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../slides/slides.html">
    Slides from previous classes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../slides/memes.html">
+   Memes
   </a>
  </li>
 </ul>
@@ -865,6 +875,10 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="section" id="compounding-returns">
 <h1><span class="section-number">9.1. </span>Compounding returns<a class="headerlink" href="#compounding-returns" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Do NOT use <code class="docutils literal notranslate"><span class="pre">.mean()</span></code> to cumulate or compound returns!!!!!</strong></p>
+</div>
 <div class="section" id="the-math">
 <h2><span class="section-number">9.1.1. </span>The math<a class="headerlink" href="#the-math" title="Permalink to this headline">¶</a></h2>
 <p>Let <span class="math notranslate nohighlight">\(r_t = (P_t+D_t)/P_{t-1}\)</span> be the simple return for a single period with dividends included. E.g. <span class="math notranslate nohighlight">\(r_t=0.05\)</span>.</p>
@@ -882,10 +896,6 @@ r[0,T] = \left(\prod_{t=1}^T R_t\right) - 1
 </div>
 <div class="section" id="the-code">
 <h2><span class="section-number">9.1.2. </span>The code<a class="headerlink" href="#the-code" title="Permalink to this headline">¶</a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p><strong>Do NOT use <code class="docutils literal notranslate"><span class="pre">.mean()</span></code> to cumulate or compound returns!!!!!</strong></p>
-</div>
 <p>Assume you have simple periodic (little <span class="math notranslate nohighlight">\(r_t\)</span>) returns in a variable called “ret” in <code class="docutils literal notranslate"><span class="pre">df</span></code> for various assets and you want to compound them to a longer period of time (e.g. monthly).</p>
 <p>To adapt the code below to your use</p>
 <ol class="simple">

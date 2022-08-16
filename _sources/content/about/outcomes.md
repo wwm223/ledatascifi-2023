@@ -7,13 +7,21 @@
     - can be on your resume 
     - teaches peers/myself something 
     - demonstrates accumulated finance knowledge 
-    shows off ability to deliver reports/work product that bosses love
-2. Your resume can now list several new skills employers pay $$$ for
-3. Your resume can now list a completed project showing off those skills (which employers pay $$$ for)
-4. Experience you can take to interviews (see below!)
+    - shows off ability to deliver reports/work product that bosses love
+1. Add to your resume 
+    - several new skills employers pay $$$ for
+    - two completed projects showing off those skills (which employers pay $$$ for)
+    - personal website showing off your work
+1. Perspective: 
+    - Experience you can take to interviews (see below!)
+    - You'll view hard problems as solvable instead of intimidating
 
-```{tip}
-If you haven't already, I **STRONGLY** encourage you to visit and use the tips, help, and resources in the [Finance Department's job hunt coursesite page](https://coursesite.lehigh.edu/course/view.php?id=176769). If you can't access that page, let me know, and I'll give you the secret handshake to get in.
+```{admonition} Tips
+:class: tip
+1. If you haven't already, I **STRONGLY** encourage you to visit and use the tips, help, and resources in the [Finance Department's job hunt coursesite page](https://coursesite.lehigh.edu/course/view.php?id=176769). If you can't access that page, let me know, and I'll give you the secret handshake to get in.
+1. If you haven't coded before,
+    - read the experience of some students below who started with limited coding background
+    - I wrote a page [to help make the learning curve easier](interest)    
 ```
 
 ## What previous students say
@@ -82,7 +90,7 @@ _"FIN377 prepared me for much of what I have been asked to work on in my masters
 ---
 :column: w-75 text-justify align-items-center
 
-_"Knowing Python is definitely an important skill for any job in business, especially financial services. Python can be used for many different types of analyses and is getting used almost as much as Excel. Especially for larger datasets, Python is much more efficient and saves time. In my current role, I use Python frequently for analyzing loan tapes/performance data for ABS deals, running collateral stratifications, and more. I am one of the few people in the group who knows Python, which has proven to be extremely beneficial for me, especially as a first year analyst trying to add value. In this class, you get exposure to various libraries in Python. As the semester progresses, you’ll notice how things build on each other and be able to experience a lot of what Python can do and how powerful it is. When the final project comes around, it’s nice to be able to see all of the skills you’ve learned come together. At the end of the semester, I definitely felt accomplished, that I had acquired a lot of new skills and was in a good position to apply what I had learned to any job/continue to build upon my Python knowledge."_
+_"Knowing Python is definitely an important skill for any job in business, especially financial services. Python can be used for many different types of analyses and is getting used almost as much as Excel. Especially for larger datasets, Python is much more efficient and saves time. In my current role, I use Python frequently for analyzing loan tapes/performance data for ABS deals, running collateral stratifications, and more. I am one of the few people in the group who knows Python, which has proven to be extremely beneficial for me, especially as a first year analyst trying to add value. In this class, you get exposure to various libraries in Python. As the semester progresses, you'll notice how things build on each other and be able to experience a lot of what Python can do and how powerful it is. When the final project comes around, it's nice to be able to see all of the skills you've learned come together. At the end of the semester, I definitely felt accomplished, that I had acquired a lot of new skills and was in a good position to apply what I had learned to any job/continue to build upon my Python knowledge."_
 
 ````
 
@@ -129,7 +137,7 @@ _"I wanted to give you an update on the work I am doing at Ernst & Young in rela
 :column: w-75 text-justify  p-0
 :card: border-0 
 
-_"While interviewing for jobs nowadays, you no longer stand out as a candidate for being excellent in excel or Microsoft office; everyone has that skill set. The ability to have coding languages on your resume not only allows you to differentiate yourself in more traditional finance interviews, but it can also broaden your job prospects to all sorts of data science roles. This course is so valuable since it combines a solid finance foundation with far more versatile ways to interpret, analyze, and visualize data in python. I didn’t have any real coding experience going into this course, but Professor Bowen moves the class at a pace that allows less experienced people to stay up to date while still challenging students as everyone catches up to speed. The open-ended nature of the final project also allowed me to explore a topic that legitimately interests me, and I talked about it in multiple interviews. While the class can be difficult at points, Professor Bowen teaches it in an incredibly manageable way while challenging you to think about new ways to solve problems."_
+_"While interviewing for jobs nowadays, you no longer stand out as a candidate for being excellent in excel or Microsoft office; everyone has that skill set. The ability to have coding languages on your resume not only allows you to differentiate yourself in more traditional finance interviews, but it can also broaden your job prospects to all sorts of data science roles. This course is so valuable since it combines a solid finance foundation with far more versatile ways to interpret, analyze, and visualize data in python. I didn't have any real coding experience going into this course, but Professor Bowen moves the class at a pace that allows less experienced people to stay up to date while still challenging students as everyone catches up to speed. The open-ended nature of the final project also allowed me to explore a topic that legitimately interests me, and I talked about it in multiple interviews. While the class can be difficult at points, Professor Bowen teaches it in an incredibly manageable way while challenging you to think about new ways to solve problems."_
 
 ---
 :column: w-25 text-center align-items-center

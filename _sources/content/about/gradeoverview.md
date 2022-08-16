@@ -13,7 +13,7 @@ Another time, for the people in the back:
 ^^^
 
 ```{tabbed}  Participation (20%)
-Participation includes discussion board posts and in-class work. Participation is especially important in this class because it incentivizes staying current; this is not a class where late cramming is viable. Crucially, it will help us build a community where learning this materially is less frustrating and more enjoyable.
+Participation is both on the discussion board and during class. Participation is especially important in this class because it incentivizes staying current; this is not a class where late cramming is viable. Crucially, it will help us build a community where learning this material is less frustrating and more enjoyable.
 
 From most important to (just slightly) less important:
 - Discussion board replies: answering questions and/or moving conversations forward, being helpful and polite
@@ -21,6 +21,8 @@ From most important to (just slightly) less important:
 - Presenting pre-class exercise attempts (good faith attempts)
 - In-class coding (mostly effort based)
 - Contributions to in-class discussions and poll/quiz answers
+- Easter egg hunts on the site and [improving our functions (see the "feature requests")](https://github.com/LeDataSciFi/ledatascifi-2023/blob/main/community_codebook)
+- Improving the site/class: finding and fixing typos, suggesting materials
 - _If we are doing virtual sessions:_ Is your camera on when I randomly take snapshots of the gallery? 
 ```
 
@@ -43,7 +45,7 @@ You should aspire to
 ```
 
 ```{tabbed}  Midterm Project (10%)
-What I love about this is that it puts you on the precipice of truly large scale analysis. The deliverable for the project is something you can talk about in job interviews. At the end of the project, you'll have pieces of code that can be used within even larger and interesting projects, and more importantly, an understanding of how to assemble code breaks a seemingly complex task down into manageable pieces. 
+What I love about this is that it puts you on the precipice of truly large scale analysis. The deliverable for the project is something you can talk about in job interviews. At the end of the project, you'll have pieces of code that can be used within even larger and interesting projects, and more importantly, an understanding of how to break a seemingly complex task down into manageable pieces. 
 
 It's going to be fun! 
 
@@ -54,7 +56,7 @@ See the [project description page](../assignments/mid_proj) for more.
 ```{tabbed}  Final Project (20%)
 Student groups write a proposal outlining a question the group is interested in and their plan to answer it. Over the course of the last month of class, we will work to break your question down into manageable subproblems and solve them one-by-one to conduct their analysis. 
 
-Students submit a professional report and present their work to the class. 
+Students develop a website to show their results and present their work to the class. 
 
 I've really enjoyed this in past years, and look forward to seeing what everyone comes up with! 
 

@@ -134,6 +134,11 @@ const thebe_selector_output = ".output, .cell_output"
    Gratitude
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/hall_of_awesomeness.html">
+   The Hall of Awesomeness
+  </a>
+ </li>
 </ul>
 <p class="caption collapsible-parent">
  <span class="caption-text">
@@ -722,13 +727,18 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p class="caption collapsible-parent">
  <span class="caption-text">
-  Slides
+  Slides and Memes
  </span>
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../slides/slides.html">
    Slides from previous classes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../slides/memes.html">
+   Memes
   </a>
  </li>
 </ul>
@@ -1120,6 +1130,15 @@ The returns don’t even have to be firms! They can be any asset. (Portfolios, m
 <h2><span class="section-number">9.2.3. </span>Get the factor returns<a class="headerlink" href="#get-the-factor-returns" title="Permalink to this headline">¶</a></h2>
 <p>Above, we got the asset returns, <span class="math notranslate nohighlight">\(r_i\)</span> (called “ret” in the dataframe).</p>
 <p>To estimate <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> in <span class="math notranslate nohighlight">\(r_i-r_f = \alpha + \beta (r_m-r_f)\)</span>, we need <span class="math notranslate nohighlight">\((r_m-r_f)\)</span> and <span class="math notranslate nohighlight">\(r_f\)</span>. Let’s download those now.</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Fama and French (abbreviated as FF) <a class="reference external" href="https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html">have a free data library</a>. It contains lots of datasets. Values in all of their datasets are</p>
+<ol class="simple">
+<li><p>percentage returns (return * 100)</p></li>
+<li><p>for some assets (the columns)</p></li>
+<li><p>over the period between two dates.</p></li>
+</ol>
+</div>
 <p>Note: <span class="math notranslate nohighlight">\((r_m-r_f)\)</span> is the excess return on the market, which is <em>one</em> “factor”. Hedge funds typically use 5 factors in tests.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
