@@ -172,7 +172,7 @@
       - file: content/05/02f_warnings
       # (opt, future?) selection, measurement, omitted variables (HIGH level)
       # (opt, future?) exercises (and answers)
-      - file: "content/05/02g_summary          
+      - file: "content/05/02g_summary"          
   - file: content/05/03_ML
     title: "ML - Intro & Discussion"
     sections:
