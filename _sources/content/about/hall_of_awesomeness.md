@@ -2,7 +2,9 @@
 
 Learning is joyful. Keeping that in mind, this page is here to celebrate and trumpet the accomplishments of prior students, and inspire the next batch of students. 
 
-_Employers: If you are looking for a great person to poach for your firm, everyone on this page has my recommendation. Email me if you want details or contact info._
+```{note}
+_**Employers:** If you are looking for a great person to poach for your firm, everyone on this page has my recommendation. Email me if you want details or contact info._
+```
 
 ## LeDataSciFi LeContest Champions 
 

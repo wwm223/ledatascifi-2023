@@ -133,6 +133,16 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../about/bootcamp.html">
+   Pre-Class Bootcamp
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/bootcamp.html#work-through-a-free-python-startup-class">
+   Work through a free python startup class
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../about/hall_of_awesomeness.html">
    The Hall of Awesomeness
   </a>
@@ -426,7 +436,7 @@ const thebe_selector_output = ".output, .cell_output"
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../03/04e-visualEDA.html">
-       3.3.4. Visual EDA
+       3.3.4. Visual EDA Walkthrough
       </a>
      </li>
      <li class="toctree-l3">
@@ -851,13 +861,13 @@ const thebe_selector_output = ".output, .cell_output"
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tutorials">
-   1.7.1. Tutorials
+  <a class="reference internal nav-link" href="#in-addition-to-this-page-tutorials">
+   1.7.1. In addition to this page: Tutorials
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#python-essentials">
-   1.7.2. Python essentials
+  <a class="reference internal nav-link" href="#walkthrough-of-python-essentials">
+   1.7.2. Walkthrough of Python Essentials
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -953,33 +963,28 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>This page is long, but important. It’s structured as a walkthrough - you should run the code on your computer as you read it.</p>
-<p>It is not meant to be the end-all-be-all of python basics. There are <a class="reference internal" href="../about/resources.html"><span class="doc std std-doc">very good resources around the web</span></a> you should and will consult during the semester which contain more in-depth info on topics. <a class="reference external" href="https://www.pythoncheatsheet.org/">https://www.pythoncheatsheet.org/</a> is a good one. What’s below is a curated set of topics to get us going in the class.</p>
+<p>Below, I cover a curated set of topics to get us going in the class.</p>
+<p>It is not meant to be the end-all-be-all of python basics. There are <a class="reference internal" href="../about/resources.html"><span class="doc std std-doc">very good resources around the web</span></a> you should and will consult during the semester which contain more in-depth info on topics. <a class="reference external" href="https://www.pythoncheatsheet.org/">https://www.pythoncheatsheet.org/</a> is a good one.</p>
 </div>
-<div class="section" id="tutorials">
-<h2><span class="section-number">1.7.1. </span>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="in-addition-to-this-page-tutorials">
+<h2><span class="section-number">1.7.1. </span>In addition to this page: Tutorials<a class="headerlink" href="#in-addition-to-this-page-tutorials" title="Permalink to this headline">¶</a></h2>
 <p>You can’t learn programmatic material during class sessions, try though I might to make it possible. You can only learn through practice. You should be checking out tutorials and lessons online in your free time.</p>
-<p>Two great options:</p>
-<ul class="simple">
-<li><p>Codeacademy is great. You can probably blast through the key lessons before a free trial expires (currently=7 days).</p></li>
-<li><p>Go through #3 to #14 of <a class="reference external" href="https://github.com/jakevdp/WhirlwindTourOfPython">A Whirlwind Tour of Python</a>.</p></li>
-</ul>
-<p>As you follow either of those, I would put the code you write inside the <code class="docutils literal notranslate"><span class="pre">/learning_python/</span></code> (or similar) folder inside your Class Notes repo.</p>
-<ul class="simple">
-<li><p>You can call the file(s) whatever you want. (If you want a suggestion for a filename, “Cheatsheet”, “Whirlwind Cheatsheet”, or “Codeacademy Cheatsheet” make sense.)</p></li>
-<li><p>Our <a class="reference internal" href="../about/resources.html"><span class="doc std std-doc">resources page</span></a> has a python cheatsheet you can download.</p></li>
-</ul>
-<p>Do you prefer to learn through games?</p>
-<ul class="simple">
-<li><p>(That’s how I learned python! I built solvers for Sudoku and the Cracker Barrel golf tee game… Both taught me a LOT about programming in python, problem solving strategies, and data structures.)</p></li>
-<li><p>Assignment 1 in 2022 included an optional challenge: Optimizing your Wordle guessing strategy.</p></li>
-<li><p><a class="reference external" href="https://edabit.com/">Edabit</a> has a bunch of games. If you log in, you can search for python challenges that take from 1 minute to … longer… For example, <a class="reference external" href="https://edabit.com/challenge/cx7eFvQBzjauLgwgZ">the Museum of Dull Things</a>. If you find any games illuminating, please let me know via the class discussions repo!</p></li>
-</ul>
-<p>Alright, let’s get going. Hopefully digging into Py goes better than Chrissy Teigen’s experience:</p>
+<p>I suggest that you pick something <span class="xref myst">under the python dropdown here</span> or on the <span class="xref myst">bootcamp</span> page.<a class="footnote-reference brackets" href="#games" id="id1">1</a> If you’re new to writing code, the bootcamp classes are best. If you’re coming to python from elsewhere, the Whirlwind Tour of Python is right-sized.</p>
+<p>As you work through the tutorial of your choice: write code in JupyterLab, run it, and save the files on your computer. If you get stuck, just start a new file.</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Maybe save your files in your Class Notes folder in a subfolder called “learning_python”?</p>
+</div>
+</div>
+<div class="section" id="walkthrough-of-python-essentials">
+<h2><span class="section-number">1.7.2. </span>Walkthrough of Python Essentials<a class="headerlink" href="#walkthrough-of-python-essentials" title="Permalink to this headline">¶</a></h2>
+<p>Alright, let’s get going.</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Digging into Py:</p>
 <p><img alt="" src="https://media.giphy.com/media/zlXkHKnCXAe9a/giphy.gif" /></p>
 </div>
-<div class="section" id="python-essentials">
-<h2><span class="section-number">1.7.2. </span>Python essentials<a class="headerlink" href="#python-essentials" title="Permalink to this headline">¶</a></h2>
-<p>Below, we cover 12<a class="footnote-reference brackets" href="#scope" id="id1">1</a> essential topics you’ll need to understand.</p>
+<p>Below, we cover 12<a class="footnote-reference brackets" href="#scope" id="id2">2</a> essential topics you’ll need to understand.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Research strongly indicates that active learning is the most effective way to learn new skills. That’s why I linked to tutorials above.</p>
@@ -1632,7 +1637,10 @@ f(x, a=1, b=1)
 <p>See the tips in the <a class="reference external" href="05_jupyterlab#resources">Jupyter Lab</a> page.</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
-<dt class="label" id="scope"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dt class="label" id="games"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Some people prefer to learn through games. That’s how I learned python! I built solvers for Sudoku and the Cracker Barrel golf tee game… Both taught me a LOT about programming in python, problem solving strategies, and data structures. You could try to figure out your Wordle guessing strategy (<a class="reference external" href="https://raw.githubusercontent.com/donbowen/wordle/main/wordle.csv">use can use this list of words</a>). Or, visit <a class="reference external" href="https://edabit.com/">Edabit</a>, which has a bunch of games. If you log in, you can search for python challenges that take from 1 minute to … longer… For example, <a class="reference external" href="https://edabit.com/challenge/cx7eFvQBzjauLgwgZ">the Museum of Dull Things</a>. If you find any games illuminating, please let me know via the class discussions repo!</p>
+</dd>
+<dt class="label" id="scope"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
 <dd><p>The subsection on scope isn’t crucial but is useful to students sometimes.</p>
 </dd>
 </dl>

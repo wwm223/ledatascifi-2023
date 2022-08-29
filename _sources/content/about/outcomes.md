@@ -2,26 +2,33 @@
 
 ## Value you'll get from this course
 
-1. The final project 
-    - uses all methods and skills from our [objectives](objectives) 
-    - can be on your resume 
-    - teaches peers/myself something 
-    - demonstrates accumulated finance knowledge 
-    - shows off ability to deliver reports/work product that bosses love
-1. Add to your resume 
-    - several new skills employers pay $$$ for
-    - two completed projects showing off those skills (which employers pay $$$ for)
-    - personal website showing off your work
-1. Perspective: 
-    - Experience you can take to interviews (see below!)
-    - You'll view hard problems as solvable instead of intimidating
+```{tabbed} The final project
+- uses all methods and skills from our [objectives](objectives) 
+- can be on your resume 
+- teaches peers/myself something 
+- demonstrates accumulated finance knowledge 
+- shows off ability to deliver reports/work product that bosses love
+```
 
-```{admonition} Tips
+````{tabbed} Add to your resume
+- several new skills employers pay $$$ for
+- two completed projects showing off those skills (which employers pay $$$ for)
+- personal website showing off your work
+
+```{tip}
+If you haven't already, I **STRONGLY** encourage you to visit and use the tips, help, and resources in the [Finance Department's job hunt coursesite page](https://coursesite.lehigh.edu/course/view.php?id=176769). If you can't access that page, let me know, and I'll give you the secret handshake to get in.
+```
+````
+
+```{tabbed} Perspective
+- Experience you can take to interviews (see the student stories below!)
+- You'll view hard problems as solvable instead of intimidating
+```
+
+```{admonition} If you haven't coded before
 :class: tip
-1. If you haven't already, I **STRONGLY** encourage you to visit and use the tips, help, and resources in the [Finance Department's job hunt coursesite page](https://coursesite.lehigh.edu/course/view.php?id=176769). If you can't access that page, let me know, and I'll give you the secret handshake to get in.
-1. If you haven't coded before,
-    - Read the experience of some students below who started with limited coding background.
-    - [I wrote a page to help coding novices decide if the class is right for you, and provides a short bootcamp to help make the learning curve easier](interest).    
+- Read the experience of some students below who started with limited coding background.
+- [I wrote a page to help coding novices decide if the class is right for you, and provides a short bootcamp to help make the learning curve easier](interest).    
 ```
 
 ## What previous students say

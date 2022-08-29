@@ -6,7 +6,7 @@ This page is important - please read it all!
 
 ### Github, or: How I learned to ignore Coursesite (for FIN377)
 
-The whole class is run off this website and GitHub. GitHub is how we'll submit assignments, provide feedback, receive grades, etc.  You'll learn how this works as the semester proceeds. Coursesite will _**only**_ be used to post links I don't want public. Announcements will be made verbally in class and/or on Github. 
+The whole class is run off this website and GitHub. GitHub is how we'll submit assignments, provide feedback, receive grades, etc.  You'll learn how this works as the semester proceeds. Announcements will be made verbally in class and/or on Github. 
 
 ### Practical matters and expectations 
 
