@@ -41,8 +41,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/fin377_specialformatting.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -128,11 +128,6 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../about/acknowledgments.html">
-   Gratitude
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="../about/interest.html">
    Interested but unsure?
   </a>
@@ -140,6 +135,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../about/hall_of_awesomeness.html">
    The Hall of Awesomeness
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/acknowledgments.html">
+   Gratitude
   </a>
  </li>
 </ul>
@@ -911,8 +911,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p>There are a few popular auto-formatters (black, yapf, and autopep8). In my <a class="reference external" href="../01/05_jupyterlab.html#my-jupyter-lab-set-up">JupyterLab set up</a>, I explain how I set up Black, the “uncompromising Python code formatter” which is very opinionated (“any color you’d like, as long as it is black”).</p>
 <p>Look at what Black does to this code:</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="533da6d0-99bc-488e-89e4-219160df6d2e" name="a047eb76-8d1a-436c-b889-ec431cec18db" type="radio">
-</input><label class="tabbed-label" for="533da6d0-99bc-488e-89e4-219160df6d2e">
+<input checked="checked" id="b07c4ce1-9d32-4541-9f11-eec066a3ee20" name="f813a600-626e-4852-ab52-0a875ad191c8" type="radio">
+</input><label class="tabbed-label" for="b07c4ce1-9d32-4541-9f11-eec066a3ee20">
 Ugly Code I wrote</label><div class="tabbed-content docutils">
 <p>This function is too long to even read:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">very_important_function</span><span class="p">(</span><span class="n">template</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="n">variables</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">,</span> <span class="n">engine</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">header</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
@@ -922,8 +922,8 @@ Ugly Code I wrote</label><div class="tabbed-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="37f141ce-cbed-4384-8af0-bdff1013bf8f" name="a047eb76-8d1a-436c-b889-ec431cec18db" type="radio">
-</input><label class="tabbed-label" for="37f141ce-cbed-4384-8af0-bdff1013bf8f">
+<input id="ce245849-bd9c-478c-b299-4dbe1ec89658" name="f813a600-626e-4852-ab52-0a875ad191c8" type="radio">
+</input><label class="tabbed-label" for="ce245849-bd9c-478c-b299-4dbe1ec89658">
 Black fixed it</label><div class="tabbed-content docutils">
 <p>I hit CTRL+SHIFT+F and this was the result:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">very_important_function</span><span class="p">(</span>
@@ -963,8 +963,8 @@ Black fixed it</label><div class="tabbed-content docutils">
 <p>A magic number is a literal number or parameter value embedded in your code. Having numbers that act as in-line inputs and parameters can easily lead to errors and make modifying code very tough.</p>
 <p>Here is an example that tries to download and stock price data.</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="864be4cd-2be9-453b-bffe-d6ca835c6082" name="5b41ee4a-e79d-48be-8c78-12ea301ac2bb" type="radio">
-</input><label class="tabbed-label" for="864be4cd-2be9-453b-bffe-d6ca835c6082">
+<input checked="checked" id="2fbf01ea-136e-441a-b6f7-bd98856b7467" name="674e1b41-91d9-4600-9b9b-881a2d220738" type="radio">
+</input><label class="tabbed-label" for="2fbf01ea-136e-441a-b6f7-bd98856b7467">
 Bad</label><div class="tabbed-content docutils">
 <p>If I want to change the stocks included, I’ll need to change the list of stocks twice.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas_datareader</span> <span class="k">as</span> <span class="nn">pdr</span>  
@@ -981,8 +981,8 @@ Bad</label><div class="tabbed-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="2cabc94f-d037-4266-b6ac-b16d97f22e54" name="5b41ee4a-e79d-48be-8c78-12ea301ac2bb" type="radio">
-</input><label class="tabbed-label" for="2cabc94f-d037-4266-b6ac-b16d97f22e54">
+<input id="e680bc9b-cb40-4bcf-898b-dde5d32ebb68" name="674e1b41-91d9-4600-9b9b-881a2d220738" type="radio">
+</input><label class="tabbed-label" for="e680bc9b-cb40-4bcf-898b-dde5d32ebb68">
 Good</label><div class="tabbed-content docutils">
 <p>Now I only need to change the variable <code class="docutils literal notranslate"><span class="pre">stocks</span></code> to alter the entire code.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas_datareader</span> <span class="k">as</span> <span class="nn">pdr</span>  

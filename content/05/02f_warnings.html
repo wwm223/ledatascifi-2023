@@ -41,8 +41,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/fin377_specialformatting.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -128,11 +128,6 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../about/acknowledgments.html">
-   Gratitude
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="../about/interest.html">
    Interested but unsure?
   </a>
@@ -140,6 +135,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../about/hall_of_awesomeness.html">
    The Hall of Awesomeness
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/acknowledgments.html">
+   Gratitude
   </a>
  </li>
 </ul>
@@ -883,7 +883,7 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="section" id="significant-warnings-about-statistical-significance">
 <h1><span class="section-number">6.6. </span><em>Significant</em> warnings about “statistical significance”<a class="headerlink" href="#significant-warnings-about-statistical-significance" title="Permalink to this headline">¶</a></h1>
-<p>The “classical” approach to assess whether X is related to y is to see if the t-stat on X is above 1.96/the p-value is below 0.05. These thresholds are important and part of a sensible approach to learning from data, but when you read about a “statistically significant relationship” on some website, it often comes across like
+<p>The “classical” approach to assess whether X is related to y: Is the t-stat on X above 1.96? (Equivalently, the p-value is below 0.05.) These thresholds are important and part of a sensible approach to learning from data, but when you read about a “statistically significant relationship” on some website, it often comes across like
 <br></p>
 <center>"LOOK YONDER, AT HOW MORE X <b> CAUSES </b> Y! <br>
     MY NEW, AND MEANINGFUL, FINDING <br>
@@ -891,7 +891,7 @@ const thebe_selector_output = ".output, .cell_output"
     (TRULY!) (VERILY!)  <br>
     AND KNOWING IT ... <br> 
     WILL CHANGE YOUR LIFE!"</center>
-<p>And suddenly, you see a article saying that 10 cups of coffee/2 bars of chocolate/3 glasses of wine/etc a day <strong>leads to</strong> longer lives, or that breastfeeding for up to two years <strong>causes</strong> better outcomes.<a class="footnote-reference brackets" href="#babies" id="id1">1</a></p>
+<p>And suddenly, you see a article saying that 10 cups of coffee, and 2 bars of chocolate, and 3 glasses of wine a day <strong>leads to</strong> longer lives, or that breastfeeding for up to two years <strong>causes</strong> better outcomes.<a class="footnote-reference brackets" href="#babies" id="id1">1</a></p>
 <div class="section" id="correlation-is-not-causation">
 <h2><span class="section-number">6.6.1. </span>“Correlation is not causation”<a class="headerlink" href="#correlation-is-not-causation" title="Permalink to this headline">¶</a></h2>
 <p>Surely, you’ve heard that. I prefer this version:</p>
@@ -918,22 +918,26 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="getting-to-causation">
 <h2><span class="section-number">6.6.3. </span>Getting to causation<a class="headerlink" href="#getting-to-causation" title="Permalink to this headline">¶</a></h2>
-<p>Generally, the intuition of approaches to proving causality are about finding or creating randomness in X. If variation in X is truly random, then we can attribute different outcomes Y to the differences in X.</p>
+<p>Techniques to prove causality rely on the same intuition: Find (or create) randomness in X. If variation in X is truly random, then we can attribute different outcomes Y to the differences in X.</p>
+<p>The canonical technique: Randomly give some people a drug, and others a placebo.</p>
+<p>Randomized trials are rarely possible in finance research due to feasibility or ethical concerns.</p>
 <p>The most common methods that <em>can</em> to establish causality are:</p>
 <ul class="simple">
 <li><p>Randomized trials</p></li>
 <li><p>Difference in difference</p></li>
 <li><p>Instrumental variable</p></li>
+<li><p>Regression discontinuity</p></li>
 </ul>
+<p><a class="reference external" href="https://github.com/paulgp/applied-methods-phd">A great resource to learn about these methods is Paul Goldsmith-Pinkham’s applied class materials.</a></p>
 <p>I emphasized that these methods <em>can</em> establish causality because they do not always suffice. Designing studies to deal with these issues is a massive topic you can pursue in other classes. I can’t do it justice here.</p>
 <div class="important admonition">
 <p class="admonition-title">Humility is good</p>
 <p>Until you learn about the advance techniques above, focus on humility as you report regressions:</p>
 <ol class="simple">
-<li><p>Our standard fill in the blank <a class="reference internal" href="02d_interpretingCoefs.html"><span class="doc std std-doc">interpretation sentence</span></a>  calls the relationship an “association”.</p></li>
+<li><p>Our standard fill in the blank <a class="reference internal" href="02d_interpretingCoefs.html"><span class="doc std std-doc">interpretation sentence</span></a>  calls the relationship an “association” and avoids the banned words below.</p></li>
 <li><p>Emphasize in discussion of findings what you found (a statistical association) and didn’t (“We acknowledge that this finding isn’t causal.” “One limitation of our study is that…”)</p></li>
 <li><p>Discuss alternative explanations (some may apply in your setting, some may not)</p></li>
-<li><p>Banned words: impact, causes, causality, because of, leads to, etc.</p></li>
+<li><p>Banned words: effect, impact, causes, causality, because of, leads to, etc.</p></li>
 </ol>
 </div>
 </div>
@@ -951,7 +955,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p class="admonition-title">Tips to avoid p-hacking</p>
 <ol class="simple">
 <li><p>Your focus should be on testing and evaluating a hypothesis, not “finding a result”</p></li>
-<li><p>Null results are fine!    Famously, Edison and his teams found a lot of wire filaments that did <em>not</em> work for a lightbulb, and this information was valuable!</p></li>
+<li><p>Null results are fine!    Famously, Edison and his teams found a lot of wire filaments that did <em>not</em> work for a light bulb, and this information was valuable!</p></li>
 <li><p>“Preregister” your ideas</p>
 <ul class="simple">
 <li><p>The simplest version of this: Write down your data, theory, and hypothesis (it can be short!) <strong>BEFORE</strong> you run your tests.</p></li>

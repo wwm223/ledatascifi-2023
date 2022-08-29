@@ -41,8 +41,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/fin377_specialformatting.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -128,11 +128,6 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../about/acknowledgments.html">
-   Gratitude
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="../about/interest.html">
    Interested but unsure?
   </a>
@@ -140,6 +135,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../about/hall_of_awesomeness.html">
    The Hall of Awesomeness
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/acknowledgments.html">
+   Gratitude
   </a>
  </li>
 </ul>
@@ -915,8 +915,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <p>Data can be logically stored in many ways. Let’s start by showing one dataset, and three ways it can be stored.</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="ebb37119-7b47-4468-9516-4a912019f1f9" name="c5fcc403-3b58-4717-a570-c195b874dc0a" type="radio">
-</input><label class="tabbed-label" for="ebb37119-7b47-4468-9516-4a912019f1f9">
+<input checked="checked" id="9d9a800c-b8ce-43fa-a20f-ff7516a0fdff" name="e4b5b03f-79d5-4a52-adc4-711087d092e7" type="radio">
+</input><label class="tabbed-label" for="9d9a800c-b8ce-43fa-a20f-ff7516a0fdff">
 “Long” Data</label><div class="tabbed-content docutils">
 <p>Here is a <strong>long dataset.</strong> The “key” or “index” is the <em><strong>combination</strong> of year and firm.</em> This is what I’d refer to as a “firm-year” dataset.</p>
 <table class="colwidths-auto table">
@@ -971,8 +971,8 @@ const thebe_selector_output = ".output, .cell_output"
 </tbody>
 </table>
 </div>
-<input id="ce18b8f6-e9d4-4821-b50a-8fd8cc942d62" name="c5fcc403-3b58-4717-a570-c195b874dc0a" type="radio">
-</input><label class="tabbed-label" for="ce18b8f6-e9d4-4821-b50a-8fd8cc942d62">
+<input id="1f1ad280-f78f-4e75-b4b5-006c8dabdeab" name="e4b5b03f-79d5-4a52-adc4-711087d092e7" type="radio">
+</input><label class="tabbed-label" for="1f1ad280-f78f-4e75-b4b5-006c8dabdeab">
 Same data, but “Wide”</label><div class="tabbed-content docutils">
 <p>This is the exact same data, but stored as a <strong>wide dataset.</strong> Now, the “key” or “index” is <strong>just</strong> the <em>year</em>, and each variable is duplicated for each firm. So there is a Sales variable for GM, and a Sales variable for Ford.</p>
 <table class="colwidths-auto table">
@@ -1018,8 +1018,8 @@ Same data, but “Wide”</label><div class="tabbed-content docutils">
 <p>A similar case can occur for the row names/numbers. If there is one level of the row name, that’s the Index. If there are multiple levels, it is called a MultiIndex.</p>
 </div>
 </div>
-<input id="156963c2-8c76-45e3-92d8-9074d5261fb1" name="c5fcc403-3b58-4717-a570-c195b874dc0a" type="radio">
-</input><label class="tabbed-label" for="156963c2-8c76-45e3-92d8-9074d5261fb1">
+<input id="415882f7-0f8d-443a-aed9-634183b8dd42" name="e4b5b03f-79d5-4a52-adc4-711087d092e7" type="radio">
+</input><label class="tabbed-label" for="415882f7-0f8d-443a-aed9-634183b8dd42">
 Same data, but differently “Wide”</label><div class="tabbed-content docutils">
 <p>Now, the “key” or “index” is just the <em>firm</em>, and each variable is duplicated for each year. So there is a Sales variable for 2000, and a Sales variable for 2001.</p>
 <table class="colwidths-auto table">

@@ -41,8 +41,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/fin377_specialformatting.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -130,11 +130,6 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../about/acknowledgments.html">
-   Gratitude
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="../about/interest.html">
    Interested but unsure?
   </a>
@@ -142,6 +137,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../about/hall_of_awesomeness.html">
    The Hall of Awesomeness
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/acknowledgments.html">
+   Gratitude
   </a>
  </li>
 </ul>
@@ -872,7 +872,7 @@ const thebe_selector_output = ".output, .cell_output"
 <h1><span class="section-number">6.5. </span>Statistical significance<a class="headerlink" href="#statistical-significance" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This page is very concise and avoids derivations. The focus here is on a minimum level.</p>
+<p>This page is very concise and avoids derivations. The focus here is on a working exposure to the topic. The corresponding lecture will add intuition.</p>
 </div>
 <p><a class="reference external" href="02b_mechanics.html#including-interaction-terms">Previously,</a> we estimated</p>
 <div class="math notranslate nohighlight">
@@ -963,16 +963,16 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="some-practical-guidance">
 <h2><span class="section-number">6.5.1. </span>Some practical guidance<a class="headerlink" href="#some-practical-guidance" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
-<li><p>You can focus on the p-values rather than the t-stats. Knowing the threshold values of the t-stat (those above) is useful though, as many people distribute research using those instead.</p></li>
+<li><p>You can focus on the p-values rather than the t-stats. However, knowing the threshold values of the t-stat (those above) is useful, as many people distribute research by discussing t-stats instead.</p></li>
 <li><p>If a p-value for the coefficient in a regression is below 0.05,</p>
 <ul class="simple">
 <li><p>We say that the relationship between that variable and Y is <strong>“statistically significant”</strong> at the 5% level.</p></li>
-<li><p>Now, consider the direction: Is the coefficient positive or negative? Does this align with your intuition and economic theory?</p></li>
-<li><p>Now, <a class="reference external" href="02d_interpretingCoefs.html#comparing-the-size-of-two-coefficients">consider the size of the coefficient</a>: Is a “reasonable” change in X leading to a “small” or “big” change in Y? If the relationship is small, it may not be important enough to care about even if true.</p></li>
+<li><p>Now, <strong>consider the direction</strong>: Is the coefficient positive or negative? Does this align with your intuition and economic theory?</p></li>
+<li><p>Now, <a class="reference external" href="02d_interpretingCoefs.html#comparing-the-size-of-two-coefficients"><strong>consider the “size” of the coefficient</strong></a>: Is a “reasonable” change in X leading to a “small” or “big” change in Y? If the relationship is small, it may not be important enough to care about even if true.</p></li>
 <li><p>Now, take a step back: <strong>Statistically significant</strong> does NOT mean X causes Y. You need additional information to make these claims. That’s what the next page is about.</p></li>
 </ul>
 </li>
-<li><p>Practically, if the p-value is above 0.05, most researchers consider the coefficient for that variable 0 (because you can’t say the coefficient is statistically distinguishable from 0). Meaning: Ignore the sign</p></li>
+<li><p>Practically, if the p-value is above 0.05, most researchers consider completely disregard the coefficient (and ignore the sign and the value). Because you can’t say the coefficient is statistically distinguishable from zero, they basically the interpret the coefficient for that variable as being zero. Meaning: Ignore the sign, ignore the value, assume the coefficient is zero.</p></li>
 </ol>
 </div>
 </div>
