@@ -7,8 +7,8 @@ We will spend the rest of class learning
 
 ## References
 
-1. [Chap 5.3 explains many of the _**WHYS**_ behind why we are doing what we are doing](https://ledatascifi.github.io/ledatascifi-2022/content/05/03_ML.html) and introduces the new vocabulary you'll need to learn
-1. [Chap 5.4 gives concrete code and pseudo code so you can get to work](https://ledatascifi.github.io/ledatascifi-2022/content/05/04a_SKLearn.html)
+1. [Chapter 7 explains many of the _**WHYS**_ behind why we are doing what we are doing](https://ledatascifi.github.io/ledatascifi-2023/content/05/03_ML.html) and introduces the new vocabulary you'll need to learn
+1. [Chapter 8 gives concrete code and pseudo code so you can get to work](https://ledatascifi.github.io/ledatascifi-2023/content/05/04a_SKLearn.html)
 1. `sklearn` is the python package that most ML is built on (and other packages use identical or similar syntax).
     - [**Must read:** Getting started, a few short examples](https://scikit-learn.org/stable/getting_started.html) 
     - **[BOOKMARK NOW: You will visit its user guide frequently, it's really good!](https://scikit-learn.org/stable/user_guide.html)**

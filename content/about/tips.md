@@ -42,7 +42,9 @@ As discussed [here](../01/07_debugging.html#seriously-print-your-data-and-object
 
 But I really like [pandas-profiling](https://github.com/pandas-profiling/pandas-profiling) for initial examination of variables and [dabl](https://dabl.github.io/0.2.0/user_guide.html) is good at "providing a quick overview via visualizations, as well as convenient preprocessing and model search for machine learning."
 
-Neither of those packages substitute for LOOKING at data, but they get you going!
+[lux](https://lux-api.readthedocs.io/en/latest/index.html) is good at "automating certain aspects of the data exploration process. Lux is designed to facilitate faster experimentation with data, even when the user does not have a clear idea of what they are looking for."
+
+None of those packages substitute for LOOKING at data, but they get you going!
 ```
 
 ```{dropdown} Exploit the Community Codebook!

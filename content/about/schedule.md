@@ -10,9 +10,9 @@ Key links:
 ```
 
 ```{warning}    
-**To get class announcements, you must get on the Github org's "classmates" team!**
+**To get class announcements, you must get on the Github org's "classmates" team!** [Follow the set up steps here.](../01/02_Setup)
 
-(They will NOT be made on Coursesite.)
+(Announcements will NOT be made on Coursesite.)
 ```
 
 ## Upcoming

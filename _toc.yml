@@ -22,9 +22,9 @@
     title: "About us + office hours" 
   - file: content/about/structure_and_policies
   - file: content/about/gradeoverview
-  - file: content/about/acknowledgments
   - file: content/about/interest
   - file: content/about/hall_of_awesomeness
+  - file: content/about/acknowledgments
   
 - part: Schedule, tips, resources
   chapters:
