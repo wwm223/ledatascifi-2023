@@ -8,22 +8,37 @@ If you have any favorite resources you like, or found helpful, please let me kno
 
 ```{dropdown} **THE MOST ESSENTIAL RESOURCES** 
 - Help: Google, [Stack Overflow](https://stackoverflow.com), [Github help](https://help.github.com), [JupyterLab documentation](https://jupyterlab.readthedocs.io/en/stable/index.html), [Python help](https://www.python.org/doc/)
-- [Cheat sheets to bookmark/print!](https://github.com/LeDataSciFi/ledatascifi-2022/tree/main/cheatsheets) **Better yet, download these to your Notes repo, and put them in the "Codebook" folder therein!**
+- [Cheat sheets to bookmark/print!](https://github.com/LeDataSciFi/ledatascifi-2023/tree/main/cheatsheets) **Better yet, download these to your Class Notes repo/folder, and put them inside a folder called "Cheatsheats"!**
     - Included in this folder: python basics, jupyter notebook, importing data, numpy, pandas, seaborn, and scikit-learn
 - [Coding best practices, and project management](https://web.stanford.edu/~gentzkow/research/CodeAndData.xhtml)
 ```
 
-````{dropdown} Python
-```{note}
-If you use any of these and LIKE or DISLIKE them, please let me know so I can guide future students to resources.
+```{dropdown} Jobs, internships, grad school
+_Note: The tips for econ grad school apply to other fields, including finance._
+
+- [A goldmine of prep materials for any interview with a data science bent](https://github.com/alexeygrigorev/data-science-interviews)
+- [Finance Department's job hunt coursesite page](https://coursesite.lehigh.edu/course/view.php?id=176769)
+- [RA positions](https://www.nber.org/career-resources/research-assistant-positions-not-nber) and help on [what to look for](https://www.dropbox.com/s/yp6g51o9rt0ghr7/JPAL-RAship-guide-Advice-for-Landing-an-RA-ship.pdf)
+- [Pre-doctoral opportunities](https://predoc.org/old-opportunities)
+- [About an Econ pre-doctoral fellowship](https://medium.com/the-renaissance-economist/the-economics-pre-doctoral-fellowship-what-is-it-and-should-you-apply-for-one-27965bcf7c3)
+- [Awesome: Econ resources and grad school wiki](https://www.visualizecuriosity.com/econ-wiki)
+- [Info curated by Wharton data analytics club students](https://github.com/wharton-data-analytics/WUDAC)
 ```
 
-- **Essential:** [A whirlwind tour of python](https://github.com/jakevdp/WhirlwindTourOfPython)
-- **Essential:** [datacamp.com](https://www.datacamp.com/) has many self guided lessons
-- Lessons 3 - 5 of the [official tutoral](https://docs.python.org/3/tutorial/introduction.html)
-- [The official documentation](https://docs.python.org/3/)
+````{dropdown} Python
+```{note}
+If you use any of these and LIKE or DISLIKE them, **PLEASE** let me know so I can guide future students to resources.
+```
+
+- [Comprehensive, free class: py4e](https://www.py4e.com/lessons), cover [topics listed here](interest)
+- [Comprehensive, free class: cs50p](https://cs50.harvard.edu/python/2022/), cover [topics listed here](interest)
+- **Essential:** [A whirlwind tour of python](https://nbviewer.org/github/jakevdp/WhirlwindTourOfPython/blob/master/Index.ipynb) 
+- Lessons 3 - 5 of the [official tutorial](https://docs.python.org/3/tutorial/introduction.html)
 - [Dive Into Python](https://diveinto.org/python3/table-of-contents.html)
+- [The official documentation](https://docs.python.org/3/)
+- [datacamp.com](https://www.datacamp.com/) has many self guided lessons
 - [www.pythoncheatsheet.org](https://www.pythoncheatsheet.org)
+- Codeacademy is great for beginners just trying to _write_ python code, but the code is not run your own machine or in JupyterLab, and isn't saved for later reference. Still, it's an easy on-ramp and you can probably blast through the key lessons before a free trial expires (currently=7 days).
 - [The best compilation of coding resources on the web](https://ebookfoundation.github.io/free-programming-books/), including:
   - [free python books](https://ebookfoundation.github.io/free-programming-books/books/free-programming-books-langs.html#python), 
   - [free interactive tutorials](https://ebookfoundation.github.io/free-programming-books/more/free-programming-interactive-tutorials-en.html#python), 
