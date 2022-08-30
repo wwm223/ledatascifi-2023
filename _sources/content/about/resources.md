@@ -23,6 +23,7 @@ _Note: The tips for econ grad school apply to other fields, including finance._
 - [About an Econ pre-doctoral fellowship](https://medium.com/the-renaissance-economist/the-economics-pre-doctoral-fellowship-what-is-it-and-should-you-apply-for-one-27965bcf7c3)
 - [Awesome: Econ resources and grad school wiki](https://www.visualizecuriosity.com/econ-wiki)
 - [Info curated by Wharton data analytics club students](https://github.com/wharton-data-analytics/WUDAC)
+- [Guide to business school PhD applications](https://drive.google.com/drive/folders/1A1iXhsCZwetgN5UPy2Vs6bBaOi7r3SEm)
 ```
 
 ````{dropdown} Python

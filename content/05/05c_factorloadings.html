@@ -15,7 +15,7 @@
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>9.3. Estimating the loadings on 3 factor model &#8212; LeDataSciFi-2023</title>
+    <title>9.5. Estimating the loadings on 3 factor model &#8212; LeDataSciFi-2023</title>
     
   <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -65,8 +65,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="10. The Future" href="06_thefuture.html" />
-    <link rel="prev" title="9.2. Estimating beta via CAPM, using Yahoo Finance" href="05b_capm.html" />
+    <link rel="next" title="9.6. Supercharged resources" href="05c_finpacks.html" />
+    <link rel="prev" title="9.4. Estimating beta via CAPM, using Yahoo Finance" href="05b_capm.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -719,13 +719,28 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="05a_rolling.html">
+     9.2. Rolling returns
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05a_expanding.html">
+     9.3. Expanding returns
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="05b_capm.html">
-     9.2. Estimating CAPM
+     9.4. Estimating CAPM
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     9.3. Estimating better models
+     9.5. Estimating better models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05c_finpacks.html">
+     9.6. Supercharged resources
     </a>
    </li>
   </ul>
@@ -745,11 +760,6 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="06b_nextsteps.html">
      10.2. Faster, better, stronger
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="06c_finpacks.html">
-     10.3. Supercharged resources
     </a>
    </li>
   </ul>
@@ -881,12 +891,12 @@ const thebe_selector_output = ".output, .cell_output"
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#set-up-the-data">
-   9.3.1. Set up the data
+   9.5.1. Set up the data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#estimate-the-model">
-   9.3.2. Estimate the model
+   9.5.2. Estimate the model
   </a>
  </li>
 </ul>
@@ -901,7 +911,7 @@ const thebe_selector_output = ".output, .cell_output"
               <div>
                 
   <div class="section" id="estimating-the-loadings-on-3-factor-model">
-<h1><span class="section-number">9.3. </span>Estimating the loadings on 3 factor model<a class="headerlink" href="#estimating-the-loadings-on-3-factor-model" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">9.5. </span>Estimating the loadings on 3 factor model<a class="headerlink" href="#estimating-the-loadings-on-3-factor-model" title="Permalink to this headline">¶</a></h1>
 <p>On the last page, we estimated the CAPM model and got an annual estimate of beta for each firm. However, while CAPM is a useful entry point to start learning about expected return models, CAPM describes returns poorly in the real world in many settings. Because of that, hedge funds typically use 3 to 5 factors in their asset pricing models.</p>
 <p>So this page makes two changes to the <a class="reference internal" href="05b_capm.html"><span class="doc std std-doc">CAPM estimation</span></a>:</p>
 <ol class="simple">
@@ -963,7 +973,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>For each firm and time period you’re interested in, estimate the model via <code class="docutils literal notranslate"><span class="pre">df.groupby([asset_id,year]).apply(reg_in_groupby,</span> <span class="pre">formula='&lt;model&gt;')</span></code></p></li>
 </ol>
 <div class="section" id="set-up-the-data">
-<h2><span class="section-number">9.3.1. </span>Set up the data<a class="headerlink" href="#set-up-the-data" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.5.1. </span>Set up the data<a class="headerlink" href="#set-up-the-data" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -1004,7 +1014,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="estimate-the-model">
-<h2><span class="section-number">9.3.2. </span>Estimate the model<a class="headerlink" href="#estimate-the-model" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.5.2. </span>Estimate the model<a class="headerlink" href="#estimate-the-model" title="Permalink to this headline">¶</a></h2>
 <p>So the data’s basically ready. Again, the goal is to estimate, for each firm, for each year, the alpha, beta, and size and value loadings.</p>
 <p>You caught that right? I have a dataframe, and <strong>for each</strong> firm, and <strong>for each</strong> year, I want to &lt;do stuff&gt; (run regressions).</p>
 <p><strong>Pandas + “for each” = groupby!</strong></p>
@@ -1220,8 +1230,8 @@ const thebe_selector_output = ".output, .cell_output"
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="05b_capm.html" title="previous page"><span class="section-number">9.2. </span>Estimating beta via CAPM, using Yahoo Finance</a>
-    <a class='right-next' id="next-link" href="06_thefuture.html" title="next page"><span class="section-number">10. </span>The Future</a>
+    <a class='left-prev' id="prev-link" href="05b_capm.html" title="previous page"><span class="section-number">9.4. </span>Estimating beta via CAPM, using Yahoo Finance</a>
+    <a class='right-next' id="next-link" href="05c_finpacks.html" title="next page"><span class="section-number">9.6. </span>Supercharged resources</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

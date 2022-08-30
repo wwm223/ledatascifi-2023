@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="10.3. Supercharged resources" href="06c_finpacks.html" />
+    <link rel="next" title="Slides from previous classes" href="../slides/slides.html" />
     <link rel="prev" title="10.1. Saving Your Work" href="06a_saving.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -719,13 +719,28 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="05a_rolling.html">
+     9.2. Rolling returns
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05a_expanding.html">
+     9.3. Expanding returns
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="05b_capm.html">
-     9.2. Estimating CAPM
+     9.4. Estimating CAPM
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05c_factorloadings.html">
-     9.3. Estimating better models
+     9.5. Estimating better models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05c_finpacks.html">
+     9.6. Supercharged resources
     </a>
    </li>
   </ul>
@@ -745,11 +760,6 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      10.2. Faster, better, stronger
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="06c_finpacks.html">
-     10.3. Supercharged resources
     </a>
    </li>
   </ul>
@@ -903,7 +913,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="simple">
 <li><p>A fantasy draft wizard, powered by data scraped from multiple sites and organized by ML techniques. (<a class="reference external" href="https://github.com/jsoslow2/Fantasy-Football-Models">This repo, written in R, can be inspiration</a>.)</p></li>
 <li><p>Build a dashboard (see below)</p></li>
-<li><p><a class="reference internal" href="06c_finpacks.html"><span class="doc std std-doc">Try to use one of the advanced finance packages here.</span></a></p></li>
+<li><p><span class="xref myst">Try to use one of the advanced finance packages here.</span></p></li>
 <li><p><a class="reference external" href="../about/resources.html#resources-tutorials-and-data">The website resources</a> has lots of good stuff to explore</p></li>
 <li><p>I’d also recommend meandering the links on <a class="reference external" href="https://github.com/jupyter/jupyter/wiki#economics-and-finance">this page, including “fecon”</a></p></li>
 </ul>
@@ -916,16 +926,13 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <p><a class="reference external" href="https://www.perthirtysix.com/essay/nba-player-scoring-analysis">How do you think this amazing page was built?</a> Or the interactive visualizations <a class="reference external" href="https://fivethirtyeight.com/features/science-isnt-broken/">538, NYT, WaPo, WSJ and others frequently publish</a>? And look at all <a class="reference external" href="https://dash.gallery/Portal/">these freaking awesome examples!</a></p>
 <p>What do you need? Mostly: <em>Data acquisition and formatting skills - which you have!</em></p>
-<p>Currently, I recommend one of two approaches to build a (free) website with an interactive component:</p>
+<p>Currently, I recommend one of three approaches to build a (free) website with an interactive component:</p>
 <ol class="simple">
 <li><p>Use <code class="docutils literal notranslate"><span class="pre">plotly</span></code>/<code class="docutils literal notranslate"><span class="pre">dash</span></code> to build the dashboard so it works on your computer. Then, you need to “deploy” it so that it is a website people can visit and interact with. (There are several ways to deploy the app, but “heroku” is the most popular right now. <a class="reference external" href="https://realpython.com/python-dash/#deploy-your-dash-application-to-heroku">A written walkthrough</a> to build <a class="reference external" href="https://avocado-analytics.herokuapp.com/">this page</a>. And a <a class="reference external" href="https://www.youtube.com/watch?v=Gv910_b5ID0">good video</a> showing different approaches based on the data needs of your site.)</p></li>
+<li><p>Write a JupyterLab file that begins with results what you want shown on the website. The “Mercury” framework will create the webpage for you. Deployment via <code class="docutils literal notranslate"><span class="pre">heroku</span></code> is still easiest. <a class="reference external" href="https://mljar.com/blog/dashboard-python-jupyter-notebook/?utm_content=219440384&amp;utm_medium=social&amp;utm_source=twitter&amp;hss_channel=tw-1318985240">Good walkthrough here.</a></p></li>
 <li><p><a class="reference external" href="https://shiny.rstudio.com/py/">Use <code class="docutils literal notranslate"><span class="pre">shiny</span></code> to build and serve the dashboard.</a> The “serving” part is easier with <code class="docutils literal notranslate"><span class="pre">shiny</span></code>, but because the package is still in development, things might change.</p></li>
 </ol>
 <p>If you ever build one, PLEASE send it to me!</p>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>**Coming soon: **</p>
-</div>
 </div>
 </div>
 
@@ -958,7 +965,7 @@ const thebe_selector_output = ".output, .cell_output"
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="06a_saving.html" title="previous page"><span class="section-number">10.1. </span>Saving Your Work</a>
-    <a class='right-next' id="next-link" href="06c_finpacks.html" title="next page"><span class="section-number">10.3. </span>Supercharged resources</a>
+    <a class='right-next' id="next-link" href="../slides/slides.html" title="next page">Slides from previous classes</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

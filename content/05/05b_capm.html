@@ -15,7 +15,7 @@
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>9.2. Estimating beta via CAPM, using Yahoo Finance &#8212; LeDataSciFi-2023</title>
+    <title>9.4. Estimating beta via CAPM, using Yahoo Finance &#8212; LeDataSciFi-2023</title>
     
   <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -67,8 +67,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="9.3. Estimating the loadings on 3 factor model" href="05c_factorloadings.html" />
-    <link rel="prev" title="9.1. Compounding returns" href="05a_compounding.html" />
+    <link rel="next" title="9.5. Estimating the loadings on 3 factor model" href="05c_factorloadings.html" />
+    <link rel="prev" title="9.3. Expanding returns" href="05a_expanding.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -720,14 +720,29 @@ const thebe_selector_output = ".output, .cell_output"
      9.1. Compounding returns
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05a_rolling.html">
+     9.2. Rolling returns
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05a_expanding.html">
+     9.3. Expanding returns
+    </a>
+   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     9.2. Estimating CAPM
+     9.4. Estimating CAPM
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05c_factorloadings.html">
-     9.3. Estimating better models
+     9.5. Estimating better models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05c_finpacks.html">
+     9.6. Supercharged resources
     </a>
    </li>
   </ul>
@@ -747,11 +762,6 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="06b_nextsteps.html">
      10.2. Faster, better, stronger
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="06c_finpacks.html">
-     10.3. Supercharged resources
     </a>
    </li>
   </ul>
@@ -883,27 +893,27 @@ const thebe_selector_output = ".output, .cell_output"
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#getting-started">
-   9.2.1. Getting started
+   9.4.1. Getting started
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#load-asset-return-data">
-   9.2.2. Load asset return data
+   9.4.2. Load asset return data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#get-the-factor-returns">
-   9.2.3. Get the factor returns
+   9.4.3. Get the factor returns
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#merge-the-asset-and-factor-returns">
-   9.2.4. Merge the asset and factor returns
+   9.4.4. Merge the asset and factor returns
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#estimate-capm">
-   9.2.5. Estimate CAPM
+   9.4.5. Estimate CAPM
   </a>
  </li>
 </ul>
@@ -918,7 +928,7 @@ const thebe_selector_output = ".output, .cell_output"
               <div>
                 
   <div class="section" id="estimating-beta-via-capm-using-yahoo-finance">
-<h1><span class="section-number">9.2. </span>Estimating beta via CAPM, using Yahoo Finance<a class="headerlink" href="#estimating-beta-via-capm-using-yahoo-finance" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">9.4. </span>Estimating beta via CAPM, using Yahoo Finance<a class="headerlink" href="#estimating-beta-via-capm-using-yahoo-finance" title="Permalink to this headline">¶</a></h1>
 <p>Let’s estimate, for each firm, for each year, the alpha and beta of a stock, using CAPM as our asset pricing model.</p>
 <p>So we want a dataset that looks like this:</p>
 <table class="colwidths-auto table">
@@ -965,7 +975,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ol>
 </div>
 <div class="section" id="getting-started">
-<h2><span class="section-number">9.2.1. </span>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.4.1. </span>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!pip install pandas_datareader # uncomment and run this ONE TIME ONLY to install pandas data reader</span>
@@ -985,7 +995,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="load-asset-return-data">
-<h2><span class="section-number">9.2.2. </span>Load asset return data<a class="headerlink" href="#load-asset-return-data" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.4.2. </span>Load asset return data<a class="headerlink" href="#load-asset-return-data" title="Permalink to this headline">¶</a></h2>
 <p>Load your stock returns. This file uses yahoo finance.
 The returns don’t even have to be firms! They can be any asset. (Portfolios, mutual funds, crypto, …)</p>
 <div class="cell docutils container">
@@ -1161,7 +1171,7 @@ The returns don’t even have to be firms! They can be any asset. (Portfolios, m
 </div>
 </div>
 <div class="section" id="get-the-factor-returns">
-<h2><span class="section-number">9.2.3. </span>Get the factor returns<a class="headerlink" href="#get-the-factor-returns" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.4.3. </span>Get the factor returns<a class="headerlink" href="#get-the-factor-returns" title="Permalink to this headline">¶</a></h2>
 <p>Above, we got the asset returns, <span class="math notranslate nohighlight">\(r_i\)</span> (called “ret” in the dataframe).</p>
 <p>To estimate <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> in <span class="math notranslate nohighlight">\(r_i-r_f = \alpha + \beta (r_m-r_f)\)</span>, we need <span class="math notranslate nohighlight">\((r_m-r_f)\)</span> and <span class="math notranslate nohighlight">\(r_f\)</span>. Let’s download those now.</p>
 <div class="margin sidebar">
@@ -1330,7 +1340,7 @@ The returns don’t even have to be firms! They can be any asset. (Portfolios, m
 </div>
 </div>
 <div class="section" id="merge-the-asset-and-factor-returns">
-<h2><span class="section-number">9.2.4. </span>Merge the asset and factor returns<a class="headerlink" href="#merge-the-asset-and-factor-returns" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.4.4. </span>Merge the asset and factor returns<a class="headerlink" href="#merge-the-asset-and-factor-returns" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">assets_and_factors</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
@@ -1539,7 +1549,7 @@ The returns don’t even have to be firms! They can be any asset. (Portfolios, m
 </div>
 </div>
 <div class="section" id="estimate-capm">
-<h2><span class="section-number">9.2.5. </span>Estimate CAPM<a class="headerlink" href="#estimate-capm" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.4.5. </span>Estimate CAPM<a class="headerlink" href="#estimate-capm" title="Permalink to this headline">¶</a></h2>
 <p>So the data’s basically ready. <em>(We need to do two quick things below.)</em></p>
 <p>Again, the goal is to estimate, <strong>for each</strong> firm, <strong>for each</strong> year, alpha and beta, from the CAPM formula.</p>
 <p>Well, as we’ve said, if you are doing a “for each” on a dataframe, that means you want to use groupby!</p>
@@ -1674,8 +1684,8 @@ The returns don’t even have to be firms! They can be any asset. (Portfolios, m
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="05a_compounding.html" title="previous page"><span class="section-number">9.1. </span>Compounding returns</a>
-    <a class='right-next' id="next-link" href="05c_factorloadings.html" title="next page"><span class="section-number">9.3. </span>Estimating the loadings on 3 factor model</a>
+    <a class='left-prev' id="prev-link" href="05a_expanding.html" title="previous page"><span class="section-number">9.3. </span>Expanding returns</a>
+    <a class='right-next' id="next-link" href="05c_factorloadings.html" title="next page"><span class="section-number">9.5. </span>Estimating the loadings on 3 factor model</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
