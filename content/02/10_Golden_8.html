@@ -732,10 +732,29 @@ const thebe_selector_output = ".output, .cell_output"
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../05/06_thefuture.html">
    10. The Future
   </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/06a_saving.html">
+     10.1. Saving Your Work
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/06b_nextsteps.html">
+     10.2. Faster, better, stronger
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/06c_finpacks.html">
+     10.3. Supercharged resources
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
 </ul>
 <p class="caption collapsible-parent">
@@ -921,8 +940,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p>There are a few popular auto-formatters (black, yapf, and autopep8). In my <a class="reference external" href="../01/05_jupyterlab.html#my-jupyter-lab-set-up">JupyterLab set up</a>, I explain how I set up Black, the “uncompromising Python code formatter” which is very opinionated (“any color you’d like, as long as it is black”).</p>
 <p>Look at what Black does to this code:</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="03eb6b3f-c69c-4435-b8ee-fdf9ec603859" name="1eddd056-919c-4ae8-a20a-d9f8bac3cc63" type="radio">
-</input><label class="tabbed-label" for="03eb6b3f-c69c-4435-b8ee-fdf9ec603859">
+<input checked="checked" id="3613042a-ff02-4e0f-a106-b992c40e5e78" name="dd7ea1d9-dba7-46f9-801e-5bf420b97afa" type="radio">
+</input><label class="tabbed-label" for="3613042a-ff02-4e0f-a106-b992c40e5e78">
 Ugly Code I wrote</label><div class="tabbed-content docutils">
 <p>This function is too long to even read:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">very_important_function</span><span class="p">(</span><span class="n">template</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="n">variables</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">,</span> <span class="n">engine</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">header</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
@@ -932,8 +951,8 @@ Ugly Code I wrote</label><div class="tabbed-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="b44cc588-53cc-4cfe-8cea-c231fc5015b2" name="1eddd056-919c-4ae8-a20a-d9f8bac3cc63" type="radio">
-</input><label class="tabbed-label" for="b44cc588-53cc-4cfe-8cea-c231fc5015b2">
+<input id="2d713d45-3e97-49e9-8e2d-e43cfd50091a" name="dd7ea1d9-dba7-46f9-801e-5bf420b97afa" type="radio">
+</input><label class="tabbed-label" for="2d713d45-3e97-49e9-8e2d-e43cfd50091a">
 Black fixed it</label><div class="tabbed-content docutils">
 <p>I hit CTRL+SHIFT+F and this was the result:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">very_important_function</span><span class="p">(</span>
@@ -973,8 +992,8 @@ Black fixed it</label><div class="tabbed-content docutils">
 <p>A magic number is a literal number or parameter value embedded in your code. Having numbers that act as in-line inputs and parameters can easily lead to errors and make modifying code very tough.</p>
 <p>Here is an example that tries to download and stock price data.</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="f8f4f37f-3dc4-4e63-8a71-facc5a56dcba" name="4c29f0d5-b240-493b-9b3c-c603b29b265e" type="radio">
-</input><label class="tabbed-label" for="f8f4f37f-3dc4-4e63-8a71-facc5a56dcba">
+<input checked="checked" id="32f8d620-d771-4c69-9e51-bbd8a68bfa27" name="de0c4898-c349-4640-a31b-f7518acc62d8" type="radio">
+</input><label class="tabbed-label" for="32f8d620-d771-4c69-9e51-bbd8a68bfa27">
 Bad</label><div class="tabbed-content docutils">
 <p>If I want to change the stocks included, I’ll need to change the list of stocks twice.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas_datareader</span> <span class="k">as</span> <span class="nn">pdr</span>  
@@ -991,8 +1010,8 @@ Bad</label><div class="tabbed-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="c66de8e9-563a-46dd-b3c9-f747c3a30dd9" name="4c29f0d5-b240-493b-9b3c-c603b29b265e" type="radio">
-</input><label class="tabbed-label" for="c66de8e9-563a-46dd-b3c9-f747c3a30dd9">
+<input id="f9a556dd-47f3-46c5-8177-1dca8e925d39" name="de0c4898-c349-4640-a31b-f7518acc62d8" type="radio">
+</input><label class="tabbed-label" for="f9a556dd-47f3-46c5-8177-1dca8e925d39">
 Good</label><div class="tabbed-content docutils">
 <p>Now I only need to change the variable <code class="docutils literal notranslate"><span class="pre">stocks</span></code> to alter the entire code.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas_datareader</span> <span class="k">as</span> <span class="nn">pdr</span>  
