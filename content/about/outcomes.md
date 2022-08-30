@@ -1,5 +1,11 @@
 # Course outcomes
 
+```{admonition} If you haven't coded before
+:class: tip
+- Read the experience of some students below who started with limited coding background.
+- [I wrote a page to help coding novices decide if the class is right for you, and provides a short bootcamp to help make the learning curve easier](interest).    
+```
+
 ## Value you'll get from this course
 
 ```{tabbed} The final project
@@ -23,12 +29,6 @@ If you haven't already, I **STRONGLY** encourage you to visit and use the tips, 
 ```{tabbed} Perspective
 - Experience you can take to interviews (see the student stories below!)
 - You'll view hard problems as solvable instead of intimidating
-```
-
-```{admonition} If you haven't coded before
-:class: tip
-- Read the experience of some students below who started with limited coding background.
-- [I wrote a page to help coding novices decide if the class is right for you, and provides a short bootcamp to help make the learning curve easier](interest).    
 ```
 
 ## What previous students say

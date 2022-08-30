@@ -215,6 +215,10 @@
 # gradient booksting from L24 2020
 
   - file: content/05/06_thefuture
+    sections:        
+    - file: content/05/06a_saving
+    - file: content/05/06b_nextsteps
+    - file: content/05/06c_finpacks
     
 - part: Slides and Memes
   chapters:
