@@ -206,10 +206,13 @@
     sections:        
     - file: content/05/05a_compounding
       title: "Compounding returns" 
+    - file: content/05/05a_rolling
+    - file: content/05/05a_expanding
     - file: content/05/05b_capm
       title: "Estimating CAPM" 
     - file: content/05/05c_factorloadings
       title: "Estimating better models" 
+    - file: content/05/05c_finpacks
         
 # import smattering? (from below)
 # gradient booksting from L24 2020
@@ -218,7 +221,6 @@
     sections:        
     - file: content/05/06a_saving
     - file: content/05/06b_nextsteps
-    - file: content/05/06c_finpacks
     
 - part: Slides and Memes
   chapters:
