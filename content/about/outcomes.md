@@ -3,7 +3,7 @@
 ```{admonition} If you haven't coded before
 :class: tip
 - Read the experience of some students below who started with limited coding background.
-- [I wrote a page to help coding novices decide if the class is right for you, and provides a short bootcamp to help make the learning curve easier](interest).    
+- [This page should help you decide if the class is right for you, and it provides a short bootcamp to help make the learning curve easier](interest).    
 ```
 
 ## Value you'll get from this course

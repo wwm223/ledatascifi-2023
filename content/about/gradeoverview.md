@@ -49,7 +49,7 @@ What I love about this is that it puts you on the precipice of truly large scale
 
 It's going to be fun! 
 
-See the [project description page](../assignments/mid_proj) for more. 
+See the [project description page](../assignments/mid_proj_placeholder) for more. 
 
 ```
 
