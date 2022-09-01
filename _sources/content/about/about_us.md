@@ -16,18 +16,18 @@ Somehow, I am still a Lions fan, even though stints in AZ, CA, PA, NY, TX, and F
 ---
 
 <p style="font-size:18px; line-height:24px; color:#666666; margin:0 0 10px;">  <!-- makes it like H3 -->
- <b> TA - Julio Veracruz  </b>
+ <b> TA - Mike Rich  </b>
 </p>
 ^^^
-```{image} img/julio.jpg
-:alt: mystery
+```{image} img/mikerich.jpeg
+:alt: mike
 ```
 <br>
-Personal website:  <a href="https://julioveracruz.github.io/">https://julioveracruz.github.io/</a> <br>
-Email: juv222  <br>
-GitHub: julioveracruz  <br> 
+Personal website:  <a href="https://mikebrich.github.io/">https://mikebrich.github.io/</a> <br>
+Email: mbr223  <br>
+GitHub: mikebrich  <br> 
 <br>
-I'm currenty a senior studying finance. Outside of classes, I love watching basketball (let's go Mavs!), listening to music, and trying to nail the perfect cold brew coffee recipe. 
+TODO 
 ````
 
 ### Drop-in Hours are on [coursesite](https://coursesite.lehigh.edu/course/view.php?id=236371)

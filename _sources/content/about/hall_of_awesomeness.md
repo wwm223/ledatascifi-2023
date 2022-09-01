@@ -56,7 +56,7 @@ Every year, students put together great projects. A selection of these are below
 Students put together sites to show off their portfolio of work. 
 
 - [Ryan Schmid](https://ryanwschmid.com/)
-- [Mike Brich](https://mikebrich.github.io/) 
+- [Mike Rich](https://mikebrich.github.io/) 
 - [Julio Veracruz](https://julioveracruz.github.io/)
 
 ## Amazing TAs
