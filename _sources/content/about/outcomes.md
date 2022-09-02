@@ -166,8 +166,8 @@ _"While interviewing for jobs nowadays, you no longer stand out as a candidate f
 ---
 :column: w-75 text-justify align-items-center
 
-_"FIN 377 is a practical, challenging, and accessible class. Having completed the class, I was able to directly apply the techniques taught in it to projects I have since become involved in as a graduate financial engineering student. From basic exploratory data analysis to the intro to Natural Language Processing techniques, everything taught in class has had a direct and fundamental role in everything I do with Python today. The things you will learn in this class will stay with you. The projects I am working on (constructing an index similar to the S&P 500, and NLP on 10-Ks) would not have made it far without what I learned in this class.
+_"FIN 377 is a practical, challenging, and accessible class. Having completed the class, I was able to directly apply the techniques taught in it to projects I have since become involved in as a graduate financial engineering student. From basic exploratory data analysis to the intro to Natural Language Processing techniques, everything taught in class has had a direct and fundamental role in everything I do with Python today. The things you will learn in this class will stay with you. The projects I am working on (constructing an index similar to the S&P 500, and NLP on 10-Ks) would not have made it far without what I learned in this class._
 
-"The lectures are interactive and fun, the resources made available are vast, and the projects/assignments are challenging yet extremely rewarding. I will continue to recommend this class to every Lehigh student interested in the overlap between data science and finance."_
+_"The lectures are interactive and fun, the resources made available are vast, and the projects/assignments are challenging yet extremely rewarding. I will continue to recommend this class to every Lehigh student interested in the overlap between data science and finance."_
 
 ````
