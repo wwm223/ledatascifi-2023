@@ -881,6 +881,30 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-risk">
+   7.1.1. Model Risk
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-bias-variance-tradeoff">
+   7.1.2. The bias-variance tradeoff
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#minimizing-model-risk">
+   7.1.3. Minimizing model risk
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -901,23 +925,25 @@ const thebe_selector_output = ".output, .cell_output"
 <p><strong>The key to understanding most of the choices you make in a ML project is to remember:</strong> The focus of ML is to learn something that generalizes <em><strong>outside of the data we have already!</strong></em></p>
 <p><em>Econometrically,</em> the goal is to estimate a model on a sample (the data we have) that works on the population (all of the data that can and will be generated in the real world).</p>
 </div>
-<p style="font-size:2em"> The bias-variance tradeoff </p> 
+<div class="section" id="model-risk">
+<h2><span class="section-number">7.1.1. </span>Model Risk<a class="headerlink" href="#model-risk" title="Permalink to this headline">¶</a></h2>
 <p>A model will create predictions, and those predictions will be wrong to some degree when we generalize outside our initial data.</p>
-<p>It turns out we can decompose the expected error of <em>a model</em> like this<a class="footnote-reference brackets" href="#biasform" id="id1">1</a></p>
+<p>It turns out we can decompose the <em>expected error</em> of a model like this<a class="footnote-reference brackets" href="#biasform" id="id1">1</a></p>
 <div class="math notranslate nohighlight">
 \[
 E[\text{model error risk}] = \text{model bias}^2+\text{model variance}+\text{noise}
 \]</div>
+<p>Let’s define those terms:</p>
 <p><strong>“Model bias”</strong></p>
 <ul class="simple">
 <li><p>Def: Is errors stemming from the model’s assumptions in how it predicts the outcome variable. (It is the opposite of model accuracy.)</p></li>
-<li><p>Adding more variables or polynomial transformations of existing variables <strong>will usually reduce bias</strong></p></li>
+<li><p>Complexity helps: Adding more variables or polynomial transformations of existing variables <strong>will usually reduce bias</strong></p></li>
 <li><p>Adding more data to the training dataset can (but might not) reduce bias</p></li>
 </ul>
 <p><strong>“Model variance”</strong></p>
 <ul class="simple">
 <li><p>Def: Is extent to which estimated model varies from sample to sample</p></li>
-<li><p>Adding more variables or polynomial transformations of existing variables <strong>will usually increase model variance</strong></p></li>
+<li><p>Complexity hurts: Adding more variables or polynomial transformations of existing variables <strong>will usually increase model variance</strong></p></li>
 <li><p>Adding more data to the training dataset will reduce variance</p></li>
 </ul>
 <p><strong>Noise</strong></p>
@@ -925,49 +951,66 @@ E[\text{model error risk}] = \text{model bias}^2+\text{model variance}+\text{noi
 <li><p>Def: Randomness in the data generating process beyond our understanding</p></li>
 <li><p>To reduce the noise term, you need more data, better data collection, and more accurate measurements</p></li>
 </ul>
+</div>
+<div class="section" id="the-bias-variance-tradeoff">
+<h2><span class="section-number">7.1.2. </span>The bias-variance tradeoff<a class="headerlink" href="#the-bias-variance-tradeoff" title="Permalink to this headline">¶</a></h2>
 <div class="tip admonition">
 <p class="admonition-title">Key takeaway #2</p>
-<p><strong>We tune the complexity of our models to change our models’ bias and variance, and there is an optimal amount of complexity.</strong></p>
-</div>
-<blockquote>
-<div><p><strong>THE FUNDAMENTAL TRADEOFF: Increasing model complexity increases its variance but reduces its bias</strong></p>
+<p><strong>Changing the complexity of a model changes the model’s bias and variance, and there is an optimal amount of complexity.</strong></p>
+<p><strong>THE FUNDAMENTAL TRADEOFF: Increasing model complexity increases its variance but reduces its bias</strong></p>
 <ul class="simple">
 <li><p>Models that are too simple have high bias but low variance</p></li>
 <li><p>Models that are too complex have the opposite problem</p></li>
 <li><p>Collecting a TON of data can allow you to use complex models with less variance</p></li>
 </ul>
 <p>This is the essence of the bias-variance tradeoff, a fundamental issue that we face in choosing models for prediction.”<a class="footnote-reference brackets" href="#tradeoff" id="id2">2</a></p>
-</div></blockquote>
-<p>I like these two graphs to see all of this discussion visually:</p>
+</div>
+<p>Let’s work through these ideas visually in the next three tabs:</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="71e89f8d-d517-4b16-9eb5-dd8a944e0fae" name="46494f0b-c24c-4bd3-b965-836c163f139d" type="radio">
-</input><label class="tabbed-label" for="71e89f8d-d517-4b16-9eb5-dd8a944e0fae">
+<input checked="checked" id="b3fdb2a2-d1d2-4c73-a8f7-b962767a956a" name="e1aa5119-deac-40ae-94a5-4e5fd8bbd603" type="radio">
+</input><label class="tabbed-label" for="b3fdb2a2-d1d2-4c73-a8f7-b962767a956a">
 The classic bias-variance tradeoff</label><div class="tabbed-content docutils">
+<p>We want to minimize model risk. In the graph below, that is called “Test Error”.</p>
 <ul class="simple">
-<li><p>Models that are too simple are said to be <strong>“underfit”</strong> (take steps to reduce bias)</p></li>
-<li><p>Models that are too complicated are said to be <strong>“overfit”</strong> (take steps to reduce variance)</p></li>
+<li><p>Models that are too simple are said to be <strong>“underfit”</strong> (take steps to reduce bias)</p>
+<ul>
+<li><p>In the graph below, an underfit model is on the left side of the picture</p></li>
+</ul>
+</li>
+<li><p>Models that are too complicated are said to be <strong>“overfit”</strong> (take steps to reduce variance)</p>
+<ul>
+<li><p>In the graph below, an overfit model is on the right side of the picture</p></li>
+</ul>
+</li>
 </ul>
 <a class="reference internal image-reference" href="../../_images/bias_modeling_bias_var_plot.png"><img alt="bias_var" src="../../_images/bias_modeling_bias_var_plot.png" style="width: 500px;" /></a>
 </div>
-<input id="60c82ddc-771f-482b-9a05-23da2b2dd008" name="46494f0b-c24c-4bd3-b965-836c163f139d" type="radio">
-</input><label class="tabbed-label" for="60c82ddc-771f-482b-9a05-23da2b2dd008">
+<input id="3cada53f-8eae-45f6-bae8-543622fc4a86" name="e1aa5119-deac-40ae-94a5-4e5fd8bbd603" type="radio">
+</input><label class="tabbed-label" for="3cada53f-8eae-45f6-bae8-543622fc4a86">
 Optimizing model performance via complexity</label><div class="tabbed-content docutils">
+<p>In the chart below, the blue line depicts how well your model does on the “training sample”, meaning: The data the model is trained on. The red line shows how well your model does on data it has never seen before, a so-called “validation sample”.</p>
 <ul class="simple">
 <li><p>Models that are too simple perform poorly (low scores, high bias)</p></li>
-<li><p>Models that are too complex perform well in training but poorly outside that sample (high variance)</p></li>
+<li><p>Models that are too complex perform well in training but poorly outside that sample (high variance, the gap between the lines)</p></li>
 </ul>
 <a class="reference internal image-reference" href="../../_images/validation-curve.png"><img alt="validation" src="../../_images/validation-curve.png" style="width: 500px;" /></a>
 <p><a class="reference external" href="https://jakevdp.github.io/PythonDataScienceHandbook/figures/05.03-validation-curve.png">Source</a></p>
 </div>
+<input id="196e858e-1608-4578-bc42-fba1c42a2664" name="e1aa5119-deac-40ae-94a5-4e5fd8bbd603" type="radio">
+</input><label class="tabbed-label" for="196e858e-1608-4578-bc42-fba1c42a2664">
+A great video explainer (watch this!)</label><div class="tabbed-content docutils">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/EuBBz3bI-aA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-<p style="font-size:2em"> Video: The bias-variance tradeoff </p> 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/EuBBz3bI-aA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><p style="font-size:2em"> Minimizing model risk </p> 
+</div>
+</div>
+<div class="section" id="minimizing-model-risk">
+<h2><span class="section-number">7.1.3. </span>Minimizing model risk<a class="headerlink" href="#minimizing-model-risk" title="Permalink to this headline">¶</a></h2>
 <p>Our tools to minimize model risk are</p>
 <ol class="simple">
-<li><p>More data</p></li>
-<li><p><a class="reference external" href="https://jakevdp.github.io/PythonDataScienceHandbook/05.04-feature-engineering.html">Feature engineering (adding, cleaning, and selecting features; dimensionality reduction).</a></p></li>
-<li><p><a class="reference external" href="https://jakevdp.github.io/PythonDataScienceHandbook/05.03-hyperparameters-and-model-validation.html">Model selection</a></p></li>
-<li><p>Model evaluation <a class="reference internal" href="03c_ModelEval.html"><span class="doc std std-doc">via cross validation (CV)</span></a> or <a class="reference internal" href="03c1_OOS.html"><span class="doc std std-doc">out-of-sample (OOS) forecasting</span></a></p></li>
+<li><p>More data! (Often helps, but not always.)</p></li>
+<li><p>Proper model evaluation procedures (<a class="reference internal" href="03c_ModelEval.html"><span class="doc std std-doc">via cross validation (CV)</span></a> or <a class="reference internal" href="03c1_OOS.html"><span class="doc std std-doc">out-of-sample (OOS) forecasting</span></a>) can help gauge whether a model is overfit or underfit.</p></li>
+<li><p><a class="reference external" href="https://jakevdp.github.io/PythonDataScienceHandbook/05.04-feature-engineering.html">Feature engineering (adding, cleaning, and selecting features; dimensionality reduction)</a></p></li>
+<li><p><a class="reference external" href="https://jakevdp.github.io/PythonDataScienceHandbook/05.03-hyperparameters-and-model-validation.html">Model selection</a> - picking the right model for your setting</p></li>
 </ol>
 <p>I added some good external resources in the links above on feature engineering and model selection. The next pages here will dig into model evaluation because it gets at the flow of testing a model.</p>
 <hr class="footnotes docutils" />
@@ -979,6 +1022,7 @@ Optimizing model performance via complexity</label><div class="tabbed-content do
 <dd><p><em>(This is adapted from <a class="reference external" href="https://www.textbook.ds100.org/ch/15/bias_modeling.html">DS100</a>)</em></p>
 </dd>
 </dl>
+</div>
 </div>
 
     <script type="text/x-thebe-config">

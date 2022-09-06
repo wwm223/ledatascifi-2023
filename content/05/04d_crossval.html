@@ -885,22 +885,38 @@ const thebe_selector_output = ".output, .cell_output"
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#using-cv-in-practice">
-   8.3.1. Using CV in practice
+  <a class="reference internal nav-link" href="#basic-example">
+   8.3.1. Basic example
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-2-set-up-the-cv">
-   8.3.2.
-   <strong>
-    STEP 2:
-   </strong>
-   Set up the CV
+  <a class="reference internal nav-link" href="#set-up-the-cv">
+   8.3.2. Set up the CV
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#choosing-what-kind-of-cv-folds-to-use">
+   8.3.3. Choosing what kind of CV folds to use
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#custom-cv-folds">
+   8.3.4. Custom CV folds
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#code-for-rolling-oos-testing-v0">
+   8.3.5. Code for rolling OOS testing (v0)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#code-for-rolling-oos-testing-v1">
+   8.3.6. Code for rolling OOS testing (v1)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#next-step-pipelines">
-   8.3.3. Next step: Pipelines
+   8.3.7. Next step: Pipelines
   </a>
  </li>
 </ul>
@@ -919,25 +935,17 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Cross-validation is a step where we take our training sample and further divide it in many folds, as in the illustration here:</p>
 <a class="reference internal image-reference" href="../../_images/feature_5_fold_cv.jpg"><img alt="5-fold" class="align-center" src="../../_images/feature_5_fold_cv.jpg" style="width: 400px;" /></a>
 <p>As we talked about in the last chapter, cross-validation allows us to test our models outside the training data more often. This trick reduces the likelihood of overfitting and improves generalization: It <em>should</em> improve our model’s performance when we apply it outside the training data.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>I say “<em>should</em>” because the exact manner in which you create the folds matters.</p>
-</div>
 <div class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>Illustration: If you emulate the simple folding method as depicted in the above graphic for stock return data, some folds will end up testing your model on data from <em>before</em> the periods where the model was estimated!</p>
 </div>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p><strong><a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html#cross-validation-iterators">This page should be your first reference for available CV splitting options.</a></strong></p>
-<ul class="simple">
-<li><p><strong>If your data has groups</strong> (i.e. repeated observations for a given firm), you should use <a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html#group-cv">group-wise cross-validation</a>, like <code class="docutils literal notranslate"><span class="pre">GroupKFold</span></code> to make sure no group is in the training and validation partitions of the fold.</p></li>
-<li><p><strong>If your data and/or task is time dependent</strong>, like predicting stock returns,  you should use a <a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html#timeseries-cv">time-wise cross-validation</a>, like <code class="docutils literal notranslate"><span class="pre">TimeSeriesSplit</span></code> to ensure that the validation partitions are subsequent to the training sample.</p></li>
-</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>I say “it <em>should</em> improve our model’s performance” because the exact manner in which you create the folds matters!</p>
+<p>See the tip below.</p>
 </div>
-<hr class="docutils" />
-<div class="section" id="using-cv-in-practice">
-<h2><span class="section-number">8.3.1. </span>Using CV in practice<a class="headerlink" href="#using-cv-in-practice" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="basic-example">
+<h2><span class="section-number">8.3.1. </span>Basic example<a class="headerlink" href="#basic-example" title="Permalink to this headline">¶</a></h2>
 <p>Like before, let’s first load the data. Notice I consolidated the import lines at the top.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -971,12 +979,13 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <details class="sphinx-bs dropdown card mb-3">
 <summary class="summary-title card-header">
-<strong>An important digression:</strong><div class="summary-down docutils">
+<strong>Digression. Read after you cover the “Setting up your folds” section below.</strong><div class="summary-down docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
 <div class="summary-up docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="summary-content card-body docutils">
-<p class="card-text">Now that we’ve introduced some of the conceptual issues with how you create folds for CV, let’s revisit this <code class="docutils literal notranslate"><span class="pre">test_train_split</span></code> code above. <a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html#using-cross-validation-iterators-to-split-train-and-test">This page</a> says <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> uses <a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html#random-permutations-cross-validation-a-k-a-shuffle-split">ShuffleSplit</a>. This method does not divide by time or any group type.</p>
+<p class="card-text">Below, we introduce some of the conceptual issues with how you create folds for CV. Once you read that, come back and revisit this <code class="docutils literal notranslate"><span class="pre">test_train_split</span></code> code above, because the same considerations for how we choose folds within a CV apply to how we split off our testing sample.</p>
+<p class="card-text"><a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html#using-cross-validation-iterators-to-split-train-and-test">This page</a> says <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> uses <a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html#random-permutations-cross-validation-a-k-a-shuffle-split">ShuffleSplit</a>. This method does not divide by time or any group type.</p>
 <details class="sphinx-bs dropdown card mb-3">
 <summary class="summary-title card-header">
 Q: Does this Fannie Mae data need special attention to how we divide it up?<div class="summary-down docutils">
@@ -986,9 +995,9 @@ Q: Does this Fannie Mae data need special attention to how we divide it up?<div 
 </summary><div class="summary-content card-body docutils">
 <p class="card-text">A question to ponder, in class perhaps…</p>
 </div>
-</details><p class="card-text">If you want to use any other CV iterators to divide up your sample, you can:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Just replace &quot;GroupShuffleSplit&quot; with your CV of choice,</span>
-<span class="c1"># and update the contents of split() as needed</span>
+</details><p class="card-text">If you want to use any other CV iterators to divide up your sample, you can. Here is one:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Replace &quot;GroupShuffleSplit&quot; with your CV of choice,</span>
+<span class="c1"># and update the contents of split() as needed.</span>
 
 <span class="n">train_idx</span><span class="p">,</span> <span class="n">test_idx</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span>
     <span class="n">GroupShuffleSplit</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">groups</span><span class="p">)</span>
@@ -996,17 +1005,28 @@ Q: Does this Fannie Mae data need special attention to how we divide it up?<div 
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">train_idx</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">train_idx</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">test_idx</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">test_idx</span><span class="p">]</span>
 </pre></div>
 </div>
+<p class="card-text">You don’t even need to use a built-in CV method to create your holdout data. Here is a simple approach that works in many settings:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># test on the last year of data</span>
+
+<span class="n">train_idx</span><span class="p">,</span> <span class="n">test_idx</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span> 
+                      <span class="n">X</span><span class="p">[</span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()]</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">train_idx</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">train_idx</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">test_idx</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">test_idx</span><span class="p">]</span>
+</pre></div>
 </div>
-</details><p>Back to our regularly scheduled “CV in Practice” programming.</p>
 </div>
-<div class="section" id="step-2-set-up-the-cv">
-<h2><span class="section-number">8.3.2. </span><strong>STEP 2:</strong> Set up the CV<a class="headerlink" href="#step-2-set-up-the-cv" title="Permalink to this headline">¶</a></h2>
-<p>Sk-learn makes cross-validation pretty easy. We use the <code class="docutils literal notranslate"><span class="pre">cross_validate(&quot;estimator&quot;,X_train,y_train,cv,scoring,...)</span></code> function (<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_validate.html">documentation here</a>) which will</p>
+</details></div>
+<div class="section" id="set-up-the-cv">
+<h2><span class="section-number">8.3.2. </span>Set up the CV<a class="headerlink" href="#set-up-the-cv" title="Permalink to this headline">¶</a></h2>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p><em>Note: <strong>Your estimator will actually be a “pipeline” object.</strong> (<a class="reference internal" href="04e_pipelines.html"><span class="doc std std-doc">covered in detail on the next page</span></a>) A pipeline object tells sk-learn to apply a series of steps to the data (preprocessing, etc.) and always ends with a model to estimate.</em></p>
+</div>
+<p>Sk-learn makes cross-validation pretty easy. We use the <code class="docutils literal notranslate"><span class="pre">cross_validate(&quot;estimator&quot;,X_train,y_train,cv,scoring,...)</span></code> function (<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_validate.html">documentation here</a>) which, under the hood, will</p>
 <ol class="simple">
 <li><p>Create folds in X_train and y_train using whatever method you put in the <code class="docutils literal notranslate"><span class="pre">cv</span></code> parameter. For each fold, it will create a smaller “training partition” and “validation partition” like in the figure at the top of this page.</p></li>
-<li><p>For each fold,</p>
+<li><p>For each fold, it will</p>
 <ol class="simple">
-<li><p>It will fit your “estimator” on the smaller training partition it creates for that fold (as if you ran <code class="docutils literal notranslate"><span class="pre">estimator.fit(X_trainingpartition,y_trainingpartition)</span></code>).<em>Note: <strong>Your estimator will actually be a “pipeline” object</strong> (<a class="reference internal" href="04e_pipelines.html"><span class="doc std std-doc">covered in detail on the next page</span></a>) that tells sk-learn to apply a series of steps to the data (preprocessing, etc.) and always ends with a model to estimate.</em></p></li>
+<li><p>Fit your “estimator” on the smaller training partition it creates for that fold (as if you ran <code class="docutils literal notranslate"><span class="pre">estimator.fit(X_trainingpartition,y_trainingpartition)</span></code>).</p></li>
 <li><p>Use that fitted estimator on the validation partition (as if you ran <code class="docutils literal notranslate"><span class="pre">estimator.predict(X_validationpartition)</span></code>).</p></li>
 <li><p>Score those predictions with the function(s) you put in <code class="docutils literal notranslate"><span class="pre">scoring</span></code>.</p></li>
 </ol>
@@ -1022,12 +1042,12 @@ Q: Does this Fannie Mae data need special attention to how we divide it up?<div 
 <li><p>Your scoring method(s)</p></li>
 </ol>
 </div>
-<p>Code wise, it can be this simple:</p>
+<p>Code wise, it <em>can</em> be this simple:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">KFold</span><span class="p">,</span> <span class="n">cross_validate</span>
 
-<span class="n">cv</span>    <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>                       <span class="c1"># set up fold method</span>
+<span class="n">cv</span>    <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>                       <span class="c1"># pick and set up fold method</span>
 <span class="n">ridge</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>               <span class="c1"># set up model/estimator</span>
 <span class="n">cross_validate</span><span class="p">(</span><span class="n">ridge</span><span class="p">,</span>
                <span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> 
@@ -1036,8 +1056,8 @@ Q: Does this Fannie Mae data need special attention to how we divide it up?<div 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fit_time&#39;: array([0.01695871, 0.00604463, 0.00346589, 0.0063622 , 0.00415468]),
- &#39;score_time&#39;: array([0.00298142, 0.0017314 , 0.00103474, 0.0025425 , 0.        ]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fit_time&#39;: array([0.02946544, 0.00299978, 0.00300097, 0.00301909, 0.00201058]),
+ &#39;score_time&#39;: array([0.00199938, 0.00200081, 0.00099993, 0.00098205, 0.00198793]),
  &#39;test_score&#39;: array([0.90789446, 0.89926394, 0.900032  , 0.90479828, 0.90327986])}
 </pre></div>
 </div>
@@ -1058,14 +1078,286 @@ Q: Does this Fannie Mae data need special attention to how we divide it up?<div 
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9030537085469961
-0.003162930786979486
+0.0031629307869794876
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="choosing-what-kind-of-cv-folds-to-use">
+<h2><span class="section-number">8.3.3. </span>Choosing what kind of CV folds to use<a class="headerlink" href="#choosing-what-kind-of-cv-folds-to-use" title="Permalink to this headline">¶</a></h2>
+<p>What should we put in the <code class="docutils literal notranslate"><span class="pre">cv</span> <span class="pre">=</span> <span class="pre">?</span></code> line of code?</p>
+<p>It depends on the dataset:</p>
+<ul class="simple">
+<li><p><strong>IID data</strong>: If we have a dataset with one observation per unit and all observations are at either the same time, or if time can be ignored:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">KFold()</span></code> and <code class="docutils literal notranslate"><span class="pre">ShuffleSplit()</span></code></p></li>
+<li><p>If you have a <a class="reference internal" href="03e_whichModel.html"><span class="doc std std-doc">classification task</span></a> with imbalanced labels, use <code class="docutils literal notranslate"><span class="pre">StratifiedKFold()</span></code> and <code class="docutils literal notranslate"><span class="pre">StratifiedShuffleSplit()</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>Grouped, time independent data</strong>: If time can be ignored, and you have multiple observations for each unit (“groups”), your goal is likely to find out if a model trained on a particular set of groups generalizes well to the unseen groups:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">GroupKFold()</span></code> and <code class="docutils literal notranslate"><span class="pre">GroupShuffleSplit</span></code></p></li>
+<li><p>If you have a <a class="reference internal" href="03e_whichModel.html"><span class="doc std std-doc">classification task</span></a> with imbalanced labels, use <code class="docutils literal notranslate"><span class="pre">StratifiedGroupKFold()</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>If your data and/or task is time dependent:</strong> E.g. predicting stock returns, any setting where the choice depends on prior choices and outcomes</p>
+<ul>
+<li><p><strong>You must ensure that the validation partitions are subsequent to the training sample.</strong></p></li>
+<li><p>Rarely: If you have a simple time series dataset (one observation for each time), use the built-in <code class="docutils literal notranslate"><span class="pre">TimeSeriesSplit()</span></code></p></li>
+<li><p>Usually: If you have have a cross-sectional panel (multiple observations for each time), build a custom splitter to generate your folds.</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong><a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html#cross-validation-iterators">This page should be your first reference to learn about the CV splitting functions listed above.</a></strong></p>
+</div>
+</div>
+<div class="section" id="custom-cv-folds">
+<h2><span class="section-number">8.3.4. </span>Custom CV folds<a class="headerlink" href="#custom-cv-folds" title="Permalink to this headline">¶</a></h2>
+<p>You can explicitly design and create your own CV folds. <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_validate.html">The <code class="docutils literal notranslate"><span class="pre">cross_validation()</span></code> documentation</a> says that <code class="docutils literal notranslate"><span class="pre">cv</span></code> can be “An iterable yielding (train, test) splits as arrays of indices.”</p>
+<p>Let’s use this example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cv_custom</span> <span class="o">=</span> <span class="p">[([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">]),</span>
+             <span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">]),</span>
+             <span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">])]</span>
+
+<span class="n">cross_validate</span><span class="p">(</span><span class="n">ridge</span><span class="p">,</span>
+               <span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv_custom</span><span class="p">,</span> 
+               <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;r2&#39;</span><span class="p">)</span>  
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">cv_custom</span></code> is a list (lists are an “iterable” object) with 3 elements, so our cross validation will have 3 folds.</p>
+<ol class="simple">
+<li><p>The first fold is given by the first element: <code class="docutils literal notranslate"><span class="pre">([0,1],[2])</span></code>, which says the training data is rows 0 and 1, and the validation is done on row 2.</p></li>
+<li><p>In the second fold, train on rows 0 to 2, and validate on row 3.</p></li>
+<li><p>And so on.</p></li>
+</ol>
+</div>
+<div class="section" id="code-for-rolling-oos-testing-v0">
+<h2><span class="section-number">8.3.5. </span>Code for rolling OOS testing (v0)<a class="headerlink" href="#code-for-rolling-oos-testing-v0" title="Permalink to this headline">¶</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The code below is almost plug-and-play!</p>
+</div>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<ol class="simple">
+<li><p>Train on year 1, and predict outcomes in year 2.</p></li>
+<li><p>Then train on years 1 and 2, and predict outcomes in year 3.</p></li>
+<li><p>Then train on years 1  -  3, and predict outcomes in year 4.</p></li>
+<li><p>Then train on years 1  -  4, and predict outcomes in year 5.</p></li>
+<li><p>…</p></li>
+<li><p>Then train on years 1  -  16, and predict outcomes in year 17.</p></li>
+</ol>
+</div>
+<p>One procedure to do rolling OOS testing was introduced <a class="reference internal" href="03c1_OOS.html"><span class="doc std std-doc">on this page</span></a>, and I copied it here in the sidebar. It’s a common choice that works well in many settings. It works when you have many firms or units (whether each unit has one or multiple observations per year), or even with a single time series!<a class="footnote-reference brackets" href="#oneseries" id="id1">1</a> And it can be adjusted to other units of time (monthly, weekly, decades), or only every few units of time.</p>
+<p>The code below implements it, and can be used with appropriate adjustments:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="c1"># adjust the inside of &quot;groupby()&quot; to your df/problem, pick other parameters</span>
+
+<span class="n">time_groups</span>               <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="s1">&#39;DATE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">)</span><span class="o">.</span><span class="n">groups</span> 
+<span class="n">min_periods_in_train</span>      <span class="o">=</span> <span class="mi">5</span>
+<span class="n">training_expanding_window</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># shouldn&#39;t need to adjust this code: </span>
+
+<span class="n">sorted_groups</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">time_groups</span><span class="o">.</span><span class="n">items</span><span class="p">())]</span>
+
+<span class="k">if</span> <span class="n">training_expanding_window</span><span class="p">:</span>
+
+    <span class="n">cv</span> <span class="o">=</span> <span class="p">[([</span><span class="n">i</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">sorted_groups</span><span class="p">[:</span><span class="n">y</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">g</span><span class="p">],</span><span class="n">sorted_groups</span><span class="p">[</span><span class="n">y</span><span class="p">])</span> 
+            <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">min_periods_in_train</span> <span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sorted_groups</span><span class="p">))]</span>
+
+<span class="k">else</span><span class="p">:</span>
+    
+    <span class="n">cv</span> <span class="o">=</span> <span class="p">[([</span><span class="n">i</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">sorted_groups</span><span class="p">[</span><span class="n">y</span><span class="o">-</span><span class="n">min_periods_in_train</span><span class="p">:</span><span class="n">y</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">g</span><span class="p">],</span><span class="n">sorted_groups</span><span class="p">[</span><span class="n">y</span><span class="p">])</span> 
+            <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">min_periods_in_train</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sorted_groups</span><span class="p">))]</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Extra credit: Convert the code below into a function for the community codebook!</p>
+<p>Something like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>def rolling_oos_cv(???): # you need to decide on arguments
+    ??? 
+    return cv
+</pre></div>
+</div>
+<p>Considerations/bonus:</p>
+<ol class="simple">
+<li><p>ESSENTIAL: How should the user specify the time dimensions to groupby? What if they want to use months, weeks, etc. instead of years?</p></li>
+<li><p>EASY BONUS: Can the user ask for multiple time periods in the validation sets? E.g. predict the next two years?</p></li>
+<li><p>HARDER BONUS: Can the user ask to skip some folds? E.g. if they group the data by months, but only do the training and prediction for the first month each year?</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="code-for-rolling-oos-testing-v1">
+<h2><span class="section-number">8.3.6. </span>Code for rolling OOS testing (v1)<a class="headerlink" href="#code-for-rolling-oos-testing-v1" title="Permalink to this headline">¶</a></h2>
+<p>The code above works. It lacks some features, and until a classmate codes it up, it requires copy-pasting all of the code I wrote, and adjusting it.</p>
+<p>As of mid-2022, someone has finally made a function that looks like a promising solution. <a class="reference external" href="https://rasbt.github.io/mlxtend/user_guide/evaluate/GroupTimeSeriesSplit/">Documentation for GroupTimeSeriesSplit.</a> However, it’s new and has some quirks.</p>
+<p>Here is an illustration of how it divides up the sample. First, I’ll create a simple dataset we can look at. Notice we have several firms in many years.</p>
+<div class="cell tag_hide_input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;year&#39;</span><span class="p">:[</span><span class="mi">2000</span><span class="p">,</span><span class="mi">2000</span><span class="p">,</span><span class="mi">2000</span><span class="p">,</span><span class="mi">2001</span><span class="p">,</span><span class="mi">2001</span><span class="p">,</span><span class="mi">2002</span><span class="p">,</span><span class="mi">2002</span><span class="p">,</span><span class="mi">2002</span><span class="p">,</span><span class="mi">2002</span><span class="p">,</span><span class="mi">2003</span><span class="p">,</span><span class="mi">2004</span><span class="p">,</span><span class="mi">2004</span><span class="p">,</span><span class="mi">2006</span><span class="p">],</span>
+                   <span class="s1">&#39;firm&#39;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span>
+                   <span class="s1">&#39;X&#39;</span><span class="p">:</span>   <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span>
+                   <span class="s1">&#39;y&#39;</span><span class="p">:</span>   <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+                  <span class="p">})</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>10</th>
+      <th>11</th>
+      <th>12</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>year</th>
+      <td>2000</td>
+      <td>2000</td>
+      <td>2000</td>
+      <td>2001</td>
+      <td>2001</td>
+      <td>2002</td>
+      <td>2002</td>
+      <td>2002</td>
+      <td>2002</td>
+      <td>2003</td>
+      <td>2004</td>
+      <td>2004</td>
+      <td>2006</td>
+    </tr>
+    <tr>
+      <th>firm</th>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>5</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>X</th>
+      <td>0</td>
+      <td>4</td>
+      <td>5</td>
+      <td>2</td>
+      <td>5</td>
+      <td>7</td>
+      <td>2</td>
+      <td>4</td>
+      <td>4</td>
+      <td>9</td>
+      <td>8</td>
+      <td>9</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>y</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">GroupTimeSeriesSplit()</span></code> correctly splits up the sample:</p>
+<div class="cell tag_hide_input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlxtend.evaluate.time_series</span> <span class="kn">import</span> <span class="n">GroupTimeSeriesSplit</span><span class="p">,</span> <span class="n">plot_splits</span>
+<span class="n">cv_args</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;test_size&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;n_splits&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="s1">&#39;window_type&#39;</span><span class="p">:</span><span class="s1">&#39;expanding&#39;</span><span class="p">}</span>
+<span class="n">plot_splits</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="o">**</span><span class="n">cv_args</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/04d_crossval_17_0.png" src="../../_images/04d_crossval_17_0.png" />
+</div>
+</div>
+<p>Using it is easy:</p>
+<ol class="simple">
+<li><p>Replace the <code class="docutils literal notranslate"><span class="pre">cv=</span></code> with <code class="docutils literal notranslate"><span class="pre">GroupTimeSeriesSplit()</span></code> and the parameters you want.</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">groups=</span></code> to cross_validate, and it should be the variable containing the time info.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.dummy</span> <span class="kn">import</span> <span class="n">DummyClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_validate</span>
+<span class="kn">from</span> <span class="nn">mlxtend.evaluate</span> <span class="kn">import</span> <span class="n">GroupTimeSeriesSplit</span>
+
+<span class="n">cv</span>      <span class="o">=</span> <span class="n">GroupTimeSeriesSplit</span><span class="p">(</span><span class="n">test_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> 
+                               <span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> 
+                               <span class="n">window_type</span><span class="o">=</span><span class="s1">&#39;expanding&#39;</span><span class="p">)</span> <span class="c1"># set up fold method</span>
+<span class="n">clf</span>     <span class="o">=</span> <span class="n">DummyClassifier</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;most_frequent&quot;</span><span class="p">)</span>     <span class="c1"># set up model/estimator</span>
+
+<span class="n">cross_validate</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span>
+               <span class="n">df</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
+               <span class="n">groups</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> 
+               <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;accuracy&quot;</span><span class="p">)[</span><span class="s2">&quot;test_score&quot;</span><span class="p">]</span>        <span class="c1"># for this page, just print results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.33333333, 0.33333333, 0.33333333, 0.5       , 0.5       ])
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="section" id="next-step-pipelines">
-<h2><span class="section-number">8.3.3. </span>Next step: Pipelines<a class="headerlink" href="#next-step-pipelines" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.3.7. </span>Next step: Pipelines<a class="headerlink" href="#next-step-pipelines" title="Permalink to this headline">¶</a></h2>
 <p>The model above</p>
 <ul class="simple">
 <li><p>Only uses a few continuous variables: what if we want to include other variable types (like categorical)?</p></li>
@@ -1076,6 +1368,12 @@ Q: Does this Fannie Mae data need special attention to how we divide it up?<div 
 </ul>
 <p>At this point, you are capable of solving all of these problems. (For example, you could clean the data in pandas.)</p>
 <p>But for our models to be robust to evil monsters like “data leakage”, we need the fixes to be done within pipelines.</p>
+<hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="oneseries"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>You could do <code class="docutils literal notranslate"><span class="pre">TimeSeriesSplit()</span></code>, but if you have 20 years of daily trading data, there are potentially ~500 possible splits! That will be slow when you evaluate a bunch of models a bunch of times! The procedure above reduces that greatly.</p>
+</dd>
+</dl>
 </div>
 </div>
 

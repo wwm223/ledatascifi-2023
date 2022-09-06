@@ -888,43 +888,35 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="section" id="principles-into-practice">
 <h1><span class="section-number">8.1. </span>Principles into Practice<a class="headerlink" href="#principles-into-practice" title="Permalink to this headline">¶</a></h1>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p><a class="reference external" href="https://github.com/LeDataSciFi/ledatascifi-2023/blob/main/handouts/ML/ML_template.ipynb">Here is a template ipynb file</a> you can use when putting together a project that follows the pseudocode below.</p>
-</div>
 </div>
 <p>Let’s put the principles from last chapter into code. Here is the pseudocode:</p>
 <ol>
 <li><p>All of your import functions</p></li>
 <li><p>Load data</p></li>
-<li><p>Split your data into 2 subsamples: a “training” portion and a “holdout” (aka “test”) portion as <a class="reference internal" href="03_ML.html"><span class="doc std std-doc">in this page</span></a> or <a class="reference internal" href="03c_ModelEval.html"><span class="doc std std-doc">this page</span></a> or <a class="reference internal" href="03c1_OOS.html"><span class="doc std std-doc">this page</span></a>. This is the first arrow in the picture below.<a class="footnote-reference brackets" href="#pic" id="id1">1</a> We will do all of our work on the “train” sample until the very last step.</p></li>
+<li><p>Split your data into 2 subsamples: a “training” portion and a “holdout” (aka “test”) portion as <a class="reference internal" href="03_ML.html"><span class="doc std std-doc">in this page</span></a> or <a class="reference internal" href="03c_ModelEval.html"><span class="doc std std-doc">this page</span></a> or <a class="reference internal" href="03c1_OOS.html"><span class="doc std std-doc">this page</span></a>. We will do all of our work on the “train” sample until the very last step.</p></li>
 <li><p>Before modeling, do EDA (<strong>on the training data only!</strong>)</p>
 <ul class="simple">
 <li><p>Sample basics: What is the unit of observation? What time spans are covered?</p></li>
 <li><p>Look for outliers, missing values, or data errors</p></li>
 <li><p>Note what variables are continuous or discrete numbers, which variables are categorical variables (and whether the categorical ordering is meaningful)</p></li>
 <li><p>You should read up on what all the variables mean from the documentation in the data folder.</p></li>
-<li><p>Visually explore the relationship between <code class="docutils literal notranslate"><span class="pre">v_Sale_Price</span></code> and other variables.</p>
+<li><p>Visually explore the relationship between your outcome variable and other variables.</p>
 <ul>
 <li><p>For continuous variables - take note of whether the relationship seems linear or quadratic or polynomial</p></li>
 <li><p>For categorical variables - maybe try a box plot for the various levels?</p></li>
 </ul>
 </li>
-<li><p>Now decide how you’d clean the data (imputing missing values, scaling variables, encoding categorical variables). These lessons will go into the preprocessing portion of your pipeline below. The <a class="reference external" href="https://scikit-learn.org/stable/modules/preprocessing.html">sklearn guide on preprocessing</a> is very informative, as <a class="reference internal" href="04e1_preprocessing.html"><span class="doc std std-doc">this page <strong>and the video I link to therein.</strong></span></a></p></li>
+<li><p>Now decide how you’d clean the data (imputing missing values, scaling variables, encoding categorical variables). These lessons will go into the preprocessing portion of your pipeline below. The <a class="reference external" href="https://scikit-learn.org/stable/modules/preprocessing.html">sklearn guide on preprocessing</a> is very informative, as is <a class="reference internal" href="04e1_preprocessing.html"><span class="doc std std-doc">this page <strong>and the video I link to therein.</strong></span></a></p></li>
 </ul>
 </li>
-<li><p>Prepare to optimize a series of models (<a class="reference internal" href="04e_pipelines.html"><span class="doc std std-doc">covered here</span></a>)</p>
+<li><p>Prepare to optimize a series of models (<a class="reference internal" href="04e_pipelines.html"><span class="doc std std-doc">pipelines introduced here</span></a>)</p>
 <ol class="simple">
 <li><p>Set up one pipeline to clean each type of variable</p></li>
 <li><p>Combine those pipes into a “preprocessing” pipeline using <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html#sklearn.compose.ColumnTransformer"><code class="docutils literal notranslate"><span class="pre">ColumnTransformer</span></code></a></p></li>
-<li><p><a class="reference internal" href="04d_crossval.html"><span class="doc std std-doc">Set up your cross validation method</span></a>:</p>
-<ul class="simple">
-<li><p>The picture below illustrates 5 folds, apparently based on the row number.</p></li>
-<li><p>There are many <a class="reference external" href="https://scikit-learn.org/stable/modules/classes.html#splitter-classes">CV splitters</a> available, including TimeSeriesSplit (a starting point for asset price predictions) and <a class="reference external" href="https://github.com/getgaurav2/scikit-learn/blob/d4a3af5cc9da3a76f0266932644b884c99724c57/sklearn/model_selection/_split.py#L2243">GroupTimesSeriesSplit</a> is in development (which addresses a core problem with TimeSeriesSplit, and <a class="reference external" href="https://www.kaggle.com/jorijnsmit/found-the-holy-grail-grouptimeseriessplit">is shown in practice here</a>)</p></li>
-</ul>
-</li>
+<li><p><a class="reference internal" href="04d_crossval.html"><span class="doc std std-doc">Set up your cross validation method</span></a>:</p></li>
 <li><p>Set up your scoring <a class="reference external" href="https://scikit-learn.org/stable/modules/classes.html#sklearn-metrics-metrics">metric</a> as discussed <a class="reference internal" href="03d_whatToMax.html"><span class="doc std std-doc">here</span></a></p></li>
 </ol>
 </li>
@@ -937,21 +929,14 @@ const thebe_selector_output = ".output, .cell_output"
 </ol>
 </li>
 <li><p>Repeat step 6 for other candidate models</p></li>
-<li><p>Compare all of the optimized models</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># something like...</span>
+<li><p>Compare all of the optimized models.  This step might look like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">models</span> <span class="o">=</span> <span class="p">[</span><span class="n">best_ridge</span><span class="p">,</span> <span class="n">tuned_lasso</span><span class="p">,</span> <span class="n">nn_reg</span><span class="p">,</span> <span class="n">poly_reg</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> 
 <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
     <span class="n">cross_validate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span><span class="o">...</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
 </ol>
-<hr class="docutils" />
-<hr class="footnotes docutils" />
-<dl class="footnote brackets">
-<dt class="label" id="pic"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p><img alt="" src="../../_images/feature_5_fold_cv.jpg" /></p>
-</dd>
-</dl>
 </div>
 
     <script type="text/x-thebe-config">
