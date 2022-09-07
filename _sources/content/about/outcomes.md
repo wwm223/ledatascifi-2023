@@ -154,6 +154,8 @@ _"While interviewing for jobs nowadays, you no longer stand out as a candidate f
 
 ````
 
+---
+
 ````{panels}
 :column: w-25 text-center p-0
 :card: border-0 
@@ -169,5 +171,25 @@ _"While interviewing for jobs nowadays, you no longer stand out as a candidate f
 _"FIN 377 is a practical, challenging, and accessible class. Having completed the class, I was able to directly apply the techniques taught in it to projects I have since become involved in as a graduate financial engineering student. From basic exploratory data analysis to the intro to Natural Language Processing techniques, everything taught in class has had a direct and fundamental role in everything I do with Python today. The things you will learn in this class will stay with you. The projects I am working on (constructing an index similar to the S&P 500, and NLP on 10-Ks) would not have made it far without what I learned in this class._
 
 _"The lectures are interactive and fun, the resources made available are vast, and the projects/assignments are challenging yet extremely rewarding. I will continue to recommend this class to every Lehigh student interested in the overlap between data science and finance."_
+
+````
+
+---
+
+````{panels}
+:column: w-75 text-justify align-items-center
+:card: border-0
+
+_"Each time someone asks me what my favorite class has been at Lehigh, I answer with FIN377 without hesitation._
+
+_"As someone with an interest in both tech and finance, this course gives practical, hands-on experience on important tools emerging across both of these fields: including topics within machine learning, data science, and predictive analytics. Not only is the course itself well-organized and filled with interesting lectures and projects, but is challenging enough so that you'll not only learn information, but retain it. This class allowed me to realize what kind of work I would be passionate about, prepared me for future interviews, internships and jobs, and gave me knowledge to pursue personal projects I am still working on nearly 2 years after class. Professor Bowen himself is also a great resource - he genuinely cares about each student's success in the classroom and will take the time to work with you on difficult assignments. If any of the above sounds remotely interesting, take the class!"_
+
+---
+:column: w-25 text-center p-0
+
+**Anders Seline**
+```{image} img/anders.jpg
+:alt: anders
+```
 
 ````
