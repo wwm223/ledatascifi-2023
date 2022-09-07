@@ -19,15 +19,16 @@ Somehow, I am still a Lions fan, even though stints in AZ, CA, PA, NY, TX, and F
  <b> TA - Mike Rich  </b>
 </p>
 ^^^
-```{image} img/mikerich.jpeg
+```{image} img/mike.png
 :alt: mike
 ```
 <br>
 Personal website:  <a href="https://mikebrich.github.io/">https://mikebrich.github.io/</a> <br>
+Linkedin: <a href="https://www.linkedin.com/in/michaelrich01/">https://www.linkedin.com/in/michaelrich01/</a> <br>
 Email: mbr223  <br>
 GitHub: mikebrich  <br> 
 <br>
-TODO 
+I am a senior studying Financial Engineering with special interests in startups, traveling (still yet to go to Europe), and acoustic guitar. 
 ````
 
 ### Drop-in Hours are on [coursesite](https://coursesite.lehigh.edu/course/view.php?id=236371)
