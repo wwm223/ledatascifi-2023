@@ -193,3 +193,22 @@ _"As someone with an interest in both tech and finance, this course gives practi
 ```
 
 ````
+
+
+---
+
+````{panels}
+:column: w-25 text-center p-0
+:card: border-0 
+
+**Lana Butorovic**
+```{image} img/lana.png
+:alt: lana
+```
+
+---
+:column: w-75 text-justify align-items-center
+
+_"FIN377 was by far my favorite class at Lehigh. I felt as though it was the most applicable to real life. Finance and technology cannot be separated and this class is a great example of that. Learning about machine learning and natural language processing has been incredibly useful at my job at EY because it taught me how to pick up new dev skills on the go. At EY, I'm on the blockchain team so the understanding of finance and where tech fits in is incredibly important, and this class has set me up for success as it exposed me to new skills every single week and helped me develop the ability to be agile, find something I'm interested in, and learn about it on my own. Would highly recommend it for anyone who wants to be successful in the finance world."_
+
+````
