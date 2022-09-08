@@ -202,7 +202,7 @@ _"As someone with an interest in both tech and finance, this course gives practi
 :card: border-0 
 
 **Lana Butorovic**
-```{image} img/lana.png
+```{image} img/lana.jpg
 :alt: lana
 ```
 
