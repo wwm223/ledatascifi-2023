@@ -13,22 +13,6 @@ Email: deb219 <br>
 GitHub: donbowen <br> 
 <br>
 Somehow, I am still a Lions fan, even though stints in AZ, CA, PA, NY, TX, and FL has given me many chances to abandon ship!   ¯\\\_(ツ)\_/¯
----
-
-<p style="font-size:18px; line-height:24px; color:#666666; margin:0 0 10px;">  <!-- makes it like H3 -->
- <b> TA - Mike Rich  </b>
-</p>
-^^^
-```{image} img/mike.png
-:alt: mike
-```
-<br>
-Personal website:  <a href="https://mikebrich.github.io/">https://mikebrich.github.io/</a> <br>
-Linkedin: <a href="https://www.linkedin.com/in/michaelrich01/">https://www.linkedin.com/in/michaelrich01/</a> <br>
-Email: mbr223  <br>
-GitHub: mikebrich  <br> 
-<br>
-I am a senior studying Financial Engineering with special interests in startups, traveling (still yet to go to Europe), and acoustic guitar. 
 ````
 
 ### Drop-in Hours are on [coursesite](https://coursesite.lehigh.edu/course/view.php?id=236371)
