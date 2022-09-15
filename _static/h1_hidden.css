@@ -1,0 +1,4 @@
+h1.hidden {
+  visibility: hidden;
+  height: 1em;
+}

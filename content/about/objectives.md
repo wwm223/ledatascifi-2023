@@ -1,7 +1,7 @@
 ## Objectives 
 
 ```{tip}
-1. You can navigate between pages on this site by using the arrow keys on your keyboard.
+1. You can navigate between pages on this site by using the left and right arrow keys on your keyboard.
 2. Read the entire syllabus and schedule/help sections before class starts. I promise it'll be worth it. 
 ```
 
