@@ -89,7 +89,7 @@ ul.sidenav_l1:not(.current) {
             mobile site specs 
 ------------------------------------------- */
 
-@media print, screen and (max-width: 800px) {
+@media screen and (max-width: 800px) {
 
 	.margin {
 		display: none;
@@ -112,3 +112,43 @@ ul.sidenav_l1:not(.current) {
 	}
 }
 
+/* -------------------------------------------
+            print: only the main div  
+------------------------------------------- */
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .col-md-9, .col-md-9 * {
+	visibility: visible
+  }
+	
+  .col-md-9  {
+	flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+
+	div.sphinx-bs.container {
+		min-width: 100% !important;
+		margin-left:0;
+	}
+	
+	/* show all tabs */ 
+	
+	.tabbed-set {
+	display: block !important;
+	}
+
+	.tabbed-set > .tabbed-content {
+		display: block;
+	}
+
+	.tabbed-set > label {
+	color: var(--tabs-color-label-active) !important;
+	}	
+	
+	/* dropdowns suck, closed by default, but idk how to 
+	inject JS that opens them all */
+
+}
