@@ -19,8 +19,7 @@ Somehow, I am still a Lions fan, even though stints in AZ, CA, PA, NY, TX, and F
 <b> TA - Mike Rich  </b>
 </p>
 ^^^
-```{image} 
-img/mike.png
+```{image} img/mike.png
 :alt: mike
 ```
 Personal website:  <a href="https://mikebrich.github.io/">https://mikebrich.github.io/</a> <br>
