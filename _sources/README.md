@@ -5,9 +5,10 @@ This readme is meant for myself and TAs, not students.
 This repo is the 2023 edition of LeDataSciFi. The [ledatascifi.github.io](https://ledatascifi.github.io) repo hosts the website, but simply redirects to the cover page for _**this**_ repo. In future years, make a new years' website as a new repo by cloning this one (don't forget the GH action that deploys it!), and alter the redirect from the ledatascifi.github.io to the new website. 
 
 This repo contains the textbook, course details, data, and lecture files, making it simpler to move from year to year. The only portion of class _**outside**_ this repo is
-    - the org has teams for discussion and many repos for assignments, etc
-    - coursesite to send out assignment links, Zoom links, and schedule office hours appointments from within the Lehigh "gates"
-    - the schedule and weekly tasks that are embedded in the dashboard page are an excel file on my computer
+- the org has teams for discussion and many repos for assignments, etc
+- the class's discussion group is where I post assignment links, Zoom links, and schedule office hours appointments in a non-public place
+- coursesite exists only to get initial link to join org to students
+- the schedule and weekly tasks that are embedded in the dashboard page are an excel file on my computer
 
 ## Updating the website 
 
