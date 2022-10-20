@@ -15,3 +15,7 @@ sphinx-book-theme==0.0.39
 docutils==0.16 
 Jinja2<3.1
 
+# between Sept 28 22 and Oct 7 22, something else broke... 
+# action errors mention this package, and 4.12.0 had worked...
+
+importlib-metadata<5
