@@ -11,6 +11,7 @@ If you're curious about taking the class, awesome! I suggest reading about
 1. [What you'll get from the course](about/outcomes) 
 1. [Cool things prior students have done](about/hall_of_awesomeness) 
 1. [How you can succeed in class](about/interest), even if you have little to no coding background
+1. [The suggested pre-class bootcamp](about/bootcamp) will get you up to speed and ready for class.
 
 <hr>
 
