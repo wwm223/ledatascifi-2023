@@ -31,8 +31,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../_static/frontpage.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../_static/fin377_specialformatting.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
@@ -904,22 +904,22 @@ const thebe_selector_output = ".output, .cell_output"
 <p>We will plot with 3 datasets this week. Let’s load them.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import datetime
 
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">pandas_datareader</span> <span class="k">as</span> <span class="nn">pdr</span>  <span class="c1"># IF NECESSARY, from terminal: pip install pandas_datareader</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">default_rng</span>
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import pandas_datareader as pdr  # IF NECESSARY, from terminal: pip install pandas_datareader
+import seaborn as sns
+from numpy.random import default_rng
 
-<span class="c1"># these three are used to open the CCM dataset:</span>
-<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
-<span class="kn">from</span> <span class="nn">zipfile</span> <span class="kn">import</span> <span class="n">ZipFile</span>
-<span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span>
+# these three are used to open the CCM dataset:
+from io import BytesIO
+from zipfile import ZipFile
+from urllib.request import urlopen
 
-<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s2">&quot;display.max_rows&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># display option for pandas</span>
-<span class="c1"># more here: https://pandas.pydata.org/pandas-docs/stable/user_guide/options.html</span>
+pd.set_option(&quot;display.max_rows&quot;, 10)  # display option for pandas
+# more here: https://pandas.pydata.org/pandas-docs/stable/user_guide/options.html
 </pre></div>
 </div>
 </div>
@@ -928,39 +928,40 @@ const thebe_selector_output = ".output, .cell_output"
 <h2>Load macro_data<a class="headerlink" href="#load-macro-data" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># LOAD DATA AND CONVERT TO ANNUAL</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># LOAD DATA AND CONVERT TO ANNUAL
 
-<span class="n">start</span> <span class="o">=</span> <span class="mi">1990</span> <span class="c1"># pandas datareader can infer these are years</span>
-<span class="n">end</span> <span class="o">=</span> <span class="mi">2018</span>
-<span class="n">macro_data</span> <span class="o">=</span> <span class="n">pdr</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataReader</span><span class="p">([</span><span class="s1">&#39;CAUR&#39;</span><span class="p">,</span><span class="s1">&#39;MIUR&#39;</span><span class="p">,</span><span class="s1">&#39;PAUR&#39;</span><span class="p">,</span> <span class="c1"># unemployment </span>
-                                  <span class="s1">&#39;LXXRSA&#39;</span><span class="p">,</span><span class="s1">&#39;DEXRSA&#39;</span><span class="p">,</span><span class="s1">&#39;WDXRSA&#39;</span><span class="p">,</span> <span class="c1"># case shiller index in LA, Detroit, DC (no PA  available!)</span>
-                                  <span class="s1">&#39;MEHOINUSCAA672N&#39;</span><span class="p">,</span><span class="s1">&#39;MEHOINUSMIA672N&#39;</span><span class="p">,</span><span class="s1">&#39;MEHOINUSPAA672N&#39;</span><span class="p">],</span> <span class="c1">#  </span>
-                                 <span class="s1">&#39;fred&#39;</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
-<span class="n">macro_data</span> <span class="o">=</span> <span class="n">macro_data</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="c1"># get&#39;s the first observation for each variable in a given year</span>
+start = 1990 # pandas datareader can infer these are years
+end = 2018
+macro_data = pdr.data.DataReader([&#39;CAUR&#39;,&#39;MIUR&#39;,&#39;PAUR&#39;, # unemployment 
+                                  &#39;LXXRSA&#39;,&#39;DEXRSA&#39;,&#39;WDXRSA&#39;, # case shiller index in LA, Detroit, DC (no PA  available!)
+                                  &#39;MEHOINUSCAA672N&#39;,&#39;MEHOINUSMIA672N&#39;,&#39;MEHOINUSPAA672N&#39;], #  
+                                 &#39;fred&#39;, start, end)
+macro_data = macro_data.resample(&#39;Y&#39;).first() # get&#39;s the first observation for each variable in a given year
 
-<span class="c1"># CLEAN UP THE FORMATING SOMEWHAT</span>
+# CLEAN UP THE FORMATING SOMEWHAT
 
-<span class="n">macro_data</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">macro_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">year</span>
-<span class="n">macro_data</span><span class="o">.</span><span class="n">columns</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_tuples</span><span class="p">([</span>
-    <span class="p">(</span><span class="s1">&#39;Unemployment&#39;</span><span class="p">,</span><span class="s1">&#39;CA&#39;</span><span class="p">),(</span><span class="s1">&#39;Unemployment&#39;</span><span class="p">,</span><span class="s1">&#39;MI&#39;</span><span class="p">),(</span><span class="s1">&#39;Unemployment&#39;</span><span class="p">,</span><span class="s1">&#39;PA&#39;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;HouseIdx&#39;</span><span class="p">,</span><span class="s1">&#39;CA&#39;</span><span class="p">),(</span><span class="s1">&#39;HouseIdx&#39;</span><span class="p">,</span><span class="s1">&#39;MI&#39;</span><span class="p">),(</span><span class="s1">&#39;HouseIdx&#39;</span><span class="p">,</span><span class="s1">&#39;PA&#39;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;MedIncome&#39;</span><span class="p">,</span><span class="s1">&#39;CA&#39;</span><span class="p">),(</span><span class="s1">&#39;MedIncome&#39;</span><span class="p">,</span><span class="s1">&#39;MI&#39;</span><span class="p">),(</span><span class="s1">&#39;MedIncome&#39;</span><span class="p">,</span><span class="s1">&#39;PA&#39;</span><span class="p">)</span>
-    <span class="p">])</span>
+macro_data.index = macro_data.index.year
+macro_data.columns=pd.MultiIndex.from_tuples([
+    (&#39;Unemployment&#39;,&#39;CA&#39;),(&#39;Unemployment&#39;,&#39;MI&#39;),(&#39;Unemployment&#39;,&#39;PA&#39;),
+    (&#39;HouseIdx&#39;,&#39;CA&#39;),(&#39;HouseIdx&#39;,&#39;MI&#39;),(&#39;HouseIdx&#39;,&#39;PA&#39;),
+    (&#39;MedIncome&#39;,&#39;CA&#39;),(&#39;MedIncome&#39;,&#39;MI&#39;),(&#39;MedIncome&#39;,&#39;PA&#39;)
+    ])
+
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year_state_tall</span> <span class="o">=</span> <span class="n">macro_data</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;level_1&#39;</span><span class="p">:</span><span class="s1">&#39;state&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;state&#39;</span><span class="p">,</span><span class="s1">&#39;DATE&#39;</span><span class="p">])</span>    
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>year_state_tall = macro_data.stack().reset_index().rename(columns={&#39;level_1&#39;:&#39;state&#39;}).sort_values([&#39;state&#39;,&#39;DATE&#39;])    
 
-<span class="n">year_state_wide</span> <span class="o">=</span> <span class="n">macro_data</span>
-<span class="c1"># one level names</span>
-<span class="n">year_state_wide</span><span class="o">.</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span>
-    <span class="s1">&#39;Unemployment_CA&#39;</span><span class="p">,</span><span class="s1">&#39;Unemployment_MI&#39;</span><span class="p">,</span><span class="s1">&#39;Unemployment_PA&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;HouseIdx_CA&#39;</span><span class="p">,</span><span class="s1">&#39;HouseIdx_MI&#39;</span><span class="p">,</span><span class="s1">&#39;HouseIdx_PA&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;MedIncome_CA&#39;</span><span class="p">,</span><span class="s1">&#39;MedIncome_MI&#39;</span><span class="p">,</span><span class="s1">&#39;MedIncome_PA&#39;</span>
-    <span class="p">]</span>
+year_state_wide = macro_data
+# one level names
+year_state_wide.columns=[
+    &#39;Unemployment_CA&#39;,&#39;Unemployment_MI&#39;,&#39;Unemployment_PA&#39;,
+    &#39;HouseIdx_CA&#39;,&#39;HouseIdx_MI&#39;,&#39;HouseIdx_PA&#39;,
+    &#39;MedIncome_CA&#39;,&#39;MedIncome_MI&#39;,&#39;MedIncome_PA&#39;
+    ]
 </pre></div>
 </div>
 </div>
@@ -971,18 +972,18 @@ const thebe_selector_output = ".output, .cell_output"
 <p>First, load the data</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/LeDataSciFi/data/blob/main/Firm%20Year%20Datasets%20(Compustat)/CCM_cleaned_for_class.zip?raw=true&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>url = &#39;https://github.com/LeDataSciFi/data/blob/main/Firm%20Year%20Datasets%20(Compustat)/CCM_cleaned_for_class.zip?raw=true&#39;
 
-<span class="c1">#firms = pd.read_stata(url)   </span>
-<span class="c1"># &lt;-- that code would work, but GH said it was too big and</span>
-<span class="c1"># forced me to zip it, so here is the work around to download it:</span>
+#firms = pd.read_stata(url)   
+# &lt;-- that code would work, but GH said it was too big and
+# forced me to zip it, so here is the work around to download it:
 
-<span class="k">with</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">request</span><span class="p">:</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+with urlopen(url) as request:
+    data = BytesIO(request.read())
 
-<span class="k">with</span> <span class="n">ZipFile</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="k">as</span> <span class="n">archive</span><span class="p">:</span>
-    <span class="k">with</span> <span class="n">archive</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">archive</span><span class="o">.</span><span class="n">namelist</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span> <span class="k">as</span> <span class="n">stata</span><span class="p">:</span>
-        <span class="n">ccm</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_stata</span><span class="p">(</span><span class="n">stata</span><span class="p">)</span>
+with ZipFile(data) as archive:
+    with archive.open(archive.namelist()[0]) as stata:
+        ccm = pd.read_stata(stata)
 </pre></div>
 </div>
 </div>
@@ -998,24 +999,24 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># install new package (run this one time only)</span>
-<span class="c1"># !pip install pandas-profiling[notebook]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># install new package (run this one time only)
+# !pip install pandas-profiling[notebook]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pandas_profiling</span> <span class="kn">import</span> <span class="n">ProfileReport</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from pandas_profiling import ProfileReport
 
-<span class="c1"># create the report:</span>
-<span class="c1"># profile = ProfileReport(macro_data, title=&quot;Pandas Profiling Report&quot;)</span>
-<span class="c1"># profile</span>
+# create the report:
+# profile = ProfileReport(macro_data, title=&quot;Pandas Profiling Report&quot;)
+# profile
 
-<span class="c1">### THIS WON&#39;T RUN ON macro_data yet:</span>
-<span class="c1">### NEED TO ADJUST THIS DATASET TO RUN A PROFILE</span>
-<span class="c1">### COLUMN NAMES NEED TO BE SINGLE LEVEL STRINGS (NOT MULTIINDEX COL NAMES)</span>
-<span class="c1">### OR CONVERT TO TALL SHAPE</span>
+### THIS WON&#39;T RUN ON macro_data yet:
+### NEED TO ADJUST THIS DATASET TO RUN A PROFILE
+### COLUMN NAMES NEED TO BE SINGLE LEVEL STRINGS (NOT MULTIINDEX COL NAMES)
+### OR CONVERT TO TALL SHAPE
 </pre></div>
 </div>
 </div>
@@ -1051,13 +1052,13 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ccm[&#39;xrd_a&#39;].describe()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># ccm[&#39;xrd_a&#39;].describe()
 
-<span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">ccm</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;xrd_a &lt; .5 &amp; xrd_a &gt; 0&#39;</span><span class="p">)[</span><span class="s1">&#39;xrd_a&#39;</span><span class="p">],</span>  <span class="c1"># reduced the data to make plot more visible</span>
-             <span class="n">kde</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="c1"># plt.title(&#39;R&amp;D Ratio Vs. Frequency&#39;, fontsize=18)</span>
-<span class="c1"># plt.xlabel(&#39;R&amp;D Ratio&#39;, fontsize =14)</span>
-<span class="c1"># plt.ylabel(&#39;Frequency&#39;, fontsize = 14)</span>
+sns.displot(data=ccm.query(&#39;xrd_a &lt; .5 &amp; xrd_a &gt; 0&#39;)[&#39;xrd_a&#39;],  # reduced the data to make plot more visible
+             kde=False)
+# plt.title(&#39;R&amp;D Ratio Vs. Frequency&#39;, fontsize=18)
+# plt.xlabel(&#39;R&amp;D Ratio&#39;, fontsize =14)
+# plt.ylabel(&#39;Frequency&#39;, fontsize = 14)
 </pre></div>
 </div>
 </div>

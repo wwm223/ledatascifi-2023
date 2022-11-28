@@ -41,8 +41,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/frontpage.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/fin377_specialformatting.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
@@ -903,7 +903,7 @@ const thebe_selector_output = ".output, .cell_output"
 <h1>Exercise Answers<a class="headerlink" href="#exercise-answers" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
 </pre></div>
 </div>
 </div>
@@ -912,29 +912,29 @@ const thebe_selector_output = ".output, .cell_output"
 <h2>Some problems. Put your answers inside the print functions<a class="headerlink" href="#some-problems-put-your-answers-inside-the-print-functions" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;array a:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = np.arange(4).reshape((2,2))
+print(&quot;array a:&quot;)
+print(a)
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Maximum value of a:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">max</span><span class="p">())</span> <span class="c1"># put your answer inside the print</span>
+print(&quot;\nMaximum value of a:&quot;)
+print(a.max()) # put your answer inside the print
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Minimum value of a:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="c1"># put your answer inside the print</span>
+print(&quot;\nMinimum value of a:&quot;)
+print(a.min()) # put your answer inside the print
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Return an array of the max in each column of a:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+print(&quot;\nReturn an array of the max in each column of a:&quot;)
+print(a.max(axis=0))
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Return an array of the min in each row of a:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+print(&quot;\nReturn an array of the min in each row of a:&quot;)
+print(a.max(axis=1))
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Return a, sorted within each row:&quot;</span><span class="p">)</span>
-<span class="n">a</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+print(&quot;\nReturn a, sorted within each row:&quot;)
+a.sort()
+print(a)
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Return a, sorted within each column:&quot;</span><span class="p">)</span>
-<span class="n">a</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+print(&quot;\nReturn a, sorted within each column:&quot;)
+a.sort(axis=1)
+print(a)
 </pre></div>
 </div>
 </div>
@@ -968,18 +968,18 @@ Return a, sorted within each column:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">20</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;array b:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b = np.arange(40).reshape((20,2))
+print(&quot;array b:&quot;)
+print(b)
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Print elements of the first column of b above that column&#39;s 80th percentile:&quot;</span><span class="p">)</span>
-<span class="n">p80</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">b</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="mi">80</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span>   <span class="n">b</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">&gt;</span><span class="n">p80</span>   <span class="p">,</span> <span class="mi">0</span><span class="p">])</span>   
-<span class="c1">#b[:,0]&gt;p80 finds the rows of b where the first columns value is above p80</span>
-<span class="c1">#b[ that, 0] prints the firms column</span>
+print(&quot;\nPrint elements of the first column of b above that column&#39;s 80th percentile:&quot;)
+p80 = np.percentile(b[:,0],80)
+print(b[   b[:,0]&gt;p80   , 0])   
+#b[:,0]&gt;p80 finds the rows of b where the first columns value is above p80
+#b[ that, 0] prints the firms column
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Covariance matrix of the columns of b:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">T</span><span class="p">))</span>
+print(&quot;\nCovariance matrix of the columns of b:&quot;)
+print(np.cov(b.T))
 </pre></div>
 </div>
 </div>

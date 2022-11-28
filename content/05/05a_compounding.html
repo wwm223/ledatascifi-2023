@@ -41,8 +41,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/frontpage.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/fin377_specialformatting.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
@@ -946,31 +946,31 @@ r[0,T] = \left(\prod_{t=1}^T R_t\right) - 1
 <p>Here are two ways to accomplish the compounding:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">df</span>
-   <span class="c1"># compute gross returns for each asset</span>
-   <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">R</span> <span class="o">=</span> <span class="mi">1</span><span class="o">+</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;ret&#39;</span><span class="p">])</span>
-   <span class="c1"># for each portfolio and time period...</span>
-   <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;asset&#39;</span><span class="p">,</span><span class="s1">&#39;timeperiod&#39;</span><span class="p">])</span>
-   <span class="c1"># get the gross returns, and cumulate by taking the product</span>
-   <span class="p">[</span><span class="s1">&#39;R&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">prod</span><span class="p">()</span>
-   <span class="c1"># subtract one to get back to simple returns</span>
-   <span class="o">-</span><span class="mi">1</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>(df
+   # compute gross returns for each asset
+   .assign(R = 1+df[&#39;ret&#39;])
+   # for each portfolio and time period...
+   .groupby([&#39;asset&#39;,&#39;timeperiod&#39;])
+   # get the gross returns, and cumulate by taking the product
+   [&#39;R&#39;].prod()
+   # subtract one to get back to simple returns
+   -1
+)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">df</span>
- <span class="c1"># for each asset and time period</span>
- <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;asset&quot;</span><span class="p">,</span> <span class="s2">&quot;timeperiod&quot;</span><span class="p">])</span>
- <span class="c1"># agg() does the function inside for each group (asset-timeperiod combo)</span>
- <span class="c1"># 1+x[&#39;ret&#39;] gets gross return (R) for each observation in the data</span>
- <span class="c1"># (1+x{&#39;ret&#39;]).prod() takes the product of all R for that group</span>
- <span class="c1"># and then subtract one</span>
- <span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">ret</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">((</span><span class="mi">1</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;ret&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">prod</span><span class="p">())</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>(df
+ # for each asset and time period
+ .groupby([&quot;asset&quot;, &quot;timeperiod&quot;])
+ # agg() does the function inside for each group (asset-timeperiod combo)
+ # 1+x[&#39;ret&#39;] gets gross return (R) for each observation in the data
+ # (1+x{&#39;ret&#39;]).prod() takes the product of all R for that group
+ # and then subtract one
+ .agg(ret=lambda x: ((1 + x[&quot;ret&quot;]).prod()) - 1)
+)
 </pre></div>
 </div>
 </div>
@@ -997,15 +997,15 @@ r[0,T] = \left(\prod_{t=1}^T R_t\right) - 1
 <p>The code looks like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">df</span>
- <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">logR</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">df</span><span class="o">.</span><span class="n">ret</span><span class="p">))</span>
- <span class="c1"># for each asset and time period</span>
- <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;asset&quot;</span><span class="p">,</span> <span class="s2">&quot;timeperiod&quot;</span><span class="p">])</span>
- <span class="c1"># sum log returns</span>
- <span class="p">[</span><span class="s1">&#39;logR&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
- <span class="c1"># exponentiate and subtract 1</span>
- <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">ret</span> <span class="o">=</span> <span class="n">binlambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;logR&#39;</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>(df
+ .assign(logR = np.log(1+df.ret))
+ # for each asset and time period
+ .groupby([&quot;asset&quot;, &quot;timeperiod&quot;])
+ # sum log returns
+ [&#39;logR&#39;].sum()
+ # exponentiate and subtract 1
+ .assign(ret = binlambda x: np.exp(x[&#39;logR&#39;])-1
+)
 </pre></div>
 </div>
 </div>

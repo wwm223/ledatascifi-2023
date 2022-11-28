@@ -30,17 +30,15 @@ GitHub: mikebrich  <br>
 I am a senior studying Financial Engineering with special interests in startups, traveling (still yet to go to Europe), and acoustic guitar.
 ````
 
-### Drop-in Hours are on [coursesite](https://coursesite.lehigh.edu/course/view.php?id=236371)
+### Drop-in Hours aka "Office Hours"
 
-Aka "Office Hours". 
+They are listed on the [discussion board for your class](https://github.com/orgs/LeDataSciFi/teams/). **Office hour schedules can and do change during the semester, so please check back!** 
 
 ```{note}  
 **I suspect that the initial learning curve will be steep, so we have posted a lot of office hours. Around Valentines Day, we will reduce our explicit office hours. Remember, when you get stuck, _especially_ on installation and set up issues,**
 - look at the [help](help) page
 - post a question in our [classmates team](https://github.com/orgs/LeDataSciFi/teams/classmates-2023)
 - check out the [resources](resources) page and the [tips](tips) page
-
-**Office hour schedules are subject to change, so please check back!** 
 ```
 
 

@@ -31,8 +31,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../_static/frontpage.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../_static/fin377_specialformatting.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
@@ -1011,13 +1011,13 @@ const thebe_selector_output = ".output, .cell_output"
 <p><img alt="" src="https://media.giphy.com/media/yoJC2K6rCzwNY2EngA/giphy.gif" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
-<span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <span class="n">ols</span> <span class="k">as</span> <span class="n">sm_ols</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+import pandas as pd
+import seaborn as sns
+import statsmodels.api as sm
+from sklearn.linear_model import LinearRegression
+from statsmodels.formula.api import ols as sm_ols
+import matplotlib.pyplot as plt
 </pre></div>
 </div>
 </div>
@@ -1037,8 +1037,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/LeDataSciFi/data/blob/main/Fannie%20Mae/Fannie_Mae_Plus_Data.gzip?raw=true&#39;</span>
-<span class="n">fannie_mae</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">compression</span><span class="o">=</span><span class="s1">&#39;gzip&#39;</span><span class="p">)</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>url = &#39;https://github.com/LeDataSciFi/data/blob/main/Fannie%20Mae/Fannie_Mae_Plus_Data.gzip?raw=true&#39;
+fannie_mae = pd.read_csv(url,compression=&#39;gzip&#39;) 
 </pre></div>
 </div>
 </div>
@@ -1053,17 +1053,17 @@ const thebe_selector_output = ".output, .cell_output"
 <p>These variables are pretty straightforward:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fannie_mae</span> <span class="o">=</span> <span class="p">(</span><span class="n">fannie_mae</span>
-                  <span class="c1"># create variables</span>
-                  <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">l_credscore</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">fannie_mae</span><span class="p">[</span><span class="s1">&#39;Borrower_Credit_Score_at_Origination&#39;</span><span class="p">]),</span>
-                          <span class="n">l_LTV</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">fannie_mae</span><span class="p">[</span><span class="s1">&#39;Original_LTV_(OLTV)&#39;</span><span class="p">]),</span>
-                          <span class="n">Origination_Date</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;Origination_Date&#39;</span><span class="p">]),</span>
-                          <span class="n">Origination_Year</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;Origination_Date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">,</span>
-                          <span class="n">const</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-                          <span class="n">great</span> <span class="o">=</span> <span class="n">fannie_mae</span><span class="p">[</span><span class="s1">&#39;Borrower_Credit_Score_at_Origination&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">800</span>
-                         <span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fannie_mae = (fannie_mae
+                  # create variables
+                  .assign(l_credscore = np.log(fannie_mae[&#39;Borrower_Credit_Score_at_Origination&#39;]),
+                          l_LTV = np.log(fannie_mae[&#39;Original_LTV_(OLTV)&#39;]),
+                          Origination_Date = lambda x: pd.to_datetime(x[&#39;Origination_Date&#39;]),
+                          Origination_Year = lambda x: x[&#39;Origination_Date&#39;].dt.year,
+                          const = 1,
+                          great = fannie_mae[&#39;Borrower_Credit_Score_at_Origination&#39;] &gt;= 800
+                         )
               
-             <span class="p">)</span>
+             )
 </pre></div>
 </div>
 </div>
@@ -1071,11 +1071,11 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Credit rating is a number between 0 and 850. But in some analysis, it might make sense to have categories of credit ratings (e.g. bad to good). I borrowed <a class="reference external" href="https://www.experian.com/blogs/ask-experian/infographic-what-are-the-different-scoring-ranges/">these cutoffs from experian.</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a categorical bin var with &quot;pd.cut()&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># create a categorical bin var with &quot;pd.cut()&quot;
 
-<span class="n">fannie_mae</span><span class="p">[</span><span class="s1">&#39;creditbins&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">fannie_mae</span><span class="p">[</span><span class="s1">&#39;Borrower_Credit_Score_at_Origination&#39;</span><span class="p">],</span>
-                                 <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">579</span><span class="p">,</span><span class="mi">669</span><span class="p">,</span><span class="mi">739</span><span class="p">,</span><span class="mi">799</span><span class="p">,</span><span class="mi">850</span><span class="p">],</span>
-                                 <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Very Poor&#39;</span><span class="p">,</span><span class="s1">&#39;Fair&#39;</span><span class="p">,</span><span class="s1">&#39;Good&#39;</span><span class="p">,</span><span class="s1">&#39;Very Good&#39;</span><span class="p">,</span><span class="s1">&#39;Exceptional&#39;</span><span class="p">])</span>
+fannie_mae[&#39;creditbins&#39;]= pd.cut(fannie_mae[&#39;Borrower_Credit_Score_at_Origination&#39;],
+                                 [0,579,669,739,799,850],
+                                 labels=[&#39;Very Poor&#39;,&#39;Fair&#39;,&#39;Good&#39;,&#39;Very Good&#39;,&#39;Exceptional&#39;])
 </pre></div>
 </div>
 </div>
@@ -1083,17 +1083,17 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Here is the variable that created. I notice that 669 (right on the threshold of a bin) goes into the “Fair” bin instead of “Good”.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fannie_mae</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">5</span><span class="p">,[</span><span class="s1">&#39;Borrower_Credit_Score_at_Origination&#39;</span><span class="p">,</span><span class="s1">&#39;creditbins&#39;</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fannie_mae.loc[:5,[&#39;Borrower_Credit_Score_at_Origination&#39;,&#39;creditbins&#39;]]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># pd.cut took credit , var number between 0 and 850,</span>
-<span class="c1"># and changed it to bins. I labeled the bins explicitly</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># pd.cut took credit , var number between 0 and 850,
+# and changed it to bins. I labeled the bins explicitly
 
-<span class="n">fannie_mae</span><span class="p">[</span><span class="s1">&#39;creditbins&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+fannie_mae[&#39;creditbins&#39;].value_counts(dropna=False)
 </pre></div>
 </div>
 </div>

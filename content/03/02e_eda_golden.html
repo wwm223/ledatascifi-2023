@@ -41,8 +41,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/frontpage.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/fin377_specialformatting.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
@@ -1052,18 +1052,18 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import a famous dataset, seaborn nicely contains it out of the box!</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span> 
-<span class="n">iris</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;iris&#39;</span><span class="p">)</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># import a famous dataset, seaborn nicely contains it out of the box!
+import seaborn as sns 
+iris = sns.load_dataset(&#39;iris&#39;) 
 
-<span class="nb">print</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">head</span><span class="p">(),</span>  <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">---&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">tail</span><span class="p">(),</span>  <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">---&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">---&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The shape is: &quot;</span><span class="p">,</span><span class="n">iris</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">---&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Info:&quot;</span><span class="p">,</span><span class="n">iris</span><span class="o">.</span><span class="n">info</span><span class="p">(),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">---&#39;</span><span class="p">)</span> <span class="c1"># memory usage, name, dtype, and # of non-null obs (--&gt; # of missing obs) per variable</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">describe</span><span class="p">(),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">---&#39;</span><span class="p">)</span> <span class="c1"># summary stats, and you can customize the list!</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">iris</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[:</span><span class="mi">10</span><span class="p">],</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">---&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">iris</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">(),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">---&#39;</span><span class="p">)</span>
+print(iris.head(),  &#39;\n---&#39;)
+print(iris.tail(),  &#39;\n---&#39;)
+print(iris.columns, &#39;\n---&#39;)
+print(&quot;The shape is: &quot;,iris.shape, &#39;\n---&#39;)
+print(&quot;Info:&quot;,iris.info(), &#39;\n---&#39;) # memory usage, name, dtype, and # of non-null obs (--&gt; # of missing obs) per variable
+print(iris.describe(), &#39;\n---&#39;) # summary stats, and you can customize the list!
+print(iris[&#39;species&#39;].value_counts()[:10], &#39;\n---&#39;)
+print(iris[&#39;species&#39;].nunique(), &#39;\n---&#39;)
 </pre></div>
 </div>
 </div>
@@ -1130,25 +1130,25 @@ Name: species, dtype: int64
 <p>First, let’s download our slice of it. The variables are listed and described in a csv file in the <a class="reference external" href="https://github.com/LeDataSciFi/data">org’s data folder.</a></p>
 <div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="c1"># these three are used to download the file</span>
-<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
-<span class="kn">from</span> <span class="nn">zipfile</span> <span class="kn">import</span> <span class="n">ZipFile</span>
-<span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+import numpy as np
+# these three are used to download the file
+from io import BytesIO
+from zipfile import ZipFile
+from urllib.request import urlopen
 
-<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/LeDataSciFi/data/blob/main/Firm%20Year%20Datasets%20(Compustat)/CCM_cleaned_for_class.zip?raw=true&#39;</span>
+url = &#39;https://github.com/LeDataSciFi/data/blob/main/Firm%20Year%20Datasets%20(Compustat)/CCM_cleaned_for_class.zip?raw=true&#39;
 
-<span class="c1">#firms = pd.read_stata(url)   </span>
-<span class="c1"># &lt;-- that code would work, but GH said it was too big and</span>
-<span class="c1"># forced me to zip it, so here is the work around to download it:</span>
+#firms = pd.read_stata(url)   
+# &lt;-- that code would work, but GH said it was too big and
+# forced me to zip it, so here is the work around to download it:
 
-<span class="k">with</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">request</span><span class="p">:</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+with urlopen(url) as request:
+    data = BytesIO(request.read())
 
-<span class="k">with</span> <span class="n">ZipFile</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="k">as</span> <span class="n">archive</span><span class="p">:</span>
-    <span class="k">with</span> <span class="n">archive</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">archive</span><span class="o">.</span><span class="n">namelist</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span> <span class="k">as</span> <span class="n">stata</span><span class="p">:</span>
-        <span class="n">ccm</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_stata</span><span class="p">(</span><span class="n">stata</span><span class="p">)</span>
+with ZipFile(data) as archive:
+    with archive.open(archive.namelist()[0]) as stata:
+        ccm = pd.read_stata(stata)
 </pre></div>
 </div>
 </div>
@@ -1156,7 +1156,7 @@ Name: species, dtype: int64
 <p>There are too many variables to print <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> nicely. Here’s a trick: transpose the table:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ccm</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:,.2f}</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1"># by transposing it, I can see more variables</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ccm.describe().T.style.format(&#39;{:,.2f}&#39;) # by transposing it, I can see more variables
 </pre></div>
 </div>
 </div>
@@ -1639,8 +1639,8 @@ Name: species, dtype: int64
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># a table approach to support the list of variables above</span>
-<span class="n">ccm</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">percentiles</span><span class="o">=</span><span class="p">[</span><span class="mf">.01</span><span class="p">,</span><span class="mf">.05</span><span class="p">,</span><span class="mf">.95</span><span class="p">,</span><span class="mf">.99</span><span class="p">])</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:,.2f}</span><span class="s1">&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># a table approach to support the list of variables above
+ccm.describe(percentiles=[.01,.05,.95,.99]).T.style.format(&#39;{:,.2f}&#39;)
 </pre></div>
 </div>
 </div>
@@ -2181,20 +2181,20 @@ Name: species, dtype: int64
 <p>Below is a list of variables that are missing values for more than 10% of the dataset. Future work will need to understand why there are missing values and understand whether and how we should deal with them.</p>
 <div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
-    <span class="p">(</span> <span class="c1"># these lines do the calculation - what % of missing values are there for each var</span>
-        <span class="n">ccm</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>      <span class="c1"># ccm.isna() TURNS every obs/variable = 1 when its missing and 0 else</span>
-       <span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>     <span class="c1"># count the number of na for each variable (now data is 1 obs per column = # missing)</span>
-        <span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">ccm</span><span class="p">)</span>       <span class="c1"># convert # missing to % missing </span>
-        <span class="o">*</span><span class="mi">100</span>            <span class="c1"># report as percentage</span>
-    <span class="p">)</span> 
-    <span class="c1"># you can stop here and report this...</span>
-    <span class="c1"># but I wanted to format it a bit...</span>
-    <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[:</span><span class="mi">13</span><span class="p">]</span>
-    <span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;% missing&#39;</span><span class="p">)</span> <span class="c1"># the next line only works on a frame, and because pandas sees only 1 variable at this pt</span>
-    <span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:.1f}</span><span class="s2">&quot;</span><span class="p">)</span>     <span class="c1"># in the code, it calls this a &quot;series&quot; type object, so convert it to dataframe type object</span>
-<span class="p">)</span>
-<span class="c1">#</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>(
+    ( # these lines do the calculation - what % of missing values are there for each var
+        ccm.isna()      # ccm.isna() TURNS every obs/variable = 1 when its missing and 0 else
+       .sum(axis=0)     # count the number of na for each variable (now data is 1 obs per column = # missing)
+        /len(ccm)       # convert # missing to % missing 
+        *100            # report as percentage
+    ) 
+    # you can stop here and report this...
+    # but I wanted to format it a bit...
+    .sort_values(ascending=False)[:13]
+    .to_frame(name=&#39;% missing&#39;) # the next line only works on a frame, and because pandas sees only 1 variable at this pt
+    .style.format(&quot;{:.1f}&quot;)     # in the code, it calls this a &quot;series&quot; type object, so convert it to dataframe type object
+)
+#
 </pre></div>
 </div>
 </div>

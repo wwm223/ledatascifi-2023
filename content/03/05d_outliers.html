@@ -41,8 +41,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/frontpage.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/fin377_specialformatting.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
@@ -937,29 +937,30 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Let’s download our firm data (<code class="docutils literal notranslate"><span class="pre">ccm</span></code>).</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># copied from 3.3.4.1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># copied from 3.3.4.1
 
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="c1"># these three are used to download the file</span>
-<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
-<span class="kn">from</span> <span class="nn">zipfile</span> <span class="kn">import</span> <span class="n">ZipFile</span>
-<span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span>
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+# these three are used to download the file
+from io import BytesIO
+from zipfile import ZipFile
+from urllib.request import urlopen
 
-<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/LeDataSciFi/ledatascifi-2023/blob/main/data/CCM_cleaned_for_class.zip?raw=true&#39;</span>
+url = &#39;https://github.com/LeDataSciFi/ledatascifi-2023/blob/main/data/CCM_cleaned_for_class.zip?raw=true&#39;
 
-<span class="c1">#firms = pd.read_stata(url)   </span>
-<span class="c1"># &lt;-- that code would work, but GH said it was too big and</span>
-<span class="c1"># forced me to zip it, so here is the work around to download it:</span>
+#firms = pd.read_stata(url)   
+# &lt;-- that code would work, but GH said it was too big and
+# forced me to zip it, so here is the work around to download it:
 
-<span class="k">with</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">request</span><span class="p">:</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+with urlopen(url) as request:
+    data = BytesIO(request.read())
 
-<span class="k">with</span> <span class="n">ZipFile</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="k">as</span> <span class="n">archive</span><span class="p">:</span>
-    <span class="k">with</span> <span class="n">archive</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">archive</span><span class="o">.</span><span class="n">namelist</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span> <span class="k">as</span> <span class="n">stata</span><span class="p">:</span>
-        <span class="n">ccm</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_stata</span><span class="p">(</span><span class="n">stata</span><span class="p">)</span>				
+with ZipFile(data) as archive:
+    with archive.open(archive.namelist()[0]) as stata:
+        ccm = pd.read_stata(stata)				
+
 </pre></div>
 </div>
 </div>
@@ -967,68 +968,69 @@ const thebe_selector_output = ".output, .cell_output"
 <p>And load a utility function called <code class="docutils literal notranslate"><span class="pre">outlier_report</span></code> from the <a class="reference external" href="https://github.com/LeDataSciFi/ledatascifi-2023/blob/main/community_codebook/outlier_report.py">community codebook</a>.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">outlier_report</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">vars_to_examine</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">thres</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
-                   <span class="n">return_df</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">no_print</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    df : DATAFRAME</span>
-<span class="sd">        Input dataframe</span>
-<span class="sd">    vars_to_examine : LIST, optional</span>
-<span class="sd">        List of variables to examine from dataframe. The default is df.columns.</span>
-<span class="sd">    color : STRING, optional</span>
-<span class="sd">        Color for cell highlighting. The default is &#39;red&#39;.</span>
-<span class="sd">    thres : int, optional</span>
-<span class="sd">        Highlight cells where z score is above thres. The default is 4.</span>
-<span class="sd">    return_df : Boolean, optional</span>
-<span class="sd">        If true, will return the df obj (without styling) for further use. </span>
-<span class="sd">        The default is False.</span>
-<span class="sd">    no_print : Boolean, optional</span>
-<span class="sd">        If true, will not print. </span>
-<span class="sd">        The default is False.</span>
-<span class="sd">    </span>
-<span class="sd">    Displays (if no_print=False)</span>
-<span class="sd">    -------</span>
-<span class="sd">    Table with distribution of z-scores of variables of interest. </span>
-<span class="sd">    </span>
-<span class="sd">    Returns (if return_df=True)</span>
-<span class="sd">    -------</span>
-<span class="sd">    Table with distribution of z-scores of variables of interest (without styling).     </span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def outlier_report(df,vars_to_examine=None,color=&#39;red&#39;,thres=4,
+                   return_df=False,no_print=False):
+    &#39;&#39;&#39;
+    Parameters
+    ----------
+    df : DATAFRAME
+        Input dataframe
+    vars_to_examine : LIST, optional
+        List of variables to examine from dataframe. The default is df.columns.
+    color : STRING, optional
+        Color for cell highlighting. The default is &#39;red&#39;.
+    thres : int, optional
+        Highlight cells where z score is above thres. The default is 4.
+    return_df : Boolean, optional
+        If true, will return the df obj (without styling) for further use. 
+        The default is False.
+    no_print : Boolean, optional
+        If true, will not print. 
+        The default is False.
+    
+    Displays (if no_print=False)
+    -------
+    Table with distribution of z-scores of variables of interest. 
+    
+    Returns (if return_df=True)
+    -------
+    Table with distribution of z-scores of variables of interest (without styling).     
+    &#39;&#39;&#39;
         
-    <span class="k">def</span> <span class="nf">highlight_extreme</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Highlight extreme values in a series.</span>
-<span class="sd">        &#39;&#39;&#39;</span>
-        <span class="n">is_extreme</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">thres</span>
-        <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;background-color: &#39;</span><span class="o">+</span><span class="n">color</span> <span class="k">if</span> <span class="n">v</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">is_extreme</span><span class="p">]</span>
+    def highlight_extreme(s):
+        &#39;&#39;&#39;
+        Highlight extreme values in a series.
+        &#39;&#39;&#39;
+        is_extreme = abs(s) &gt; thres
+        return [&#39;background-color: &#39;+color if v else &#39;&#39; for v in is_extreme]
     
-    <span class="k">if</span> <span class="n">vars_to_examine</span><span class="o">==</span><span class="kc">None</span><span class="p">:</span>
-        <span class="n">vars_to_examine</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+    if vars_to_examine==None:
+        vars_to_examine=df.columns
     
-    <span class="n">_tab</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="c1"># compute z scores</span>
-            <span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="n">vars_to_examine</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="n">vars_to_examine</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="o">/</span><span class="n">df</span><span class="p">[</span><span class="n">vars_to_examine</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
-            <span class="c1"># output dist of z   </span>
-            <span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">percentiles</span><span class="o">=</span><span class="p">[</span><span class="mf">.01</span><span class="p">,</span><span class="mf">.05</span><span class="p">,</span><span class="mf">.25</span><span class="p">,</span><span class="mf">.5</span><span class="p">,</span><span class="mf">.75</span><span class="p">,</span><span class="mf">.95</span><span class="p">,</span><span class="mf">.99</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
-            <span class="c1"># add a new column = highest of min and max column</span>
-            <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">max_z_abs</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[[</span><span class="s1">&#39;min&#39;</span><span class="p">,</span><span class="s1">&#39;max&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-            <span class="c1"># now sort on it</span>
-            <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;max_z_abs&#39;</span><span class="p">,</span><span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
-    <span class="p">)</span>
+    _tab = (
+            # compute z scores
+            ((df[vars_to_examine] - df[vars_to_examine].mean())/df[vars_to_examine].std())
+            # output dist of z   
+            .describe(percentiles=[.01,.05,.25,.5,.75,.95,.99]).T
+            # add a new column = highest of min and max column
+            .assign(max_z_abs = lambda x: x[[&#39;min&#39;,&#39;max&#39;]].abs().max(axis=1))
+            # now sort on it
+            .sort_values(&#39;max_z_abs&#39;,ascending = False)
+    )
     
-    <span class="k">if</span> <span class="n">no_print</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+    if no_print == False:
         
-        <span class="n">fdict</span> <span class="o">=</span> <span class="p">{</span> <span class="n">c</span><span class="p">:(</span><span class="s1">&#39;</span><span class="si">{:,.2f}</span><span class="s1">&#39;</span> <span class="k">if</span> <span class="n">c</span> <span class="o">!=</span> <span class="s1">&#39;count&#39;</span> <span class="k">else</span>  <span class="s1">&#39;</span><span class="si">{:,.0f}</span><span class="s1">&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">_tab</span><span class="o">.</span><span class="n">columns</span>   <span class="p">}</span>
+        fdict = { c:(&#39;{:,.2f}&#39; if c != &#39;count&#39; else  &#39;{:,.0f}&#39;) for c in _tab.columns   }
 
-        <span class="n">display</span><span class="p">(</span><span class="n">_tab</span>
-             <span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fdict</span><span class="p">)</span>
-                   <span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">highlight_extreme</span><span class="p">,</span> 
-                          <span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="s1">&#39;1%&#39;</span><span class="p">,</span> <span class="s1">&#39;5%&#39;</span><span class="p">,</span> <span class="s1">&#39;25%&#39;</span><span class="p">,</span> <span class="s1">&#39;50%&#39;</span><span class="p">,</span> <span class="s1">&#39;75%&#39;</span><span class="p">,</span> <span class="s1">&#39;95%&#39;</span><span class="p">,</span><span class="s1">&#39;99%&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="s1">&#39;max_z_abs&#39;</span><span class="p">])</span>
-        <span class="p">)</span> 
+        display(_tab
+             .style.format(fdict)
+                   .apply(highlight_extreme, 
+                          subset=[&#39;mean&#39;, &#39;std&#39;, &#39;min&#39;, &#39;1%&#39;, &#39;5%&#39;, &#39;25%&#39;, &#39;50%&#39;, &#39;75%&#39;, &#39;95%&#39;,&#39;99%&#39;, &#39;max&#39;, &#39;max_z_abs&#39;])
+        ) 
     
-    <span class="k">if</span> <span class="n">return_df</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">_tab</span>
+    if return_df == True:
+        return _tab
+
 </pre></div>
 </div>
 </div>
@@ -1036,14 +1038,14 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Now we can pick the variables we want to check and use our utility function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vars_to_check</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;l_a&#39;</span><span class="p">,</span> <span class="s1">&#39;l_sale&#39;</span><span class="p">,</span> <span class="s1">&#39;prof_a&#39;</span><span class="p">,</span> <span class="s1">&#39;mb&#39;</span><span class="p">,</span> <span class="s1">&#39;ppe_a&#39;</span><span class="p">,</span> <span class="s1">&#39;capx_a&#39;</span><span class="p">,</span> <span class="s1">&#39;xrd_a&#39;</span><span class="p">,</span> 
-                 <span class="s1">&#39;cash_a&#39;</span><span class="p">,</span> <span class="s1">&#39;div_d&#39;</span><span class="p">,</span> <span class="s1">&#39;td_a&#39;</span><span class="p">,</span> <span class="s1">&#39;td_mv&#39;</span><span class="p">,</span> <span class="s1">&#39;dltt_a&#39;</span><span class="p">,</span> <span class="s1">&#39;dv_a&#39;</span><span class="p">,</span> 	<span class="s1">&#39;invopps_FG09&#39;</span><span class="p">,</span>
-                 <span class="s1">&#39;sales_g&#39;</span><span class="p">,</span> <span class="s1">&#39;short_debt&#39;</span><span class="p">,</span> <span class="s1">&#39;long_debt_dum&#39;</span><span class="p">,</span> <span class="s1">&#39;atr&#39;</span><span class="p">,</span> <span class="s1">&#39;smalltaxlosscarry&#39;</span><span class="p">,</span> 
-                 <span class="s1">&#39;largetaxlosscarry&#39;</span><span class="p">,</span> <span class="s1">&#39;tnic3hhi&#39;</span><span class="p">,</span> <span class="s1">&#39;tnic3tsimm&#39;</span><span class="p">,</span> <span class="s1">&#39;prodmktfluid&#39;</span><span class="p">,</span> 
-                 <span class="s1">&#39;delaycon&#39;</span><span class="p">,</span> <span class="s1">&#39;equitydelaycon&#39;</span><span class="p">,</span> <span class="s1">&#39;debtdelaycon&#39;</span><span class="p">,</span> <span class="s1">&#39;privdelaycon&#39;</span><span class="p">,</span> <span class="s1">&#39;l_emp&#39;</span><span class="p">,</span>
-                 <span class="s1">&#39;l_ppent&#39;</span><span class="p">,</span> <span class="s1">&#39;l_laborratio&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>vars_to_check = [&#39;l_a&#39;, &#39;l_sale&#39;, &#39;prof_a&#39;, &#39;mb&#39;, &#39;ppe_a&#39;, &#39;capx_a&#39;, &#39;xrd_a&#39;, 
+                 &#39;cash_a&#39;, &#39;div_d&#39;, &#39;td_a&#39;, &#39;td_mv&#39;, &#39;dltt_a&#39;, &#39;dv_a&#39;, 	&#39;invopps_FG09&#39;,
+                 &#39;sales_g&#39;, &#39;short_debt&#39;, &#39;long_debt_dum&#39;, &#39;atr&#39;, &#39;smalltaxlosscarry&#39;, 
+                 &#39;largetaxlosscarry&#39;, &#39;tnic3hhi&#39;, &#39;tnic3tsimm&#39;, &#39;prodmktfluid&#39;, 
+                 &#39;delaycon&#39;, &#39;equitydelaycon&#39;, &#39;debtdelaycon&#39;, &#39;privdelaycon&#39;, &#39;l_emp&#39;,
+                 &#39;l_ppent&#39;, &#39;l_laborratio&#39;]
 
-<span class="n">outlier_report</span><span class="p">(</span><span class="n">ccm</span><span class="p">,</span><span class="n">vars_to_check</span><span class="p">,</span><span class="n">thres</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+outlier_report(ccm,vars_to_check,thres=4)
 </pre></div>
 </div>
 </div>
@@ -1560,9 +1562,9 @@ const thebe_selector_output = ".output, .cell_output"
 <p>And you can extract a list of problematic variables from this function too:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vars_with_big_outliers</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">outlier_report</span><span class="p">(</span><span class="n">ccm</span><span class="p">,</span><span class="n">vars_to_check</span><span class="p">,</span><span class="n">thres</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">return_df</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">no_print</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-                              <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;max_z_abs &gt; 5&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">vars_with_big_outliers</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>vars_with_big_outliers = list(outlier_report(ccm,vars_to_check,thres=4,return_df=True,no_print=True)
+                              .query(&#39;max_z_abs &gt; 5&#39;).index)
+print(vars_with_big_outliers)
 </pre></div>
 </div>
 </div>
@@ -1617,22 +1619,22 @@ const thebe_selector_output = ".output, .cell_output"
 <p><strong>First let’s look at the min and max of each variable:</strong></p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">practice_df</span> <span class="o">=</span> <span class="n">ccm</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="c1"># don&#39;t do this &quot;copy&quot; step in your code</span>
-                         <span class="c1"># just run the remaining lines, replacing the</span>
-                         <span class="c1"># practice_df&#39;s name with the name of the df</span>
-                         <span class="c1"># you&#39;re working on</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>practice_df = ccm.copy() # don&#39;t do this &quot;copy&quot; step in your code
+                         # just run the remaining lines, replacing the
+                         # practice_df&#39;s name with the name of the df
+                         # you&#39;re working on
 
-<span class="c1"># output summary stats</span>
-<span class="p">(</span><span class="n">practice_df</span>
- <span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">percentiles</span><span class="o">=</span><span class="p">[</span><span class="mf">.01</span><span class="p">,</span><span class="mf">.05</span><span class="p">,</span><span class="mf">.25</span><span class="p">,</span><span class="mf">.5</span><span class="p">,</span><span class="mf">.75</span><span class="p">,</span><span class="mf">.95</span><span class="p">,</span><span class="mf">.99</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
- <span class="c1"># add a new column = highest of min and max column</span>
- <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">abs_maxmin</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[[</span><span class="s1">&#39;min&#39;</span><span class="p">,</span><span class="s1">&#39;max&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
- <span class="c1"># now sort on it</span>
- <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;abs_maxmin&#39;</span><span class="p">,</span><span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
- <span class="p">[[</span><span class="s1">&#39;count&#39;</span><span class="p">,</span><span class="s1">&#39;min&#39;</span><span class="p">,</span><span class="s1">&#39;1%&#39;</span><span class="p">,</span><span class="s2">&quot;99%&quot;</span><span class="p">,</span><span class="s1">&#39;max&#39;</span><span class="p">]]</span> <span class="c1"># only need these to see winsorizing in action</span>
- <span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">13</span><span class="p">]</span> <span class="c1"># just print a few vars</span>
- <span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:,.2f}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="p">)</span>        
+# output summary stats
+(practice_df
+ .describe(percentiles=[.01,.05,.25,.5,.75,.95,.99]).T
+ # add a new column = highest of min and max column
+ .assign(abs_maxmin = lambda x: x[[&#39;min&#39;,&#39;max&#39;]].abs().max(axis=1))
+ # now sort on it
+ .sort_values(&#39;abs_maxmin&#39;,ascending = False)
+ [[&#39;count&#39;,&#39;min&#39;,&#39;1%&#39;,&quot;99%&quot;,&#39;max&#39;]] # only need these to see winsorizing in action
+ [11:13] # just print a few vars
+ .style.format(&#39;{:,.2f}&#39;)
+)        
 </pre></div>
 </div>
 </div>
@@ -1674,17 +1676,17 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Now let’s load a version of the function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">winsorizer_with_missing</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">low_</span><span class="o">=</span><span class="mf">.01</span><span class="p">,</span><span class="n">hi_</span><span class="o">=</span><span class="mf">.99</span><span class="p">,</span><span class="n">cols</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span> 
-    <span class="c1"># this function, with more features and explanation</span>
-    <span class="c1"># is in the community codebook!</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def winsorizer_with_missing(df,low_=.01,hi_=.99,cols=None): 
+    # this function, with more features and explanation
+    # is in the community codebook!
     
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">cols</span><span class="p">:</span> <span class="c1"># if no cols provides, winsorize all columns</span>
-        <span class="n">cols</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+    if not cols: # if no cols provides, winsorize all columns
+        cols=df.columns
         
-    <span class="n">df</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">lower</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">low_</span><span class="p">),</span>
-                             <span class="n">upper</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">hi_</span><span class="p">),</span>
-                             <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">df</span>
+    df[cols] = df[cols].clip(lower=df[cols].quantile(low_),
+                             upper=df[cols].quantile(hi_),
+                             axis=1)
+    return df
 </pre></div>
 </div>
 </div>
@@ -1692,17 +1694,17 @@ const thebe_selector_output = ".output, .cell_output"
 <p>When we use <code class="docutils literal notranslate"><span class="pre">winsorizer_with_missing</span></code>, the data is changed and now the min and max equal the 1/99 percentiles!</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
-    <span class="c1">#winsorize - remember, I am showing you an example</span>
-    <span class="n">winsorizer_with_missing</span><span class="p">(</span><span class="n">practice_df</span><span class="p">,</span>
-                            <span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;prof_a&#39;</span><span class="p">,</span><span class="s1">&#39;tnic3tsimm&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>(
+    #winsorize - remember, I am showing you an example
+    winsorizer_with_missing(practice_df,
+                            cols = [&#39;prof_a&#39;,&#39;tnic3tsimm&#39;])
 
-    <span class="c1"># print the output:    </span>
-    <span class="p">[[</span><span class="s1">&#39;prof_a&#39;</span><span class="p">,</span><span class="s1">&#39;tnic3tsimm&#39;</span><span class="p">]]</span>
-    <span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">percentiles</span><span class="o">=</span><span class="p">[</span><span class="mf">.01</span><span class="p">,</span><span class="mf">.99</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
-    <span class="p">[[</span><span class="s1">&#39;count&#39;</span><span class="p">,</span><span class="s1">&#39;min&#39;</span><span class="p">,</span><span class="s1">&#39;1%&#39;</span><span class="p">,</span><span class="s2">&quot;99%&quot;</span><span class="p">,</span><span class="s1">&#39;max&#39;</span><span class="p">]]</span> <span class="c1"># only need these to see winsorizing in action</span>
-    <span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:,.2f}</span><span class="s1">&#39;</span><span class="p">)</span> 
-<span class="p">)</span>    
+    # print the output:    
+    [[&#39;prof_a&#39;,&#39;tnic3tsimm&#39;]]
+    .describe(percentiles=[.01,.99]).T
+    [[&#39;count&#39;,&#39;min&#39;,&#39;1%&#39;,&quot;99%&quot;,&#39;max&#39;]] # only need these to see winsorizing in action
+    .style.format(&#39;{:,.2f}&#39;) 
+)    
 </pre></div>
 </div>
 </div>
@@ -1744,16 +1746,16 @@ const thebe_selector_output = ".output, .cell_output"
 <p>When we winsorize by a group (here, the grouping is each year), the min no longer need equal the percentile threshold. Also notice that the 1st and 99th percentile are a little different. This is ok when we winsorize by subgroups.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
-    <span class="c1"># fyear is the &quot;Fiscal year&quot; variable</span>
-    <span class="n">practice_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;fyear&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">winsorizer_with_missing</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;prof_a&#39;</span><span class="p">,</span><span class="s1">&#39;tnic3tsimm&#39;</span><span class="p">]))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>(
+    # fyear is the &quot;Fiscal year&quot; variable
+    practice_df.groupby(&#39;fyear&#39;).apply(lambda x: winsorizer_with_missing(x,cols = [&#39;prof_a&#39;,&#39;tnic3tsimm&#39;]))
     
-    <span class="c1"># print the output:    </span>
-    <span class="p">[[</span><span class="s1">&#39;prof_a&#39;</span><span class="p">,</span><span class="s1">&#39;tnic3tsimm&#39;</span><span class="p">]]</span>
-    <span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">percentiles</span><span class="o">=</span><span class="p">[</span><span class="mf">.01</span><span class="p">,</span><span class="mf">.99</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
-    <span class="p">[[</span><span class="s1">&#39;count&#39;</span><span class="p">,</span><span class="s1">&#39;min&#39;</span><span class="p">,</span><span class="s1">&#39;1%&#39;</span><span class="p">,</span><span class="s2">&quot;99%&quot;</span><span class="p">,</span><span class="s1">&#39;max&#39;</span><span class="p">]]</span> <span class="c1"># only need these to see winsorizing in action</span>
-    <span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:,.2f}</span><span class="s1">&#39;</span><span class="p">)</span> 
-<span class="p">)</span>
+    # print the output:    
+    [[&#39;prof_a&#39;,&#39;tnic3tsimm&#39;]]
+    .describe(percentiles=[.01,.99]).T
+    [[&#39;count&#39;,&#39;min&#39;,&#39;1%&#39;,&quot;99%&quot;,&#39;max&#39;]] # only need these to see winsorizing in action
+    .style.format(&#39;{:,.2f}&#39;) 
+)
 </pre></div>
 </div>
 </div>
@@ -1812,35 +1814,35 @@ const thebe_selector_output = ".output, .cell_output"
 </ol>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_orig</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;anscombe&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;dataset in [&quot;III&quot;,&quot;IV&quot;]&#39;</span><span class="p">)</span>
-<span class="n">df_plot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_orig = sns.load_dataset(&quot;anscombe&quot;).query(&#39;dataset in [&quot;III&quot;,&quot;IV&quot;]&#39;)
+df_plot = pd.DataFrame()
 
-<span class="c1"># winsorize it a bunch of times and drop it into a df to use with plotly</span>
+# winsorize it a bunch of times and drop it into a df to use with plotly
 
-<span class="k">for</span> <span class="n">tails</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mf">.01</span><span class="p">,</span><span class="mf">.05</span><span class="p">,</span><span class="mf">.1</span><span class="p">,</span><span class="mf">.15</span><span class="p">,</span><span class="mf">.2</span><span class="p">]:</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">df_orig</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-    <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">df_orig</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;dataset&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
-        <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">winsorizer_with_missing</span><span class="p">(</span><span class="n">x</span><span class="p">[[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">]],</span> <span class="n">low_</span><span class="o">=</span><span class="n">tails</span><span class="p">,</span> <span class="n">hi_</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span> <span class="n">tails</span><span class="p">)</span>
-    <span class="p">)</span>
-    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;winsorized&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">tails</span>
-    <span class="n">df_plot</span><span class="o">=</span><span class="n">df_plot</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+for tails in [0,.01,.05,.1,.15,.2]:
+    df = df_orig.copy()
+    df[[&quot;x&quot;, &quot;y&quot;]] = df_orig.groupby(&quot;dataset&quot;).apply(
+        lambda x: winsorizer_with_missing(x[[&quot;x&quot;, &quot;y&quot;]], low_=tails, hi_=1 - tails)
+    )
+    df[&#39;winsorized&#39;]=tails
+    df_plot=df_plot.append(df)
 
-<span class="c1"># the plotly mechanics</span>
+# the plotly mechanics
 
-<span class="kn">import</span> <span class="nn">warnings</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;divide by zero encountered in double_scalars&quot;</span><span class="p">)</span>
+import warnings
+warnings.filterwarnings(&quot;ignore&quot;, message=&quot;divide by zero encountered in double_scalars&quot;)
 
-<span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span> <span class="c1"># pip install plotly.. the animation below is from plotly module</span>
-<span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
-<span class="kn">from</span> <span class="nn">plotly.offline</span> <span class="kn">import</span> <span class="n">init_notebook_mode</span><span class="p">,</span> <span class="n">plot</span>
-<span class="n">init_notebook_mode</span><span class="p">(</span><span class="n">connected</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+import plotly.express as px # pip install plotly.. the animation below is from plotly module
+from IPython.core.display import display, HTML
+from plotly.offline import init_notebook_mode, plot
+init_notebook_mode(connected=True)
 
-<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_plot</span><span class="p">,</span><span class="n">trendline</span><span class="o">=</span><span class="s2">&quot;ols&quot;</span><span class="p">,</span><span class="n">facet_row</span><span class="o">=</span><span class="s2">&quot;dataset&quot;</span><span class="p">,</span>
-                  <span class="n">y</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">animation_frame</span><span class="o">=</span><span class="s2">&quot;winsorized&quot;</span><span class="p">,</span> 
-                 <span class="n">range_y</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">20</span><span class="p">],</span> <span class="n">range_x</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">14</span><span class="p">],</span><span class="n">height</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span>
-                 <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Same datasets, but I flipped the X and Y axes&quot;</span><span class="p">)</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;quartet.html&#39;</span><span class="p">,</span><span class="n">auto_play</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;quartet.html&#39;</span><span class="p">))</span>
+fig = px.scatter(df_plot,trendline=&quot;ols&quot;,facet_row=&quot;dataset&quot;,
+                  y=&#39;x&#39;, x=&#39;y&#39;, animation_frame=&quot;winsorized&quot;, 
+                 range_y=[4,20], range_x=[4,14],height=800,
+                 title = &quot;Same datasets, but I flipped the X and Y axes&quot;)
+plot(fig, filename = &#39;quartet.html&#39;,auto_play=False)
+display(HTML(&#39;quartet.html&#39;))
 </pre></div>
 </div>
 </div>

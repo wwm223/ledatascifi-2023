@@ -41,8 +41,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/frontpage.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/fin377_specialformatting.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
@@ -927,14 +927,14 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Run each cell below in little incremental bits to really see how the code blocks work.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">pandas_datareader</span> <span class="k">as</span> <span class="nn">pdr</span> <span class="c1"># IF NECESSARY, from terminal: pip install pandas_datareader </span>
-<span class="kn">import</span> <span class="nn">datetime</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+import pandas_datareader as pdr # IF NECESSARY, from terminal: pip install pandas_datareader 
+import datetime
+import numpy as np
 
-<span class="n">start</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># you can specify start and end dates this way</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2021</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">27</span><span class="p">)</span>
-<span class="n">macro_df</span> <span class="o">=</span> <span class="n">pdr</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataReader</span><span class="p">([</span><span class="s1">&#39;GDP&#39;</span><span class="p">,</span><span class="s1">&#39;CPIAUCSL&#39;</span><span class="p">,</span><span class="s1">&#39;UNRATE&#39;</span><span class="p">],</span> <span class="s1">&#39;fred&#39;</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
+start = datetime.datetime(2017, 1, 1) # you can specify start and end dates this way
+end = datetime.datetime(2021, 1, 27)
+macro_df = pdr.data.DataReader([&#39;GDP&#39;,&#39;CPIAUCSL&#39;,&#39;UNRATE&#39;], &#39;fred&#39;, start, end)
 </pre></div>
 </div>
 </div>
@@ -957,55 +957,55 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># do your work here</span>
-<span class="k">def</span> <span class="nf">insufficient_but_starting_eda</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">cat_vars_list</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    </span>
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    df : DATAFRAME</span>
-<span class="sd">    cat_vars_list : LIST, optional</span>
-<span class="sd">        A list of strings containing variable names in the dataframe</span>
-<span class="sd">        for variables where you want to see the number of unique values</span>
-<span class="sd">        and the 10 most common values. Likely used for categorical values.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># do your work here
+def insufficient_but_starting_eda(df,cat_vars_list=None):
+    &#39;&#39;&#39;
+    
+    Parameters
+    ----------
+    df : DATAFRAME
+    cat_vars_list : LIST, optional
+        A list of strings containing variable names in the dataframe
+        for variables where you want to see the number of unique values
+        and the 10 most common values. Likely used for categorical values.
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    None. It simply prints.</span>
-<span class="sd">    </span>
-<span class="sd">    Description</span>
-<span class="sd">    -------    </span>
-<span class="sd">    This function will print a MINIMUM amount of info about a new dataframe. </span>
-<span class="sd">    </span>
-<span class="sd">    You should ****look**** at all this output below and consider the data</span>
-<span class="sd">    exploration and cleaning questions from </span>
-<span class="sd">    https://ledatascifi.github.io/ledatascifi-2023/content/03/02e_eda_golden.html#member</span>
-<span class="sd">    </span>
-<span class="sd">    Also LOOK at more of the data manually. </span>
-<span class="sd">    </span>
-<span class="sd">    Then write up anything notable you observe.</span>
-<span class="sd">    </span>
-<span class="sd">    TIP: put this function in your codebook to reuse easily.</span>
-<span class="sd">    </span>
-<span class="sd">    PROTIP: Improve this function (better outputs, better formatting).</span>
-<span class="sd">    </span>
-<span class="sd">    FEATURE REQUEST: optionally print the nunique and top 10 values under the describe matrix</span>
-<span class="sd">    </span>
-<span class="sd">    FEATURE REQUEST: optionally print more stats (percentiles)</span>
-<span class="sd">    </span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(),</span>  <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">---&#39;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">(),</span>  <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">---&#39;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">---&#39;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The shape is: &quot;</span><span class="p">,</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">---&#39;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Info:&quot;</span><span class="p">,</span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">(),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">---&#39;</span><span class="p">)</span> <span class="c1"># memory usage, name, dtype, and # of non-null obs (--&gt; # of missing obs) per variable</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">(),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">---&#39;</span><span class="p">)</span> <span class="c1"># summary stats, and you can customize the list!</span>
-    <span class="k">if</span> <span class="n">cat_vars_list</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">cat_vars_list</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">var</span><span class="p">,</span><span class="s2">&quot;has&quot;</span><span class="p">,</span><span class="n">df</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">(),</span><span class="s2">&quot;values and its top 10 most common are:&quot;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">---&#39;</span><span class="p">)</span>
+    Returns
+    -------
+    None. It simply prints.
+    
+    Description
+    -------    
+    This function will print a MINIMUM amount of info about a new dataframe. 
+    
+    You should ****look**** at all this output below and consider the data
+    exploration and cleaning questions from 
+    https://ledatascifi.github.io/ledatascifi-2023/content/03/02e_eda_golden.html#member
+    
+    Also LOOK at more of the data manually. 
+    
+    Then write up anything notable you observe.
+    
+    TIP: put this function in your codebook to reuse easily.
+    
+    PROTIP: Improve this function (better outputs, better formatting).
+    
+    FEATURE REQUEST: optionally print the nunique and top 10 values under the describe matrix
+    
+    FEATURE REQUEST: optionally print more stats (percentiles)
+    
+    &#39;&#39;&#39;
+    print(df.head(),  &#39;\n---&#39;)
+    print(df.tail(),  &#39;\n---&#39;)
+    print(df.columns, &#39;\n---&#39;)
+    print(&quot;The shape is: &quot;,df.shape, &#39;\n---&#39;)
+    print(&quot;Info:&quot;,df.info(), &#39;\n---&#39;) # memory usage, name, dtype, and # of non-null obs (--&gt; # of missing obs) per variable
+    print(df.describe(), &#39;\n---&#39;) # summary stats, and you can customize the list!
+    if cat_vars_list != None:
+        for var in cat_vars_list:
+            print(var,&quot;has&quot;,df[var].nunique(),&quot;values and its top 10 most common are:&quot;)
+            print(df[var].value_counts().head(10), &#39;\n---&#39;)
         
-<span class="n">insufficient_but_starting_eda</span><span class="p">(</span><span class="n">macro_df</span><span class="p">,[</span><span class="s1">&#39;UNRATE&#39;</span><span class="p">])</span>  
+insufficient_but_starting_eda(macro_df,[&#39;UNRATE&#39;])  
 </pre></div>
 </div>
 </div>
@@ -1088,16 +1088,16 @@ Name: UNRATE, dtype: int64
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># do your work here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># do your work here
 
-<span class="c1"># v1:</span>
-<span class="n">part2_df</span> <span class="o">=</span> <span class="n">pdr</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataReader</span><span class="p">([</span><span class="s1">&#39;GDPCA&#39;</span><span class="p">],</span> <span class="s1">&#39;fred&#39;</span><span class="p">,</span> <span class="mi">1960</span><span class="p">,</span> <span class="mi">2018</span><span class="p">)</span> 
-<span class="n">part2_df</span><span class="p">[</span><span class="s1">&#39;real_gdp_pct&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">part2_df</span><span class="p">[</span><span class="s1">&#39;GDPCA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span>
-<span class="n">part2_df</span><span class="p">[</span><span class="s1">&#39;real_gdp_pct&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+# v1:
+part2_df = pdr.data.DataReader([&#39;GDPCA&#39;], &#39;fred&#39;, 1960, 2018) 
+part2_df[&#39;real_gdp_pct&#39;] = part2_df[&#39;GDPCA&#39;].pct_change()
+part2_df[&#39;real_gdp_pct&#39;].mean()
 
-<span class="c1"># prof notes: after students present, go through, bit by bit</span>
-<span class="c1"># then add comments (a la psuedo), </span>
-<span class="c1"># reiter access var: df[var], how methods apply to obj df[var].func()</span>
+# prof notes: after students present, go through, bit by bit
+# then add comments (a la psuedo), 
+# reiter access var: df[var], how methods apply to obj df[var].func()
 </pre></div>
 </div>
 </div>
@@ -1109,9 +1109,9 @@ Name: UNRATE, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># v1.1: chain the last 2 lines together</span>
-<span class="n">part2_df</span> <span class="o">=</span> <span class="n">pdr</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataReader</span><span class="p">([</span><span class="s1">&#39;GDPCA&#39;</span><span class="p">],</span> <span class="s1">&#39;fred&#39;</span><span class="p">,</span> <span class="mi">1960</span><span class="p">,</span> <span class="mi">2018</span><span class="p">)</span> 
-<span class="n">part2_df</span><span class="p">[</span><span class="s1">&#39;GDPCA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># v1.1: chain the last 2 lines together
+part2_df = pdr.data.DataReader([&#39;GDPCA&#39;], &#39;fred&#39;, 1960, 2018) 
+part2_df[&#39;GDPCA&#39;].pct_change().mean()
 </pre></div>
 </div>
 </div>
@@ -1123,17 +1123,17 @@ Name: UNRATE, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># v1.2 that last line could be:    </span>
-<span class="p">(</span><span class="n">part2_df</span>
-     <span class="o">.</span><span class="n">pct_change</span><span class="p">()</span>
-     <span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># v1.2 that last line could be:    
+(part2_df
+     .pct_change()
+     .mean()
      
-<span class="p">)</span>
+)
 
-<span class="c1"># explain reasons for chaining: readable, no temp objects</span>
+# explain reasons for chaining: readable, no temp objects
 
-<span class="c1"># breaking this up into 3 lines is silly but shows chaining over multiple lines</span>
-<span class="c1"># how can we add the first line (the DL) into this? (next block)</span>
+# breaking this up into 3 lines is silly but shows chaining over multiple lines
+# how can we add the first line (the DL) into this? (next block)
 </pre></div>
 </div>
 </div>
@@ -1146,29 +1146,29 @@ dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># v2.0: chaining - but involves a lambda function work around</span>
-<span class="c1"># don&#39;t cover until we go over lambdas</span>
-<span class="p">(</span>
-    <span class="c1"># DL data</span>
-    <span class="n">pdr</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataReader</span><span class="p">([</span><span class="s1">&#39;GDPCA&#39;</span><span class="p">,</span><span class="s1">&#39;GDPA&#39;</span><span class="p">],</span> <span class="s1">&#39;fred&#39;</span><span class="p">,</span> <span class="mi">1960</span><span class="p">,</span> <span class="mi">2018</span><span class="p">)</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># v2.0: chaining - but involves a lambda function work around
+# don&#39;t cover until we go over lambdas
+(
+    # DL data
+    pdr.data.DataReader([&#39;GDPCA&#39;,&#39;GDPA&#39;], &#39;fred&#39;, 1960, 2018) 
     
-    <span class="c1"># create the var</span>
-    <span class="c1"># syntax is: .assign(newname = fcn(df(var)))</span>
-    <span class="c1"># try this:</span>
-    <span class="c1">#.assign(sillyvar=1)</span>
-    <span class="c1"># but this df doesn&#39;t have a name! how do we access it?</span>
-    <span class="c1"># trick: &quot;lambda&quot; function. </span>
-    <span class="c1">#        here x is the object that assign is working on,</span>
-    <span class="c1">#        meaning what ever is produced right before .assign</span>
-    <span class="c1">#        which is just the **df** we DLed on the line above</span>
-    <span class="c1">#</span>
-    <span class="c1"># this is VERY COMMON in pandas chaining:</span>
-    <span class="c1"># .assign(newvarname = lambda &lt;tempnameforpriorobj&gt;:  &lt;do stuff to tempnameforpriorobj&gt;   )       </span>
-    <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">real_gdp_pct</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;GDPCA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">())</span>
+    # create the var
+    # syntax is: .assign(newname = fcn(df(var)))
+    # try this:
+    #.assign(sillyvar=1)
+    # but this df doesn&#39;t have a name! how do we access it?
+    # trick: &quot;lambda&quot; function. 
+    #        here x is the object that assign is working on,
+    #        meaning what ever is produced right before .assign
+    #        which is just the **df** we DLed on the line above
+    #
+    # this is VERY COMMON in pandas chaining:
+    # .assign(newvarname = lambda &lt;tempnameforpriorobj&gt;:  &lt;do stuff to tempnameforpriorobj&gt;   )       
+    .assign(real_gdp_pct = lambda x: x[&#39;GDPCA&#39;].pct_change())
     
-    <span class="c1"># grab the var and take its mean</span>
-    <span class="p">[</span><span class="s1">&#39;real_gdp_pct&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="p">)</span>
+    # grab the var and take its mean
+    [&#39;real_gdp_pct&#39;].mean()
+)
 </pre></div>
 </div>
 </div>
@@ -1180,15 +1180,15 @@ dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># v2.1: chaining - clean</span>
-<span class="p">(</span>
-    <span class="c1"># DL data</span>
-    <span class="n">pdr</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataReader</span><span class="p">([</span><span class="s1">&#39;GDPCA&#39;</span><span class="p">,</span><span class="s1">&#39;GDPA&#39;</span><span class="p">],</span> <span class="s1">&#39;fred&#39;</span><span class="p">,</span> <span class="mi">1960</span><span class="p">,</span> <span class="mi">2018</span><span class="p">)</span> 
-    <span class="c1"># create var</span>
-    <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">real_gdp_pct</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;GDPCA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">())</span>
-    <span class="c1"># get mean value</span>
-    <span class="p">[</span><span class="s1">&#39;real_gdp_pct&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># v2.1: chaining - clean
+(
+    # DL data
+    pdr.data.DataReader([&#39;GDPCA&#39;,&#39;GDPA&#39;], &#39;fred&#39;, 1960, 2018) 
+    # create var
+    .assign(real_gdp_pct = lambda x: x[&#39;GDPCA&#39;].pct_change())
+    # get mean value
+    [&#39;real_gdp_pct&#39;].mean()
+)
 </pre></div>
 </div>
 </div>
@@ -1200,24 +1200,24 @@ dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Q5:</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="c1"># v2.1: chaining - clean</span>
-<span class="p">(</span>
-    <span class="c1"># DL data</span>
-    <span class="n">pdr</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataReader</span><span class="p">([</span><span class="s1">&#39;GDPCA&#39;</span><span class="p">,</span><span class="s1">&#39;GDPA&#39;</span><span class="p">],</span> <span class="s1">&#39;fred&#39;</span><span class="p">,</span> <span class="mi">1960</span><span class="p">,</span> <span class="mi">2018</span><span class="p">)</span> 
-    <span class="c1"># create var pct change</span>
-    <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">real_gdp_pct</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;GDPCA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">())</span>
-    <span class="c1"># get the decade from the index (do this BIT BY BIT)</span>
-    <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span> <span class="c1"># turn it into variable</span>
-        <span class="c1"># how to pull year out of date?</span>
-        <span class="c1"># DATE is a datetime series. dt is a way to access properities of the date </span>
-    <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">decade</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">DATE</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span>
-    <span class="c1"># for each decade = groupby!</span>
-    <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;decade&#39;</span><span class="p">)</span>
-    <span class="c1"># take mean</span>
-    <span class="p">[</span><span class="s1">&#39;real_gdp_pct&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Q5:
+import numpy as np
+# v2.1: chaining - clean
+(
+    # DL data
+    pdr.data.DataReader([&#39;GDPCA&#39;,&#39;GDPA&#39;], &#39;fred&#39;, 1960, 2018) 
+    # create var pct change
+    .assign(real_gdp_pct = lambda x: x[&#39;GDPCA&#39;].pct_change())
+    # get the decade from the index (do this BIT BY BIT)
+    .reset_index() # turn it into variable
+        # how to pull year out of date?
+        # DATE is a datetime series. dt is a way to access properities of the date 
+    .assign(decade = lambda x: np.floor(x.DATE.dt.year/10)*10)
+    # for each decade = groupby!
+    .groupby(&#39;decade&#39;)
+    # take mean
+    [&#39;real_gdp_pct&#39;].mean()
+)
 </pre></div>
 </div>
 </div>
@@ -1240,30 +1240,30 @@ Name: real_gdp_pct, dtype: float64
 <p>First, I’ll load January data on unemployment, the Case-Shiller housing index, and median household income in three states (CA/MI/PA).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># LOAD DATA AND CONVERT TO ANNUAL</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># LOAD DATA AND CONVERT TO ANNUAL
 
-<span class="n">start</span> <span class="o">=</span> <span class="mi">1990</span> <span class="c1"># pandas datareader can infer these are years</span>
-<span class="n">end</span> <span class="o">=</span> <span class="mi">2018</span>
-<span class="n">macro_data</span> <span class="o">=</span> <span class="n">pdr</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataReader</span><span class="p">([</span><span class="s1">&#39;CAUR&#39;</span><span class="p">,</span><span class="s1">&#39;MIUR&#39;</span><span class="p">,</span><span class="s1">&#39;PAUR&#39;</span><span class="p">,</span> <span class="c1"># unemployment </span>
-                                  <span class="s1">&#39;LXXRSA&#39;</span><span class="p">,</span><span class="s1">&#39;DEXRSA&#39;</span><span class="p">,</span><span class="s1">&#39;WDXRSA&#39;</span><span class="p">,</span> <span class="c1"># case shiller index in LA, Detroit, DC (no PA  available!)</span>
-                                  <span class="s1">&#39;MEHOINUSCAA672N&#39;</span><span class="p">,</span><span class="s1">&#39;MEHOINUSMIA672N&#39;</span><span class="p">,</span><span class="s1">&#39;MEHOINUSPAA672N&#39;</span><span class="p">],</span> <span class="c1">#  </span>
-                                 <span class="s1">&#39;fred&#39;</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
-<span class="n">macro_data</span> <span class="o">=</span> <span class="n">macro_data</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="c1"># get&#39;s the first observation for each variable in a given year</span>
+start = 1990 # pandas datareader can infer these are years
+end = 2018
+macro_data = pdr.data.DataReader([&#39;CAUR&#39;,&#39;MIUR&#39;,&#39;PAUR&#39;, # unemployment 
+                                  &#39;LXXRSA&#39;,&#39;DEXRSA&#39;,&#39;WDXRSA&#39;, # case shiller index in LA, Detroit, DC (no PA  available!)
+                                  &#39;MEHOINUSCAA672N&#39;,&#39;MEHOINUSMIA672N&#39;,&#39;MEHOINUSPAA672N&#39;], #  
+                                 &#39;fred&#39;, start, end)
+macro_data = macro_data.resample(&#39;Y&#39;).first() # get&#39;s the first observation for each variable in a given year
 
-<span class="c1"># CLEAN UP THE FORMATING SOMEWHAT</span>
+# CLEAN UP THE FORMATING SOMEWHAT
 
-<span class="n">macro_data</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">macro_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">year</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2"> DATA BEFORE FORMATTING: </span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">macro_data</span><span class="p">[:</span><span class="mi">20</span><span class="p">])</span> <span class="c1"># see how the data looks now? ugly variable names, but its an annual dataset at least</span>
-<span class="n">macro_data</span><span class="o">.</span><span class="n">columns</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_tuples</span><span class="p">([</span>
-    <span class="p">(</span><span class="s1">&#39;Unemployment&#39;</span><span class="p">,</span><span class="s1">&#39;CA&#39;</span><span class="p">),(</span><span class="s1">&#39;Unemployment&#39;</span><span class="p">,</span><span class="s1">&#39;MI&#39;</span><span class="p">),(</span><span class="s1">&#39;Unemployment&#39;</span><span class="p">,</span><span class="s1">&#39;PA&#39;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;HouseIdx&#39;</span><span class="p">,</span><span class="s1">&#39;CA&#39;</span><span class="p">),(</span><span class="s1">&#39;HouseIdx&#39;</span><span class="p">,</span><span class="s1">&#39;MI&#39;</span><span class="p">),(</span><span class="s1">&#39;HouseIdx&#39;</span><span class="p">,</span><span class="s1">&#39;PA&#39;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;MedIncome&#39;</span><span class="p">,</span><span class="s1">&#39;CA&#39;</span><span class="p">),(</span><span class="s1">&#39;MedIncome&#39;</span><span class="p">,</span><span class="s1">&#39;MI&#39;</span><span class="p">),(</span><span class="s1">&#39;MedIncome&#39;</span><span class="p">,</span><span class="s1">&#39;PA&#39;</span><span class="p">)</span>
-    <span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2"> DATA AFTER FORMATTING: </span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">macro_data</span><span class="p">[:</span><span class="mi">20</span><span class="p">])</span> <span class="c1"># this is a dataset that is &quot;wide&quot;, and now </span>
-                       <span class="c1"># the column variable names have 2 levels - var name, </span>
-                       <span class="c1"># and unit/state that variable applies to</span>
+macro_data.index = macro_data.index.year
+print(&quot;\n\n DATA BEFORE FORMATTING: \n\n&quot;)
+print(macro_data[:20]) # see how the data looks now? ugly variable names, but its an annual dataset at least
+macro_data.columns=pd.MultiIndex.from_tuples([
+    (&#39;Unemployment&#39;,&#39;CA&#39;),(&#39;Unemployment&#39;,&#39;MI&#39;),(&#39;Unemployment&#39;,&#39;PA&#39;),
+    (&#39;HouseIdx&#39;,&#39;CA&#39;),(&#39;HouseIdx&#39;,&#39;MI&#39;),(&#39;HouseIdx&#39;,&#39;PA&#39;),
+    (&#39;MedIncome&#39;,&#39;CA&#39;),(&#39;MedIncome&#39;,&#39;MI&#39;),(&#39;MedIncome&#39;,&#39;PA&#39;)
+    ])
+print(&quot;\n\n DATA AFTER FORMATTING: \n\n&quot;)
+print(macro_data[:20]) # this is a dataset that is &quot;wide&quot;, and now 
+                       # the column variable names have 2 levels - var name, 
+                       # and unit/state that variable applies to
 </pre></div>
 </div>
 </div>
@@ -1378,26 +1378,26 @@ DATE
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># do your work here: </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># do your work here: 
 
-<span class="c1"># let&#39;s pseudocode</span>
+# let&#39;s pseudocode
 
-<span class="c1"># q6 </span>
-<span class="c1"># get decade variable</span>
-<span class="c1"># get annual change/difference (level) in unemploy for each state</span>
-<span class="c1"># average unemploy for each state within decade</span>
+# q6 
+# get decade variable
+# get annual change/difference (level) in unemploy for each state
+# average unemploy for each state within decade
 
-<span class="c1"># q7</span>
-<span class="c1"># get decade variable</span>
-<span class="c1"># get annual pct change in house price and income for each state</span>
-<span class="c1"># average those for each state within decade</span>
+# q7
+# get decade variable
+# get annual pct change in house price and income for each state
+# average those for each state within decade
 
-<span class="c1"># HEY! those are similar - let&#39;s combine:</span>
+# HEY! those are similar - let&#39;s combine:
 
-<span class="c1"># get decade variable</span>
-<span class="c1"># get annual change in unemploy for each state</span>
-<span class="c1"># get annual pct change in house price and income for each state</span>
-<span class="c1"># average unemploy for each state within decade</span>
+# get decade variable
+# get annual change in unemploy for each state
+# get annual pct change in house price and income for each state
+# average unemploy for each state within decade
 </pre></div>
 </div>
 </div>
@@ -1409,37 +1409,37 @@ DATE
 HINT: <a class="reference internal" href="../02/10_Golden_3.html"><span class="doc std std-doc">ABCD</span></a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.float_format&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{:,.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.set_option(&#39;display.float_format&#39;, &#39;{:,.2f}&#39;.format)
 
-<span class="p">(</span>
-    <span class="c1"># reformat the data to tall:</span>
-    <span class="n">macro_data</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">swaplevel</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;level_0&#39;</span><span class="p">:</span><span class="s1">&#39;state&#39;</span><span class="p">})</span>
+(
+    # reformat the data to tall:
+    macro_data.stack().swaplevel().sort_index().reset_index().rename(columns={&#39;level_0&#39;:&#39;state&#39;})
     
-    <span class="c1"># create vars &lt;---- this is not even needed to explain this block!</span>
-    <span class="o">.</span><span class="n">assign</span><span class="p">(</span>
-            <span class="n">decade</span>          <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">10</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;DATE&#39;</span><span class="p">]</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span>
-            <span class="n">unemploy_diff</span>   <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;Unemployment&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">diff</span><span class="p">(),</span>
-            <span class="n">HouseIdx_pctch</span>  <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;HouseIdx&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(),</span>
-            <span class="n">MedIncome_pctch</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;MedIncome&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span>    
-    <span class="p">)</span>
+    # create vars &lt;---- this is not even needed to explain this block!
+    .assign(
+            decade          = lambda x: 10*np.floor(x[&#39;DATE&#39;]/10).astype(int),
+            unemploy_diff   = lambda x: x[&#39;Unemployment&#39;].diff(),
+            HouseIdx_pctch  = lambda x: x[&#39;HouseIdx&#39;].pct_change(),
+            MedIncome_pctch = lambda x: x[&#39;MedIncome&#39;].pct_change()    
+    )
     
-    <span class="c1"># opt A for output:</span>
-    <span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;decade&#39;</span><span class="p">,</span>
-                 <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;state&#39;</span><span class="p">,</span>
-                 <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;unemploy_diff&#39;</span><span class="p">,</span><span class="s1">&#39;HouseIdx_pctch&#39;</span><span class="p">,</span><span class="s1">&#39;MedIncome_pctch&#39;</span><span class="p">])</span>
-    <span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="c1"># for more meaningful displays </span>
+    # opt A for output:
+    .pivot_table(index=&#39;decade&#39;,
+                 columns=&#39;state&#39;,
+                 values=[&#39;unemploy_diff&#39;,&#39;HouseIdx_pctch&#39;,&#39;MedIncome_pctch&#39;])
+    .multiply(100) # for more meaningful displays 
     
-    <span class="c1"># opt B for output + formatting (here, as percentages)</span>
-<span class="c1">#     .groupby([&#39;state&#39;,&#39;decade&#39;])</span>
-<span class="c1">#     [[&#39;unemploy_diff&#39;,&#39;HouseIdx_pctch&#39;,&#39;MedIncome_pctch&#39;]].mean()</span>
-<span class="c1">#     .multiply(100)</span>
-<span class="c1">#     # note about this: unemp isn&#39;t a % diff, but a p.p </span>
-<span class="c1">#     # so I make it explicit </span>
-<span class="c1">#     .style.format({&#39;HouseIdx_pctch&#39;: &#39;{0:,.2f}%&#39;,</span>
-<span class="c1">#                    &#39;MedIncome_pctch&#39;: &#39;{0:,.2f}%&#39;,</span>
-<span class="c1">#                    &#39;unemploy_diff&#39;: &#39;{0:,.2f} p.p.&#39;}) </span>
+    # opt B for output + formatting (here, as percentages)
+#     .groupby([&#39;state&#39;,&#39;decade&#39;])
+#     [[&#39;unemploy_diff&#39;,&#39;HouseIdx_pctch&#39;,&#39;MedIncome_pctch&#39;]].mean()
+#     .multiply(100)
+#     # note about this: unemp isn&#39;t a % diff, but a p.p 
+#     # so I make it explicit 
+#     .style.format({&#39;HouseIdx_pctch&#39;: &#39;{0:,.2f}%&#39;,
+#                    &#39;MedIncome_pctch&#39;: &#39;{0:,.2f}%&#39;,
+#                    &#39;unemploy_diff&#39;: &#39;{0:,.2f} p.p.&#39;}) 
     
-<span class="p">)</span>    
+)    
 </pre></div>
 </div>
 </div>

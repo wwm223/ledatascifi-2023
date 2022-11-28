@@ -41,8 +41,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/frontpage.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/fin377_specialformatting.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
@@ -915,41 +915,41 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas_datareader</span> <span class="k">as</span> <span class="nn">pdr</span>  <span class="c1"># to install: !pip install pandas_datareader</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">r2_score</span>
-<span class="kn">from</span> <span class="nn">statsmodels.tsa.arima.model</span> <span class="kn">import</span> <span class="n">ARIMA</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">trange</span>
-<span class="kn">import</span> <span class="nn">warnings</span> <span class="c1"># suppress arima loop warning with these next 3 lines</span>
-<span class="kn">from</span> <span class="nn">statsmodels.tools.sm_exceptions</span> <span class="kn">import</span> <span class="n">ConvergenceWarning</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">ConvergenceWarning</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas_datareader as pdr  # to install: !pip install pandas_datareader
+from datetime import datetime
+from sklearn.metrics import r2_score
+from statsmodels.tsa.arima.model import ARIMA
+import numpy as np
+from tqdm import trange
+import warnings # suppress arima loop warning with these next 3 lines
+from statsmodels.tools.sm_exceptions import ConvergenceWarning
+warnings.simplefilter(&#39;ignore&#39;, ConvergenceWarning)
 
-<span class="c1"># load stock returns </span>
-<span class="n">start</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2004</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2007</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span>
-<span class="n">stock_prices</span> <span class="o">=</span> <span class="n">pdr</span><span class="o">.</span><span class="n">get_data_yahoo</span><span class="p">([</span><span class="s1">&#39;MSFT&#39;</span><span class="p">],</span> <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">)</span>
-<span class="n">stock_prices</span> <span class="o">=</span> <span class="n">stock_prices</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">like</span><span class="o">=</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">)</span> <span class="c1"># reduce to just columns with this in the name</span>
-<span class="n">stock_prices</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MSFT&#39;</span><span class="p">]</span> <span class="c1"># put their tickers as column names</span>
-<span class="n">stock_prices</span> <span class="o">=</span> <span class="n">stock_prices</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">swaplevel</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="n">stock_prices</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Firm&#39;</span><span class="p">,</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span>
-<span class="n">stock_prices</span><span class="p">[</span><span class="s1">&#39;ret&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stock_prices</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Firm&#39;</span><span class="p">)[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span>
-<span class="n">stock_prices</span> <span class="o">=</span> <span class="n">stock_prices</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:,:]</span>
+# load stock returns 
+start = datetime(2004, 1, 1)
+end = datetime(2007, 12, 31)
+stock_prices = pdr.get_data_yahoo([&#39;MSFT&#39;], start=start, end=end)
+stock_prices = stock_prices.filter(like=&#39;Adj Close&#39;) # reduce to just columns with this in the name
+stock_prices.columns = [&#39;MSFT&#39;] # put their tickers as column names
+stock_prices = stock_prices.stack().swaplevel().sort_index().reset_index()
+stock_prices.columns = [&#39;Firm&#39;,&#39;Date&#39;,&#39;Adj Close&#39;]
+stock_prices[&#39;ret&#39;] = stock_prices.groupby(&#39;Firm&#39;)[&#39;Adj Close&#39;].pct_change()
+stock_prices = stock_prices.iloc[1:,:]
 
-<span class="c1"># fit model and evaluate it to see the predictive power</span>
+# fit model and evaluate it to see the predictive power
 
-<span class="n">series</span> <span class="o">=</span> <span class="n">stock_prices</span><span class="o">.</span><span class="n">ret</span>
-<span class="n">series</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">stock_prices</span><span class="o">.</span><span class="n">Date</span><span class="c1">#.to_period(&#39;D&#39;)</span>
-<span class="n">series</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>
+series = stock_prices.ret
+series.index = stock_prices.Date#.to_period(&#39;D&#39;)
+series.index = series.index.to_period(&#39;D&#39;)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">ARIMA</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">model_fit</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-<span class="n">predictions</span> <span class="o">=</span> <span class="n">model_fit</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s1">&#39;2006-01-03&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>model = ARIMA(series, order=(4,0,1))
+model_fit = model.fit()
+predictions = model_fit.predict(start=&#39;2006-01-03&#39;)
 </pre></div>
 </div>
 </div>
@@ -960,7 +960,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="transition"> Cut to the screen </li>
 </ul><div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;R2=</span><span class="si">{</span><span class="n">r2_score</span><span class="p">(</span><span class="n">series</span><span class="p">[</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">predictions</span><span class="p">):],</span><span class="n">predictions</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">!&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(f&#39;R2={r2_score(series[-len(predictions):],predictions).round(3)}!&#39;)
 </pre></div>
 </div>
 </div>
@@ -989,16 +989,16 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="transition"> Pan and zoom in on the computer screen, revealing how their model performed in the real world. </li>
 </ul><div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">history</span>   <span class="o">=</span> <span class="n">series</span><span class="p">[:</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">predictions</span><span class="p">)]</span>
-<span class="n">test_data</span> <span class="o">=</span> <span class="n">series</span><span class="p">[</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">predictions</span><span class="p">):]</span>
-<span class="n">model_predictions</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">time_point</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">test_data</span><span class="p">)):</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">ARIMA</span><span class="p">(</span><span class="n">history</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span> <span class="c1"># use model on past</span>
-    <span class="n">model_fit</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>               <span class="c1"># predict the future</span>
-    <span class="n">model_predictions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model_fit</span><span class="o">.</span><span class="n">forecast</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># store prediction</span>
-    <span class="n">history</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">history</span><span class="p">,</span><span class="n">test_data</span><span class="p">[</span><span class="n">time_point</span><span class="p">])</span> <span class="c1"># and reality</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>history   = series[:-len(predictions)]
+test_data = series[-len(predictions):]
+model_predictions = []
+for time_point in range(len(test_data)):
+    model = ARIMA(history, order=(4,1,0)) # use model on past
+    model_fit = model.fit()               # predict the future
+    model_predictions.append(model_fit.forecast()[0])  # store prediction
+    history = np.append(history,test_data[time_point]) # and reality
     
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;R2=</span><span class="si">{</span><span class="n">r2_score</span><span class="p">(</span><span class="n">test_data</span><span class="p">,</span><span class="n">model_predictions</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+print(f&#39;R2={r2_score(test_data,model_predictions).round(3)}&#39;)
 </pre></div>
 </div>
 </div>

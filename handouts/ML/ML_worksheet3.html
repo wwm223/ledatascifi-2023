@@ -31,8 +31,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/frontpage.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/fin377_specialformatting.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
@@ -923,99 +923,99 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># I&#39;m putting all code we&#39;ve seen before here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># I&#39;m putting all code we&#39;ve seen before here
 
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">df_after_transform</span> <span class="kn">import</span> <span class="n">df_after_transform</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">set_config</span>
-<span class="kn">from</span> <span class="nn">sklearn.calibration</span> <span class="kn">import</span> <span class="n">CalibrationDisplay</span>
-<span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">ColumnTransformer</span><span class="p">,</span>
-    <span class="n">make_column_selector</span><span class="p">,</span>
-    <span class="n">make_column_transformer</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">HistGradientBoostingClassifier</span>
-<span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">RFECV</span><span class="p">,</span>
-    <span class="n">SelectFromModel</span><span class="p">,</span>
-    <span class="n">SelectKBest</span><span class="p">,</span>
-    <span class="n">SequentialFeatureSelector</span><span class="p">,</span>
-    <span class="n">f_classif</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">SimpleImputer</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Lasso</span><span class="p">,</span> <span class="n">LassoCV</span><span class="p">,</span> <span class="n">LogisticRegression</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">ConfusionMatrixDisplay</span><span class="p">,</span>
-    <span class="n">DetCurveDisplay</span><span class="p">,</span>
-    <span class="n">PrecisionRecallDisplay</span><span class="p">,</span>
-    <span class="n">RocCurveDisplay</span><span class="p">,</span>
-    <span class="n">classification_report</span><span class="p">,</span>
-    <span class="n">make_scorer</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">GridSearchCV</span><span class="p">,</span>
-    <span class="n">KFold</span><span class="p">,</span>
-    <span class="n">cross_validate</span><span class="p">,</span>
-    <span class="n">train_test_split</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span><span class="p">,</span> <span class="n">make_pipeline</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">OneHotEncoder</span><span class="p">,</span>
-    <span class="n">OrdinalEncoder</span><span class="p">,</span>
-    <span class="n">PolynomialFeatures</span><span class="p">,</span>
-    <span class="n">StandardScaler</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">LinearSVC</span>
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+from df_after_transform import df_after_transform
+from sklearn import set_config
+from sklearn.calibration import CalibrationDisplay
+from sklearn.compose import (
+    ColumnTransformer,
+    make_column_selector,
+    make_column_transformer,
+)
+from sklearn.decomposition import PCA
+from sklearn.ensemble import HistGradientBoostingClassifier
+from sklearn.feature_selection import (
+    RFECV,
+    SelectFromModel,
+    SelectKBest,
+    SequentialFeatureSelector,
+    f_classif,
+)
+from sklearn.impute import SimpleImputer
+from sklearn.linear_model import Lasso, LassoCV, LogisticRegression
+from sklearn.metrics import (
+    ConfusionMatrixDisplay,
+    DetCurveDisplay,
+    PrecisionRecallDisplay,
+    RocCurveDisplay,
+    classification_report,
+    make_scorer,
+)
+from sklearn.model_selection import (
+    GridSearchCV,
+    KFold,
+    cross_validate,
+    train_test_split,
+)
+from sklearn.pipeline import Pipeline, make_pipeline
+from sklearn.preprocessing import (
+    OneHotEncoder,
+    OrdinalEncoder,
+    PolynomialFeatures,
+    StandardScaler,
+)
+from sklearn.svm import LinearSVC
 
-<span class="n">set_config</span><span class="p">(</span><span class="n">display</span><span class="o">=</span><span class="s2">&quot;diagram&quot;</span><span class="p">)</span>  <span class="c1"># display=&#39;text&#39; is the default</span>
+set_config(display=&quot;diagram&quot;)  # display=&#39;text&#39; is the default
 
-<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span>
-    <span class="s2">&quot;display.max_colwidth&quot;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="s2">&quot;display.max_rows&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="s2">&quot;display.max_columns&quot;</span><span class="p">,</span> <span class="kc">None</span>
-<span class="p">)</span>
+pd.set_option(
+    &quot;display.max_colwidth&quot;, 1000, &quot;display.max_rows&quot;, 50, &quot;display.max_columns&quot;, None
+)
 
-<span class="kn">import</span> <span class="nn">warnings</span>
+import warnings
 
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+warnings.filterwarnings(&quot;ignore&quot;)
 
-<span class="c1"># load data</span>
+# load data
 
-<span class="n">loans</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;ML - prof only/inputs/2013_subsample.zip&quot;</span><span class="p">)</span>
+loans = pd.read_csv(&quot;ML - prof only/inputs/2013_subsample.zip&quot;)
 
-<span class="c1"># drop some bad columns here, or in the pipeline</span>
+# drop some bad columns here, or in the pipeline
 
-<span class="c1"># loans = loans.drop(</span>
-<span class="c1">#     [&quot;member_id&quot;, &quot;id&quot;, &quot;desc&quot;, &quot;earliest_cr_line&quot;, &quot;emp_title&quot;, &quot;issue_d&quot;], axis=1</span>
-<span class="c1"># )</span>
+# loans = loans.drop(
+#     [&quot;member_id&quot;, &quot;id&quot;, &quot;desc&quot;, &quot;earliest_cr_line&quot;, &quot;emp_title&quot;, &quot;issue_d&quot;], axis=1
+# )
 
-<span class="c1"># create holdout sample</span>
+# create holdout sample
 
-<span class="n">y</span> <span class="o">=</span> <span class="n">loans</span><span class="o">.</span><span class="n">loan_status</span> <span class="o">==</span> <span class="s2">&quot;Charged Off&quot;</span>
-<span class="n">y</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-<span class="n">loans</span> <span class="o">=</span> <span class="n">loans</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;loan_status&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+y = loans.loan_status == &quot;Charged Off&quot;
+y.value_counts()
+loans = loans.drop(&quot;loan_status&quot;, axis=1)
 
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
-    <span class="n">loans</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span>
-<span class="p">)</span>  <span class="c1"># (stratify will make sure that test/train both have equal fractions of outcome)</span>
+X_train, X_test, y_train, y_test = train_test_split(
+    loans, y, stratify=y, test_size=0.2, random_state=0
+)  # (stratify will make sure that test/train both have equal fractions of outcome)
 
-<span class="c1"># define the profit function</span>
-
-
-<span class="k">def</span> <span class="nf">custom_prof_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">roa</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">haircut</span><span class="o">=</span><span class="mf">0.20</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Firm profit is this times the average loan size. We can</span>
-<span class="sd">    ignore that term for the purposes of maximization. </span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">TN</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">y_pred</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">))</span>  <span class="c1"># count loans made and actually paid back</span>
-    <span class="n">FN</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">y_pred</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># count loans made and actually defaulting</span>
-    <span class="k">return</span> <span class="n">TN</span> <span class="o">*</span> <span class="n">roa</span> <span class="o">-</span> <span class="n">FN</span> <span class="o">*</span> <span class="n">haircut</span>
+# define the profit function
 
 
-<span class="c1"># so that we can use the fcn in sklearn, &quot;make a scorer&quot; out of that function</span>
+def custom_prof_score(y, y_pred, roa=0.02, haircut=0.20):
+    &quot;&quot;&quot;
+    Firm profit is this times the average loan size. We can
+    ignore that term for the purposes of maximization. 
+    &quot;&quot;&quot;
+    TN = sum((y_pred == 0) &amp; (y == 0))  # count loans made and actually paid back
+    FN = sum((y_pred == 0) &amp; (y == 1))  # count loans made and actually defaulting
+    return TN * roa - FN * haircut
 
-<span class="n">prof_score</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">custom_prof_score</span><span class="p">)</span>
+
+# so that we can use the fcn in sklearn, &quot;make a scorer&quot; out of that function
+
+prof_score = make_scorer(custom_prof_score)
 </pre></div>
 </div>
 </div>
@@ -1039,15 +1039,15 @@ const thebe_selector_output = ".output, .cell_output"
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dont_use</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;member_id&quot;</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;desc&quot;</span><span class="p">,</span> <span class="s2">&quot;earliest_cr_line&quot;</span><span class="p">,</span> <span class="s2">&quot;emp_title&quot;</span><span class="p">,</span> <span class="s2">&quot;issue_d&quot;</span><span class="p">,</span><span class="s2">&quot;title&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dont_use = [&quot;member_id&quot;, &quot;id&quot;, &quot;desc&quot;, &quot;earliest_cr_line&quot;, &quot;emp_title&quot;, &quot;issue_d&quot;,&quot;title&quot;]
 
-<span class="c1"># list of all num vars:</span>
-<span class="n">num_pipe_features</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s2">&quot;number&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span>
+# list of all num vars:
+num_pipe_features = X_train.select_dtypes(include=&quot;number&quot;).columns
 
-<span class="c1"># exclude any bad features:</span>
-<span class="n">num_pipe_features</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">num_pipe_features</span> <span class="k">if</span> <span class="n">e</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dont_use</span><span class="p">]</span>
+# exclude any bad features:
+num_pipe_features = [e for e in num_pipe_features if e not in dont_use]
 
-<span class="n">cat_pipe_features</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;grade&quot;</span><span class="p">]</span>  <span class="c1"># all: X_train.select_dtypes(include=&#39;object&#39;).columns</span>
+cat_pipe_features = [&quot;grade&quot;]  # all: X_train.select_dtypes(include=&#39;object&#39;).columns
 </pre></div>
 </div>
 </div>
@@ -1068,36 +1068,36 @@ const thebe_selector_output = ".output, .cell_output"
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numer_pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">),</span> <span class="n">StandardScaler</span><span class="p">())</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>numer_pipe = make_pipeline(SimpleImputer(strategy=&quot;mean&quot;), StandardScaler())
 
-<span class="n">cat_pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">OneHotEncoder</span><span class="p">())</span>
+cat_pipe = make_pipeline(OneHotEncoder())
 
-<span class="c1"># didn&#39;t use make_column_transformer; wanted to name steps</span>
-<span class="n">preproc_pipe</span> <span class="o">=</span> <span class="n">make_column_transformer</span><span class="p">(</span>
-    <span class="p">(</span><span class="n">numer_pipe</span><span class="p">,</span> <span class="n">num_pipe_features</span><span class="p">),</span> 
-    <span class="p">(</span><span class="n">cat_pipe</span><span class="p">,</span> <span class="n">cat_pipe_features</span><span class="p">),</span> 
-    <span class="n">remainder</span><span class="o">=</span><span class="s2">&quot;drop&quot;</span><span class="p">,</span>
-<span class="p">)</span>
+# didn&#39;t use make_column_transformer; wanted to name steps
+preproc_pipe = make_column_transformer(
+    (numer_pipe, num_pipe_features), 
+    (cat_pipe, cat_pipe_features), 
+    remainder=&quot;drop&quot;,
+)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># lets make the model from last class too, as a baseline</span>
-<span class="n">preproc_pipe_old</span> <span class="o">=</span> <span class="n">make_column_transformer</span><span class="p">(</span>
-    <span class="p">(</span><span class="n">numer_pipe</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;annual_inc&quot;</span><span class="p">,</span> <span class="s2">&quot;int_rate&quot;</span><span class="p">]),</span> 
-    <span class="p">(</span><span class="n">cat_pipe</span><span class="p">,</span> <span class="n">cat_pipe_features</span><span class="p">),</span> 
-    <span class="n">remainder</span><span class="o">=</span><span class="s2">&quot;drop&quot;</span><span class="p">,</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># lets make the model from last class too, as a baseline
+preproc_pipe_old = make_column_transformer(
+    (numer_pipe, [&quot;annual_inc&quot;, &quot;int_rate&quot;]), 
+    (cat_pipe, cat_pipe_features), 
+    remainder=&quot;drop&quot;,
+)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># preproc_df = df_after_transform(preproc_pipe,X_train)</span>
-<span class="c1"># preproc_df.describe().T.round(2)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># preproc_df = df_after_transform(preproc_pipe,X_train)
+# preproc_df.describe().T.round(2)
 </pre></div>
 </div>
 </div>
@@ -1115,14 +1115,14 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Let’s make the pipeline. <code class="docutils literal notranslate"><span class="pre">'passthough'</span></code> means a step isn’t doing anything. (Yet!)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># I used &quot;Pipeline&quot; not &quot;make_pipeline&quot; bc I wanted to name the steps</span>
-<span class="n">pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s1">&#39;columntransformer&#39;</span><span class="p">,</span><span class="n">preproc_pipe</span><span class="p">),</span>
-                 <span class="p">(</span><span class="s1">&#39;feature_create&#39;</span><span class="p">,</span><span class="s1">&#39;passthrough&#39;</span><span class="p">),</span> 
-                 <span class="p">(</span><span class="s1">&#39;feature_select&#39;</span><span class="p">,</span><span class="s1">&#39;passthrough&#39;</span><span class="p">),</span> 
-                 <span class="p">(</span><span class="s1">&#39;clf&#39;</span><span class="p">,</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">class_weight</span><span class="o">=</span><span class="s1">&#39;balanced&#39;</span><span class="p">))</span>
-                <span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># I used &quot;Pipeline&quot; not &quot;make_pipeline&quot; bc I wanted to name the steps
+pipe = Pipeline([(&#39;columntransformer&#39;,preproc_pipe),
+                 (&#39;feature_create&#39;,&#39;passthrough&#39;), 
+                 (&#39;feature_select&#39;,&#39;passthrough&#39;), 
+                 (&#39;clf&#39;, LogisticRegression(class_weight=&#39;balanced&#39;))
+                ])
 
-<span class="n">pipe</span>
+pipe
 </pre></div>
 </div>
 </div>
@@ -1192,63 +1192,63 @@ const thebe_selector_output = ".output, .cell_output"
 <p>We just need to set up the list of combinations (<code class="docutils literal notranslate"><span class="pre">param_grid</span></code> below) we want to try.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># I&#39;m setting up this parameter grid a little different. Read this:</span>
-<span class="c1"># https://stackoverflow.com/questions/45352420/avoid-certain-parameter-combinations-in-gridsearchcv</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># I&#39;m setting up this parameter grid a little different. Read this:
+# https://stackoverflow.com/questions/45352420/avoid-certain-parameter-combinations-in-gridsearchcv
 
-<span class="n">param_grid</span> <span class="o">=</span> <span class="p">[</span>
+param_grid = [
     
-    <span class="c1"># baseline: last class&#39;s 3 variable logit, no feature creation or selection</span>
-    <span class="p">{</span><span class="s1">&#39;columntransformer&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">preproc_pipe_old</span><span class="p">]},</span>
+    # baseline: last class&#39;s 3 variable logit, no feature creation or selection
+    {&#39;columntransformer&#39;: [preproc_pipe_old]},
     
-    <span class="c1"># now, try different feature selection methods (no creation, logit as estimator)</span>
-    <span class="nb">dict</span><span class="p">(</span><span class="n">feature_select</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;passthrough&#39;</span><span class="p">,</span> 
+    # now, try different feature selection methods (no creation, logit as estimator)
+    dict(feature_select=[&#39;passthrough&#39;, 
                          
-                         <span class="n">PCA</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> 
-                         <span class="n">PCA</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> 
-                         <span class="n">PCA</span><span class="p">(</span><span class="mi">15</span><span class="p">),</span>
+                         PCA(5), 
+                         PCA(10), 
+                         PCA(15),
                          
-                         <span class="n">SelectKBest</span><span class="p">(</span><span class="n">f_classif</span><span class="p">,</span><span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span>
-                         <span class="n">SelectKBest</span><span class="p">(</span><span class="n">f_classif</span><span class="p">,</span><span class="n">k</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span>
-                         <span class="n">SelectKBest</span><span class="p">(</span><span class="n">f_classif</span><span class="p">,</span><span class="n">k</span><span class="o">=</span><span class="mi">15</span><span class="p">),</span>
+                         SelectKBest(f_classif,k=5),
+                         SelectKBest(f_classif,k=10),
+                         SelectKBest(f_classif,k=15),
                          
-                         <span class="n">SelectFromModel</span><span class="p">(</span><span class="n">LassoCV</span><span class="p">()),</span>
-                         <span class="n">SelectFromModel</span><span class="p">(</span><span class="n">LinearSVC</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s2">&quot;l1&quot;</span><span class="p">,</span>
-                                                   <span class="n">dual</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                                                   <span class="n">class_weight</span><span class="o">=</span><span class="s1">&#39;balanced&#39;</span><span class="p">),</span>
-                                        <span class="n">threshold</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">),</span>
+                         SelectFromModel(LassoCV()),
+                         SelectFromModel(LinearSVC(penalty=&quot;l1&quot;,
+                                                   dual=False,
+                                                   class_weight=&#39;balanced&#39;),
+                                        threshold=&#39;median&#39;),
                          
-                         <span class="c1"># RFECV is slow here...</span>
-                         <span class="n">RFECV</span><span class="p">(</span><span class="n">LinearSVC</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s2">&quot;l1&quot;</span><span class="p">,</span>
-                                         <span class="n">dual</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                                         <span class="n">class_weight</span><span class="o">=</span><span class="s1">&#39;balanced&#39;</span><span class="p">),</span>
-                               <span class="n">cv</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">scoring</span><span class="o">=</span><span class="n">prof_score</span><span class="p">),</span>                         
-                         <span class="n">RFECV</span><span class="p">(</span><span class="n">LogisticRegression</span><span class="p">(</span><span class="n">class_weight</span><span class="o">=</span><span class="s1">&#39;balanced&#39;</span><span class="p">),</span>
-                               <span class="n">cv</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">scoring</span><span class="o">=</span><span class="n">prof_score</span><span class="p">),</span>
+                         # RFECV is slow here...
+                         RFECV(LinearSVC(penalty=&quot;l1&quot;,
+                                         dual=False,
+                                         class_weight=&#39;balanced&#39;),
+                               cv=2,scoring=prof_score),                         
+                         RFECV(LogisticRegression(class_weight=&#39;balanced&#39;),
+                               cv=2,scoring=prof_score),
                          
-                         <span class="c1"># slow but faster than RFECV </span>
-                         <span class="n">SequentialFeatureSelector</span><span class="p">(</span><span class="n">LogisticRegression</span><span class="p">(</span><span class="n">class_weight</span><span class="o">=</span><span class="s1">&#39;balanced&#39;</span><span class="p">),</span>
-                                                   <span class="n">scoring</span><span class="o">=</span><span class="n">prof_score</span><span class="p">,</span>
-                                                   <span class="n">n_features_to_select</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-                                                   <span class="n">cv</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>      
-                         <span class="n">SequentialFeatureSelector</span><span class="p">(</span><span class="n">LogisticRegression</span><span class="p">(</span><span class="n">class_weight</span><span class="o">=</span><span class="s1">&#39;balanced&#39;</span><span class="p">),</span>
-                                                   <span class="n">scoring</span><span class="o">=</span><span class="n">prof_score</span><span class="p">,</span>
-                                                   <span class="n">n_features_to_select</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-                                                   <span class="n">cv</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>    
-                         <span class="n">SequentialFeatureSelector</span><span class="p">(</span><span class="n">LogisticRegression</span><span class="p">(</span><span class="n">class_weight</span><span class="o">=</span><span class="s1">&#39;balanced&#39;</span><span class="p">),</span>
-                                                   <span class="n">scoring</span><span class="o">=</span><span class="n">prof_score</span><span class="p">,</span>
-                                                   <span class="n">n_features_to_select</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
-                                                   <span class="n">cv</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>                         
+                         # slow but faster than RFECV 
+                         SequentialFeatureSelector(LogisticRegression(class_weight=&#39;balanced&#39;),
+                                                   scoring=prof_score,
+                                                   n_features_to_select=5,
+                                                   cv=2),      
+                         SequentialFeatureSelector(LogisticRegression(class_weight=&#39;balanced&#39;),
+                                                   scoring=prof_score,
+                                                   n_features_to_select=10,
+                                                   cv=2),    
+                         SequentialFeatureSelector(LogisticRegression(class_weight=&#39;balanced&#39;),
+                                                   scoring=prof_score,
+                                                   n_features_to_select=15,
+                                                   cv=2)                         
                          
-                         <span class="p">]),</span>
+                         ]),
     
-    <span class="c1"># now, try different feature creation methods (and possibly reduce the features after)</span>
-    <span class="p">{</span><span class="s1">&#39;feature_create&#39;</span><span class="p">:</span> <span class="p">[</span>
-                        <span class="c1"># this creates interactions between all variables</span>
-                        <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">interaction_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)],</span>
-     <span class="s1">&#39;feature_select&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;passthrough&#39;</span><span class="p">,</span> <span class="n">PCA</span><span class="p">(</span><span class="mi">15</span><span class="p">),</span> <span class="n">PCA</span><span class="p">(</span><span class="mi">25</span><span class="p">)]</span>
-    <span class="p">},</span>
+    # now, try different feature creation methods (and possibly reduce the features after)
+    {&#39;feature_create&#39;: [
+                        # this creates interactions between all variables
+                        PolynomialFeatures(degree=2, interaction_only=True)],
+     &#39;feature_select&#39;: [&#39;passthrough&#39;, PCA(15), PCA(25)]
+    },
     
-<span class="p">]</span>
+]
 </pre></div>
 </div>
 </div>
@@ -1256,13 +1256,13 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Now we put that list of combinations into <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> to run them all!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">estimator</span> <span class="o">=</span> <span class="n">pipe</span><span class="p">,</span> 
-                           <span class="n">param_grid</span> <span class="o">=</span> <span class="n">param_grid</span><span class="p">,</span>
-                           <span class="n">cv</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> 
-                           <span class="n">scoring</span><span class="o">=</span><span class="n">prof_score</span>
-                           <span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>grid_search = GridSearchCV(estimator = pipe, 
+                           param_grid = param_grid,
+                           cv = 5, 
+                           scoring=prof_score
+                           )
 
-<span class="n">results</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+results = grid_search.fit(X_train,y_train)
 </pre></div>
 </div>
 </div>
@@ -1270,12 +1270,12 @@ const thebe_selector_output = ".output, .cell_output"
 <p>And this is here just to make the slides a little nicer:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pretty</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-<span class="n">pretty</span> <span class="o">=</span> <span class="n">pretty</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;passthrough&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-<span class="n">pretty</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;SelectKBest(k=10)&#39;</span>
-<span class="n">pretty</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;3 vars (Last class)&#39;</span>
-<span class="n">pretty</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;All numeric vars + Grade&#39;</span>
-<span class="n">pretty</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pretty = pd.DataFrame(results.cv_results_).iloc[:,[4,5,6,-3,-2,1,2]].fillna(&#39;&#39;)
+pretty = pretty.replace(&#39;passthrough&#39;,&#39;&#39;)
+pretty.iloc[6,1] = &#39;SelectKBest(k=10)&#39;
+pretty.iloc[0,0] = &#39;3 vars (Last class)&#39;
+pretty.iloc[1:,0] = &#39;All numeric vars + Grade&#39;
+pretty
 </pre></div>
 </div>
 </div>
@@ -1495,22 +1495,22 @@ const thebe_selector_output = ".output, .cell_output"
 <p>We can use the best estimator easily, and we can also learn about what that estimator decided.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this is the highest ranked estimator. You can now .predict() with it on new data!</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">best_estimator_</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># this is the highest ranked estimator. You can now .predict() with it on new data!
+print(results.best_estimator_)
 
-<span class="c1"># this tells us which vars we picked, but is a boolean array (not var names)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Columns picked&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">best_estimator_</span><span class="p">[</span><span class="s1">&#39;feature_select&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">support_</span><span class="p">)</span>
+# this tells us which vars we picked, but is a boolean array (not var names)
+print(&quot;=&quot;*60)
+print(&quot;Columns picked&quot;)
+print(results.best_estimator_[&#39;feature_select&#39;].support_)
 
-<span class="c1"># the df AFTER the preproc step has the var names</span>
-<span class="n">preproc_df</span> <span class="o">=</span> <span class="n">df_after_transform</span><span class="p">(</span><span class="n">preproc_pipe</span><span class="p">,</span><span class="n">X_train</span><span class="p">)</span>
+# the df AFTER the preproc step has the var names
+preproc_df = df_after_transform(preproc_pipe,X_train)
 
-<span class="c1"># so to get the names of the vars, our df_after_transform helps!</span>
-<span class="n">mask</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">best_estimator_</span><span class="p">[</span><span class="s1">&#39;feature_select&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">support_</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Columns picked&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">preproc_df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+# so to get the names of the vars, our df_after_transform helps!
+mask = results.best_estimator_[&#39;feature_select&#39;].support_
+print(&quot;=&quot;*60)
+print(&quot;Columns picked&quot;)
+print(preproc_df.columns[mask].tolist())
 </pre></div>
 </div>
 </div>

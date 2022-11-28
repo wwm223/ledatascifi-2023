@@ -41,8 +41,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/frontpage.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/fin377_specialformatting.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
@@ -1102,17 +1102,17 @@ Examining two variables by group<div class="summary-down docutils">
 <p>Let’s look at some examples quickly:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import seaborn as sns
+import matplotlib.pyplot as plt
 
-<span class="n">iris</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;iris&quot;</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">iris</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Faceting by repeating scatter plots for each pair of variables&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">top</span><span class="o">=</span><span class="mf">0.95</span><span class="p">)</span> <span class="c1"># Reduce plot to make room for the title</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+iris = sns.load_dataset(&quot;iris&quot;)
+sns.pairplot(iris)
+plt.suptitle(&#39;Faceting by repeating scatter plots for each pair of variables&#39;,fontsize=18)
+plt.subplots_adjust(top=0.95) # Reduce plot to make room for the title
+plt.show()
 
-<span class="c1"># note: .set(title) doesn&#39;t work here - it tries to title the individual subfigures (axes)</span>
-<span class="c1">#       to title the whole thing, I had to use suptitle. </span>
+# note: .set(title) doesn&#39;t work here - it tries to title the individual subfigures (axes)
+#       to title the whole thing, I had to use suptitle. 
 </pre></div>
 </div>
 </div>
@@ -1123,10 +1123,10 @@ Examining two variables by group<div class="summary-down docutils">
 <p>This is the same, plus a <code class="docutils literal notranslate"><span class="pre">hue=&quot;species&quot;</span></code> parameter in the graph function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">iris</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Faceting by overlaying figures by group&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">top</span><span class="o">=</span><span class="mf">0.95</span><span class="p">)</span> <span class="c1"># Reduce plot to make room for the title </span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.pairplot(iris, hue=&quot;species&quot;)
+plt.suptitle(&#39;Faceting by overlaying figures by group&#39;,fontsize=18)
+plt.subplots_adjust(top=0.95) # Reduce plot to make room for the title 
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -1137,8 +1137,8 @@ Examining two variables by group<div class="summary-down docutils">
 <p>Boxplot by group: Just use the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> arguments together.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;petal_width&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">,)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.boxplot(x=&quot;species&quot;,y=&quot;petal_width&quot;, data=iris,)
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -1149,8 +1149,8 @@ Examining two variables by group<div class="summary-down docutils">
 <p>An example of faceting via the <code class="docutils literal notranslate"><span class="pre">col</span></code> argument. Using <code class="docutils literal notranslate"><span class="pre">row</span></code> instead does what you’d think. Protip: You can use <code class="docutils literal notranslate"><span class="pre">row</span></code> and <code class="docutils literal notranslate"><span class="pre">col</span></code> together to make a grid of groups.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;petal_width&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;petal_length&quot;</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.lmplot(data=iris,x=&#39;petal_width&#39;,y=&quot;petal_length&quot;,col=&quot;species&quot;)
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -1160,8 +1160,8 @@ Examining two variables by group<div class="summary-down docutils">
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;petal_width&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;petal_length&quot;</span><span class="p">,</span><span class="n">row</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.lmplot(data=iris,x=&#39;petal_width&#39;,y=&quot;petal_length&quot;,row=&quot;species&quot;)
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -1171,8 +1171,8 @@ Examining two variables by group<div class="summary-down docutils">
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;petal_width&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;petal_length&quot;</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.lmplot(data=iris,x=&#39;petal_width&#39;,y=&quot;petal_length&quot;,hue=&quot;species&quot;)
+plt.show()
 </pre></div>
 </div>
 </div>

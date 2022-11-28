@@ -41,8 +41,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/frontpage.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/fin377_specialformatting.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
@@ -975,22 +975,22 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Let’s get our hands dirty quickly by loading some data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load some data to practice regressions</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">diamonds</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;diamonds&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># load some data to practice regressions
+import seaborn as sns
+import numpy as np
+diamonds = sns.load_dataset(&#39;diamonds&#39;)
 
-<span class="c1"># this alteration is not strictly necessary to practice a regression</span>
-<span class="c1"># but we use this in livecoding</span>
-<span class="n">diamonds2</span> <span class="o">=</span> <span class="p">(</span><span class="n">diamonds</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;carat &lt; 2.5&#39;</span><span class="p">)</span>               <span class="c1"># censor/remove outliers</span>
-            <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">lprice</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">diamonds</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]))</span>  <span class="c1"># log transform price</span>
-            <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">lcarat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">diamonds</span><span class="p">[</span><span class="s1">&#39;carat&#39;</span><span class="p">]))</span>  <span class="c1"># log transform carats</span>
-            <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">ideal</span> <span class="o">=</span> <span class="n">diamonds</span><span class="p">[</span><span class="s1">&#39;cut&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Ideal&#39;</span><span class="p">)</span> 
+# this alteration is not strictly necessary to practice a regression
+# but we use this in livecoding
+diamonds2 = (diamonds.query(&#39;carat &lt; 2.5&#39;)               # censor/remove outliers
+            .assign(lprice = np.log(diamonds[&#39;price&#39;]))  # log transform price
+            .assign(lcarat = np.log(diamonds[&#39;carat&#39;]))  # log transform carats
+            .assign(ideal = diamonds[&#39;cut&#39;] == &#39;Ideal&#39;) 
              
-             <span class="c1"># some regression packages want you to explicitly provide </span>
-             <span class="c1"># a variable for the constant</span>
-            <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">const</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>                           
-            <span class="p">)</span>  
+             # some regression packages want you to explicitly provide 
+             # a variable for the constant
+            .assign(const = 1)                           
+            )  
 </pre></div>
 </div>
 </div>
@@ -1008,21 +1008,21 @@ const thebe_selector_output = ".output, .cell_output"
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>        <span class="c1"># need this</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import statsmodels.api as sm        # need this
 
-<span class="n">y</span> <span class="o">=</span> <span class="n">diamonds2</span><span class="p">[</span><span class="s1">&#39;lprice&#39;</span><span class="p">]</span>             <span class="c1"># pick y</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">diamonds2</span><span class="p">[[</span><span class="s1">&#39;const&#39;</span><span class="p">,</span><span class="s1">&#39;lcarat&#39;</span><span class="p">]]</span>   <span class="c1"># set up all your X vars as a matrix</span>
+y = diamonds2[&#39;lprice&#39;]             # pick y
+X = diamonds2[[&#39;const&#39;,&#39;lcarat&#39;]]   # set up all your X vars as a matrix
 
-<span class="c1"># NOTICE I EXPLICITLY GIVE X A CONSTANT SO IT FITS AN INTERCEPT</span>
+# NOTICE I EXPLICITLY GIVE X A CONSTANT SO IT FITS AN INTERCEPT
 
-<span class="n">model1</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">X</span><span class="p">)</span>                <span class="c1"># pick model type (OLS here) and specify model features</span>
-<span class="n">results1</span> <span class="o">=</span> <span class="n">model1</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>             <span class="c1"># estimate / fit</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">results1</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>           <span class="c1"># view results (coefs, t-stats, p-vals, R2, Adj R2)</span>
-<span class="n">y_predicted1</span> <span class="o">=</span> <span class="n">results1</span><span class="o">.</span><span class="n">predict</span><span class="p">()</span>   <span class="c1"># get the predicted results</span>
-<span class="n">residuals1</span> <span class="o">=</span> <span class="n">results1</span><span class="o">.</span><span class="n">resid</span>         <span class="c1"># get the residuals</span>
-<span class="c1">#residuals1 = y - y_predicted1      # another way to get the residuals</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">Params:&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">results1</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>              <span class="c1"># if you need to access the coefficients (e.g. to save them), results.params</span>
+model1 = sm.OLS(y,X)                # pick model type (OLS here) and specify model features
+results1 = model1.fit()             # estimate / fit
+print(results1.summary())           # view results (coefs, t-stats, p-vals, R2, Adj R2)
+y_predicted1 = results1.predict()   # get the predicted results
+residuals1 = results1.resid         # get the residuals
+#residuals1 = y - y_predicted1      # another way to get the residuals
+print(&#39;\n\nParams:&#39;)
+print(results1.params)              # if you need to access the coefficients (e.g. to save them), results.params
 </pre></div>
 </div>
 </div>
@@ -1099,17 +1099,17 @@ dtype: float64
 </ol>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <span class="n">ols</span> <span class="k">as</span> <span class="n">sm_ols</span> <span class="c1"># need this</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from statsmodels.formula.api import ols as sm_ols # need this
 
-<span class="n">model2</span>   <span class="o">=</span> <span class="n">sm_ols</span><span class="p">(</span><span class="s1">&#39;lprice ~ lcarat&#39;</span><span class="p">,</span>  <span class="c1"># specify model (you don&#39;t need to include the constant!)</span>
-                  <span class="n">data</span><span class="o">=</span><span class="n">diamonds2</span><span class="p">)</span>
-<span class="n">results2</span> <span class="o">=</span> <span class="n">model2</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>               <span class="c1"># estimate / fit</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">results2</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>             <span class="c1"># view results ... identical to before</span>
-<span class="n">y_predicted2</span> <span class="o">=</span> <span class="n">results2</span><span class="o">.</span><span class="n">predict</span><span class="p">()</span>     <span class="c1"># get the predicted results</span>
-<span class="n">residuals2</span> <span class="o">=</span> <span class="n">results2</span><span class="o">.</span><span class="n">resid</span>           <span class="c1"># get the residuals</span>
-<span class="c1">#residuals1 = y - y_predicted1        # another way to get the residuals</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">Params:&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">results2</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>                <span class="c1"># if you need to access the coefficients (e.g. to save them), results.params</span>
+model2   = sm_ols(&#39;lprice ~ lcarat&#39;,  # specify model (you don&#39;t need to include the constant!)
+                  data=diamonds2)
+results2 = model2.fit()               # estimate / fit
+print(results2.summary())             # view results ... identical to before
+y_predicted2 = results2.predict()     # get the predicted results
+residuals2 = results2.resid           # get the residuals
+#residuals1 = y - y_predicted1        # another way to get the residuals
+print(&#39;\n\nParams:&#39;)
+print(results2.params)                # if you need to access the coefficients (e.g. to save them), results.params
 </pre></div>
 </div>
 </div>
@@ -1164,19 +1164,19 @@ dtype: float64
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.linear_model import LinearRegression
 
-<span class="n">y</span> <span class="o">=</span> <span class="n">diamonds2</span><span class="p">[</span><span class="s1">&#39;lprice&#39;</span><span class="p">]</span>                   <span class="c1"># pick y</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">diamonds2</span><span class="p">[[</span><span class="s1">&#39;const&#39;</span><span class="p">,</span><span class="s1">&#39;lcarat&#39;</span><span class="p">]]</span>         <span class="c1"># set up all your X vars as a matrix</span>
+y = diamonds2[&#39;lprice&#39;]                   # pick y
+X = diamonds2[[&#39;const&#39;,&#39;lcarat&#39;]]         # set up all your X vars as a matrix
 
-<span class="c1"># NOTICE I EXPLICITLY GIVE X A CONSTANT SO IT FITS AN INTERCEPT</span>
+# NOTICE I EXPLICITLY GIVE X A CONSTANT SO IT FITS AN INTERCEPT
 
-<span class="n">model3</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>               <span class="c1"># set up the model object (but don&#39;t tell sklearn what data it gets!)   </span>
-<span class="n">results3</span> <span class="o">=</span> <span class="n">model3</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>                <span class="c1"># fit it, and tell it what data to fit on</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;INTERCEPT:&#39;</span><span class="p">,</span> <span class="n">results3</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>  <span class="c1"># to get the coefficients, you print out the intercept</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;COEFS:&#39;</span><span class="p">,</span> <span class="n">results3</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>           <span class="c1"># and the other coefficients separately (yuck)</span>
-<span class="n">y_predicted3</span> <span class="o">=</span> <span class="n">results3</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>        <span class="c1"># get predicted y values</span>
-<span class="n">residuals3</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">y_predicted3</span>             <span class="c1"># get residuals</span>
+model3 = LinearRegression()               # set up the model object (but don&#39;t tell sklearn what data it gets!)   
+results3 = model3.fit(X,y)                # fit it, and tell it what data to fit on
+print(&#39;INTERCEPT:&#39;, results3.intercept_)  # to get the coefficients, you print out the intercept
+print(&#39;COEFS:&#39;, results3.coef_)           # and the other coefficients separately (yuck)
+y_predicted3 = results3.predict(X)        # get predicted y values
+residuals3 = y - y_predicted3             # get residuals
 </pre></div>
 </div>
 </div>
@@ -1201,16 +1201,16 @@ COEFS: [0.         1.68193567]
 <p>Once you save the predicted values (<span class="math notranslate nohighlight">\(\hat{y}\)</span>), it’s easy to add it to a plot:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
 
-<span class="c1"># step 1: plot our data as you want </span>
-<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;lcarat&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;lprice&#39;</span><span class="p">,</span>
-                <span class="n">data</span><span class="o">=</span><span class="n">diamonds2</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">20</span><span class="p">))</span> <span class="c1"># sampled just to avoid overplotting</span>
+# step 1: plot our data as you want 
+sns.scatterplot(x=&#39;lcarat&#39;,y=&#39;lprice&#39;,
+                data=diamonds2.sample(500,random_state=20)) # sampled just to avoid overplotting
 
-<span class="c1"># step 2: add the fitted regression line (the real X values and the predicted y values)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">diamonds2</span><span class="p">[</span><span class="s1">&#39;lcarat&#39;</span><span class="p">],</span><span class="n">y</span><span class="o">=</span><span class="n">y_predicted1</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+# step 2: add the fitted regression line (the real X values and the predicted y values)
+sns.lineplot(x=diamonds2[&#39;lcarat&#39;],y=y_predicted1,color=&#39;red&#39;)
 
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -1247,8 +1247,8 @@ COEFS: [0.         1.68193567]
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ideal is a dummy variable = 1 if ideal and 0 if not ideal</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">sm_ols</span><span class="p">(</span><span class="s1">&#39;lprice ~ lcarat + ideal&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">diamonds2</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># ideal is a dummy variable = 1 if ideal and 0 if not ideal
+print(sm_ols(&#39;lprice ~ lcarat + ideal&#39;, data=diamonds2).fit().summary())
 </pre></div>
 </div>
 </div>
@@ -1316,7 +1316,7 @@ Notes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">sm_ols</span><span class="p">(</span><span class="s1">&#39;lprice ~ lcarat + C(cut)&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">diamonds2</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(sm_ols(&#39;lprice ~ lcarat + C(cut)&#39;, data=diamonds2).fit().summary())
 </pre></div>
 </div>
 </div>
@@ -1369,19 +1369,19 @@ Notes:
 <p>Graphically, it’s easy to see, as <code class="docutils literal notranslate"><span class="pre">sns.lmplot</span></code> by default gives each cut a unique slope on carats:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
 
-<span class="c1"># add reg lines to plot</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">diamonds2</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;cut == &quot;Fair&quot;&#39;</span><span class="p">),</span>
-                 <span class="n">y</span><span class="o">=</span><span class="s1">&#39;lprice&#39;</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;lcarat&#39;</span><span class="p">,</span><span class="n">scatter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">ci</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> 
-<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">diamonds2</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;cut == &quot;Ideal&quot;&#39;</span><span class="p">),</span>
-                 <span class="n">y</span><span class="o">=</span><span class="s1">&#39;lprice&#39;</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;lcarat&#39;</span><span class="p">,</span><span class="n">scatter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">ci</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> 
+# add reg lines to plot
+fig, ax = plt.subplots()
+ax = sns.regplot(data=diamonds2.query(&#39;cut == &quot;Fair&quot;&#39;),
+                 y=&#39;lprice&#39;,x=&#39;lcarat&#39;,scatter=False,ci=None) 
+ax = sns.regplot(data=diamonds2.query(&#39;cut == &quot;Ideal&quot;&#39;),
+                 y=&#39;lprice&#39;,x=&#39;lcarat&#39;,scatter=False,ci=None) 
 
-<span class="c1"># scatter</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">diamonds2</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;cut&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">99</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;cut in [&quot;Ideal&quot;,&quot;Fair&quot;]&#39;</span><span class="p">),</span>
-                <span class="n">x</span><span class="o">=</span><span class="s1">&#39;lcarat&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;lprice&#39;</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;ideal&#39;</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+# scatter
+sns.scatterplot(data=diamonds2.groupby(&#39;cut&#39;).sample(80,random_state=99).query(&#39;cut in [&quot;Ideal&quot;,&quot;Fair&quot;]&#39;),
+                x=&#39;lcarat&#39;,y=&#39;lprice&#39;,hue=&#39;ideal&#39;,ax=ax)
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -1411,8 +1411,8 @@ Notes:
 </div>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># you can include the interaction of x and z by adding &quot;+x*z&quot; in the spec, like:</span>
-<span class="n">sm_ols</span><span class="p">(</span><span class="s1">&#39;lprice ~ lcarat + ideal + lcarat*ideal&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">diamonds2</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;cut in [&quot;Fair&quot;,&quot;Ideal&quot;]&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># you can include the interaction of x and z by adding &quot;+x*z&quot; in the spec, like:
+sm_ols(&#39;lprice ~ lcarat + ideal + lcarat*ideal&#39;, data=diamonds2.query(&#39;cut in [&quot;Fair&quot;,&quot;Ideal&quot;]&#39;)).fit().summary()
 </pre></div>
 </div>
 </div>

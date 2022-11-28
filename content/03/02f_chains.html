@@ -41,8 +41,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/frontpage.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/fin377_specialformatting.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
@@ -964,25 +964,25 @@ const thebe_selector_output = ".output, .cell_output"
 <p>In this example, we use a <span class="xref myst">data.world</span>’s function to download their data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#TO USE datadotworld PACKAGE:</span>
-<span class="c1">#1. create account at data.world</span>
-<span class="c1">#2. in terminal/powershell: pip install datadotworld</span>
-<span class="c1">#</span>
-<span class="c1">#   IF THIS DOESN&#39;T WORK BC YOU GET AN ERROR ABOUT &quot;CCHARDET&quot;, RUN:</span>
-<span class="c1">#    conda install -c conda-forge cchardet</span>
-<span class="c1">#   THEN RERUN: pip install datadotworld[pandas] </span>
-<span class="c1">#</span>
-<span class="c1">#3. in terminal/powershell: dw configure          </span>
-<span class="c1">#3a. copy in API token from data.world (get from settings &gt; advanced)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#TO USE datadotworld PACKAGE:
+#1. create account at data.world
+#2. in terminal/powershell: pip install datadotworld
+#
+#   IF THIS DOESN&#39;T WORK BC YOU GET AN ERROR ABOUT &quot;CCHARDET&quot;, RUN:
+#    conda install -c conda-forge cchardet
+#   THEN RERUN: pip install datadotworld[pandas] 
+#
+#3. in terminal/powershell: dw configure          
+#3a. copy in API token from data.world (get from settings &gt; advanced)
 
-<span class="kn">import</span> <span class="nn">datadotworld</span> <span class="k">as</span> <span class="nn">dw</span> <span class="c1"># to download data from data.world</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+import datadotworld as dw # to download data from data.world
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
 
-<span class="n">baby_names</span> <span class="o">=</span> <span class="n">dw</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;nkrishnaswami/us-ssa-baby-names-national&#39;</span><span class="p">,</span><span class="n">auto_update</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">baby_names</span> <span class="o">=</span> <span class="n">baby_names</span><span class="o">.</span><span class="n">dataframes</span><span class="p">[</span><span class="s1">&#39;names_ranks_counts&#39;</span><span class="p">]</span>
+baby_names = dw.load_dataset(&#39;nkrishnaswami/us-ssa-baby-names-national&#39;,auto_update=True)
+baby_names = baby_names.dataframes[&#39;names_ranks_counts&#39;]
 </pre></div>
 </div>
 </div>
@@ -1001,8 +1001,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>save the dataset and then call a plot function</p></li>
 </ol>
 <div class="tabbed-set docutils">
-<input checked="checked" id="a6b9631b-31dc-41cc-a7e4-5a316b8b68b5" name="01b64706-d92f-4d20-8799-9eccd4dbb9ae" type="radio">
-</input><label class="tabbed-label" for="a6b9631b-31dc-41cc-a7e4-5a316b8b68b5">
+<input checked="checked" id="211c8e6c-8a9d-4344-ad00-8aea3a10f10c" name="73739975-bb41-4132-b424-2d0e1c8e6c0c" type="radio">
+</input><label class="tabbed-label" for="211c8e6c-8a9d-4344-ad00-8aea3a10f10c">
 v0.1 Without chains</label><div class="tabbed-content docutils">
 <p>On one hand, this is only “4” lines of code. On the other hand, this is as readable as I could make it!</p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1"># STEP 1: restrict by name and only keep years after 2000</span>
@@ -1033,8 +1033,8 @@ v0.1 Without chains</label><div class="tabbed-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="6cebaf57-8e42-43fc-af28-7c9b95037096" name="01b64706-d92f-4d20-8799-9eccd4dbb9ae" type="radio">
-</input><label class="tabbed-label" for="6cebaf57-8e42-43fc-af28-7c9b95037096">
+<input id="7022361e-13db-4c86-baed-2639efa84d29" name="73739975-bb41-4132-b424-2d0e1c8e6c0c" type="radio">
+</input><label class="tabbed-label" for="7022361e-13db-4c86-baed-2639efa84d29">
 v0.2 No chains but better</label><div class="tabbed-content docutils">
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -1051,8 +1051,8 @@ v0.2 No chains but better</label><div class="tabbed-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="094d7ecd-50b7-406e-9290-2a5f66cfdb22" name="01b64706-d92f-4d20-8799-9eccd4dbb9ae" type="radio">
-</input><label class="tabbed-label" for="094d7ecd-50b7-406e-9290-2a5f66cfdb22">
+<input id="2691b51a-7391-4b23-9eb7-8aebada9de7a" name="73739975-bb41-4132-b424-2d0e1c8e6c0c" type="radio">
+</input><label class="tabbed-label" for="2691b51a-7391-4b23-9eb7-8aebada9de7a">
 v1.0 - Using chains instead</label><div class="tabbed-content docutils">
 <p><strong>Method chaining:</strong> Call the object (<code class="docutils literal notranslate"><span class="pre">baby_names</span></code>) and then keep calling one method on it after another.</p>
 <ul class="simple">
@@ -1081,8 +1081,8 @@ The code below is only 2 lines, and it produces a plot identical to V1 and V2, <
 </pre></div>
 </div>
 </div>
-<input id="24c2bf2d-be4e-4b6b-9a22-7a3458a64a0f" name="01b64706-d92f-4d20-8799-9eccd4dbb9ae" type="radio">
-</input><label class="tabbed-label" for="24c2bf2d-be4e-4b6b-9a22-7a3458a64a0f">
+<input id="4c2860df-a61a-4199-8e5d-aa2d6e4d0b34" name="73739975-bb41-4132-b424-2d0e1c8e6c0c" type="radio">
+</input><label class="tabbed-label" for="4c2860df-a61a-4199-8e5d-aa2d6e4d0b34">
 v1.1 Pretty Chains</label><div class="tabbed-content docutils">
 <p>To make this readable, we write a parentheses over multiple lines</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
@@ -1123,16 +1123,16 @@ v1.1 Pretty Chains</label><div class="tabbed-content docutils">
 <h2><span class="section-number">3.2.6.5. </span>Bonus analysis<a class="headerlink" href="#bonus-analysis" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">baby_names</span>
-      <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;name in [&quot;Khaleesi&quot;,&quot;Ramsay&quot;,&quot;Lyanna&quot;,&quot;Ellaria&quot;,&quot;Meera&quot;] &amp; </span><span class="se">\</span>
-<span class="s1">         year &gt;= 2000&#39;</span><span class="p">)</span>
-      <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;name&#39;</span><span class="p">,</span><span class="s1">&#39;year&#39;</span><span class="p">])[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="c1"># for each name-year, combine M and F counts</span>
-      <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span> <span class="c1"># give use the column names back as they were (makes the plot call easy)</span>
-      <span class="o">.</span><span class="n">pipe</span><span class="p">((</span><span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">,</span> <span class="s1">&#39;data&#39;</span><span class="p">),</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">)</span>
-<span class="p">)</span>    
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">2011</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span><span class="mi">160</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span> <span class="c1"># add a line for when the show debuted</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;PEOPLE NAMED THEIR KID KHALEESI&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>(baby_names
+      .query(&#39;name in [&quot;Khaleesi&quot;,&quot;Ramsay&quot;,&quot;Lyanna&quot;,&quot;Ellaria&quot;,&quot;Meera&quot;] &amp; \
+         year &gt;= 2000&#39;)
+      .groupby([&#39;name&#39;,&#39;year&#39;])[&#39;count&#39;].sum() # for each name-year, combine M and F counts
+      .reset_index() # give use the column names back as they were (makes the plot call easy)
+      .pipe((sns.lineplot, &#39;data&#39;),hue=&#39;name&#39;,x=&#39;year&#39;,y=&#39;count&#39;)
+)    
+plt.axvline(2011, 0,160,color=&#39;red&#39;) # add a line for when the show debuted
+plt.title(&quot;PEOPLE NAMED THEIR KID KHALEESI&quot;)
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -1143,14 +1143,14 @@ v1.1 Pretty Chains</label><div class="tabbed-content docutils">
 <p><strong>BUT IT COULD BE WORSE</strong></p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">baby_names</span>
-      <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;name in [&quot;Krymson&quot;] &amp; year &gt;= 1950&#39;</span><span class="p">)</span>
-      <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;name&#39;</span><span class="p">,</span><span class="s1">&#39;year&#39;</span><span class="p">])[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="c1"># for each name-year, combine M and F counts</span>
-      <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span> <span class="c1"># give use the column names back as they were (makes the plot call easy)</span>
-      <span class="o">.</span><span class="n">pipe</span><span class="p">((</span><span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">,</span> <span class="s1">&#39;data&#39;</span><span class="p">),</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">)</span>
-<span class="p">)</span>    
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Alabama, wow...Krymson, really?&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>(baby_names
+      .query(&#39;name in [&quot;Krymson&quot;] &amp; year &gt;= 1950&#39;)
+      .groupby([&#39;name&#39;,&#39;year&#39;])[&#39;count&#39;].sum() # for each name-year, combine M and F counts
+      .reset_index() # give use the column names back as they were (makes the plot call easy)
+      .pipe((sns.lineplot, &#39;data&#39;),hue=&#39;name&#39;,x=&#39;year&#39;,y=&#39;count&#39;)
+)    
+plt.title(&quot;Alabama, wow...Krymson, really?&quot;)
+plt.show()
 </pre></div>
 </div>
 </div>

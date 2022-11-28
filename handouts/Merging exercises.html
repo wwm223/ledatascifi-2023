@@ -31,8 +31,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../_static/frontpage.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../_static/fin377_specialformatting.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
@@ -903,16 +903,16 @@ const thebe_selector_output = ".output, .cell_output"
 <h1>The merge function<a class="headerlink" href="#the-merge-function" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
 
-<span class="n">left_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-                    <span class="s1">&#39;firm&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Accenture&#39;</span><span class="p">,</span><span class="s1">&#39;Citi&#39;</span><span class="p">,</span><span class="s1">&#39;GS&#39;</span><span class="p">],</span>
-                    <span class="s1">&#39;varA&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A1&#39;</span><span class="p">,</span> <span class="s1">&#39;A2&#39;</span><span class="p">,</span> <span class="s1">&#39;A3&#39;</span><span class="p">]})</span>
+left_df = pd.DataFrame({
+                    &#39;firm&#39;: [&#39;Accenture&#39;,&#39;Citi&#39;,&#39;GS&#39;],
+                    &#39;varA&#39;: [&#39;A1&#39;, &#39;A2&#39;, &#39;A3&#39;]})
 
-<span class="n">right_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-                    <span class="s1">&#39;firm&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;GS&#39;</span><span class="p">,</span><span class="s1">&#39;Chase&#39;</span><span class="p">,</span><span class="s1">&#39;WF&#39;</span><span class="p">],</span>
-                    <span class="s1">&#39;varB&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B1&#39;</span><span class="p">,</span> <span class="s1">&#39;B2&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">],</span>
-                    <span class="s1">&#39;varc&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="s1">&#39;C2&#39;</span><span class="p">,</span> <span class="s1">&#39;C3&#39;</span><span class="p">]})</span>    
+right_df = pd.DataFrame({
+                    &#39;firm&#39;: [&#39;GS&#39;,&#39;Chase&#39;,&#39;WF&#39;],
+                    &#39;varB&#39;: [&#39;B1&#39;, &#39;B2&#39;, &#39;B3&#39;],
+                    &#39;varc&#39;: [&#39;C1&#39;, &#39;C2&#39;, &#39;C3&#39;]})    
 </pre></div>
 </div>
 </div>
@@ -921,7 +921,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Put your cursor in the merge function below and hit shift tab</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">left_df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>left_df.merge(
 </pre></div>
 </div>
 </div>
@@ -947,15 +947,15 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ChosenOne</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-                    <span class="s1">&#39;tic&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;GS&#39;</span><span class="p">,</span><span class="s1">&#39;GS&#39;</span><span class="p">,</span><span class="s1">&#39;GS&#39;</span><span class="p">],</span>
-                    <span class="s1">&#39;varB&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B1&#39;</span><span class="p">,</span> <span class="s1">&#39;B2&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">],</span>
-                    <span class="s1">&#39;varc&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="s1">&#39;C2&#39;</span><span class="p">,</span> <span class="s1">&#39;C3&#39;</span><span class="p">]})</span>    
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ChosenOne = pd.DataFrame({
+                    &#39;tic&#39;: [&#39;GS&#39;,&#39;GS&#39;,&#39;GS&#39;],
+                    &#39;varB&#39;: [&#39;B1&#39;, &#39;B2&#39;, &#39;B3&#39;],
+                    &#39;varc&#39;: [&#39;C1&#39;, &#39;C2&#39;, &#39;C3&#39;]})    
 
-<span class="n">CurryForThree</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-                    <span class="s1">&#39;var1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;GS&#39;</span><span class="p">,</span><span class="s1">&#39;GS&#39;</span><span class="p">,</span><span class="s1">&#39;GS&#39;</span><span class="p">],</span>
-                    <span class="s1">&#39;varD&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;D1&#39;</span><span class="p">,</span> <span class="s1">&#39;D2&#39;</span><span class="p">,</span> <span class="s1">&#39;D3&#39;</span><span class="p">],</span>
-                    <span class="s1">&#39;varE&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;E1&#39;</span><span class="p">,</span> <span class="s1">&#39;E2&#39;</span><span class="p">,</span> <span class="s1">&#39;E3&#39;</span><span class="p">]})</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;var1&#39;</span><span class="p">)</span>
+CurryForThree = pd.DataFrame({
+                    &#39;var1&#39;: [&#39;GS&#39;,&#39;GS&#39;,&#39;GS&#39;],
+                    &#39;varD&#39;: [&#39;D1&#39;, &#39;D2&#39;, &#39;D3&#39;],
+                    &#39;varE&#39;: [&#39;E1&#39;, &#39;E2&#39;, &#39;E3&#39;]}).set_index(&#39;var1&#39;)
 </pre></div>
 </div>
 </div>
@@ -978,15 +978,15 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">poppop</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-                    <span class="s1">&#39;tic&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;TSLA&#39;</span><span class="p">,</span><span class="s1">&#39;TSLA&#39;</span><span class="p">,</span><span class="s1">&#39;GM&#39;</span><span class="p">],</span>
-                    <span class="s1">&#39;varB&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2016&#39;</span><span class="p">,</span> <span class="s1">&#39;2017&#39;</span><span class="p">,</span> <span class="s1">&#39;2018&#39;</span><span class="p">],</span>
-                    <span class="s1">&#39;varc&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="s1">&#39;C2&#39;</span><span class="p">,</span> <span class="s1">&#39;C3&#39;</span><span class="p">]})</span>    
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>poppop = pd.DataFrame({
+                    &#39;tic&#39;: [&#39;TSLA&#39;,&#39;TSLA&#39;,&#39;GM&#39;],
+                    &#39;varB&#39;: [&#39;2016&#39;, &#39;2017&#39;, &#39;2018&#39;],
+                    &#39;varc&#39;: [&#39;C1&#39;, &#39;C2&#39;, &#39;C3&#39;]})    
 
-<span class="n">CurryForThree</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-                    <span class="s1">&#39;var1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">,</span><span class="s1">&#39;TSLA&#39;</span><span class="p">,</span><span class="s1">&#39;TSLA&#39;</span><span class="p">],</span>
-                    <span class="s1">&#39;varD&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2016&#39;</span><span class="p">,</span> <span class="s1">&#39;2017&#39;</span><span class="p">,</span> <span class="s1">&#39;2018&#39;</span><span class="p">],</span>
-                    <span class="s1">&#39;varE&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;E1&#39;</span><span class="p">,</span> <span class="s1">&#39;E2&#39;</span><span class="p">,</span> <span class="s1">&#39;E3&#39;</span><span class="p">]})</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;var1&#39;</span><span class="p">)</span>
+CurryForThree = pd.DataFrame({
+                    &#39;var1&#39;: [&#39;F&#39;,&#39;TSLA&#39;,&#39;TSLA&#39;],
+                    &#39;varD&#39;: [&#39;2016&#39;, &#39;2017&#39;, &#39;2018&#39;],
+                    &#39;varE&#39;: [&#39;E1&#39;, &#39;E2&#39;, &#39;E3&#39;]}).set_index(&#39;var1&#39;)
 </pre></div>
 </div>
 </div>

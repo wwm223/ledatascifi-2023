@@ -31,8 +31,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../_static/frontpage.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../_static/fin377_specialformatting.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
@@ -915,17 +915,17 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!pip install pandas_datareader # uncomment and run this ONE TIME ONLY to install pandas data reader</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#!pip install pandas_datareader # uncomment and run this ONE TIME ONLY to install pandas data reader
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas_datareader</span> <span class="k">as</span> <span class="nn">pdr</span> <span class="c1"># you might need to install this (see above)</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+import numpy as np
+import pandas_datareader as pdr # you might need to install this (see above)
+from datetime import datetime
 </pre></div>
 </div>
 </div>
@@ -936,23 +936,23 @@ const thebe_selector_output = ".output, .cell_output"
 The returns don’t even have to be firms! They can be any asset. (Portfolios, mutual funds, crypto, …)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># choose your firms and years </span>
-<span class="n">stocks</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SBUX&#39;</span><span class="p">,</span><span class="s1">&#39;AAPL&#39;</span><span class="p">,</span><span class="s1">&#39;MSFT&#39;</span><span class="p">]</span>
-<span class="n">start</span>  <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2016</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">end</span>    <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2016</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># choose your firms and years 
+stocks = [&#39;SBUX&#39;,&#39;AAPL&#39;,&#39;MSFT&#39;]
+start  = datetime(2016, 1, 1)
+end    = datetime(2016, 12, 31)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># download stock prices </span>
-<span class="c1"># here, from yahoo: not my fav source, but quick. </span>
-<span class="c1"># we need to do some data manipulation to get the data ready </span>
-<span class="n">stock_prices</span> <span class="o">=</span> <span class="n">pdr</span><span class="o">.</span><span class="n">get_data_yahoo</span><span class="p">(</span><span class="n">stocks</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">)</span>
-<span class="n">stock_prices</span> <span class="o">=</span> <span class="n">stock_prices</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">like</span><span class="o">=</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">)</span> <span class="c1"># reduce to just columns with this in the name</span>
-<span class="n">stock_prices</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">stocks</span> <span class="c1"># put their tickers as column names</span>
-<span class="n">stock_prices</span> <span class="c1"># uncomment to print and see</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># download stock prices 
+# here, from yahoo: not my fav source, but quick. 
+# we need to do some data manipulation to get the data ready 
+stock_prices = pdr.get_data_yahoo(stocks, start=start, end=end)
+stock_prices = stock_prices.filter(like=&#39;Adj Close&#39;) # reduce to just columns with this in the name
+stock_prices.columns = stocks # put their tickers as column names
+stock_prices # uncomment to print and see
 </pre></div>
 </div>
 </div>
@@ -1060,13 +1060,13 @@ The returns don’t even have to be firms! They can be any asset. (Portfolios, m
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this is wide data... so if we want to create a new variable, </span>
-<span class="c1"># then we have to do it once for each firm...</span>
-<span class="c1"># what if we have 1000 firms? seems tough to do...</span>
-<span class="c1"># make long/tidy:</span>
-<span class="n">stock_prices</span> <span class="o">=</span> <span class="n">stock_prices</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">swaplevel</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="n">stock_prices</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Firm&#39;</span><span class="p">,</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span>
-<span class="n">stock_prices</span> <span class="c1"># print - now that is formatted nicely, like CRSP! </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># this is wide data... so if we want to create a new variable, 
+# then we have to do it once for each firm...
+# what if we have 1000 firms? seems tough to do...
+# make long/tidy:
+stock_prices = stock_prices.stack().swaplevel().sort_index().reset_index()
+stock_prices.columns = [&#39;Firm&#39;,&#39;Date&#39;,&#39;Adj Close&#39;]
+stock_prices # print - now that is formatted nicely, like CRSP! 
 </pre></div>
 </div>
 </div>
@@ -1168,12 +1168,12 @@ The returns don’t even have to be firms! They can be any asset. (Portfolios, m
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># add return var = pct_change() function compares to prior row</span>
-<span class="c1"># EXCEPT: don&#39;t compare for first row of one firm with last row of prior firm!</span>
-<span class="c1"># MAKE SURE YOU CREATE THE VARIABLES WITHIN EACH FIRM - use groupby</span>
-<span class="n">stock_prices</span><span class="p">[</span><span class="s1">&#39;ret&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stock_prices</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Firm&#39;</span><span class="p">)[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span>
-<span class="n">stock_prices</span><span class="p">[</span><span class="s1">&#39;ret&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stock_prices</span><span class="p">[</span><span class="s1">&#39;ret&#39;</span><span class="p">]</span> <span class="o">*</span><span class="mi">100</span> <span class="c1"># convert to p.p. to match FF&#39;s convention on scaling (daily % rets)</span>
-<span class="n">stock_prices</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># add return var = pct_change() function compares to prior row
+# EXCEPT: don&#39;t compare for first row of one firm with last row of prior firm!
+# MAKE SURE YOU CREATE THE VARIABLES WITHIN EACH FIRM - use groupby
+stock_prices[&#39;ret&#39;] = stock_prices.groupby(&#39;Firm&#39;)[&#39;Adj Close&#39;].pct_change()
+stock_prices[&#39;ret&#39;] = stock_prices[&#39;ret&#39;] *100 # convert to p.p. to match FF&#39;s convention on scaling (daily % rets)
+stock_prices
 </pre></div>
 </div>
 </div>
@@ -1287,10 +1287,10 @@ The returns don’t even have to be firms! They can be any asset. (Portfolios, m
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this shows that my &quot;groupby&quot; approach works, because </span>
-<span class="c1"># count of ret = count of adj close MINUS # of firms </span>
-<span class="c1"># meaning that the first day for each firm has no return data</span>
-<span class="n">stock_prices</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># this shows that my &quot;groupby&quot; approach works, because 
+# count of ret = count of adj close MINUS # of firms 
+# meaning that the first day for each firm has no return data
+stock_prices.describe() 
 </pre></div>
 </div>
 </div>
@@ -1370,11 +1370,11 @@ The returns don’t even have to be firms! They can be any asset. (Portfolios, m
 <p>Note: <span class="math notranslate nohighlight">\((r_m-r_f)\)</span> is the excess return on the market, which is <em>one</em> “factor”. Modern asset pricing typically uses 5 factors in tests.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We need (r_mkt - rf), and rf</span>
-<span class="c1"># the Fama French data library is a benchmark asset pricing dataset </span>
-<span class="n">ff</span> <span class="o">=</span> <span class="n">pdr</span><span class="o">.</span><span class="n">get_data_famafrench</span><span class="p">(</span><span class="s1">&#39;F-F_Research_Data_5_Factors_2x3_daily&#39;</span><span class="p">,</span><span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># the [0] is because the imported obect is a dictionary, and key=0 is the dataframe</span>
-<span class="n">ff</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Mkt-RF&quot;</span><span class="p">:</span><span class="s2">&quot;mkt_excess&quot;</span><span class="p">})</span>
-<span class="n">ff</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># We need (r_mkt - rf), and rf
+# the Fama French data library is a benchmark asset pricing dataset 
+ff = pdr.get_data_famafrench(&#39;F-F_Research_Data_5_Factors_2x3_daily&#39;,start=start,end=end)[0] # the [0] is because the imported obect is a dictionary, and key=0 is the dataframe
+ff = ff.reset_index().rename(columns={&quot;Mkt-RF&quot;:&quot;mkt_excess&quot;})
+ff
 </pre></div>
 </div>
 </div>
@@ -1527,15 +1527,15 @@ The returns don’t even have to be firms! They can be any asset. (Portfolios, m
 <h2>Merge the asset and factor returns<a class="headerlink" href="#merge-the-asset-and-factor-returns" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">assets_and_factors</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
-    <span class="n">left</span><span class="o">=</span><span class="n">stock_prices</span><span class="p">,</span>
-    <span class="n">right</span><span class="o">=</span><span class="n">ff</span><span class="p">,</span>
-    <span class="n">on</span><span class="o">=</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span>
-    <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">,</span>
-    <span class="n">indicator</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">validate</span><span class="o">=</span><span class="s2">&quot;many_to_one&quot;</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">assets_and_factors</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>assets_and_factors = pd.merge(
+    left=stock_prices,
+    right=ff,
+    on=&quot;Date&quot;,
+    how=&quot;inner&quot;,
+    indicator=True,
+    validate=&quot;many_to_one&quot;,
+)
+assets_and_factors
 </pre></div>
 </div>
 </div>
@@ -1742,47 +1742,47 @@ The returns don’t even have to be firms! They can be any asset. (Portfolios, m
 <p>We just need to write a reg function that works on groupby objects.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import statsmodels.api as sm
 
 
-<span class="k">def</span> <span class="nf">reg_in_groupby</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">formula</span><span class="o">=</span><span class="s2">&quot;ret_excess ~ mkt_excess + SMB + HML&quot;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Want to run regressions after groupby? E.g., repeat the regression </span>
-<span class="sd">    for each firm-year?</span>
-<span class="sd">    </span>
-<span class="sd">    This will do it! </span>
-<span class="sd">    </span>
-<span class="sd">    Note: This defaults to a FF3 model assuming specific variable names. If you</span>
-<span class="sd">    want to run any other regression, just specify your model.</span>
-<span class="sd">    </span>
-<span class="sd">    Usage: </span>
-<span class="sd">        df.groupby(&lt;whatever&gt;).apply(reg_in_groupby)</span>
-<span class="sd">        df.groupby(&lt;whatever&gt;).apply(reg_in_groupby,formula=&lt;whatever&gt;)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">sm</span><span class="o">.</span><span class="n">formula</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+def reg_in_groupby(df, formula=&quot;ret_excess ~ mkt_excess + SMB + HML&quot;):
+    &quot;&quot;&quot;
+    Want to run regressions after groupby? E.g., repeat the regression 
+    for each firm-year?
+    
+    This will do it! 
+    
+    Note: This defaults to a FF3 model assuming specific variable names. If you
+    want to run any other regression, just specify your model.
+    
+    Usage: 
+        df.groupby(&lt;whatever&gt;).apply(reg_in_groupby)
+        df.groupby(&lt;whatever&gt;).apply(reg_in_groupby,formula=&lt;whatever&gt;)
+    &quot;&quot;&quot;
+    return pd.Series(sm.formula.ols(formula, data=df).fit().params)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
-    <span class="n">assets_and_factors</span> <span class="c1"># grab the data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>(
+    assets_and_factors # grab the data
     
-    <span class="c1"># Two things before the regressions:</span>
-    <span class="c1"># 1. need a year variable (to group on)</span>
-    <span class="c1"># 2. the market returns in FF are excess returns, so </span>
-    <span class="c1">#    our stock returns need to be excess as well</span>
-    <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">year</span> <span class="o">=</span> <span class="n">assets_and_factors</span><span class="o">.</span><span class="n">Date</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">,</span>
-            <span class="n">ret_excess</span> <span class="o">=</span> <span class="n">assets_and_factors</span><span class="o">.</span><span class="n">ret</span> <span class="o">-</span> <span class="n">assets_and_factors</span><span class="o">.</span><span class="n">RF</span><span class="p">)</span>
+    # Two things before the regressions:
+    # 1. need a year variable (to group on)
+    # 2. the market returns in FF are excess returns, so 
+    #    our stock returns need to be excess as well
+    .assign(year = assets_and_factors.Date.dt.year,
+            ret_excess = assets_and_factors.ret - assets_and_factors.RF)
     
-    <span class="c1"># ok, run the regs, so easy!</span>
-    <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Firm&#39;</span><span class="p">,</span><span class="s1">&#39;year&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">reg_in_groupby</span><span class="p">,</span><span class="n">formula</span><span class="o">=</span><span class="s1">&#39;ret_excess ~ mkt_excess&#39;</span><span class="p">)</span>
+    # ok, run the regs, so easy!
+    .groupby([&#39;Firm&#39;,&#39;year&#39;]).apply(reg_in_groupby,formula=&#39;ret_excess ~ mkt_excess&#39;)
     
-    <span class="c1"># and clean up - with better var names</span>
-    <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Intercept&#39;</span><span class="p">:</span><span class="s1">&#39;alpha&#39;</span><span class="p">,</span><span class="s1">&#39;mkt_excess&#39;</span><span class="p">:</span><span class="s1">&#39;beta&#39;</span><span class="p">})</span>
-    <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="p">)</span>
+    # and clean up - with better var names
+    .rename(columns={&#39;Intercept&#39;:&#39;alpha&#39;,&#39;mkt_excess&#39;:&#39;beta&#39;})
+    .reset_index()
+)
 </pre></div>
 </div>
 </div>

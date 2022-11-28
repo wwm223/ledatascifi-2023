@@ -41,8 +41,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/frontpage.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/fin377_specialformatting.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
@@ -917,13 +917,13 @@ const thebe_selector_output = ".output, .cell_output"
 <p>When you use a method on an object (e.g. a DataFrame) in python, <code class="docutils literal notranslate"><span class="pre">&lt;object&gt;.&lt;method&gt;(&lt;args&gt;)</span></code> performs the method on the object and returns the modified object, as you can see here:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
 
-<span class="c1"># define a df</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;height&#39;</span><span class="p">:[</span><span class="mi">72</span><span class="p">,</span><span class="mi">60</span><span class="p">,</span><span class="mi">68</span><span class="p">],</span><span class="s1">&#39;gender&#39;</span><span class="p">:[</span><span class="s1">&#39;M&#39;</span><span class="p">,</span><span class="s1">&#39;F&#39;</span><span class="p">,</span><span class="s1">&#39;M&#39;</span><span class="p">],</span><span class="s1">&#39;weight&#39;</span><span class="p">:[</span><span class="mi">175</span><span class="p">,</span><span class="mi">110</span><span class="p">,</span><span class="mi">150</span><span class="p">]})</span>
+# define a df
+df = pd.DataFrame({&#39;height&#39;:[72,60,68],&#39;gender&#39;:[&#39;M&#39;,&#39;F&#39;,&#39;M&#39;],&#39;weight&#39;:[175,110,150]})
 
-<span class="c1"># call method on df and print - df.assign yields the modified object!</span>
-<span class="n">df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">feet</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;height&#39;</span><span class="p">]</span><span class="o">//</span><span class="mi">12</span><span class="p">)</span>
+# call method on df and print - df.assign yields the modified object!
+df.assign(feet=df[&#39;height&#39;]//12)
 </pre></div>
 </div>
 </div>
@@ -985,7 +985,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>  <span class="c1"># see, the object has no feet! this is the original obj!</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(df)  # see, the object has no feet! this is the original obj!
 </pre></div>
 </div>
 </div>
@@ -1007,15 +1007,15 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># option 1: explicitly define the df as the prior df after the method was called</span>
-<span class="c1"># here, that means to add &quot;df = &quot; before the df.method </span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">feet1</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;height&#39;</span><span class="p">]</span><span class="o">//</span><span class="mi">12</span><span class="p">)</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># option 1: explicitly define the df as the prior df after the method was called
+# here, that means to add &quot;df = &quot; before the df.method 
+df = df.assign(feet1=df[&#39;height&#39;]//12) 
 
-<span class="c1"># option 2: define a new feature of the df</span>
-<span class="c1"># here, &quot;df[&#39;newcolumnname&#39;] = &quot; (some operation)</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;feet2&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;height&#39;</span><span class="p">]</span><span class="o">//</span><span class="mi">12</span>
+# option 2: define a new feature of the df
+# here, &quot;df[&#39;newcolumnname&#39;] = &quot; (some operation)
+df[&#39;feet2&#39;]=df[&#39;height&#39;]//12
 
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="c1"># both of these added to obj in memory</span>
+print(df) # both of these added to obj in memory
 </pre></div>
 </div>
 </div>

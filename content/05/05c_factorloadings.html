@@ -41,8 +41,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/frontpage.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/fin377_specialformatting.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
@@ -972,9 +972,9 @@ const thebe_selector_output = ".output, .cell_output"
 <h2><span class="section-number">9.5.1. </span>Set up the data<a class="headerlink" href="#set-up-the-data" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas_datareader</span> <span class="k">as</span> <span class="nn">pdr</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+import numpy as np
+import pandas_datareader as pdr
 </pre></div>
 </div>
 </div>
@@ -984,8 +984,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p><strong>They can be any asset.</strong> (Portfolios, mutual funds, crypto, …)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crsp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_stata</span><span class="p">(</span><span class="s1">&#39;https://github.com/LeDataSciFi/data/blob/main/Stock%20Returns%20(CRSP)/3firm_ret_1990_2020.dta?raw=true&#39;</span><span class="p">)</span>
-<span class="n">crsp</span><span class="p">[</span><span class="s1">&#39;ret&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">crsp</span><span class="p">[</span><span class="s1">&#39;ret&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span> <span class="c1"># convert to precentage to match FF&#39;s convention on scaling (daily % rets)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>crsp = pd.read_stata(&#39;https://github.com/LeDataSciFi/data/blob/main/Stock%20Returns%20(CRSP)/3firm_ret_1990_2020.dta?raw=true&#39;)
+crsp[&#39;ret&#39;] = crsp[&#39;ret&#39;]*100 # convert to precentage to match FF&#39;s convention on scaling (daily % rets)
 </pre></div>
 </div>
 </div>
@@ -993,8 +993,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Then grab the market returns. Here, we will use one of the Fama-French datasets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ff</span> <span class="o">=</span> <span class="n">pdr</span><span class="o">.</span><span class="n">get_data_famafrench</span><span class="p">(</span><span class="s1">&#39;F-F_Research_Data_5_Factors_2x3_daily&#39;</span><span class="p">,</span><span class="n">start</span><span class="o">=</span><span class="mi">1980</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="mi">2010</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># the [0] is because the imported obect is a dictionary, and key=0 is the dataframe</span>
-<span class="n">ff</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Mkt-RF&quot;</span><span class="p">:</span><span class="s2">&quot;mkt_excess&quot;</span><span class="p">,</span> <span class="s2">&quot;Date&quot;</span><span class="p">:</span><span class="s2">&quot;date&quot;</span><span class="p">})</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ff = pdr.get_data_famafrench(&#39;F-F_Research_Data_5_Factors_2x3_daily&#39;,start=1980,end=2010)[0] # the [0] is because the imported obect is a dictionary, and key=0 is the dataframe
+ff = ff.reset_index().rename(columns={&quot;Mkt-RF&quot;:&quot;mkt_excess&quot;, &quot;Date&quot;:&quot;date&quot;})
 </pre></div>
 </div>
 </div>
@@ -1002,8 +1002,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Merge the market returns into the stock returns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crsp_ready</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="n">ff</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="n">crsp</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">,</span>
-                      <span class="n">indicator</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="s2">&quot;one_to_many&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>crsp_ready = pd.merge(left=ff, right=crsp, on=&#39;date&#39;, how=&quot;inner&quot;,
+                      indicator=True, validate=&quot;one_to_many&quot;)
 </pre></div>
 </div>
 </div>
@@ -1018,22 +1018,22 @@ const thebe_selector_output = ".output, .cell_output"
 <p>We just need to write a reg function that works on groupby objects.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import statsmodels.api as sm
 
-<span class="k">def</span> <span class="nf">reg_in_groupby</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">formula</span><span class="o">=</span><span class="s2">&quot;ret_excess ~ mkt_excess + SMB + HML&quot;</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Want to run regressions after groupby?</span>
-<span class="sd">    </span>
-<span class="sd">    This will do it! </span>
-<span class="sd">    </span>
-<span class="sd">    Note: This defaults to a FF3 model assuming specific variable names. If you</span>
-<span class="sd">    want to run any other regression, just specify your model.</span>
-<span class="sd">    </span>
-<span class="sd">    Usage: </span>
-<span class="sd">        df.groupby(&lt;whatever&gt;).apply(reg_in_groupby)</span>
-<span class="sd">        df.groupby(&lt;whatever&gt;).apply(reg_in_groupby,formula=&lt;whatever&gt;)</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">sm</span><span class="o">.</span><span class="n">formula</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+def reg_in_groupby(df,formula=&quot;ret_excess ~ mkt_excess + SMB + HML&quot;):
+    &#39;&#39;&#39;
+    Want to run regressions after groupby?
+    
+    This will do it! 
+    
+    Note: This defaults to a FF3 model assuming specific variable names. If you
+    want to run any other regression, just specify your model.
+    
+    Usage: 
+        df.groupby(&lt;whatever&gt;).apply(reg_in_groupby)
+        df.groupby(&lt;whatever&gt;).apply(reg_in_groupby,formula=&lt;whatever&gt;)
+    &#39;&#39;&#39;
+    return pd.Series(sm.formula.ols(formula,data = df).fit().params)
 </pre></div>
 </div>
 </div>
@@ -1041,24 +1041,24 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Let’s use that function!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
-    <span class="n">crsp_ready</span> <span class="c1"># grab the data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>(
+    crsp_ready # grab the data
     
-    <span class="c1"># Two things before the regressions:</span>
-    <span class="c1"># 1. need a year variable (to group on)</span>
-    <span class="c1"># 2. the market returns in FF are excess returns, so </span>
-    <span class="c1">#    our stock returns need to be excess as well</span>
-    <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">year</span> <span class="o">=</span> <span class="n">crsp_ready</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">,</span>
-           <span class="n">ret_excess</span> <span class="o">=</span> <span class="n">crsp_ready</span><span class="o">.</span><span class="n">ret</span> <span class="o">-</span> <span class="n">crsp_ready</span><span class="o">.</span><span class="n">RF</span><span class="p">)</span>
+    # Two things before the regressions:
+    # 1. need a year variable (to group on)
+    # 2. the market returns in FF are excess returns, so 
+    #    our stock returns need to be excess as well
+    .assign(year = crsp_ready.date.dt.year,
+           ret_excess = crsp_ready.ret - crsp_ready.RF)
     
-    <span class="c1"># ok, run the regs, so easy!</span>
-    <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span><span class="s1">&#39;year&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">reg_in_groupby</span><span class="p">)</span>
+    # ok, run the regs, so easy!
+    .groupby([&#39;permno&#39;,&#39;year&#39;]).apply(reg_in_groupby)
     
-    <span class="c1"># optional: clean up the output with better var names </span>
-    <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Intercept&#39;</span><span class="p">:</span><span class="s1">&#39;alpha&#39;</span><span class="p">,</span><span class="s1">&#39;mkt_excess&#39;</span><span class="p">:</span><span class="s1">&#39;beta&#39;</span><span class="p">,</span>
-                    <span class="s1">&#39;SMB&#39;</span><span class="p">:</span><span class="s1">&#39;SMB_loading&#39;</span><span class="p">,</span><span class="s1">&#39;HML&#39;</span><span class="p">:</span><span class="s1">&#39;HML_loading&#39;</span><span class="p">})</span>
-    <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="p">)</span>
+    # optional: clean up the output with better var names 
+    .rename(columns={&#39;Intercept&#39;:&#39;alpha&#39;,&#39;mkt_excess&#39;:&#39;beta&#39;,
+                    &#39;SMB&#39;:&#39;SMB_loading&#39;,&#39;HML&#39;:&#39;HML_loading&#39;})
+    .reset_index()
+)
 </pre></div>
 </div>
 </div>

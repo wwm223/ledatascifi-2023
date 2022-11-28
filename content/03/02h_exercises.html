@@ -41,8 +41,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/frontpage.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/fin377_specialformatting.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
@@ -918,14 +918,14 @@ const thebe_selector_output = ".output, .cell_output"
 
 [^here]: [Here they are.](02i_answers) --><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">pandas_datareader</span> <span class="k">as</span> <span class="nn">pdr</span> <span class="c1"># IF NECESSARY, from terminal: pip install pandas_datareader </span>
-<span class="kn">import</span> <span class="nn">datetime</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+import pandas_datareader as pdr # IF NECESSARY, from terminal: pip install pandas_datareader 
+import datetime
+import numpy as np
 
-<span class="n">start</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># you can specify start and end dates this way</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2021</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">27</span><span class="p">)</span>
-<span class="n">macro_df</span> <span class="o">=</span> <span class="n">pdr</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataReader</span><span class="p">([</span><span class="s1">&#39;GDP&#39;</span><span class="p">,</span><span class="s1">&#39;CPIAUCSL&#39;</span><span class="p">,</span><span class="s1">&#39;UNRATE&#39;</span><span class="p">],</span> <span class="s1">&#39;fred&#39;</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
+start = datetime.datetime(2017, 1, 1) # you can specify start and end dates this way
+end = datetime.datetime(2021, 1, 27)
+macro_df = pdr.data.DataReader([&#39;GDP&#39;,&#39;CPIAUCSL&#39;,&#39;UNRATE&#39;], &#39;fred&#39;, start, end)
 </pre></div>
 </div>
 </div>
@@ -948,7 +948,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># do your work here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># do your work here
 </pre></div>
 </div>
 </div>
@@ -962,7 +962,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># do your work here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># do your work here
 </pre></div>
 </div>
 </div>
@@ -983,30 +983,30 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># LOAD DATA AND CONVERT TO ANNUAL</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># LOAD DATA AND CONVERT TO ANNUAL
 
-<span class="n">start</span> <span class="o">=</span> <span class="mi">1990</span> <span class="c1"># pandas datareader can infer these are years</span>
-<span class="n">end</span> <span class="o">=</span> <span class="mi">2018</span>
-<span class="n">macro_data</span> <span class="o">=</span> <span class="n">pdr</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataReader</span><span class="p">([</span><span class="s1">&#39;CAUR&#39;</span><span class="p">,</span><span class="s1">&#39;MIUR&#39;</span><span class="p">,</span><span class="s1">&#39;PAUR&#39;</span><span class="p">,</span> <span class="c1"># unemployment </span>
-                                  <span class="s1">&#39;LXXRSA&#39;</span><span class="p">,</span><span class="s1">&#39;DEXRSA&#39;</span><span class="p">,</span><span class="s1">&#39;WDXRSA&#39;</span><span class="p">,</span> <span class="c1"># case shiller index in LA, Detroit, DC (no PA  available!)</span>
-                                  <span class="s1">&#39;MEHOINUSCAA672N&#39;</span><span class="p">,</span><span class="s1">&#39;MEHOINUSMIA672N&#39;</span><span class="p">,</span><span class="s1">&#39;MEHOINUSPAA672N&#39;</span><span class="p">],</span> <span class="c1">#  </span>
-                                 <span class="s1">&#39;fred&#39;</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
-<span class="n">macro_data</span> <span class="o">=</span> <span class="n">macro_data</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="c1"># get&#39;s the first observation for each variable in a given year</span>
+start = 1990 # pandas datareader can infer these are years
+end = 2018
+macro_data = pdr.data.DataReader([&#39;CAUR&#39;,&#39;MIUR&#39;,&#39;PAUR&#39;, # unemployment 
+                                  &#39;LXXRSA&#39;,&#39;DEXRSA&#39;,&#39;WDXRSA&#39;, # case shiller index in LA, Detroit, DC (no PA  available!)
+                                  &#39;MEHOINUSCAA672N&#39;,&#39;MEHOINUSMIA672N&#39;,&#39;MEHOINUSPAA672N&#39;], #  
+                                 &#39;fred&#39;, start, end)
+macro_data = macro_data.resample(&#39;Y&#39;).first() # get&#39;s the first observation for each variable in a given year
 
-<span class="c1"># CLEAN UP THE FORMATING SOMEWHAT</span>
+# CLEAN UP THE FORMATING SOMEWHAT
 
-<span class="n">macro_data</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">macro_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">year</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2"> DATA BEFORE FORMATTING: </span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">macro_data</span><span class="p">[:</span><span class="mi">20</span><span class="p">])</span> <span class="c1"># see how the data looks now? ugly variable names, but its an annual dataset at least</span>
-<span class="n">macro_data</span><span class="o">.</span><span class="n">columns</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_tuples</span><span class="p">([</span>
-    <span class="p">(</span><span class="s1">&#39;Unemployment&#39;</span><span class="p">,</span><span class="s1">&#39;CA&#39;</span><span class="p">),(</span><span class="s1">&#39;Unemployment&#39;</span><span class="p">,</span><span class="s1">&#39;MI&#39;</span><span class="p">),(</span><span class="s1">&#39;Unemployment&#39;</span><span class="p">,</span><span class="s1">&#39;PA&#39;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;HouseIdx&#39;</span><span class="p">,</span><span class="s1">&#39;CA&#39;</span><span class="p">),(</span><span class="s1">&#39;HouseIdx&#39;</span><span class="p">,</span><span class="s1">&#39;MI&#39;</span><span class="p">),(</span><span class="s1">&#39;HouseIdx&#39;</span><span class="p">,</span><span class="s1">&#39;PA&#39;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;MedIncome&#39;</span><span class="p">,</span><span class="s1">&#39;CA&#39;</span><span class="p">),(</span><span class="s1">&#39;MedIncome&#39;</span><span class="p">,</span><span class="s1">&#39;MI&#39;</span><span class="p">),(</span><span class="s1">&#39;MedIncome&#39;</span><span class="p">,</span><span class="s1">&#39;PA&#39;</span><span class="p">)</span>
-    <span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2"> DATA AFTER FORMATTING: </span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">macro_data</span><span class="p">[:</span><span class="mi">20</span><span class="p">])</span> <span class="c1"># this is a dataset that is &quot;wide&quot;, and now </span>
-                       <span class="c1"># the column variable names have 2 levels - var name, </span>
-                       <span class="c1"># and unit/state that variable applies to</span>
+macro_data.index = macro_data.index.year
+print(&quot;\n\n DATA BEFORE FORMATTING: \n\n&quot;)
+print(macro_data[:20]) # see how the data looks now? ugly variable names, but its an annual dataset at least
+macro_data.columns=pd.MultiIndex.from_tuples([
+    (&#39;Unemployment&#39;,&#39;CA&#39;),(&#39;Unemployment&#39;,&#39;MI&#39;),(&#39;Unemployment&#39;,&#39;PA&#39;),
+    (&#39;HouseIdx&#39;,&#39;CA&#39;),(&#39;HouseIdx&#39;,&#39;MI&#39;),(&#39;HouseIdx&#39;,&#39;PA&#39;),
+    (&#39;MedIncome&#39;,&#39;CA&#39;),(&#39;MedIncome&#39;,&#39;MI&#39;),(&#39;MedIncome&#39;,&#39;PA&#39;)
+    ])
+print(&quot;\n\n DATA AFTER FORMATTING: \n\n&quot;)
+print(macro_data[:20]) # this is a dataset that is &quot;wide&quot;, and now 
+                       # the column variable names have 2 levels - var name, 
+                       # and unit/state that variable applies to
 </pre></div>
 </div>
 </div>
@@ -1017,7 +1017,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># do your work here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># do your work here
 </pre></div>
 </div>
 </div>
