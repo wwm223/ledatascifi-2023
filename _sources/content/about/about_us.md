@@ -34,6 +34,8 @@ I am a senior studying Financial Engineering with special interests in startups,
 
 They are listed on the [discussion board for your class](https://github.com/orgs/LeDataSciFi/teams/). **Office hour schedules can and do change during the semester, so please check back!** 
 
+_Note: You can't see the discussion board until you complete the [set up instructions.](02_Setup)_
+
 ```{note}  
 **I suspect that the initial learning curve will be steep, so we have posted a lot of office hours. Around Valentines Day, we will reduce our explicit office hours. Remember, when you get stuck, _especially_ on installation and set up issues,**
 - look at the [help](help) page
