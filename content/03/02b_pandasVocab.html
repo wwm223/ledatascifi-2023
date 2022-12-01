@@ -474,7 +474,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../04/00_World_Wide_Data.html">
-   4. Accessing the World of Data
+   4. Building and Using Large (Textual) Data
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
@@ -498,7 +498,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2 collapsible-parent">
     <a class="reference internal" href="../04/02_strings.html">
-     4.4. The Power of Textual Data
+     4.4. Exploiting Textual Data
     </a>
     <ul class="collapse-ul">
      <li class="toctree-l3">
@@ -518,7 +518,7 @@ const thebe_selector_output = ".output, .cell_output"
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../04/02d_RegexApplication.html">
-       4.4.4. Finding words near each other
+       4.4.4. Intro to NLP - The Anchor Phase Technique
       </a>
      </li>
     </ul>
@@ -950,8 +950,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <p>Data can be logically stored in many ways. Let’s start by showing one dataset, and three ways it can be stored.</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="5da7ffc1-8f5e-4e4b-b1d4-7a57140cac73" name="2a7d9122-7001-41cb-90de-6ac783e6d76f" type="radio">
-</input><label class="tabbed-label" for="5da7ffc1-8f5e-4e4b-b1d4-7a57140cac73">
+<input checked="checked" id="44af2f70-5b5f-4b19-b4b3-6f42b278b7bb" name="668db40e-0502-424e-868d-a51c6db2eaba" type="radio">
+</input><label class="tabbed-label" for="44af2f70-5b5f-4b19-b4b3-6f42b278b7bb">
 “Long” Data</label><div class="tabbed-content docutils">
 <p>Here is a <strong>long dataset.</strong> The “key” or “index” is the <em><strong>combination</strong> of year and firm.</em> This is what I’d refer to as a “firm-year” dataset.</p>
 <table class="colwidths-auto table">
@@ -1006,8 +1006,8 @@ const thebe_selector_output = ".output, .cell_output"
 </tbody>
 </table>
 </div>
-<input id="bae749ca-03be-4cc8-895e-5086072a997d" name="2a7d9122-7001-41cb-90de-6ac783e6d76f" type="radio">
-</input><label class="tabbed-label" for="bae749ca-03be-4cc8-895e-5086072a997d">
+<input id="44543020-abd2-4265-8579-88c828e56f8f" name="668db40e-0502-424e-868d-a51c6db2eaba" type="radio">
+</input><label class="tabbed-label" for="44543020-abd2-4265-8579-88c828e56f8f">
 Same data, but “Wide”</label><div class="tabbed-content docutils">
 <p>This is the exact same data, but stored as a <strong>wide dataset.</strong> Now, the “key” or “index” is <strong>just</strong> the <em>year</em>, and each variable is duplicated for each firm. So there is a Sales variable for GM, and a Sales variable for Ford.</p>
 <table class="colwidths-auto table">
@@ -1053,8 +1053,8 @@ Same data, but “Wide”</label><div class="tabbed-content docutils">
 <p>A similar case can occur for the row names/numbers. If there is one level of the row name, that’s the Index. If there are multiple levels, it is called a MultiIndex.</p>
 </div>
 </div>
-<input id="1c120fe1-3bae-4d0f-8c8e-6656f660079e" name="2a7d9122-7001-41cb-90de-6ac783e6d76f" type="radio">
-</input><label class="tabbed-label" for="1c120fe1-3bae-4d0f-8c8e-6656f660079e">
+<input id="3ca13aad-391f-48c0-b628-b744d4633e6f" name="668db40e-0502-424e-868d-a51c6db2eaba" type="radio">
+</input><label class="tabbed-label" for="3ca13aad-391f-48c0-b628-b744d4633e6f">
 Same data, but differently “Wide”</label><div class="tabbed-content docutils">
 <p>Now, the “key” or “index” is just the <em>firm</em>, and each variable is duplicated for each year. So there is a Sales variable for 2000, and a Sales variable for 2001.</p>
 <table class="colwidths-auto table">

@@ -15,7 +15,7 @@
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>4.4.4. Finding words near each other &#8212; LeDataSciFi-2023</title>
+    <title>4.4.4. Intro to NLP - The Anchor Phase Technique &#8212; LeDataSciFi-2023</title>
     
   <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -474,7 +474,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="00_World_Wide_Data.html">
-   4. Accessing the World of Data
+   4. Building and Using Large (Textual) Data
   </a>
   <ul class="current collapse-ul">
    <li class="toctree-l2">
@@ -498,7 +498,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2 current active collapsible-parent">
     <a class="reference internal" href="02_strings.html">
-     4.4. The Power of Textual Data
+     4.4. Exploiting Textual Data
     </a>
     <ul class="current collapse-ul">
      <li class="toctree-l3">
@@ -518,7 +518,7 @@ const thebe_selector_output = ".output, .cell_output"
      </li>
      <li class="toctree-l3 current active">
       <a class="current reference internal" href="#">
-       4.4.4. Finding words near each other
+       4.4.4. Intro to NLP - The Anchor Phase Technique
       </a>
      </li>
     </ul>
@@ -916,16 +916,24 @@ const thebe_selector_output = ".output, .cell_output"
         
               <div>
                 
-  <div class="section" id="finding-words-near-each-other">
-<h1><span class="section-number">4.4.4. </span>Finding words near each other<a class="headerlink" href="#finding-words-near-each-other" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="intro-to-nlp-the-anchor-phase-technique">
+<h1><span class="section-number">4.4.4. </span>Intro to NLP - The Anchor Phase Technique<a class="headerlink" href="#intro-to-nlp-the-anchor-phase-technique" title="Permalink to this headline">¶</a></h1>
 <p>Congrats on surviving the last few pages on regex. I’m guessing either you’re asleep, giving up on regex, or you are struggling to keep your eyes from glazing over.</p>
-<p><a class="reference external" href="https://www.google.com/search?&amp;tbm=isch&amp;q=regex+memes">That’s natural! No one really likes or understands regex. I mean, the memes are good… and vicious.</a></p>
-<p>So three things are going on:</p>
+<p><a class="reference external" href="https://www.google.com/search?&amp;tbm=isch&amp;q=regex+memes">That’s natural! No one really likes or understands regex. I mean, the memes are good… and vicious.</a> But the prior two pages give you some background that will help you understand how to use a key function (<code class="docutils literal notranslate"><span class="pre">NEAR_regex</span></code>) we are going to use.</p>
+<p><strong>Here is what’s going on:</strong></p>
 <ol class="simple">
-<li><p>We’re going to introduce a new function - <code class="docutils literal notranslate"><span class="pre">NEAR_regex()</span></code> - that will let use leverage the power of regex while <em>moooostly</em> hiding us from the necessary work of writing a dang regex.</p></li>
-<li><p>The prior two pages give you some background that will help you understand how to use this function.</p></li>
+<li><p>We can collect a TON of webpages (documents). These pages have text and information we’d like to use.</p></li>
+<li><p>But hiring employees to manually extract that info is expensive at scale. Python code and computer runtime is cheap.</p></li>
+<li><p>NLP - natural language processing - is a field concerned with turning text into usable datasets. The field is advanced and has many powerful and cool methods.</p></li>
+<li><p>“Anchor phrase” is a simple yet powerful technique. The basic idea is to look for a word (or words) near another word (or words) to see if (and how much) a document is discussing some topic. _Are you discussing <strong>risk</strong> in the context of <strong>supply chain</strong> issues?”</p></li>
+<li><p>I wrote a function - <code class="docutils literal notranslate"><span class="pre">NEAR_regex()</span></code> - to do anchor phrase searches. It leverages the power of regex while <em>moooostly</em> hiding us from the necessary work of writing a dang regex.</p></li>
+<li><p>The prior two pages were still useful because they give you necessary background that will help you understand how to use this function.</p></li>
 <li><p>Again, this function means you won’t need to write a regex pattern!<a class="footnote-reference brackets" href="#best" id="id1">1</a></p></li>
 </ol>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>“Anchor phrase” is also called “chained context discovery”.</p>
+</div>
 <p>The <a class="reference external" href="https://github.com/LeDataSciFi/ledatascifi-2023/tree/main/community_codebook">community codebook</a> (a valuable resource!) has a file in it called “near_regex.py”. To get that file to the folder you’re working on that needs the function (e.g., your class notes folder, and the assignment) you have two options:</p>
 <ol class="simple">
 <li><p>If you already cloned the textbook’s repo (good job, you!), then the file is already on your computer. Simply find it inside <code class="docutils literal notranslate"><span class="pre">ledatascifi-2023/community_codebook/</span></code> and copy it, then paste to the folder where it is needed.</p></li>
@@ -935,7 +943,10 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">near_regex</span> <span class="kn">import</span> <span class="n">NEAR_regex</span> <span class="c1"># yes, the font case is different</span>
 </pre></div>
 </div>
-<p>Oh, and the near_regex.py file has examples in it, which you don’t need. Delete everything below the “return” line.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>At the bottom of the near_regex.py file, I included examples. You don’t need to keep these and if you do, it will cause your code to print stuff. This will look silly and be confusing. So when you copy near_regex.py into a folder to use it, delete all the examples and stuff below the “return” line in the function.</p>
+</div>
 <div class="section" id="demo">
 <h2><span class="section-number">4.4.4.1. </span>Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h2>
 <p>Let me start by showing you some examples. After these example, load the function and read the help documentation in it, and then we can do some practice.</p>
