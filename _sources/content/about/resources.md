@@ -1,9 +1,9 @@
-# Resources, Tutorials, and Data Sources
+# Resources, tutorials, data
 
 ```{note}
 **Anything that is bolded/underlined below is also considered essential.**
 
-If you have any favorite resources you like, or found helpful, please let me know!
+If you have any favorite resources you like, or found helpful, please let me know and I'll add them!
 ```
 
 ```{dropdown} **THE MOST ESSENTIAL RESOURCES** 
@@ -11,6 +11,10 @@ If you have any favorite resources you like, or found helpful, please let me kno
 - [Cheat sheets to bookmark/print!](https://github.com/LeDataSciFi/ledatascifi-2023/tree/main/cheatsheets) **Better yet, download these to your Class Notes repo/folder, and put them inside a folder called "Cheatsheats"!**
     - Included in this folder: python basics, jupyter notebook, importing data, numpy, pandas, seaborn, and scikit-learn
 - [Coding best practices, and project management](https://web.stanford.edu/~gentzkow/research/CodeAndData.xhtml)
+- [Supercharged finance packages](../05/05c_finpacks) (for use on the class project or after the semester), including
+    - Packages to easily build apps/dashboards
+    - A free way to get most of the functionality of a Bloomberg terminal
+    - A coding co-pilot 
 ```
 
 ```{dropdown} Jobs, internships, grad school
@@ -26,6 +30,12 @@ _Note: The tips for econ grad school apply to other fields, including finance._
 - [Guide to business school PhD applications](https://drive.google.com/drive/folders/1A1iXhsCZwetgN5UPy2Vs6bBaOi7r3SEm)
 ```
 
+```{dropdown} Data Sources
+
+To make this easy to update, I've put the best data sources [in this Google Sheet.](https://docs.google.com/spreadsheets/d/1xkb2oKLBwqFQHgeAHpw0kKKxbn-V-C2kAsUAGyBUUfw/edit?usp=sharing) This will be especially useful when we get to thinking about projects!
+
+```
+
 ````{dropdown} Python
 ```{note}
 If you use any of these and LIKE or DISLIKE them, **PLEASE** let me know so I can guide future students to resources.
@@ -33,6 +43,7 @@ If you use any of these and LIKE or DISLIKE them, **PLEASE** let me know so I ca
 
 - [Comprehensive, free class: py4e](https://www.py4e.com/lessons), cover [topics listed here](interest)
 - [Comprehensive, free class: cs50p](https://cs50.harvard.edu/python/2022/), cover [topics listed here](interest)
+- [Comprehensive, free class: Kaggle Learn](https://www.kaggle.com/learn), covers basic programming concepts, python, Pandas, viz, ML modeling, and more via tutorials with short exercises.
 - **Essential:** [A whirlwind tour of python](https://nbviewer.org/github/jakevdp/WhirlwindTourOfPython/blob/master/Index.ipynb) 
 - Lessons 3 - 5 of the [official tutorial](https://docs.python.org/3/tutorial/introduction.html)
 - [Dive Into Python](https://diveinto.org/python3/table-of-contents.html)
@@ -51,6 +62,7 @@ If you use any of these and LIKE or DISLIKE them, **PLEASE** let me know so I ca
 ```{dropdown} Data Science 
 - **Essential:** [Python Data Science Handbook](https://github.com/jakevdp/PythonDataScienceHandbook)
 - [Probably the best collection of Python notebooks on the web](https://github.com/jupyter/jupyter/wiki/A-gallery-of-interesting-Jupyter-Notebooks)
+- [J.P.Morgan's 2017 report on ML in finance, with python code.](https://www.cfasociety.org/cleveland/Lists/Events%20Calendar/Attachments/1045/BIG-Data_AI-JPMmay2017.pdf) 
 ```
 
 ```{dropdown} Visualization
@@ -68,12 +80,15 @@ If you use any of these and LIKE or DISLIKE them, **PLEASE** let me know so I ca
 - [The most thorough yet simple walkthrough of Git and Github use on the web](https://happygitwithr.com). Applies to python use for the most part. 
 ```
 
-```{dropdown} Data/ML
+```{dropdown} Practicing ML 
+
+The datasets below are great for learning how to use ML techniques - they tend to be small and manageable enough to work with manually. 
+
 - [Scikit (python package) can read in some data](https://scikit-learn.org/stable/datasets.html#datasets), which has data on Boston real estate, wine, a larger california housing dataset 
 - **Essential:** [Pandas can read in a LOT of useful data!](https://pandas-datareader.readthedocs.io/en/latest/readers/index.html) Data providers include: Federal Reserve ("FRED"), Ken French, NASDAQ, OECD, Qunadl, TSP, World Bank, and more!
 - [ML competitions with serious prizes at drivendata.org](https://www.drivendata.org/competitions/54/machine-learning-with-a-heart/)
-  - [This comp was interesting](https://www.drivendata.org/competitions/50/worldbank-poverty-prediction/page/99/). You could start trying [to analyze it here](http://drivendata.co/blog/worldbank-poverty-benchmark/). This has a good example of the process you might follow. After you're done, you can see [the winner's code and discussion of the winning approach](https://github.com/drivendataorg/pover-t-tests/tree/9a1918856c5e6ee537caed103eb80dabefb2fe44)  
-- **Essential:** [kaggle.com](kaggle.com) has ML competitions, some FAQs, tutorials, data and competitions
+  - [This competition was interesting](https://www.drivendata.org/competitions/50/worldbank-poverty-prediction/page/99/). You could start trying [to analyze it here](http://drivendata.co/blog/worldbank-poverty-benchmark/). This has a good example of the process you might follow. After you're done, you can see [the winner's code and discussion of the winning approach](https://github.com/drivendataorg/pover-t-tests/tree/9a1918856c5e6ee537caed103eb80dabefb2fe44)  
+- **Essential:** [kaggle.com](kaggle.com) has ML competitions, some FAQs, [tutorials](kaggle.com/learn), data and competitions
   - [Real estate data](https://www.kaggle.com/c/house-prices-advanced-regression-techniques), a tutorial [exploring that data](https://www.kaggle.com/pmarcelino/comprehensive-data-exploration-with-python), and a [pass at a model](https://www.kaggle.com/juliencs/a-study-on-regression-applied-to-the-ames-dataset)
   - Philly based data would be fun. Here is [real estate, one option for data, seems ok, N=805](https://www.kaggle.com/harry007/philly-real-estate-data-set-sample)
   - [Predict box office for movies](https://www.kaggle.com/c/tmdb-box-office-prediction). VaultML claims they can do this by reading the screenplays and using textual analysis tools
@@ -82,7 +97,6 @@ If you use any of these and LIKE or DISLIKE them, **PLEASE** let me know so I ca
   - [Predicting where the wine is from (wine/location](https://archive.ics.uci.edu/ml/datasets/Wine) <--- easy starter challenge (where is the wine from?)
   - [Wine Quality](https://archive.ics.uci.edu/ml/datasets/Wine+Quality)
   - [German credit data by person](https://archive.ics.uci.edu/ml/datasets/statlog+(german+credit+data))
-- More good sources: [data.gov](data.gov), [data.census.gov](data.census.gov), [data.world](data.world), [https://ourworldindata.org](https://ourworldindata.org/) is incredible and also [has many repos on Github](https://github.com/owid) including [one that imports data via python](https://github.com/owid/owid-importer), ...
 ```
 
 ```{dropdown} Books
