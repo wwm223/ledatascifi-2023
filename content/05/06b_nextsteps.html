@@ -907,21 +907,60 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <p><a class="reference external" href="https://www.perthirtysix.com/essay/nba-player-scoring-analysis">How do you think this amazing page was built?</a> Or the interactive visualizations <a class="reference external" href="https://fivethirtyeight.com/features/science-isnt-broken/">538, NYT, WaPo, WSJ and others frequently publish</a>? And look at all <a class="reference external" href="https://dash.gallery/Portal/">these freaking awesome examples!</a></p>
 <p>What do you need? Mostly: <em>Data acquisition and formatting skills - which you have!</em></p>
-<p>The main hiccup is that the basic GitHub Pages we built for our website do not support the technical requirements needed to host dashboards or apps.</p>
-<p>Currently, I recommend one of these approaches to build a (free) website with an interactive component:</p>
+<p>The main hiccup:  GitHub Pages can create a website out of a Jupyter notebook, but it’s just a static image of the file after you ran the code. People looking at the site can’t adjust inputs and rerun it.</p>
+<p>I am not a web dev, and you probably aren’t either, so let’s just list options that <em>reduce</em> the pain of building a website.</p>
+<p>Currently (late 2022), here is the approach I suggest to build a (free) website with a interactive components:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To make your website faster, you want it to load the smallest dataset possible and do as little data processing as required. This means you do all the preprocessing steps (everything <em>right up until user input is needed</em>) in a separate file that saves this as a dataset. Then, your app can start by loading this and continuing.</p>
+</div>
 <ol class="simple">
-<li><p>Use <code class="docutils literal notranslate"><span class="pre">plotly</span></code>/<code class="docutils literal notranslate"><span class="pre">dash</span></code> to build the dashboard so it works on your computer. Then, you need to “deploy” it so that it is a website people can visit and interact with. The best free options <strong>as of late 2022</strong> are:</p>
+<li><p>Build your dashboard/app so it works on your computer. The current favorites:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.pythonanywhere.com/">PythonAnywhere</a>, you just need to click “renew” every three months</p></li>
-<li><p><span class="xref myst">Vercel</span></p></li>
-<li><p>My previous suggestion was Heroku, but it is not completely free anymore. (It offers <a class="reference external" href="https://blog.heroku.com/github-student-developer-program">a free plan for students for 12 months.</a>) <a class="reference external" href="https://realpython.com/python-dash/#deploy-your-dash-application-to-heroku">A written walkthrough</a> to build <a class="reference external" href="https://avocado-analytics.herokuapp.com/">this page</a>. And a <a class="reference external" href="https://www.youtube.com/watch?v=Gv910_b5ID0">good video</a> showing different approaches based on the data needs of your site.</p></li>
+<li><p>Pick one of these packages to build a dashboard or app:  <code class="docutils literal notranslate"><span class="pre">streamlit</span></code>, <code class="docutils literal notranslate"><span class="pre">dash</span></code>, <code class="docutils literal notranslate"><span class="pre">gradio</span></code>, or <code class="docutils literal notranslate"><span class="pre">shiny</span></code></p>
+<ul>
+<li><p>Which? Dash and bokeh are the legacy leaders of these, but streamlit seems easiest to deploy. But check to see if anyone has made an app/dashboard like what you want in that package. (Meaning: Layout, similar element types, interactivity.) Then emulate the code for that and tweak it to your needs.</p></li>
+<li><p><a class="reference external" href="https://streamlit.io/"><code class="docutils literal notranslate"><span class="pre">streamlit</span></code></a> - see some <a class="reference external" href="https://streamlit.io/gallery">examples here</a>. Deploying the app to a website is easy as heck and free as long as traffic to the site is low.</p></li>
+<li><p><a class="reference external" href="https://shiny.rstudio.com/py/"><code class="docutils literal notranslate"><span class="pre">shiny</span></code> </a> - deployment is easy, but because the package is still in development, things might change.</p></li>
+<li><p><em>Hack: These packages will be new to you, so ask ChatGPT to help you set up the dashboard!</em></p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://streamlit.io/">streamlit</a> has very similar features to <code class="docutils literal notranslate"><span class="pre">plotly</span></code>/<code class="docutils literal notranslate"><span class="pre">dash</span></code> and makes building an app/dashboard easy (<a class="reference external" href="https://streamlit.io/gallery">examples here</a>). Deploying the app to a website is easy as heck and free as long as traffic to the site is low.</p></li>
-<li><p><a class="reference external" href="https://shiny.rstudio.com/py/">Use <code class="docutils literal notranslate"><span class="pre">shiny</span></code> to build and serve the dashboard.</a> The “deploy” part is easy with <code class="docutils literal notranslate"><span class="pre">shiny</span></code>, but because the package is still in development, things might change.</p></li>
-<li><p>Write a JupyterLab file that shows what you want shown on the website. You can go outside the <code class="docutils literal notranslate"><span class="pre">plotly</span></code> ecosystem and use <code class="docutils literal notranslate"><span class="pre">seaborn</span></code>, for example. The “Mercury” framework will create the webpage for you. You still need to deploy it somehow. <a class="reference external" href="https://mljar.com/blog/dashboard-python-jupyter-notebook/?utm_content=219440384&amp;utm_medium=social&amp;utm_source=twitter&amp;hss_channel=tw-1318985240">Good walkthrough here.</a></p></li>
+<li><p>Or: Write a Jupyter notebook file, and assume that the file itself is what you want shown on the website.</p>
+<ul>
+<li><p>Note this will make it harder to have control over final website formatting.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Now,  you need to “deploy” it so that it is a website people can visit and interact with. Depends on how you built your app, but the best free options <strong>as of late 2022</strong> are:</p>
+<ul class="simple">
+<li><p>If <code class="docutils literal notranslate"><span class="pre">shiny</span></code>: shiny handles it!</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">streamlit</span></code>: Can use streamlit’s hosting (easy, and free as long as traffic to the site is low)</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> or <code class="docutils literal notranslate"><span class="pre">gradio</span></code>: You can upload the app to <a class="reference external" href="http://huggingface.co">huggingface.co</a> (probably better performance than streamlit’s free service) and then you can also embed it in a simple GitHub page, which you can format to your liking! Easier than it sounds, see the <a class="reference external" href="https://www.youtube.com/watch?v=F4tvM4Vb3A0">walkthrough here</a>.</p></li>
+<li><p>If a jupyter notebook, free options include:</p>
+<ul>
+<li><p><a class="reference external" href="https://www.pythonanywhere.com/">PythonAnywhere</a></p></li>
+<li><p><a class="reference external" href="https://mybinder.org/">binder</a> will make the notebook an interactive file anyone on the web can use.</p></li>
+<li><p>Use any packages and plotting choices you want, and then the “Mercury” framework will create the webpage for you. You still need to deploy it somehow. <a class="reference external" href="https://mljar.com/blog/dashboard-python-jupyter-notebook/?utm_content=219440384&amp;utm_medium=social&amp;utm_source=twitter&amp;hss_channel=tw-1318985240">Good walkthrough here.</a></p></li>
+</ul>
+</li>
+<li><p>If dash:<a class="footnote-reference brackets" href="#hero" id="id1">1</a></p>
+<ul>
+<li><p><span class="xref myst">render.com</span> (see <a class="reference external" href="https://community.plotly.com/t/render-com-super-easy-deploy-dashboard/69146">this</a> and <a class="reference external" href="https://community.plotly.com/t/migrating-from-heroku-how-to-use-render-to-deploy-a-python-dash-app-solution/68048">this</a>)</p></li>
+<li><p><a class="reference external" href="https://www.pythonanywhere.com/">PythonAnywhere</a> (see <a class="reference external" href="https://help.pythonanywhere.com/pages/DashWSGIConfig/">here</a>)</p></li>
+<li><p><span class="xref myst">fly.io</span> and <span class="xref myst">Vercel</span> seem good too</p></li>
+</ul>
+</li>
+</ul>
+</li>
 </ol>
 <p><strong>If you ever build one, PLEASE send it to me!</strong></p>
+<hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="hero"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>My previous suggestion was Heroku, but it is not completely free anymore. (It offers <a class="reference external" href="https://blog.heroku.com/github-student-developer-program">a free plan for students for 12 months.</a>) <a class="reference external" href="https://realpython.com/python-dash/#deploy-your-dash-application-to-heroku">A written walkthrough</a> to build <a class="reference external" href="https://avocado-analytics.herokuapp.com/">this page</a>. And a <a class="reference external" href="https://www.youtube.com/watch?v=Gv910_b5ID0">good video</a> showing different approaches based on the data needs of your site.</p>
+</dd>
+</dl>
 </div>
 
     <script type="text/x-thebe-config">
