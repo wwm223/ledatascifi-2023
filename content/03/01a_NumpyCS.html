@@ -964,14 +964,14 @@ const thebe_selector_output = ".output, .cell_output"
 <p>An example that shows why Python is slow is the following:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np   # this is how we load numpy, and &quot;np&quot; is
-import random        # just a convenient abbrev convention
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>   <span class="c1"># this is how we load numpy, and &quot;np&quot; is</span>
+<span class="kn">import</span> <span class="nn">random</span>        <span class="c1"># just a convenient abbrev convention</span>
 
-# a &quot;+&quot; sign isn&#39;t just a plus sign
-a,b=3, 14
-print(a+b)
-a,b=&quot;py &quot;,&quot;is good&quot;
-print(a+b)
+<span class="c1"># a &quot;+&quot; sign isn&#39;t just a plus sign</span>
+<span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="mi">14</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
+<span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="s2">&quot;py &quot;</span><span class="p">,</span><span class="s2">&quot;is good&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -995,12 +995,12 @@ py is good
 <p>So here is an example: Let’s pull random numbers and square them:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%time
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
-y = 0     
-for i in range(1000000):
-    x = random.uniform(0, 1)
-    y += x**2
+<span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>     
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000000</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">+=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
 </pre></div>
 </div>
 </div>
@@ -1019,10 +1019,10 @@ for i in range(1000000):
 <p>Let’s redo the code above:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%time
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
-x = np.random.uniform(0, 1, 1000000)
-y = np.sum(x**2)
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

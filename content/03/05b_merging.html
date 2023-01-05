@@ -1016,14 +1016,14 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Let me just show you what that means. I’ll create two dataframes and merge them:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-left_df = pd.DataFrame({
-                    &#39;firm&#39;: [&#39;Citi&#39;,&#39;Citi&#39;,],
-                    &#39;v1&#39;: [&#39;Alpha&#39;, &#39;Bravo&#39;]})
-display(left_df)
+<span class="n">left_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+                    <span class="s1">&#39;firm&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Citi&#39;</span><span class="p">,</span><span class="s1">&#39;Citi&#39;</span><span class="p">,],</span>
+                    <span class="s1">&#39;v1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Alpha&#39;</span><span class="p">,</span> <span class="s1">&#39;Bravo&#39;</span><span class="p">]})</span>
+<span class="n">display</span><span class="p">(</span><span class="n">left_df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1067,10 +1067,10 @@ display(left_df)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>right_df = pd.DataFrame({
-                    &#39;firm&#39;: [&#39;Citi&#39;,&#39;Citi&#39;,&#39;WF&#39;],
-                    &#39;v2&#39;: [&#39;Charlie&#39;,&#39;Delta&#39;,&#39;Echo&#39;]})    
-display(right_df)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">right_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+                    <span class="s1">&#39;firm&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Citi&#39;</span><span class="p">,</span><span class="s1">&#39;Citi&#39;</span><span class="p">,</span><span class="s1">&#39;WF&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;v2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Charlie&#39;</span><span class="p">,</span><span class="s1">&#39;Delta&#39;</span><span class="p">,</span><span class="s1">&#39;Echo&#39;</span><span class="p">]})</span>    
+<span class="n">display</span><span class="p">(</span><span class="n">right_df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1119,7 +1119,7 @@ display(right_df)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>display(pd.merge(left_df,right_df,how=&#39;inner&#39;))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left_df</span><span class="p">,</span><span class="n">right_df</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1187,30 +1187,29 @@ display(right_df)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def merge_type(df1,df2,on):
-    &#39;&#39;&#39;
-    This function could use case test. E.g.: multiple key vars, missing vars 
-    &#39;&#39;&#39;
-    Feature request: This only works if the key vars are named the same in both datasets.  
-    &#39;&#39;&#39;
-    # if there are duplicates, dropping them will shrink the key vector
-    if len(df1[on]) &gt; len(df1[on].drop_duplicates()):
-        _l = &quot;many&quot;
-    else:
-        _l = &quot;one&quot;
-    if len(df2[on]) &gt; len(df2[on].drop_duplicates()):
-        _r = &quot;many&quot;
-    else:
-        _r = &quot;one&quot;
-    return &quot;{}_to_{}&quot;.format(_l,_r)
-
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">merge_type</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">,</span><span class="n">on</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This function could use case test. E.g.: multiple key vars, missing vars </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">Feature</span> <span class="n">request</span><span class="p">:</span> <span class="n">This</span> <span class="n">only</span> <span class="n">works</span> <span class="k">if</span> <span class="n">the</span> <span class="n">key</span> <span class="nb">vars</span> <span class="n">are</span> <span class="n">named</span> <span class="n">the</span> <span class="n">same</span> <span class="ow">in</span> <span class="n">both</span> <span class="n">datasets</span><span class="o">.</span>  
+    <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">    # if there are duplicates, dropping them will shrink the key vector</span>
+<span class="s1">    if len(df1[on]) &gt; len(df1[on].drop_duplicates()):</span>
+<span class="s1">        _l = &quot;many&quot;</span>
+<span class="s1">    else:</span>
+<span class="s1">        _l = &quot;one&quot;</span>
+<span class="s1">    if len(df2[on]) &gt; len(df2[on].drop_duplicates()):</span>
+<span class="s1">        _r = &quot;many&quot;</span>
+<span class="s1">    else:</span>
+<span class="s1">        _r = &quot;one&quot;</span>
+<span class="s1">    return &quot;</span><span class="si">{}</span><span class="s1">_to_</span><span class="si">{}</span><span class="s1">&quot;.format(_l,_r)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>merge_type(left_df,right_df,&#39;firm&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">merge_type</span><span class="p">(</span><span class="n">left_df</span><span class="p">,</span><span class="n">right_df</span><span class="p">,</span><span class="s1">&#39;firm&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1222,9 +1221,9 @@ display(right_df)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>display(pd.merge(left_df,right_df,on=&#39;firm&#39;,how=&#39;inner&#39;,
-                validate=&#39;many_to_many&#39;,
-                indicator=True))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left_df</span><span class="p">,</span><span class="n">right_df</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="s1">&#39;firm&#39;</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span>
+                <span class="n">validate</span><span class="o">=</span><span class="s1">&#39;many_to_many&#39;</span><span class="p">,</span>
+                <span class="n">indicator</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1297,11 +1296,11 @@ display(right_df)
 <p>In action:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.merge(left_df,right_df,on=&#39;firm&#39;,   how=&#39;outer&#39;,  
-         # NOTICE! &quot;how&quot; has changed from prior example to outer
-                validate=&#39;many_to_many&#39;,
-                indicator=True
-        )[&#39;_merge&#39;].value_counts()          # [&#39;_merge&#39;].value_counts()  
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left_df</span><span class="p">,</span><span class="n">right_df</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="s1">&#39;firm&#39;</span><span class="p">,</span>   <span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">,</span>  
+         <span class="c1"># NOTICE! &quot;how&quot; has changed from prior example to outer</span>
+                <span class="n">validate</span><span class="o">=</span><span class="s1">&#39;many_to_many&#39;</span><span class="p">,</span>
+                <span class="n">indicator</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)[</span><span class="s1">&#39;_merge&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>          <span class="c1"># [&#39;_merge&#39;].value_counts()  </span>
 </pre></div>
 </div>
 </div>
@@ -1345,14 +1344,14 @@ Name: _merge, dtype: int64
 <p>Do a left, right, inner, and outer merge on these datasets to confirm the illustration on <code class="docutils literal notranslate"><span class="pre">how</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>left_df = pd.DataFrame({
-                    &#39;firm&#39;: [&#39;Accenture&#39;,&#39;Citi&#39;,&#39;GS&#39;],
-                    &#39;varA&#39;: [&#39;A1&#39;, &#39;A2&#39;, &#39;A3&#39;]})
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">left_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+                    <span class="s1">&#39;firm&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Accenture&#39;</span><span class="p">,</span><span class="s1">&#39;Citi&#39;</span><span class="p">,</span><span class="s1">&#39;GS&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;varA&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A1&#39;</span><span class="p">,</span> <span class="s1">&#39;A2&#39;</span><span class="p">,</span> <span class="s1">&#39;A3&#39;</span><span class="p">]})</span>
 
-right_df = pd.DataFrame({
-                    &#39;firm&#39;: [&#39;GS&#39;,&#39;Chase&#39;,&#39;WF&#39;],
-                    &#39;varB&#39;: [&#39;B1&#39;, &#39;B2&#39;, &#39;B3&#39;],
-                    &#39;varc&#39;: [&#39;C1&#39;, &#39;C2&#39;, &#39;C3&#39;]})                             
+<span class="n">right_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+                    <span class="s1">&#39;firm&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;GS&#39;</span><span class="p">,</span><span class="s1">&#39;Chase&#39;</span><span class="p">,</span><span class="s1">&#39;WF&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;varB&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B1&#39;</span><span class="p">,</span> <span class="s1">&#39;B2&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;varc&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="s1">&#39;C2&#39;</span><span class="p">,</span> <span class="s1">&#39;C3&#39;</span><span class="p">]})</span>                             
 </pre></div>
 </div>
 </div>
@@ -1415,12 +1414,12 @@ right_df = pd.DataFrame({
 <p>Let me show you that the latter can give you the wrong answer:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>right = pd.DataFrame({
-                   &quot;industry&quot;:[1,2,3,4,5,6], 
-                   }) 
-right[&#39;x&#39;] = pd.DataFrame(np.random.randint(0,10,size=(6, 1)), columns=list(&#39;x&#39;))
-display(right)
-print(&quot;STD if you calculate it before the merge:&quot;,right.x.std())
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">right</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+                   <span class="s2">&quot;industry&quot;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> 
+                   <span class="p">})</span> 
+<span class="n">right</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">columns</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;STD if you calculate it before the merge:&quot;</span><span class="p">,</span><span class="n">right</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -1489,11 +1488,11 @@ print(&quot;STD if you calculate it before the merge:&quot;,right.x.std())
 <p>If you use this as the right dataframe in a M:1 merge with an industry-day dataset as the left, then what happens is that our right df will be duplicated in the post-merge dataset many times: Each 1 of the right dataframe is matched to the left M times. And this leads to an error in the calculation!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># these lines of code stack the right df 6 times, as would happen 
-# if the left df had 6 days for each industry 
-after_merge = right
-after_merge = after_merge.append(right).append(right).append(right).append(right).append(right)
-print(&quot;STD if you calculate it after the merge:&quot;,after_merge.x.std())
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># these lines of code stack the right df 6 times, as would happen </span>
+<span class="c1"># if the left df had 6 days for each industry </span>
+<span class="n">after_merge</span> <span class="o">=</span> <span class="n">right</span>
+<span class="n">after_merge</span> <span class="o">=</span> <span class="n">after_merge</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">right</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">right</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">right</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">right</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;STD if you calculate it after the merge:&quot;</span><span class="p">,</span><span class="n">after_merge</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>

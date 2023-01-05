@@ -919,29 +919,29 @@ const thebe_selector_output = ".output, .cell_output"
 <p>So, when we run the regression, it would be nice to get some extra info about those estimates. <code class="docutils literal notranslate"><span class="pre">sm_ols</span></code> does just that. For that regression (click the <code class="docutils literal notranslate"><span class="pre">+</span></code> sign to see the code) we get the following info:</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># load some data to practice regressions
-import seaborn as sns
-import numpy as np
-from statsmodels.formula.api import ols as sm_ols # need this
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load some data to practice regressions</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <span class="n">ols</span> <span class="k">as</span> <span class="n">sm_ols</span> <span class="c1"># need this</span>
 
-diamonds = sns.load_dataset(&#39;diamonds&#39;)
+<span class="n">diamonds</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;diamonds&#39;</span><span class="p">)</span>
 
-# this alteration is not strictly necessary to practice a regression
-# but we use this in livecoding
-diamonds2 = (diamonds.query(&#39;carat &lt; 2.5&#39;)               # censor/remove outliers
-            .assign(lprice = np.log(diamonds[&#39;price&#39;]))  # log transform price
-            .assign(lcarat = np.log(diamonds[&#39;carat&#39;]))  # log transform carats
-            .assign(ideal = diamonds[&#39;cut&#39;] == &#39;Ideal&#39;) 
+<span class="c1"># this alteration is not strictly necessary to practice a regression</span>
+<span class="c1"># but we use this in livecoding</span>
+<span class="n">diamonds2</span> <span class="o">=</span> <span class="p">(</span><span class="n">diamonds</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;carat &lt; 2.5&#39;</span><span class="p">)</span>               <span class="c1"># censor/remove outliers</span>
+            <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">lprice</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">diamonds</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]))</span>  <span class="c1"># log transform price</span>
+            <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">lcarat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">diamonds</span><span class="p">[</span><span class="s1">&#39;carat&#39;</span><span class="p">]))</span>  <span class="c1"># log transform carats</span>
+            <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">ideal</span> <span class="o">=</span> <span class="n">diamonds</span><span class="p">[</span><span class="s1">&#39;cut&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Ideal&#39;</span><span class="p">)</span> 
              
-             # some regression packages want you to explicitly provide 
-             # a variable for the constant
-            .assign(const = 1)                           
-            )  
+             <span class="c1"># some regression packages want you to explicitly provide </span>
+             <span class="c1"># a variable for the constant</span>
+            <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">const</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>                           
+            <span class="p">)</span>  
 
-(
-sm_ols(&#39;lprice ~ lcarat + ideal + lcarat*ideal&#39;, 
-       data=diamonds2.query(&#39;cut in [&quot;Fair&quot;,&quot;Ideal&quot;]&#39;))
-).fit().summary().tables[1] # the summary() is multiple tables stitched together. I only care to print the params here.
+<span class="p">(</span>
+<span class="n">sm_ols</span><span class="p">(</span><span class="s1">&#39;lprice ~ lcarat + ideal + lcarat*ideal&#39;</span><span class="p">,</span> 
+       <span class="n">data</span><span class="o">=</span><span class="n">diamonds2</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;cut in [&quot;Fair&quot;,&quot;Ideal&quot;]&#39;</span><span class="p">))</span>
+<span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># the summary() is multiple tables stitched together. I only care to print the params here.</span>
 </pre></div>
 </div>
 </div>

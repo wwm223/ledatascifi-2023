@@ -993,12 +993,12 @@ const thebe_selector_output = ".output, .cell_output"
 <p>After slaving over your computer and a piece of paper (you smartly planned out your code before you went in head first), you’ve found a clever solution to your problem. Your code is beautiful and elegant, like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>2+2 # imagine this is a bunch of code
-2+2 # imagine this is a bunch of code
-2+2 # imagine this is a bunch of code
-Error # somewhere in the code is an error. But in real programming you don’t know the error is here!
-2+2 # imagine this is a bunch of code
-2+2 # imagine this is a bunch of code
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span> <span class="c1"># imagine this is a bunch of code</span>
+<span class="mi">2</span><span class="o">+</span><span class="mi">2</span> <span class="c1"># imagine this is a bunch of code</span>
+<span class="mi">2</span><span class="o">+</span><span class="mi">2</span> <span class="c1"># imagine this is a bunch of code</span>
+<span class="n">Error</span> <span class="c1"># somewhere in the code is an error. But in real programming you don’t know the error is here!</span>
+<span class="mi">2</span><span class="o">+</span><span class="mi">2</span> <span class="c1"># imagine this is a bunch of code</span>
+<span class="mi">2</span><span class="o">+</span><span class="mi">2</span> <span class="c1"># imagine this is a bunch of code</span>
 </pre></div>
 </div>
 </div>
@@ -1025,12 +1025,12 @@ He spends all day taking calls from people with computer problems, typically men
 <p>I don’t mean turning the computer off and on again. (Well, sometimes.) … But you can turn parts of your code off:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>2+2 # imagine this is a bunch of code
-2+2 # imagine this is a bunch of code
-# 2+2 # imagine this is a bunch of code
-# Error # somewhere in the code is an error. But in real programming you don’t know the error is here!
-# 2+2 # imagine this is a bunch of code
-# 2+2 # imagine this is a bunch of code
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span> <span class="c1"># imagine this is a bunch of code</span>
+<span class="mi">2</span><span class="o">+</span><span class="mi">2</span> <span class="c1"># imagine this is a bunch of code</span>
+<span class="c1"># 2+2 # imagine this is a bunch of code</span>
+<span class="c1"># Error # somewhere in the code is an error. But in real programming you don’t know the error is here!</span>
+<span class="c1"># 2+2 # imagine this is a bunch of code</span>
+<span class="c1"># 2+2 # imagine this is a bunch of code</span>
 </pre></div>
 </div>
 </div>
@@ -1048,17 +1048,16 @@ He spends all day taking calls from people with computer problems, typically men
 <p>Another ugly, possibly brutish method of debugging is: put print statements all over your code.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def silly_func_here_but_in_a_real_situation_its_complicated_and_mysterious_ooooooh():
-    return 6
-a=silly_func_here_but_in_a_real_situation_its_complicated_and_mysterious_ooooooh()
-print(a)
-a+=a # += means &quot;add whatever is on the right to the existing value&quot;
-print(a) # see, the value changed
-b = &#39;hey&#39;
-print (a)
-print (b)
-a+&#39;hey&#39;
-
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">silly_func_here_but_in_a_real_situation_its_complicated_and_mysterious_ooooooh</span><span class="p">():</span>
+    <span class="k">return</span> <span class="mi">6</span>
+<span class="n">a</span><span class="o">=</span><span class="n">silly_func_here_but_in_a_real_situation_its_complicated_and_mysterious_ooooooh</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">a</span><span class="o">+=</span><span class="n">a</span> <span class="c1"># += means &quot;add whatever is on the right to the existing value&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># see, the value changed</span>
+<span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;hey&#39;</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="n">a</span><span class="o">+</span><span class="s1">&#39;hey&#39;</span>
 </pre></div>
 </div>
 </div>

@@ -942,23 +942,23 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Play around with each of those functions on this dataframe:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
-import numpy as np
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-df = pd.DataFrame({&quot;A&quot;:[12, 4, 5, None, 1], 
-                   &quot;B&quot;:[None, 2, 54, 3, None], 
-                   &quot;C&quot;:[20, 16, None, 3, 8], 
-                   &quot;D&quot;:[14, 3, None, None, 6]}) 
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> 
+                   <span class="s2">&quot;B&quot;</span><span class="p">:[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> 
+                   <span class="s2">&quot;C&quot;</span><span class="p">:[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> 
+                   <span class="s2">&quot;D&quot;</span><span class="p">:[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">6</span><span class="p">]})</span> 
 
-_df1 = df.copy()
-_df1[&#39;firm&#39;] = 1
-_df1[&#39;date&#39;] = _df1.index
+<span class="n">_df1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">_df1</span><span class="p">[</span><span class="s1">&#39;firm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">_df1</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_df1</span><span class="o">.</span><span class="n">index</span>
 
-_df2 = df.copy()
-_df2[&#39;firm&#39;] = 2
-_df2[&#39;date&#39;] = _df2.index
+<span class="n">_df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">_df2</span><span class="p">[</span><span class="s1">&#39;firm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">_df2</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_df2</span><span class="o">.</span><span class="n">index</span>
 
-df2 = _df1.append(_df2)
+<span class="n">df2</span> <span class="o">=</span> <span class="n">_df1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_df2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

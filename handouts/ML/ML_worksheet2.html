@@ -991,39 +991,39 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
-import pandas as pd
-from df_after_transform import df_after_transform
-from sklearn import set_config
-from sklearn.calibration import CalibrationDisplay
-from sklearn.compose import (
-    ColumnTransformer,
-    make_column_selector,
-    make_column_transformer,
-)
-from sklearn.impute import SimpleImputer
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import (
-    ConfusionMatrixDisplay,
-    DetCurveDisplay,
-    PrecisionRecallDisplay,
-    RocCurveDisplay,
-    classification_report,
-)
-from sklearn.model_selection import (
-    GridSearchCV,
-    KFold,
-    cross_validate,
-    train_test_split,
-)
-from sklearn.pipeline import make_pipeline
-from sklearn.preprocessing import OneHotEncoder, StandardScaler
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">df_after_transform</span> <span class="kn">import</span> <span class="n">df_after_transform</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">set_config</span>
+<span class="kn">from</span> <span class="nn">sklearn.calibration</span> <span class="kn">import</span> <span class="n">CalibrationDisplay</span>
+<span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">ColumnTransformer</span><span class="p">,</span>
+    <span class="n">make_column_selector</span><span class="p">,</span>
+    <span class="n">make_column_transformer</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">SimpleImputer</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">ConfusionMatrixDisplay</span><span class="p">,</span>
+    <span class="n">DetCurveDisplay</span><span class="p">,</span>
+    <span class="n">PrecisionRecallDisplay</span><span class="p">,</span>
+    <span class="n">RocCurveDisplay</span><span class="p">,</span>
+    <span class="n">classification_report</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">GridSearchCV</span><span class="p">,</span>
+    <span class="n">KFold</span><span class="p">,</span>
+    <span class="n">cross_validate</span><span class="p">,</span>
+    <span class="n">train_test_split</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span><span class="p">,</span> <span class="n">StandardScaler</span>
 
-set_config(display=&quot;diagram&quot;)  # display=&#39;text&#39; is the default
+<span class="n">set_config</span><span class="p">(</span><span class="n">display</span><span class="o">=</span><span class="s2">&quot;diagram&quot;</span><span class="p">)</span>  <span class="c1"># display=&#39;text&#39; is the default</span>
 
-pd.set_option(
-    &quot;display.max_colwidth&quot;, 1000, &quot;display.max_rows&quot;, 50, &quot;display.max_columns&quot;, None
-)
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span>
+    <span class="s2">&quot;display.max_colwidth&quot;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="s2">&quot;display.max_rows&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="s2">&quot;display.max_columns&quot;</span><span class="p">,</span> <span class="kc">None</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1032,7 +1032,7 @@ pd.set_option(
 <h2>Load data<a class="headerlink" href="#load-data" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>loans = pd.read_csv(&#39;inputs/2013_subsample.zip&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loans</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;inputs/2013_subsample.zip&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1043,15 +1043,15 @@ pd.set_option(
 <p>Here, we will use <code class="docutils literal notranslate"><span class="pre">test_train_split</span></code>, though this might not</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># first let&#39;s separate y from X (as is typically done)
-y = loans.loan_status == &quot;Charged Off&quot;
-y.value_counts()
-loans = loans.drop(&quot;loan_status&quot;, axis=1)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># first let&#39;s separate y from X (as is typically done)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">loans</span><span class="o">.</span><span class="n">loan_status</span> <span class="o">==</span> <span class="s2">&quot;Charged Off&quot;</span>
+<span class="n">y</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">loans</span> <span class="o">=</span> <span class="n">loans</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;loan_status&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-# stratify will make sure that test/train both have equal fractions of outcome
-X_train, X_test, y_train, y_test = train_test_split(
-    loans, y, stratify=y, test_size=0.2, random_state=0
-)
+<span class="c1"># stratify will make sure that test/train both have equal fractions of outcome</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">loans</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1062,23 +1062,23 @@ X_train, X_test, y_train, y_test = train_test_split(
 <p><em>Note: <code class="docutils literal notranslate"><span class="pre">preproc_pipe</span></code> is the exact same as last time, but I’ve defined it in a different (easier?) way, and I’ve named the whole pipeline <code class="docutils literal notranslate"><span class="pre">clf_logit</span></code></em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># set up pipeline to clean each type of variable (1 pipe per var type)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set up pipeline to clean each type of variable (1 pipe per var type)</span>
 
-numer_pipe = make_pipeline(SimpleImputer(strategy=&quot;mean&quot;), StandardScaler())
+<span class="n">numer_pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">),</span> <span class="n">StandardScaler</span><span class="p">())</span>
 
-cat_pipe = make_pipeline(OneHotEncoder(drop=&quot;first&quot;))
+<span class="n">cat_pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="s2">&quot;first&quot;</span><span class="p">))</span>
 
-# combine those (make_column_transformer is like make_pipeline, maybe easier on the eyes!)
+<span class="c1"># combine those (make_column_transformer is like make_pipeline, maybe easier on the eyes!)</span>
 
-preproc_pipe = make_column_transformer(
-    (numer_pipe, [&quot;annual_inc&quot;, &quot;int_rate&quot;]),
-    (cat_pipe, [&quot;grade&quot;]),
-    remainder=&quot;drop&quot;,
-)
+<span class="n">preproc_pipe</span> <span class="o">=</span> <span class="n">make_column_transformer</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">numer_pipe</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;annual_inc&quot;</span><span class="p">,</span> <span class="s2">&quot;int_rate&quot;</span><span class="p">]),</span>
+    <span class="p">(</span><span class="n">cat_pipe</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;grade&quot;</span><span class="p">]),</span>
+    <span class="n">remainder</span><span class="o">=</span><span class="s2">&quot;drop&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 
-# estimator
+<span class="c1"># estimator</span>
 
-clf_logit = make_pipeline(preproc_pipe, LogisticRegression())
+<span class="n">clf_logit</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">preproc_pipe</span><span class="p">,</span> <span class="n">LogisticRegression</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -1086,7 +1086,7 @@ clf_logit = make_pipeline(preproc_pipe, LogisticRegression())
 <p>I’m going to fit it to the whole training dataset. This means what we’re about to learn is being done without CV for now, and will likely result in overconfident performance metrics.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>clf_logit.fit(X_train, y_train) 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf_logit</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span> 
 </pre></div>
 </div>
 </div>
@@ -1149,8 +1149,8 @@ clf_logit = make_pipeline(preproc_pipe, LogisticRegression())
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(classification_report(y_train, 
-                            clf_logit.predict(X_train)))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> 
+                            <span class="n">clf_logit</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -1185,7 +1185,7 @@ C:\Users\DonsLaptop\anaconda3\lib\site-packages\sklearn\metrics\_classification.
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ConfusionMatrixDisplay.from_estimator(clf_logit, X_train, y_train)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ConfusionMatrixDisplay</span><span class="o">.</span><span class="n">from_estimator</span><span class="p">(</span><span class="n">clf_logit</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1202,7 +1202,7 @@ C:\Users\DonsLaptop\anaconda3\lib\site-packages\sklearn\metrics\_classification.
 <p>Our logit estimator produces, for each loan, a prediction of the probability of default. A calibration display groups those predictions into buckets (on the x-axis), and reports the average true outcomes for that bucket (on the y-axis). A perfectly calibrated classifier will be on the 45 degree line.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>CalibrationDisplay.from_estimator(clf_logit, X_train, y_train)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CalibrationDisplay</span><span class="o">.</span><span class="n">from_estimator</span><span class="p">(</span><span class="n">clf_logit</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1217,7 +1217,7 @@ C:\Users\DonsLaptop\anaconda3\lib\site-packages\sklearn\metrics\_classification.
 <p>Indeed, the logit model is producing predictions that are exactly equal to the average in the data! Look:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>clf_logit.predict_proba(X_train)[:,1].mean().round(3)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf_logit</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_train</span><span class="p">)[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1231,19 +1231,19 @@ C:\Users\DonsLaptop\anaconda3\lib\site-packages\sklearn\metrics\_classification.
 <p>Here’s what happens:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>&#39;&#39;&#39;
-==============================================================================
-          A flow chart from our model to the final predictions:
-==============================================================================
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">==============================================================================</span>
+<span class="sd">          A flow chart from our model to the final predictions:</span>
+<span class="sd">==============================================================================</span>
 
-logit     &gt;      ahat,           &gt;             yhat           &gt;         {0,1}
-                 bhat                        Pr(y=1|X)
-      ----------        --------------------           --------------
-      | .fit() |        | .predict_proba() |           | .predict() |
-      |        |        |  uses ahat bhat  |           |   uses  ?  |
-      ----------        --------------------           --------------
+<span class="sd">logit     &gt;      ahat,           &gt;             yhat           &gt;         {0,1}</span>
+<span class="sd">                 bhat                        Pr(y=1|X)</span>
+<span class="sd">      ----------        --------------------           --------------</span>
+<span class="sd">      | .fit() |        | .predict_proba() |           | .predict() |</span>
+<span class="sd">      |        |        |  uses ahat bhat  |           |   uses  ?  |</span>
+<span class="sd">      ----------        --------------------           --------------</span>
 
-&#39;&#39;&#39;
+<span class="sd">&#39;&#39;&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -1274,7 +1274,7 @@ logit     &gt;      ahat,           &gt;             yhat           &gt;        
 <p>The ideal model is the one closest to the upper right corner. (Ouch!)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>PrecisionRecallDisplay.from_estimator(clf_logit, X_train, y_train)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PrecisionRecallDisplay</span><span class="o">.</span><span class="n">from_estimator</span><span class="p">(</span><span class="n">clf_logit</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1292,7 +1292,7 @@ logit     &gt;      ahat,           &gt;             yhat           &gt;        
 <p>This takes all the predicted probabilities the model produces, and pretends we set a threshold of 0.01, 0.02, … 0.99. For each possible threshold, compute the FPR and the TPR.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>RocCurveDisplay.from_estimator(clf_logit, X_train, y_train)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">RocCurveDisplay</span><span class="o">.</span><span class="n">from_estimator</span><span class="p">(</span><span class="n">clf_logit</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1316,7 +1316,7 @@ logit     &gt;      ahat,           &gt;             yhat           &gt;        
 <p>The perfect estimator is the lower left corner of the chart. (Ouch!)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>DetCurveDisplay.from_estimator(clf_logit, X_train, y_train)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DetCurveDisplay</span><span class="o">.</span><span class="n">from_estimator</span><span class="p">(</span><span class="n">clf_logit</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1371,8 +1371,8 @@ logit     &gt;      ahat,           &gt;             yhat           &gt;        
 <p>So, I’m going to change the pipeline to use that parameter:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>clf_logit.get_params() # looking for the name of the parameter, as the pipeline cals it
-clf_logit.set_params(logisticregression__class_weight=&#39;balanced&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf_logit</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span> <span class="c1"># looking for the name of the parameter, as the pipeline cals it</span>
+<span class="n">clf_logit</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">logisticregression__class_weight</span><span class="o">=</span><span class="s1">&#39;balanced&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1415,9 +1415,9 @@ clf_logit.set_params(logisticregression__class_weight=&#39;balanced&#39;)
 <p>Now we can use it. How did we do?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>clf_logit.fit(X_train, y_train) 
-print(classification_report(y_train, 
-                            clf_logit.predict(X_train)))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf_logit</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> 
+                            <span class="n">clf_logit</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -1437,7 +1437,7 @@ weighted avg       0.80      0.59      0.65    107843
 <p>Hey! We managed to actually predict some defaults!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ConfusionMatrixDisplay.from_estimator(clf_logit, X_train, y_train)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ConfusionMatrixDisplay</span><span class="o">.</span><span class="n">from_estimator</span><span class="p">(</span><span class="n">clf_logit</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1462,7 +1462,7 @@ weighted avg       0.80      0.59      0.65    107843
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># put answers here
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># put answers here</span>
 </pre></div>
 </div>
 </div>
@@ -1472,21 +1472,21 @@ weighted avg       0.80      0.59      0.65    107843
 <h2>Bonus demo: Undersampling<a class="headerlink" href="#bonus-demo-undersampling" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># !pip install -U imbalanced-learn
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install -U imbalanced-learn</span>
 
-from imblearn.pipeline import make_pipeline as make_pipeline_with_sampler
-from imblearn.under_sampling import RandomUnderSampler
+<span class="kn">from</span> <span class="nn">imblearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span> <span class="k">as</span> <span class="n">make_pipeline_with_sampler</span>
+<span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="kn">import</span> <span class="n">RandomUnderSampler</span>
 
-logit_undersamp = make_pipeline_with_sampler(
-    preproc_pipe,
-    RandomUnderSampler(random_state=42),
-    LogisticRegression(),
-)
+<span class="n">logit_undersamp</span> <span class="o">=</span> <span class="n">make_pipeline_with_sampler</span><span class="p">(</span>
+    <span class="n">preproc_pipe</span><span class="p">,</span>
+    <span class="n">RandomUnderSampler</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
+    <span class="n">LogisticRegression</span><span class="p">(),</span>
+<span class="p">)</span>
 
-logit_undersamp.fit(X_train, y_train) 
+<span class="n">logit_undersamp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span> 
 
-y_pred = logit_undersamp.predict(X_train,)
-print(classification_report(y_train, y_pred))
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">logit_undersamp</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">,)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>

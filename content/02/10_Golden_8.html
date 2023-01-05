@@ -946,19 +946,19 @@ const thebe_selector_output = ".output, .cell_output"
 <p>There are a few popular auto-formatters (black, yapf, and autopep8). In my <a class="reference external" href="../01/05_jupyterlab.html#my-jupyter-lab-set-up">JupyterLab set up</a>, I explain how I set up Black, the “uncompromising Python code formatter” which is very opinionated (“any color you’d like, as long as it is black”).</p>
 <p>Look at what Black does to this code:</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="dbe90e40-51c0-4331-b2fc-61f9aaa32b4a" name="83dec6aa-5300-431b-8c13-768fcbf84b82" type="radio">
-</input><label class="tabbed-label" for="dbe90e40-51c0-4331-b2fc-61f9aaa32b4a">
+<input checked="checked" id="95ad5b70-0410-45e4-bc71-0f8767d8c31d" name="c11bd060-592e-49ea-bd4d-81956bede792" type="radio">
+</input><label class="tabbed-label" for="95ad5b70-0410-45e4-bc71-0f8767d8c31d">
 Ugly Code I wrote</label><div class="tabbed-content docutils">
 <p>This function is too long to even read:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">very_important_function</span><span class="p">(</span><span class="n">template</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="n">variables</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">,</span> <span class="n">engine</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">header</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Applies `variables` to the `template` and writes to `file`.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Applies `variables` to the `template` and writes to `file`.&quot;&quot;&quot;</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="o">...</span>
 </pre></div>
 </div>
 </div>
-<input id="7df8d618-e1c6-47d7-be4c-22ebf9ae7ee0" name="83dec6aa-5300-431b-8c13-768fcbf84b82" type="radio">
-</input><label class="tabbed-label" for="7df8d618-e1c6-47d7-be4c-22ebf9ae7ee0">
+<input id="5e57b6f4-7a36-4d13-863a-0499ad39ae99" name="c11bd060-592e-49ea-bd4d-81956bede792" type="radio">
+</input><label class="tabbed-label" for="5e57b6f4-7a36-4d13-863a-0499ad39ae99">
 Black fixed it</label><div class="tabbed-content docutils">
 <p>I hit CTRL+SHIFT+F and this was the result:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">very_important_function</span><span class="p">(</span>
@@ -969,7 +969,7 @@ Black fixed it</label><div class="tabbed-content docutils">
     <span class="n">header</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Applies `variables` to the `template` and writes to `file`.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Applies `variables` to the `template` and writes to `file`.&quot;&quot;&quot;</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="o">...</span>
 </pre></div>
@@ -998,8 +998,8 @@ Black fixed it</label><div class="tabbed-content docutils">
 <p>A magic number is a literal number or parameter value embedded in your code. Having numbers that act as in-line inputs and parameters can easily lead to errors and make modifying code very tough.</p>
 <p>Here is an example that tries to download and stock price data.</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="a969e9ee-eeda-4135-9ccf-b73c93b17a65" name="5a01aa15-fb7d-455f-902b-47b2628e1454" type="radio">
-</input><label class="tabbed-label" for="a969e9ee-eeda-4135-9ccf-b73c93b17a65">
+<input checked="checked" id="16116e7a-af06-42a1-aef0-1b8ba29a8a69" name="dbc3baa7-fa46-4cb7-82d8-6b68b13d5ce0" type="radio">
+</input><label class="tabbed-label" for="16116e7a-af06-42a1-aef0-1b8ba29a8a69">
 Bad</label><div class="tabbed-content docutils">
 <p>If I want to change the stocks included, I’ll need to change the list of stocks twice.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas_datareader</span> <span class="k">as</span> <span class="nn">pdr</span>  
@@ -1016,8 +1016,8 @@ Bad</label><div class="tabbed-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="cea5721a-fd5d-45d7-b714-e47678e82ef9" name="5a01aa15-fb7d-455f-902b-47b2628e1454" type="radio">
-</input><label class="tabbed-label" for="cea5721a-fd5d-45d7-b714-e47678e82ef9">
+<input id="24a1e185-ade4-4a06-946f-e7cdb3f269b1" name="dbc3baa7-fa46-4cb7-82d8-6b68b13d5ce0" type="radio">
+</input><label class="tabbed-label" for="24a1e185-ade4-4a06-946f-e7cdb3f269b1">
 Good</label><div class="tabbed-content docutils">
 <p>Now I only need to change the variable <code class="docutils literal notranslate"><span class="pre">stocks</span></code> to alter the entire code.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas_datareader</span> <span class="k">as</span> <span class="nn">pdr</span>  

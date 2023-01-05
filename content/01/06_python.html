@@ -1036,31 +1036,31 @@ const thebe_selector_output = ".output, .cell_output"
 <h3><span class="section-number">1.7.2.2. </span>Arithmetic<a class="headerlink" href="#arithmetic" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Note: these cells aren&#39;t showing the answers on the website on purpose! 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Note: these cells aren&#39;t showing the answers on the website on purpose! </span>
 
-# YOU: TYPE ALL OF THESE OUT ON YOUR OTHER PARTICIPATION SHEET... YOU CAN OMIT THE COMMENTS IF YOU WANT
-# YOU: TRY VARIATIONS TOO...
+<span class="c1"># YOU: TYPE ALL OF THESE OUT ON YOUR OTHER PARTICIPATION SHEET... YOU CAN OMIT THE COMMENTS IF YOU WANT</span>
+<span class="c1"># YOU: TRY VARIATIONS TOO...</span>
 
-print(2+3) # addition
-print(2-3) # subtraction
-print(2/3) # division - in Python 3, division of integers (a data type) inherently returns floats (a data type)
-print(type(2), type(2/3)) # see?
-print(2//3, type(2//3)) # floor division returns an integer. 
-# FOR YOU to try: use this to tell me how many full hours are in 7643 minutes?
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># addition</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># subtraction</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># division - in Python 3, division of integers (a data type) inherently returns floats (a data type)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span> <span class="c1"># see?</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="o">//</span><span class="mi">3</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="mi">2</span><span class="o">//</span><span class="mi">3</span><span class="p">))</span> <span class="c1"># floor division returns an integer. </span>
+<span class="c1"># FOR YOU to try: use this to tell me how many full hours are in 7643 minutes?</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(2%3) # mod operator
-print(2*3) # multiplication
-print(2**3) # 2 to the power of three
-print(2^3) # ^ is NOT the power operator!!! it is a &#39;bit&#39; operator - you don&#39;t need to know this for now
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="o">%</span><span class="k">3</span>) # mod operator
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># multiplication</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># 2 to the power of three</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="o">^</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># ^ is NOT the power operator!!! it is a &#39;bit&#39; operator - you don&#39;t need to know this for now</span>
 
-int(2+3*(4+15)/3) # 1. PEMDAS applies 
-                  # 2. If the last command in a cell return an *object*, jupyter auto prints it w/o needing print()
-                  # 3. this should be a float (21.0), but you can convert a float to an int with the int() function
+<span class="nb">int</span><span class="p">(</span><span class="mi">2</span><span class="o">+</span><span class="mi">3</span><span class="o">*</span><span class="p">(</span><span class="mi">4</span><span class="o">+</span><span class="mi">15</span><span class="p">)</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># 1. PEMDAS applies </span>
+                  <span class="c1"># 2. If the last command in a cell return an *object*, jupyter auto prints it w/o needing print()</span>
+                  <span class="c1"># 3. this should be a float (21.0), but you can convert a float to an int with the int() function</span>
 </pre></div>
 </div>
 </div>
@@ -1076,13 +1076,13 @@ int(2+3*(4+15)/3) # 1. PEMDAS applies
 <p><code class="docutils literal notranslate"><span class="pre">True</span></code> and <code class="docutils literal notranslate"><span class="pre">False</span></code> are booleans, meaning <code class="docutils literal notranslate"><span class="pre">True</span></code> is equal to 1, and <code class="docutils literal notranslate"><span class="pre">False</span></code> is equal to 0.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># YOU: TYPE ALL OF THESE OUT ON YOUR OTHER PARTICIPATION SHEET... YOU CAN OMIT THE COMMENTS IF YOU WANT
-# YOU: TRY VARIATIONS TOO...
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOU: TYPE ALL OF THESE OUT ON YOUR OTHER PARTICIPATION SHEET... YOU CAN OMIT THE COMMENTS IF YOU WANT</span>
+<span class="c1"># YOU: TRY VARIATIONS TOO...</span>
 
-print(3&gt;3)            # 3 is not greater than 3, so this evaluates to...
-                      # YOU: try 2 of the 3 other comparison operators
-print(True == 1)      
-print(type(True), int(True), type(False), int(False)) # print() can print a sequence of objects 
+<span class="nb">print</span><span class="p">(</span><span class="mi">3</span><span class="o">&gt;</span><span class="mi">3</span><span class="p">)</span>            <span class="c1"># 3 is not greater than 3, so this evaluates to...</span>
+                      <span class="c1"># YOU: try 2 of the 3 other comparison operators</span>
+<span class="nb">print</span><span class="p">(</span><span class="kc">True</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>      
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="kc">True</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="kc">True</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="kc">False</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="kc">False</span><span class="p">))</span> <span class="c1"># print() can print a sequence of objects </span>
 </pre></div>
 </div>
 </div>
@@ -1091,14 +1091,14 @@ print(type(True), int(True), type(False), int(False)) # print() can print a sequ
 <p><em><strong>What does <code class="docutils literal notranslate"><span class="pre">or</span></code> mean?</strong></em> In common parlance, <code class="docutils literal notranslate"><span class="pre">or</span></code> usually means “Do you want A or do you want B? (pick one)”. Mathematically, <code class="docutils literal notranslate"><span class="pre">or</span></code> works like a dad joke - You: “Dad, are we rich or poor?” Dad: “Yes”.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># YOU: TYPE ALL OF THESE OUT ON YOUR OTHER PARTICIPATION SHEET... YOU CAN OMIT THE COMMENTS IF YOU WANT
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOU: TYPE ALL OF THESE OUT ON YOUR OTHER PARTICIPATION SHEET... YOU CAN OMIT THE COMMENTS IF YOU WANT</span>
 
-a = True              # you assign variables by writing: VariableName = Thing. 
-b = False
-print(a and b)        # if both sides of *and* are true, the whole thing is
-print(a or b)         # if either side of *or* is true, the whole thing is
-print(a and not b)    # *not* negates what is after it
-print(not a or not b) # &quot;not b&quot; is true, so the whole thing is true
+<span class="n">a</span> <span class="o">=</span> <span class="kc">True</span>              <span class="c1"># you assign variables by writing: VariableName = Thing. </span>
+<span class="n">b</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="ow">and</span> <span class="n">b</span><span class="p">)</span>        <span class="c1"># if both sides of *and* are true, the whole thing is</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="ow">or</span> <span class="n">b</span><span class="p">)</span>         <span class="c1"># if either side of *or* is true, the whole thing is</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">b</span><span class="p">)</span>    <span class="c1"># *not* negates what is after it</span>
+<span class="nb">print</span><span class="p">(</span><span class="ow">not</span> <span class="n">a</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">b</span><span class="p">)</span> <span class="c1"># &quot;not b&quot; is true, so the whole thing is true</span>
 </pre></div>
 </div>
 </div>
@@ -1106,13 +1106,13 @@ print(not a or not b) # &quot;not b&quot; is true, so the whole thing is true
 <p>The <strong>membership operators</strong> <code class="docutils literal notranslate"><span class="pre">in</span></code> and <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">in</span></code> check whether the left object is or is not in the object on the right side.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># try these... what do you get?
-a=3
-b=[1,2,3]
-print(a in b)
-print(a not in b)
-print(b in a)
-print(b not in a)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># try these... what do you get?</span>
+<span class="n">a</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">b</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="ow">in</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span> <span class="ow">in</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">a</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1121,12 +1121,12 @@ print(b not in a)
 <p><strong>WARNING: <code class="docutils literal notranslate"><span class="pre">is</span></code> and <code class="docutils literal notranslate"><span class="pre">==</span></code> are NOT the same!!!</strong>* Here is an example <a class="reference external" href="https://www.geeksforgeeks.org/difference-operator-python/">borrowed from G4G</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>list1 = [] 
-list2 = [] 
-list3=list1 
-print(list1 == list2)
-print(list1 is list2)
-print(list1 is list3)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list1</span> <span class="o">=</span> <span class="p">[]</span> 
+<span class="n">list2</span> <span class="o">=</span> <span class="p">[]</span> 
+<span class="n">list3</span><span class="o">=</span><span class="n">list1</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">list1</span> <span class="o">==</span> <span class="n">list2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">list1</span> <span class="ow">is</span> <span class="n">list2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">list1</span> <span class="ow">is</span> <span class="n">list3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1139,11 +1139,11 @@ print(list1 is list3)
 <p>will audit rich filers if they have less than a 15% tax rate, but will only audit poor tax filers if they had a negative tax rate.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># a few silly examples
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># a few silly examples</span>
 
-print((3&gt;3) == False) # 1 is not greater than 2, so this evaluates to... 
-print(3&gt;3 == False)   
-print((3&gt;3) != True)
+<span class="nb">print</span><span class="p">((</span><span class="mi">3</span><span class="o">&gt;</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span><span class="p">)</span> <span class="c1"># 1 is not greater than 2, so this evaluates to... </span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">3</span><span class="o">&gt;</span><span class="mi">3</span> <span class="o">==</span> <span class="kc">False</span><span class="p">)</span>   
+<span class="nb">print</span><span class="p">((</span><span class="mi">3</span><span class="o">&gt;</span><span class="mi">3</span><span class="p">)</span> <span class="o">!=</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1156,12 +1156,12 @@ print((3&gt;3) != True)
 <p>To illustrate:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = [1, 2, 3]
-print(type(x))
-y = x
-print(y)
-x.append(4) # change x, not y
-print(y) # y was changed as well... Why? Read the page above!
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># change x, not y</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="c1"># y was changed as well... Why? Read the page above!</span>
 </pre></div>
 </div>
 </div>
@@ -1206,8 +1206,8 @@ Below is an example, and see <a class="reference external" href="https://nbviewe
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(1.0+2.0 == 3.0)
-print(0.1+0.2 == 0.3) # FALSE?!
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mf">1.0</span><span class="o">+</span><span class="mf">2.0</span> <span class="o">==</span> <span class="mf">3.0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mf">0.1</span><span class="o">+</span><span class="mf">0.2</span> <span class="o">==</span> <span class="mf">0.3</span><span class="p">)</span> <span class="c1"># FALSE?!</span>
 </pre></div>
 </div>
 </div>
@@ -1221,14 +1221,14 @@ False
 <p><code class="docutils literal notranslate"><span class="pre">str</span></code>. There are built-in functions that work on strings directly. Let’s look at a few:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a=&#39;some string&#39; # a = &quot;some string&quot; is the same. 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="s1">&#39;some string&#39;</span> <span class="c1"># a = &quot;some string&quot; is the same. </span>
 
-# some functions work on strings directly
-print(len(a)) 
+<span class="c1"># some functions work on strings directly</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">))</span> 
 
-# string types also have many functions as methods
-print(a.upper())
-#YOU: type a.&lt;tab&gt; in your notebook, and jupyter will open a list of possible functions!
+<span class="c1"># string types also have many functions as methods</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+<span class="c1">#YOU: type a.&lt;tab&gt; in your notebook, and jupyter will open a list of possible functions!</span>
 </pre></div>
 </div>
 </div>
@@ -1279,14 +1279,14 @@ print(a.upper())
 <p>First, let me illustrate the use of <code class="docutils literal notranslate"><span class="pre">.extend()</span></code> vs <code class="docutils literal notranslate"><span class="pre">.append()</span></code> vs <code class="docutils literal notranslate"><span class="pre">+</span></code> for lists:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>L=[8, 5, 6, 3, 7] # use brackets to define a list
-L.extend([5])    # extend concatenates
-L.extend([3,4])  # concatenates work the same with more elemens
-L = L + [13,14]  # + concatenates
-L.append(7)      # append adds its entire argument to the list as a new element. 
-L.append([6])    # 7 is an int, so it goes in as an int, but [6] is a *list*, so append puts a list as the element
-L.append([8,9])  # see, the last element is [8,9]
-L
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span> <span class="c1"># use brackets to define a list</span>
+<span class="n">L</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">5</span><span class="p">])</span>    <span class="c1"># extend concatenates</span>
+<span class="n">L</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>  <span class="c1"># concatenates work the same with more elemens</span>
+<span class="n">L</span> <span class="o">=</span> <span class="n">L</span> <span class="o">+</span> <span class="p">[</span><span class="mi">13</span><span class="p">,</span><span class="mi">14</span><span class="p">]</span>  <span class="c1"># + concatenates</span>
+<span class="n">L</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>      <span class="c1"># append adds its entire argument to the list as a new element. </span>
+<span class="n">L</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">6</span><span class="p">])</span>    <span class="c1"># 7 is an int, so it goes in as an int, but [6] is a *list*, so append puts a list as the element</span>
+<span class="n">L</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">])</span>  <span class="c1"># see, the last element is [8,9]</span>
+<span class="n">L</span>
 </pre></div>
 </div>
 </div>
@@ -1442,11 +1442,11 @@ L
 <p>For example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>counter = 0
-while counter &lt; 7:
-    print(counter)
-    counter += 1 # &quot;+=&quot; is short for &quot;add to myself&quot;. 
-                 # Here, it&#39;s an abbreviation for: counter = counter + 1
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">counter</span> <span class="o">&lt;</span> <span class="mi">7</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">counter</span><span class="p">)</span>
+    <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1"># &quot;+=&quot; is short for &quot;add to myself&quot;. </span>
+                 <span class="c1"># Here, it&#39;s an abbreviation for: counter = counter + 1</span>
 </pre></div>
 </div>
 </div>
@@ -1528,26 +1528,26 @@ while counter &lt; 7:
 <p><strong>Example:</strong> The function below shows off positional and keyword arguments, how to write a multiline <em>“docstring”</em>, how the program ends once a return is executed, outputting a list, and setting default values for inputs.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def f(x, a=1, b=1):
-    &#39;&#39;&#39;
-    Returns a list. Element 0 is a+bx, element 1 is 2. 
-    
-    The first argument you give goes to x, the second to a, the third to b.
-    If you do not provide a or b, they default to the value 1.
-    &#39;&#39;&#39;
-    if x &lt; 0:
-        return &quot;WHOA THIS IS NEGATIVE&quot;
-    return [a + b * x, 2] # you can return any object(s) you want! this is a list, for example
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Returns a list. Element 0 is a+bx, element 1 is 2. </span>
+<span class="sd">    </span>
+<span class="sd">    The first argument you give goes to x, the second to a, the third to b.</span>
+<span class="sd">    If you do not provide a or b, they default to the value 1.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;WHOA THIS IS NEGATIVE&quot;</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="c1"># you can return any object(s) you want! this is a list, for example</span>
 
-zz = -100         
-print(f(zz))      # Inside the function, it takes the first arg
-                  # and calls it &quot;x&quot;. So here x is -100 inside.
-                  # because x&lt;0, the func returns WHOA
-                  # and never gets to a+b*x
-print(f(2,2,2))   
-print(f(1))       # uses the default value of a and b
-print(f(1,b=3))   # uses the default value of a
-help(f)           # the docstring is useful!
+<span class="n">zz</span> <span class="o">=</span> <span class="o">-</span><span class="mi">100</span>         
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">zz</span><span class="p">))</span>      <span class="c1"># Inside the function, it takes the first arg</span>
+                  <span class="c1"># and calls it &quot;x&quot;. So here x is -100 inside.</span>
+                  <span class="c1"># because x&lt;0, the func returns WHOA</span>
+                  <span class="c1"># and never gets to a+b*x</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>   
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>       <span class="c1"># uses the default value of a and b</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>   <span class="c1"># uses the default value of a</span>
+<span class="n">help</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>           <span class="c1"># the docstring is useful!</span>
 </pre></div>
 </div>
 </div>
@@ -1567,8 +1567,8 @@ f(x, a=1, b=1)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># this won&#39;t work! python requires you to use the keyword arguments AFTER the positional arguments
-print(f(b=3,1)) 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this won&#39;t work! python requires you to use the keyword arguments AFTER the positional arguments</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> 
 </pre></div>
 </div>
 </div>
@@ -1588,12 +1588,12 @@ print(f(b=3,1))
 <p>Here is an example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x=1
-def silly_func():
-    xyz = 14
-    print(x) # variables defined OUTSIDE AND BEFORE a function are visible INSIDE the func
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="mi">1</span>
+<span class="k">def</span> <span class="nf">silly_func</span><span class="p">():</span>
+    <span class="n">xyz</span> <span class="o">=</span> <span class="mi">14</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># variables defined OUTSIDE AND BEFORE a function are visible INSIDE the func</span>
     
-silly_func() 
+<span class="n">silly_func</span><span class="p">()</span> 
 </pre></div>
 </div>
 </div>
@@ -1605,7 +1605,7 @@ silly_func()
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(xyz)   # variables defined INSIDE a function are NOT visible OUTSIDE the func
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">xyz</span><span class="p">)</span>   <span class="c1"># variables defined INSIDE a function are NOT visible OUTSIDE the func</span>
 </pre></div>
 </div>
 </div>
@@ -1623,12 +1623,12 @@ silly_func()
 <p>Here is a second example to show that changing the downstream variable <em>inside the function</em> won’t change the variable’s value outside the function!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = 1
-def silly_func():
-    x=2
-    return x
-print(silly_func())
-print(x)               # changing the downstream variable inside the function didn&#39;t change the upstream version
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">def</span> <span class="nf">silly_func</span><span class="p">():</span>
+    <span class="n">x</span><span class="o">=</span><span class="mi">2</span>
+    <span class="k">return</span> <span class="n">x</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">silly_func</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>               <span class="c1"># changing the downstream variable inside the function didn&#39;t change the upstream version</span>
 </pre></div>
 </div>
 </div>

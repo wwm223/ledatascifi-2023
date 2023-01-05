@@ -917,8 +917,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a_str = &#39;Hey you&#39; + &#39; there&#39; # concatenate strings
-a_str[3:5]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_str</span> <span class="o">=</span> <span class="s1">&#39;Hey you&#39;</span> <span class="o">+</span> <span class="s1">&#39; there&#39;</span> <span class="c1"># concatenate strings</span>
+<span class="n">a_str</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -933,7 +933,7 @@ a_str[3:5]
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a_str.split() #splits on spaces by default, notice the spaces are gone
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_str</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="c1">#splits on spaces by default, notice the spaces are gone</span>
 </pre></div>
 </div>
 </div>
@@ -945,7 +945,7 @@ a_str[3:5]
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a_str.split(&#39;e&#39;) # splits on the &#39;e&#39;s, notice the e&#39;s are gone
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;e&#39;</span><span class="p">)</span> <span class="c1"># splits on the &#39;e&#39;s, notice the e&#39;s are gone</span>
 </pre></div>
 </div>
 </div>
@@ -957,9 +957,9 @@ a_str[3:5]
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>split_up = a_str.split()
-# syntax: &lt;string to use as joiner&gt;.join(&lt;list of strings&gt;)
-&#39;---&#39;.join(split_up)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">split_up</span> <span class="o">=</span> <span class="n">a_str</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="c1"># syntax: &lt;string to use as joiner&gt;.join(&lt;list of strings&gt;)</span>
+<span class="s1">&#39;---&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">split_up</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -980,7 +980,7 @@ a_str[3:5]
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a_str.replace(&#39;H&#39;,&#39;HHHH&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span><span class="s1">&#39;HHHH&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

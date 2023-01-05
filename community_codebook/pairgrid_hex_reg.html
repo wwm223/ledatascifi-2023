@@ -886,62 +886,62 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import seaborn as sns 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span> 
 
-penguins = sns.load_dataset(&quot;penguins&quot;)
+<span class="n">penguins</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;penguins&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def pairgrid_hex_reg(df, variables=None, hex=True, hex_size=15, n_x_bins=15):
-    &#39;&#39;&#39;
-    For larger datasets, better than pairgrid or anything that creates scatterplots. 
-    Plots hexbins with a linear and lowess best fit line for each combination
-    of variables.
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pairgrid_hex_reg</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">variables</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">hex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">hex_size</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">n_x_bins</span><span class="o">=</span><span class="mi">15</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    For larger datasets, better than pairgrid or anything that creates scatterplots. </span>
+<span class="sd">    Plots hexbins with a linear and lowess best fit line for each combination</span>
+<span class="sd">    of variables.</span>
+<span class="sd">    </span>
+<span class="sd">    Optional vars:</span>
+<span class="sd">    variables - list (subset of variable names to plot)</span>
+<span class="sd">    hex       - bool </span>
+<span class="sd">                if true, plots hexbins and hex_size is relevant</span>
+<span class="sd">                else, bins x into n_x_bins is binned with avg +/- sd</span>
+<span class="sd">    hex_size  - int  (larger numbers makes hexbins smaller)</span>
+<span class="sd">    n_x_bins  - int </span>
+<span class="sd">    &#39;&#39;&#39;</span>
     
-    Optional vars:
-    variables - list (subset of variable names to plot)
-    hex       - bool 
-                if true, plots hexbins and hex_size is relevant
-                else, bins x into n_x_bins is binned with avg +/- sd
-    hex_size  - int  (larger numbers makes hexbins smaller)
-    n_x_bins  - int 
-    &#39;&#39;&#39;
+    <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+    <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span> 
     
-    import matplotlib.pyplot as plt
-    import seaborn as sns 
-    
-    def hexbin(x, y, color, **kwargs):
-        &#39;&#39;&#39;
-        sns doesn&#39;t have a hexbin plot but matplotlib does
-        &#39;&#39;&#39;
-        cmap = sns.light_palette(color, as_cmap=True)
-        plt.hexbin(x, y, gridsize=hex_size, cmap=cmap, **kwargs)
+    <span class="k">def</span> <span class="nf">hexbin</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        sns doesn&#39;t have a hexbin plot but matplotlib does</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">cmap</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">light_palette</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">as_cmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">hexbin</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">gridsize</span><span class="o">=</span><span class="n">hex_size</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         
-    if not variables:
-        g = sns.PairGrid(df, vars=variables,corner=True)
-    else:
-        g = sns.PairGrid(df, vars=variables,corner=True)
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">variables</span><span class="p">:</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">PairGrid</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="n">variables</span><span class="p">,</span><span class="n">corner</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">PairGrid</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="n">variables</span><span class="p">,</span><span class="n">corner</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         
-    g.map_diag(sns.histplot)
-    g.map_lower(sns.regplot,scatter=False,lowess=True,line_kws={&quot;color&quot;: &quot;C1&quot;})
+    <span class="n">g</span><span class="o">.</span><span class="n">map_diag</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">)</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">map_lower</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">,</span><span class="n">scatter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">lowess</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">line_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;C1&quot;</span><span class="p">})</span>
     
-    if hex:
-        g.map_lower(sns.regplot,scatter=False,line_kws={&quot;color&quot;: &quot;C2&quot;})
-        g.map_lower(hexbin)
-    else:
-        g.map_lower(sns.regplot,line_kws={&quot;color&quot;: &quot;C2&quot;},x_bins=n_x_bins,x_ci=&#39;sd&#39;)
+    <span class="k">if</span> <span class="nb">hex</span><span class="p">:</span>
+        <span class="n">g</span><span class="o">.</span><span class="n">map_lower</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">,</span><span class="n">scatter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">line_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;C2&quot;</span><span class="p">})</span>
+        <span class="n">g</span><span class="o">.</span><span class="n">map_lower</span><span class="p">(</span><span class="n">hexbin</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">g</span><span class="o">.</span><span class="n">map_lower</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">,</span><span class="n">line_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;C2&quot;</span><span class="p">},</span><span class="n">x_bins</span><span class="o">=</span><span class="n">n_x_bins</span><span class="p">,</span><span class="n">x_ci</span><span class="o">=</span><span class="s1">&#39;sd&#39;</span><span class="p">)</span>
         
-    return g
+    <span class="k">return</span> <span class="n">g</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pairgrid_hex_reg(penguins,hex_size=20)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pairgrid_hex_reg</span><span class="p">(</span><span class="n">penguins</span><span class="p">,</span><span class="n">hex_size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -954,7 +954,7 @@ penguins = sns.load_dataset(&quot;penguins&quot;)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pairgrid_hex_reg(penguins,hex=False,n_x_bins=10)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pairgrid_hex_reg</span><span class="p">(</span><span class="n">penguins</span><span class="p">,</span><span class="nb">hex</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">n_x_bins</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

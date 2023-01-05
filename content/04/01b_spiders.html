@@ -952,17 +952,17 @@ const thebe_selector_output = ".output, .cell_output"
 <p>For example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def search_itunes(search_term):
-    &#39;&#39;&#39;Run one simple iTunes search&#39;&#39;&#39;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">search_itunes</span><span class="p">(</span><span class="n">search_term</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Run one simple iTunes search&#39;&#39;&#39;</span>
     
-    base_url = &#39;https://itunes.apple.com/search&#39;
-    search_parameters = {&#39;term&#39;: search_term}
+    <span class="n">base_url</span> <span class="o">=</span> <span class="s1">&#39;https://itunes.apple.com/search&#39;</span>
+    <span class="n">search_parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;term&#39;</span><span class="p">:</span> <span class="n">search_term</span><span class="p">}</span>
     
-    r = requests.get(base_url, params = search_parameters)
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">base_url</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="n">search_parameters</span><span class="p">)</span>
     
-    results_df = pd.DataFrame(r.json()[&#39;results&#39;])
+    <span class="n">results_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;results&#39;</span><span class="p">])</span>
     
-    return results_df
+    <span class="k">return</span> <span class="n">results_df</span>
 </pre></div>
 </div>
 </div>
@@ -970,8 +970,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p>We can run this one artist at a time:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>search_itunes(&#39;billie eilish&#39;)      # one search at a time
-search_itunes(&#39;father john misty&#39;)  # &quot;another one&quot; - dj khaled
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">search_itunes</span><span class="p">(</span><span class="s1">&#39;billie eilish&#39;</span><span class="p">)</span>      <span class="c1"># one search at a time</span>
+<span class="n">search_itunes</span><span class="p">(</span><span class="s1">&#39;father john misty&#39;</span><span class="p">)</span>  <span class="c1"># &quot;another one&quot; - dj khaled</span>
 </pre></div>
 </div>
 </div>
@@ -979,16 +979,16 @@ search_itunes(&#39;father john misty&#39;)  # &quot;another one&quot; - dj khale
 <p>Or we can loop over them and <do something> (TBD, but saving the <code class="docutils literal notranslate"><span class="pre">results_df</span></code> to files is a good idea):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>artists = [&#39;billie eilish&#39;,&#39;father john misty&#39;] # you can loop over them!
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">artists</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;billie eilish&#39;</span><span class="p">,</span><span class="s1">&#39;father john misty&#39;</span><span class="p">]</span> <span class="c1"># you can loop over them!</span>
 
-# download the results and save locally
-for artist in artists:
-    df = search_itunes(artist)
-    # you could do anything with the results here
-    # a good idea in many projects: save the webpage/search results
-    # even better: add the saving function inside the &quot;search_itunes&quot; fcn
-    # but this is just a toy illustration, so nothing happens
-    pass
+<span class="c1"># download the results and save locally</span>
+<span class="k">for</span> <span class="n">artist</span> <span class="ow">in</span> <span class="n">artists</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">search_itunes</span><span class="p">(</span><span class="n">artist</span><span class="p">)</span>
+    <span class="c1"># you could do anything with the results here</span>
+    <span class="c1"># a good idea in many projects: save the webpage/search results</span>
+    <span class="c1"># even better: add the saving function inside the &quot;search_itunes&quot; fcn</span>
+    <span class="c1"># but this is just a toy illustration, so nothing happens</span>
+    <span class="k">pass</span>
     
 </pre></div>
 </div>
@@ -997,12 +997,12 @@ for artist in artists:
 <p>LATER, you will want to analyze those files. Just loop over the files again:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for artist in artists:
-    # load the saved file
-    # call a function you wrote to parse/analyze/reformat one file
-    # do something with the output from the parser
-    # but this is just a toy illustration, so nothing happens    
-    pass   
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">artist</span> <span class="ow">in</span> <span class="n">artists</span><span class="p">:</span>
+    <span class="c1"># load the saved file</span>
+    <span class="c1"># call a function you wrote to parse/analyze/reformat one file</span>
+    <span class="c1"># do something with the output from the parser</span>
+    <span class="c1"># but this is just a toy illustration, so nothing happens    </span>
+    <span class="k">pass</span>   
 </pre></div>
 </div>
 </div>

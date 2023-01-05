@@ -946,19 +946,19 @@ const thebe_selector_output = ".output, .cell_output"
 <hr class="docutils" />
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
-from statsmodels.formula.api import ols as sm_ols
-import numpy as np
-import seaborn as sns
-from statsmodels.iolib.summary2 import summary_col # nicer tables
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <span class="n">ols</span> <span class="k">as</span> <span class="n">sm_ols</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">statsmodels.iolib.summary2</span> <span class="kn">import</span> <span class="n">summary_col</span> <span class="c1"># nicer tables</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>url = &#39;https://github.com/LeDataSciFi/data/blob/main/Fannie%20Mae/Fannie_Mae_Plus_Data.gzip?raw=true&#39;
-fannie_mae = pd.read_csv(url,compression=&#39;gzip&#39;) 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/LeDataSciFi/data/blob/main/Fannie%20Mae/Fannie_Mae_Plus_Data.gzip?raw=true&#39;</span>
+<span class="n">fannie_mae</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">compression</span><span class="o">=</span><span class="s1">&#39;gzip&#39;</span><span class="p">)</span> 
 </pre></div>
 </div>
 </div>
@@ -967,22 +967,22 @@ fannie_mae = pd.read_csv(url,compression=&#39;gzip&#39;)
 <h2>Clean the data and create variables you want<a class="headerlink" href="#clean-the-data-and-create-variables-you-want" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fannie_mae = (fannie_mae
-                  # create variables
-                  .assign(l_credscore = np.log(fannie_mae[&#39;Borrower_Credit_Score_at_Origination&#39;]),
-                          l_LTV = np.log(fannie_mae[&#39;Original_LTV_(OLTV)&#39;]),
-                          l_int = np.log(fannie_mae[&#39;Original_Interest_Rate&#39;]),
-                          Origination_Date = lambda x: pd.to_datetime(x[&#39;Origination_Date&#39;]),
-                          Origination_Year = lambda x: x[&#39;Origination_Date&#39;].dt.year,
-                          const = 1
-                         )
-                  .rename(columns={&#39;Original_Interest_Rate&#39;:&#39;int&#39;}) # shorter name will help the table formatting
-             )
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fannie_mae</span> <span class="o">=</span> <span class="p">(</span><span class="n">fannie_mae</span>
+                  <span class="c1"># create variables</span>
+                  <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">l_credscore</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">fannie_mae</span><span class="p">[</span><span class="s1">&#39;Borrower_Credit_Score_at_Origination&#39;</span><span class="p">]),</span>
+                          <span class="n">l_LTV</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">fannie_mae</span><span class="p">[</span><span class="s1">&#39;Original_LTV_(OLTV)&#39;</span><span class="p">]),</span>
+                          <span class="n">l_int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">fannie_mae</span><span class="p">[</span><span class="s1">&#39;Original_Interest_Rate&#39;</span><span class="p">]),</span>
+                          <span class="n">Origination_Date</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;Origination_Date&#39;</span><span class="p">]),</span>
+                          <span class="n">Origination_Year</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;Origination_Date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">,</span>
+                          <span class="n">const</span> <span class="o">=</span> <span class="mi">1</span>
+                         <span class="p">)</span>
+                  <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Original_Interest_Rate&#39;</span><span class="p">:</span><span class="s1">&#39;int&#39;</span><span class="p">})</span> <span class="c1"># shorter name will help the table formatting</span>
+             <span class="p">)</span>
 
-# create a categorical credit bin var with &quot;pd.cut()&quot;
-fannie_mae[&#39;creditbins&#39;]= pd.cut(fannie_mae[&#39;Co-borrower_credit_score_at_origination&#39;],
-                                 [0,579,669,739,799,850],
-                                 labels=[&#39;Very Poor&#39;,&#39;Fair&#39;,&#39;Good&#39;,&#39;Very Good&#39;,&#39;Exceptional&#39;])
+<span class="c1"># create a categorical credit bin var with &quot;pd.cut()&quot;</span>
+<span class="n">fannie_mae</span><span class="p">[</span><span class="s1">&#39;creditbins&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">fannie_mae</span><span class="p">[</span><span class="s1">&#39;Co-borrower_credit_score_at_origination&#39;</span><span class="p">],</span>
+                                 <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">579</span><span class="p">,</span><span class="mi">669</span><span class="p">,</span><span class="mi">739</span><span class="p">,</span><span class="mi">799</span><span class="p">,</span><span class="mi">850</span><span class="p">],</span>
+                                 <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Very Poor&#39;</span><span class="p">,</span><span class="s1">&#39;Fair&#39;</span><span class="p">,</span><span class="s1">&#39;Good&#39;</span><span class="p">,</span><span class="s1">&#39;Very Good&#39;</span><span class="p">,</span><span class="s1">&#39;Exceptional&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1000,28 +1000,28 @@ fannie_mae[&#39;creditbins&#39;]= pd.cut(fannie_mae[&#39;Co-borrower_credit_scor
 <p>Now, let’s save each regression’s result with a different name, and below this, output them all in one nice table:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># one var: &#39;y ~ x&#39; means fit y = a + b*X
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># one var: &#39;y ~ x&#39; means fit y = a + b*X</span>
 
-reg1 = sm_ols(&#39;int ~  Borrower_Credit_Score_at_Origination &#39;, data=fannie_mae).fit()
+<span class="n">reg1</span> <span class="o">=</span> <span class="n">sm_ols</span><span class="p">(</span><span class="s1">&#39;int ~  Borrower_Credit_Score_at_Origination &#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fannie_mae</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 
-reg1b= sm_ols(&#39;int ~  l_credscore  &#39;,  data=fannie_mae).fit()
+<span class="n">reg1b</span><span class="o">=</span> <span class="n">sm_ols</span><span class="p">(</span><span class="s1">&#39;int ~  l_credscore  &#39;</span><span class="p">,</span>  <span class="n">data</span><span class="o">=</span><span class="n">fannie_mae</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 
-reg1c= sm_ols(&#39;l_int ~  Borrower_Credit_Score_at_Origination  &#39;,  data=fannie_mae).fit()
+<span class="n">reg1c</span><span class="o">=</span> <span class="n">sm_ols</span><span class="p">(</span><span class="s1">&#39;l_int ~  Borrower_Credit_Score_at_Origination  &#39;</span><span class="p">,</span>  <span class="n">data</span><span class="o">=</span><span class="n">fannie_mae</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 
-reg1d= sm_ols(&#39;l_int ~  l_credscore  &#39;,  data=fannie_mae).fit()
+<span class="n">reg1d</span><span class="o">=</span> <span class="n">sm_ols</span><span class="p">(</span><span class="s1">&#39;l_int ~  l_credscore  &#39;</span><span class="p">,</span>  <span class="n">data</span><span class="o">=</span><span class="n">fannie_mae</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 
-# multiple variables: just add them to the formula
-# &#39;y ~ x1 + x2&#39; means fit y = a + b*x1 + c*x2
-reg2 = sm_ols(&#39;int ~  l_credscore + l_LTV &#39;,  data=fannie_mae).fit()
+<span class="c1"># multiple variables: just add them to the formula</span>
+<span class="c1"># &#39;y ~ x1 + x2&#39; means fit y = a + b*x1 + c*x2</span>
+<span class="n">reg2</span> <span class="o">=</span> <span class="n">sm_ols</span><span class="p">(</span><span class="s1">&#39;int ~  l_credscore + l_LTV &#39;</span><span class="p">,</span>  <span class="n">data</span><span class="o">=</span><span class="n">fannie_mae</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 
-# interaction terms: Just use *
-# Note: always include each variable separately too! (not just x1*x2, but x1+x2+x1*x2)
-reg3 = sm_ols(&#39;int ~  l_credscore + l_LTV + l_credscore*l_LTV&#39;,  data=fannie_mae).fit()
+<span class="c1"># interaction terms: Just use *</span>
+<span class="c1"># Note: always include each variable separately too! (not just x1*x2, but x1+x2+x1*x2)</span>
+<span class="n">reg3</span> <span class="o">=</span> <span class="n">sm_ols</span><span class="p">(</span><span class="s1">&#39;int ~  l_credscore + l_LTV + l_credscore*l_LTV&#39;</span><span class="p">,</span>  <span class="n">data</span><span class="o">=</span><span class="n">fannie_mae</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
       
-# categorical dummies: C() 
-reg4 = sm_ols(&#39;int ~  C(creditbins)  &#39;,  data=fannie_mae).fit()
+<span class="c1"># categorical dummies: C() </span>
+<span class="n">reg4</span> <span class="o">=</span> <span class="n">sm_ols</span><span class="p">(</span><span class="s1">&#39;int ~  C(creditbins)  &#39;</span><span class="p">,</span>  <span class="n">data</span><span class="o">=</span><span class="n">fannie_mae</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 
-reg5 = sm_ols(&#39;int ~  C(creditbins)  -1&#39;, data=fannie_mae).fit()
+<span class="n">reg5</span> <span class="o">=</span> <span class="n">sm_ols</span><span class="p">(</span><span class="s1">&#39;int ~  C(creditbins)  -1&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fannie_mae</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1029,27 +1029,27 @@ reg5 = sm_ols(&#39;int ~  C(creditbins)  -1&#39;, data=fannie_mae).fit()
 <p>Ok, time to output them:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># now I&#39;ll format an output table
-# I&#39;d like to include extra info in the table (not just coefficients)
-info_dict={&#39;R-squared&#39; : lambda x: f&quot;{x.rsquared:.2f}&quot;,
-           &#39;Adj R-squared&#39; : lambda x: f&quot;{x.rsquared_adj:.2f}&quot;,
-           &#39;No. observations&#39; : lambda x: f&quot;{int(x.nobs):d}&quot;}
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># now I&#39;ll format an output table</span>
+<span class="c1"># I&#39;d like to include extra info in the table (not just coefficients)</span>
+<span class="n">info_dict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;R-squared&#39;</span> <span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">rsquared</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+           <span class="s1">&#39;Adj R-squared&#39;</span> <span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">rsquared_adj</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+           <span class="s1">&#39;No. observations&#39;</span> <span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">nobs</span><span class="p">)</span><span class="si">:</span><span class="s2">d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
 
-# q4b1 and q4b2 name the dummies differently in the table, so this is a silly fix
-reg4.model.exog_names[1:] = reg5.model.exog_names[1:]  
+<span class="c1"># q4b1 and q4b2 name the dummies differently in the table, so this is a silly fix</span>
+<span class="n">reg4</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">exog_names</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">=</span> <span class="n">reg5</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">exog_names</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>  
 
-# This summary col function combines a bunch of regressions into one nice table
-print(&#39;=&#39;*108)
-print(&#39;                  y = interest rate if not specified, log(interest rate else)&#39;)
-print(summary_col(results=[reg1,reg1b,reg1c,reg1d,reg2,reg3,reg4,reg5], # list the result obj here
-                  float_format=&#39;%0.2f&#39;,
-                  stars = True, # stars are easy way to see if anything is statistically significant
-                  model_names=[&#39;1&#39;,&#39;2&#39;,&#39; 3 (log)&#39;,&#39;4 (log)&#39;,&#39;5&#39;,&#39;6&#39;,&#39;7&#39;,&#39;8&#39;], # these are bad names, lol. Usually, just use the y variable name
-                  info_dict=info_dict,
-                  regressor_order=[ &#39;Intercept&#39;,&#39;Borrower_Credit_Score_at_Origination&#39;,&#39;l_credscore&#39;,&#39;l_LTV&#39;,&#39;l_credscore:l_LTV&#39;,
-                                  &#39;C(creditbins)[Very Poor]&#39;,&#39;C(creditbins)[Fair]&#39;,&#39;C(creditbins)[Good]&#39;,&#39;C(creditbins)[Vrey Good]&#39;,&#39;C(creditbins)[Exceptional]&#39;]
-                  )
-     )
+<span class="c1"># This summary col function combines a bunch of regressions into one nice table</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="o">*</span><span class="mi">108</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;                  y = interest rate if not specified, log(interest rate else)&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">summary_col</span><span class="p">(</span><span class="n">results</span><span class="o">=</span><span class="p">[</span><span class="n">reg1</span><span class="p">,</span><span class="n">reg1b</span><span class="p">,</span><span class="n">reg1c</span><span class="p">,</span><span class="n">reg1d</span><span class="p">,</span><span class="n">reg2</span><span class="p">,</span><span class="n">reg3</span><span class="p">,</span><span class="n">reg4</span><span class="p">,</span><span class="n">reg5</span><span class="p">],</span> <span class="c1"># list the result obj here</span>
+                  <span class="n">float_format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%0.2f</span><span class="s1">&#39;</span><span class="p">,</span>
+                  <span class="n">stars</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="c1"># stars are easy way to see if anything is statistically significant</span>
+                  <span class="n">model_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="s1">&#39; 3 (log)&#39;</span><span class="p">,</span><span class="s1">&#39;4 (log)&#39;</span><span class="p">,</span><span class="s1">&#39;5&#39;</span><span class="p">,</span><span class="s1">&#39;6&#39;</span><span class="p">,</span><span class="s1">&#39;7&#39;</span><span class="p">,</span><span class="s1">&#39;8&#39;</span><span class="p">],</span> <span class="c1"># these are bad names, lol. Usually, just use the y variable name</span>
+                  <span class="n">info_dict</span><span class="o">=</span><span class="n">info_dict</span><span class="p">,</span>
+                  <span class="n">regressor_order</span><span class="o">=</span><span class="p">[</span> <span class="s1">&#39;Intercept&#39;</span><span class="p">,</span><span class="s1">&#39;Borrower_Credit_Score_at_Origination&#39;</span><span class="p">,</span><span class="s1">&#39;l_credscore&#39;</span><span class="p">,</span><span class="s1">&#39;l_LTV&#39;</span><span class="p">,</span><span class="s1">&#39;l_credscore:l_LTV&#39;</span><span class="p">,</span>
+                                  <span class="s1">&#39;C(creditbins)[Very Poor]&#39;</span><span class="p">,</span><span class="s1">&#39;C(creditbins)[Fair]&#39;</span><span class="p">,</span><span class="s1">&#39;C(creditbins)[Good]&#39;</span><span class="p">,</span><span class="s1">&#39;C(creditbins)[Vrey Good]&#39;</span><span class="p">,</span><span class="s1">&#39;C(creditbins)[Exceptional]&#39;</span><span class="p">]</span>
+                  <span class="p">)</span>
+     <span class="p">)</span>
 </pre></div>
 </div>
 </div>

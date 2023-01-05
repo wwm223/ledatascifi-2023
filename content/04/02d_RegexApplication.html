@@ -965,117 +965,117 @@ const thebe_selector_output = ".output, .cell_output"
 </ol>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def NEAR_regex(list_of_words,max_words_between=5,partial=False,cases_matter=False):
-    &#39;&#39;&#39;
-    Parameters
-    ----------
-    list_of_words : list
-        A list of &quot;words&quot;, each element is a string
-        
-        This program will return a regex that will look for times where word1 
-        is near word2, or word2 is near word 1.
-        
-        It works with multiple words: You can see if words1 is near word2 or
-        word3. 
-        
-    max_words_between : int, optional
-        How many &quot;words&quot; are allowed between words in list_of_words. The default
-        is 5, but you should consider this carefully.
-        
-        &quot;words&quot; in between are chunks of characters. &quot;DON don don- don12 2454&quot; 
-        is 5 words.
-        
-        This will not allow matches if the words are separated by a newline 
-        (&quot;\n&quot;) character.
-        
-    partial : Boolean, optional
-        If true, will accept longer words than you give. For example, if one 
-        word in your list is &quot;how&quot;, it will match to &quot;howdy&quot;. Be careful in 
-        choosing this based on your problem. Partial makes more sense with 
-        longer words. 
-        The default is True.
-        
-    cases_matter: Boolean, optional bt IMPORTANT
-        If True, will return a regex string that will only catch cases where  
-        words in the string have the same case as given as input to this 
-        function. For example, if one word here is &quot;Hi&quot;, then the regex 
-        produced by this function will not catch &quot;hi&quot;.
-        
-        If false, will return a regex string that will only work if all letters
-        in search string are lowercase.
-        
-        The default is True.
-     
-    Warning
-    -------
-    See the last example. The regex is minimally greedy. 
-    
-       
-    Feature Requests (participation credit available)
-    -------
-    1. A wrapper that takes the above inputs, the string to search, and a variable=count|text, and
-    returns either the number of hits or the text of the matching elements. (See the examples below.)
-    
-    2. Optionally clean the string before the regex stuff happens.
-    
-    3. Optionally ignore line breaks. 
-    
-    4. Optionally make it lazy (in the last example, 
-    the &quot;correct&quot; answer is probably 2, but it gives 1.)
-    
-        
-    Unsure about speed
-    -------
-    I don&#39;t think this is a very &quot;fast&quot; function, but it should be robust. 
-  
-    
-    Suggested use
-    -------
-    # clean your starting string 
-    a_string_you_have = &#39;jack and jill went up the hill&#39;
-    
-    # 1. define words and set up the regex
-    words = [&#39;jack&#39;,&#39;hill&#39;]                         
-    rgx = NEAR_regex(words)                       
-    
-    # 2a. count the number of times the word groups are in the text near each other
-    count = len(re.findall(rgx,a_string_you_have))              
-    print(count)  
-    
-    # 2b. print the actual text matches &lt;-- great for checking!
-    text_of_matches = [m.group(0) for m in re.finditer(rgx,a_string_you_have)]
-    print(text_of_matches)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">NEAR_regex</span><span class="p">(</span><span class="n">list_of_words</span><span class="p">,</span><span class="n">max_words_between</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">partial</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">cases_matter</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    list_of_words : list</span>
+<span class="sd">        A list of &quot;words&quot;, each element is a string</span>
+<span class="sd">        </span>
+<span class="sd">        This program will return a regex that will look for times where word1 </span>
+<span class="sd">        is near word2, or word2 is near word 1.</span>
+<span class="sd">        </span>
+<span class="sd">        It works with multiple words: You can see if words1 is near word2 or</span>
+<span class="sd">        word3. </span>
+<span class="sd">        </span>
+<span class="sd">    max_words_between : int, optional</span>
+<span class="sd">        How many &quot;words&quot; are allowed between words in list_of_words. The default</span>
+<span class="sd">        is 5, but you should consider this carefully.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;words&quot; in between are chunks of characters. &quot;DON don don- don12 2454&quot; </span>
+<span class="sd">        is 5 words.</span>
+<span class="sd">        </span>
+<span class="sd">        This will not allow matches if the words are separated by a newline </span>
+<span class="sd">        (&quot;\n&quot;) character.</span>
+<span class="sd">        </span>
+<span class="sd">    partial : Boolean, optional</span>
+<span class="sd">        If true, will accept longer words than you give. For example, if one </span>
+<span class="sd">        word in your list is &quot;how&quot;, it will match to &quot;howdy&quot;. Be careful in </span>
+<span class="sd">        choosing this based on your problem. Partial makes more sense with </span>
+<span class="sd">        longer words. </span>
+<span class="sd">        The default is True.</span>
+<span class="sd">        </span>
+<span class="sd">    cases_matter: Boolean, optional bt IMPORTANT</span>
+<span class="sd">        If True, will return a regex string that will only catch cases where  </span>
+<span class="sd">        words in the string have the same case as given as input to this </span>
+<span class="sd">        function. For example, if one word here is &quot;Hi&quot;, then the regex </span>
+<span class="sd">        produced by this function will not catch &quot;hi&quot;.</span>
+<span class="sd">        </span>
+<span class="sd">        If false, will return a regex string that will only work if all letters</span>
+<span class="sd">        in search string are lowercase.</span>
+<span class="sd">        </span>
+<span class="sd">        The default is True.</span>
+<span class="sd">     </span>
+<span class="sd">    Warning</span>
+<span class="sd">    -------</span>
+<span class="sd">    See the last example. The regex is minimally greedy. </span>
+<span class="sd">    </span>
+<span class="sd">       </span>
+<span class="sd">    Feature Requests (participation credit available)</span>
+<span class="sd">    -------</span>
+<span class="sd">    1. A wrapper that takes the above inputs, the string to search, and a variable=count|text, and</span>
+<span class="sd">    returns either the number of hits or the text of the matching elements. (See the examples below.)</span>
+<span class="sd">    </span>
+<span class="sd">    2. Optionally clean the string before the regex stuff happens.</span>
+<span class="sd">    </span>
+<span class="sd">    3. Optionally ignore line breaks. </span>
+<span class="sd">    </span>
+<span class="sd">    4. Optionally make it lazy (in the last example, </span>
+<span class="sd">    the &quot;correct&quot; answer is probably 2, but it gives 1.)</span>
+<span class="sd">    </span>
+<span class="sd">        </span>
+<span class="sd">    Unsure about speed</span>
+<span class="sd">    -------</span>
+<span class="sd">    I don&#39;t think this is a very &quot;fast&quot; function, but it should be robust. </span>
+<span class="sd">  </span>
+<span class="sd">    </span>
+<span class="sd">    Suggested use</span>
+<span class="sd">    -------</span>
+<span class="sd">    # clean your starting string </span>
+<span class="sd">    a_string_you_have = &#39;jack and jill went up the hill&#39;</span>
+<span class="sd">    </span>
+<span class="sd">    # 1. define words and set up the regex</span>
+<span class="sd">    words = [&#39;jack&#39;,&#39;hill&#39;]                         </span>
+<span class="sd">    rgx = NEAR_regex(words)                       </span>
+<span class="sd">    </span>
+<span class="sd">    # 2a. count the number of times the word groups are in the text near each other</span>
+<span class="sd">    count = len(re.findall(rgx,a_string_you_have))              </span>
+<span class="sd">    print(count)  </span>
+<span class="sd">    </span>
+<span class="sd">    # 2b. print the actual text matches &lt;-- great for checking!</span>
+<span class="sd">    text_of_matches = [m.group(0) for m in re.finditer(rgx,a_string_you_have)]</span>
+<span class="sd">    print(text_of_matches)</span>
 
-    
-    Returns
-    -------
-    A string which is a regex that can be used to look for cases where all the 
-    input words are near each other.
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    A string which is a regex that can be used to look for cases where all the </span>
+<span class="sd">    input words are near each other.</span>
 
-    &#39;&#39;&#39;
+<span class="sd">    &#39;&#39;&#39;</span>
                
-    from itertools import permutations
+    <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">permutations</span>
     
-    start = r&#39;(?:\b&#39; # the r means &quot;raw&quot; as in the backslash is just a backslash, not an escape character
+    <span class="n">start</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;(?:\b&#39;</span> <span class="c1"># the r means &quot;raw&quot; as in the backslash is just a backslash, not an escape character</span>
     
-    if partial:
-        gap   = r&#39;[A-Za-z]*\b(?: +[^ \n\r]*){0,&#39; +str(max_words_between)+r&#39;} *\b&#39;
-        end   = r&#39;[A-Za-z]*\b)&#39;
-    else:
-        gap   = r&#39;\b(?: +[^ \n]*){0,&#39; +str(max_words_between)+r&#39;} *\b&#39;
-        end   = r&#39;\b)&#39;
+    <span class="k">if</span> <span class="n">partial</span><span class="p">:</span>
+        <span class="n">gap</span>   <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;[A-Za-z]*\b(?: +[^ \n\r]*){0,&#39;</span> <span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">max_words_between</span><span class="p">)</span><span class="o">+</span><span class="sa">r</span><span class="s1">&#39;} *\b&#39;</span>
+        <span class="n">end</span>   <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;[A-Za-z]*\b)&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">gap</span>   <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;\b(?: +[^ \n]*){0,&#39;</span> <span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">max_words_between</span><span class="p">)</span><span class="o">+</span><span class="sa">r</span><span class="s1">&#39;} *\b&#39;</span>
+        <span class="n">end</span>   <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;\b)&#39;</span>
         
-    regex_list = []
+    <span class="n">regex_list</span> <span class="o">=</span> <span class="p">[]</span>
     
-    for permu in list(permutations(list_of_words)):
-        # catch this permutation: start + word + gap (+ word + gap)... + end
-        if cases_matter: # case sensitive - what cases the user gives are given back
-              regex_list.append(start+gap.join(permu)+end)           
-        else: # the resulting search will only work if all words are lowercase
-            lowerpermu = [w.lower() for w in permu]
-            regex_list.append(start+gap.join(lowerpermu)+end)
+    <span class="k">for</span> <span class="n">permu</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">permutations</span><span class="p">(</span><span class="n">list_of_words</span><span class="p">)):</span>
+        <span class="c1"># catch this permutation: start + word + gap (+ word + gap)... + end</span>
+        <span class="k">if</span> <span class="n">cases_matter</span><span class="p">:</span> <span class="c1"># case sensitive - what cases the user gives are given back</span>
+              <span class="n">regex_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">start</span><span class="o">+</span><span class="n">gap</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">permu</span><span class="p">)</span><span class="o">+</span><span class="n">end</span><span class="p">)</span>           
+        <span class="k">else</span><span class="p">:</span> <span class="c1"># the resulting search will only work if all words are lowercase</span>
+            <span class="n">lowerpermu</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">permu</span><span class="p">]</span>
+            <span class="n">regex_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">start</span><span class="o">+</span><span class="n">gap</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lowerpermu</span><span class="p">)</span><span class="o">+</span><span class="n">end</span><span class="p">)</span>
     
-    return &#39;|&#39;.join(regex_list)
+    <span class="k">return</span> <span class="s1">&#39;|&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">regex_list</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1083,13 +1083,13 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Is the word “part” near the word “with” in this string? No:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from near_regex import NEAR_regex
-import re
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">near_regex</span> <span class="kn">import</span> <span class="n">NEAR_regex</span>
+<span class="kn">import</span> <span class="nn">re</span>
 
-test  = &#39;This is a partial string another break with words&#39;
-words = [&#39;part&#39;,&#39;with&#39;]
-rgx   = NEAR_regex(words)
-print(len(re.findall(rgx,test)))            # no match (partials not allowed by default) 
+<span class="n">test</span>  <span class="o">=</span> <span class="s1">&#39;This is a partial string another break with words&#39;</span>
+<span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;part&#39;</span><span class="p">,</span><span class="s1">&#39;with&#39;</span><span class="p">]</span>
+<span class="n">rgx</span>   <span class="o">=</span> <span class="n">NEAR_regex</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">rgx</span><span class="p">,</span><span class="n">test</span><span class="p">)))</span>            <span class="c1"># no match (partials not allowed by default) </span>
 </pre></div>
 </div>
 </div>
@@ -1102,8 +1102,8 @@ print(len(re.findall(rgx,test)))            # no match (partials not allowed by 
 <p>But we can use <code class="docutils literal notranslate"><span class="pre">partial=True</span></code> in the function which will look for any words starting with “part” (partial, partly, etc) and “with” (without, withhold, etc). Be careful using <code class="docutils literal notranslate"><span class="pre">partial=True</span></code>, as it can lead to too many matches, and ones you don’t want.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>rgx = NEAR_regex(words,partial=True)
-print(len(re.findall(rgx,test)))            # match (partials allowed) 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rgx</span> <span class="o">=</span> <span class="n">NEAR_regex</span><span class="p">(</span><span class="n">words</span><span class="p">,</span><span class="n">partial</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">rgx</span><span class="p">,</span><span class="n">test</span><span class="p">)))</span>            <span class="c1"># match (partials allowed) </span>
 </pre></div>
 </div>
 </div>
@@ -1117,8 +1117,8 @@ print(len(re.findall(rgx,test)))            # match (partials allowed)
 <p>In our example, “partial” and “with” are several words apart, so this correctly returns a value of zero:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>rgx   = NEAR_regex(words,partial=True,max_words_between=1)
-print(len(re.findall(rgx,test)))            # no match (too far apart) 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rgx</span>   <span class="o">=</span> <span class="n">NEAR_regex</span><span class="p">(</span><span class="n">words</span><span class="p">,</span><span class="n">partial</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">max_words_between</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">rgx</span><span class="p">,</span><span class="n">test</span><span class="p">)))</span>            <span class="c1"># no match (too far apart) </span>
 </pre></div>
 </div>
 </div>
@@ -1137,10 +1137,10 @@ print(len(re.findall(rgx,test)))            # no match (too far apart)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>test  = &#39;This is a partial string \n another break with words&#39;
-words = [&#39;part&#39;,&#39;with&#39;]
-rgx = NEAR_regex(words,partial=True)
-print(len(re.findall(rgx,test)))            # fails because of the \n break
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test</span>  <span class="o">=</span> <span class="s1">&#39;This is a partial string </span><span class="se">\n</span><span class="s1"> another break with words&#39;</span>
+<span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;part&#39;</span><span class="p">,</span><span class="s1">&#39;with&#39;</span><span class="p">]</span>
+<span class="n">rgx</span> <span class="o">=</span> <span class="n">NEAR_regex</span><span class="p">(</span><span class="n">words</span><span class="p">,</span><span class="n">partial</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">rgx</span><span class="p">,</span><span class="n">test</span><span class="p">)))</span>            <span class="c1"># fails because of the \n break</span>
 </pre></div>
 </div>
 </div>
@@ -1152,10 +1152,10 @@ print(len(re.findall(rgx,test)))            # fails because of the \n break
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>test  = &#39;This is a partial string \r another break with words&#39;
-words = [&#39;part&#39;,&#39;with&#39;]
-rgx = NEAR_regex(words,partial=True)
-print(len(re.findall(rgx,test)))            # fails with \r too.
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test</span>  <span class="o">=</span> <span class="s1">&#39;This is a partial string </span><span class="se">\r</span><span class="s1"> another break with words&#39;</span>
+<span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;part&#39;</span><span class="p">,</span><span class="s1">&#39;with&#39;</span><span class="p">]</span>
+<span class="n">rgx</span> <span class="o">=</span> <span class="n">NEAR_regex</span><span class="p">(</span><span class="n">words</span><span class="p">,</span><span class="n">partial</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">rgx</span><span class="p">,</span><span class="n">test</span><span class="p">)))</span>            <span class="c1"># fails with \r too.</span>
 </pre></div>
 </div>
 </div>
@@ -1167,10 +1167,10 @@ print(len(re.findall(rgx,test)))            # fails with \r too.
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>test  = &#39;This is a partial string                      another break with words&#39;
-words = [&#39;part&#39;,&#39;with&#39;]
-rgx = NEAR_regex(words,partial=True)
-print(len(re.findall(rgx,test)))            # extra spaces are treated as one space, no impact
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test</span>  <span class="o">=</span> <span class="s1">&#39;This is a partial string                      another break with words&#39;</span>
+<span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;part&#39;</span><span class="p">,</span><span class="s1">&#39;with&#39;</span><span class="p">]</span>
+<span class="n">rgx</span> <span class="o">=</span> <span class="n">NEAR_regex</span><span class="p">(</span><span class="n">words</span><span class="p">,</span><span class="n">partial</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">rgx</span><span class="p">,</span><span class="n">test</span><span class="p">)))</span>            <span class="c1"># extra spaces are treated as one space, no impact</span>
 </pre></div>
 </div>
 </div>
@@ -1183,9 +1183,9 @@ print(len(re.findall(rgx,test)))            # extra spaces are treated as one sp
 <p>The <code class="docutils literal notranslate"><span class="pre">cases_matter</span></code> parameter is pretty simple. If true, then it only reports a match if the document’s case exactly match your search terms.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>words = [&#39;part&#39;,&#39;With&#39;]                     # changed to Capitalized &quot;With&quot;
-rgx   = NEAR_regex(words,partial=True,cases_matter=True)
-print(len(re.findall(rgx,test)))            # no match
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;part&#39;</span><span class="p">,</span><span class="s1">&#39;With&#39;</span><span class="p">]</span>                     <span class="c1"># changed to Capitalized &quot;With&quot;</span>
+<span class="n">rgx</span>   <span class="o">=</span> <span class="n">NEAR_regex</span><span class="p">(</span><span class="n">words</span><span class="p">,</span><span class="n">partial</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">cases_matter</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">rgx</span><span class="p">,</span><span class="n">test</span><span class="p">)))</span>            <span class="c1"># no match</span>
 </pre></div>
 </div>
 </div>
@@ -1198,10 +1198,10 @@ print(len(re.findall(rgx,test)))            # no match
 <p>You can look for three terms that all have to be next to each other:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>words = [&#39;part&#39;,&#39;with&#39;,&#39;this&#39;]
-rgx = NEAR_regex(words,partial=True)
-print(len(re.findall(rgx,test)))            # no match - good! &quot;This&quot; != &quot;this&quot;
-print(len(re.findall(rgx,test.lower())))    # match - good!
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;part&#39;</span><span class="p">,</span><span class="s1">&#39;with&#39;</span><span class="p">,</span><span class="s1">&#39;this&#39;</span><span class="p">]</span>
+<span class="n">rgx</span> <span class="o">=</span> <span class="n">NEAR_regex</span><span class="p">(</span><span class="n">words</span><span class="p">,</span><span class="n">partial</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">rgx</span><span class="p">,</span><span class="n">test</span><span class="p">)))</span>            <span class="c1"># no match - good! &quot;This&quot; != &quot;this&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">rgx</span><span class="p">,</span><span class="n">test</span><span class="o">.</span><span class="n">lower</span><span class="p">())))</span>    <span class="c1"># match - good!</span>
 </pre></div>
 </div>
 </div>
@@ -1245,10 +1245,10 @@ print(len(re.findall(rgx,test.lower())))    # match - good!
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>texts  = &#39;hey jimmy                      hi james          sup john&#39;
-words = [&#39;(hey|hi|sup)&#39;,&#39;(jimmy|james)&#39;]     # search for a greeting 
-rgx = NEAR_regex(words,max_words_between=1)
-print(len(re.findall(rgx,texts)))            # both are caught
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">texts</span>  <span class="o">=</span> <span class="s1">&#39;hey jimmy                      hi james          sup john&#39;</span>
+<span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;(hey|hi|sup)&#39;</span><span class="p">,</span><span class="s1">&#39;(jimmy|james)&#39;</span><span class="p">]</span>     <span class="c1"># search for a greeting </span>
+<span class="n">rgx</span> <span class="o">=</span> <span class="n">NEAR_regex</span><span class="p">(</span><span class="n">words</span><span class="p">,</span><span class="n">max_words_between</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">rgx</span><span class="p">,</span><span class="n">texts</span><span class="p">)))</span>            <span class="c1"># both are caught</span>
 </pre></div>
 </div>
 </div>
@@ -1264,7 +1264,7 @@ print(len(re.findall(rgx,texts)))            # both are caught
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>[m.group(0) for m in re.finditer(rgx,texts)]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="n">rgx</span><span class="p">,</span><span class="n">texts</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
@@ -1292,9 +1292,9 @@ print(len(re.findall(rgx,texts)))            # both are caught
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>rgx = NEAR_regex(words,max_words_between=2)
-print(len(re.findall(rgx,texts)))            # the regex isn&#39;t greedy - it misses inner matches!
-[m.group(0) for m in re.finditer(rgx,texts)]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rgx</span> <span class="o">=</span> <span class="n">NEAR_regex</span><span class="p">(</span><span class="n">words</span><span class="p">,</span><span class="n">max_words_between</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">rgx</span><span class="p">,</span><span class="n">texts</span><span class="p">)))</span>            <span class="c1"># the regex isn&#39;t greedy - it misses inner matches!</span>
+<span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="n">rgx</span><span class="p">,</span><span class="n">texts</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
@@ -1340,30 +1340,30 @@ print(len(re.findall(rgx,texts)))            # the regex isn&#39;t greedy - it m
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from bs4 import BeautifulSoup
-import requests
-import re
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">re</span>
 
-url = &#39;https://www.sec.gov/Archives/edgar/data/1318605/000156459019003165/0001564590-19-003165.txt&#39;
-r = requests.get(url)
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.sec.gov/Archives/edgar/data/1318605/000156459019003165/0001564590-19-003165.txt&#39;</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 
-# putting the &quot;Good ideas&quot; from 4.4 to work to clean the document:
-lower = BeautifulSoup(r.content).get_text().lower()
-no_punc = re.sub(r&#39;\W&#39;,&#39; &#39;,lower)
-cleaned = re.sub(r&#39;\s+&#39;,&#39; &#39;,no_punc).strip()
+<span class="c1"># putting the &quot;Good ideas&quot; from 4.4 to work to clean the document:</span>
+<span class="n">lower</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="n">no_punc</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\W&#39;</span><span class="p">,</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">lower</span><span class="p">)</span>
+<span class="n">cleaned</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">no_punc</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># copy the function into your working directory next to this file
-from near_regex import NEAR_regex 
-# if this prints numbers, that means you havent deleted the examples inside near_regex.py. delete em
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># copy the function into your working directory next to this file</span>
+<span class="kn">from</span> <span class="nn">near_regex</span> <span class="kn">import</span> <span class="n">NEAR_regex</span> 
+<span class="c1"># if this prints numbers, that means you havent deleted the examples inside near_regex.py. delete em</span>
 
-help(NEAR_regex) # look at and read the documentation!
+<span class="n">help</span><span class="p">(</span><span class="n">NEAR_regex</span><span class="p">)</span> <span class="c1"># look at and read the documentation!</span>
 
-# try to use NEAR_regex... look for it working and failing...
+<span class="c1"># try to use NEAR_regex... look for it working and failing...</span>
 </pre></div>
 </div>
 </div>
