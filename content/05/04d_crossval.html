@@ -994,7 +994,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <details class="sphinx-bs dropdown card mb-3">
 <summary class="summary-title card-header">
-<strong>Digression. Read after you read the “Choosing what kind of CV folds to use” section below.</strong><div class="summary-down docutils">
+<strong>Digression. Read this after you read the “Choosing what kind of CV folds to use” section below.</strong><div class="summary-down docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
 <div class="summary-up docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
@@ -1110,7 +1110,7 @@ Q: Does this Fannie Mae data need special attention to how we divide it up?<div 
 <li><p>If you have a <a class="reference internal" href="03e_whichModel.html"><span class="doc std std-doc">classification task</span></a> with imbalanced labels, use <code class="docutils literal notranslate"><span class="pre">StratifiedKFold()</span></code> and <code class="docutils literal notranslate"><span class="pre">StratifiedShuffleSplit()</span></code></p></li>
 </ul>
 </li>
-<li><p><strong>Grouped, time independent data</strong>: If time can be ignored, and you have multiple observations for each unit (“groups”), your goal is likely to find out if a model trained on a particular set of groups generalizes well to the unseen groups:</p>
+<li><p><strong>Grouped, time-independent data</strong>: If time can be ignored or there is only one time period, and you have multiple observations for each unit (“groups”), your goal is likely to find out if a model trained on a particular set of groups generalizes well to the unseen groups:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">GroupKFold()</span></code> and <code class="docutils literal notranslate"><span class="pre">GroupShuffleSplit</span></code></p></li>
 <li><p>If you have a <a class="reference internal" href="03e_whichModel.html"><span class="doc std std-doc">classification task</span></a> with imbalanced labels, use <code class="docutils literal notranslate"><span class="pre">StratifiedGroupKFold()</span></code></p></li>
@@ -1120,7 +1120,7 @@ Q: Does this Fannie Mae data need special attention to how we divide it up?<div 
 <ul>
 <li><p><strong>You must ensure that the validation partitions are subsequent to the training sample.</strong></p></li>
 <li><p>Rarely: If you have a simple time series dataset (one observation for each time), use the built-in <code class="docutils literal notranslate"><span class="pre">TimeSeriesSplit()</span></code></p></li>
-<li><p>Usually: If you have have a cross-sectional panel (multiple observations for each time), build a custom splitter to generate your folds.</p></li>
+<li><p>Usually: If you have a cross-sectional panel (multiple observations for each time), build a custom splitter to generate your folds.</p></li>
 </ul>
 </li>
 </ul>
@@ -1131,7 +1131,7 @@ Q: Does this Fannie Mae data need special attention to how we divide it up?<div 
 </div>
 <div class="section" id="custom-cv-folds">
 <h2><span class="section-number">8.3.4. </span>Custom CV folds<a class="headerlink" href="#custom-cv-folds" title="Permalink to this headline">¶</a></h2>
-<p>You can explicitly design and create your own CV folds. <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_validate.html">The <code class="docutils literal notranslate"><span class="pre">cross_validation()</span></code> documentation</a> says that <code class="docutils literal notranslate"><span class="pre">cv</span></code> can be “An iterable yielding (train, test) splits as arrays of indices.”</p>
+<p>You can explicitly design and create customer CV folds to suit your problem. <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_validate.html">The <code class="docutils literal notranslate"><span class="pre">cross_validation()</span></code> documentation</a> says that <code class="docutils literal notranslate"><span class="pre">cv</span></code> can be “An iterable yielding (train, test) splits as arrays of indices.”</p>
 <p>Let’s use this example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cv_custom</span> <span class="o">=</span> <span class="p">[([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">]),</span>
              <span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">]),</span>
@@ -1153,7 +1153,7 @@ Q: Does this Fannie Mae data need special attention to how we divide it up?<div 
 <h2><span class="section-number">8.3.5. </span>Code for rolling OOS testing (v0)<a class="headerlink" href="#code-for-rolling-oos-testing-v0" title="Permalink to this headline">¶</a></h2>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>The code below is almost plug-and-play!</p>
+<p>The code below is <em><strong>almost</strong></em> plug-and-play! (But not quite!)</p>
 </div>
 <div class="margin sidebar">
 <p class="sidebar-title"></p>
@@ -1167,7 +1167,7 @@ Q: Does this Fannie Mae data need special attention to how we divide it up?<div 
 </ol>
 </div>
 <p>One procedure to do rolling OOS testing was introduced <a class="reference internal" href="03c1_OOS.html"><span class="doc std std-doc">on this page</span></a>, and I copied it here in the sidebar. It’s a common choice that works well in many settings. It works when you have many firms or units (whether each unit has one or multiple observations per year), or even with a single time series!<a class="footnote-reference brackets" href="#oneseries" id="id1">1</a> And it can be adjusted to other units of time (monthly, weekly, decades), or only every few units of time.</p>
-<p>The code below implements it, and can be used with appropriate adjustments for your setting.</p>
+<p>The code below implements it and can be used with appropriate adjustments for your setting.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># adjust the inside of &quot;groupby()&quot; to your df/problem, pick other parameters</span>
 
 <span class="n">time_groups</span>               <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="s1">&#39;DATE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">)</span><span class="o">.</span><span class="n">groups</span> 
@@ -1208,7 +1208,7 @@ Q: Does this Fannie Mae data need special attention to how we divide it up?<div 
 </div>
 <div class="section" id="code-for-rolling-oos-testing-v1">
 <h2><span class="section-number">8.3.6. </span>Code for rolling OOS testing (v1)<a class="headerlink" href="#code-for-rolling-oos-testing-v1" title="Permalink to this headline">¶</a></h2>
-<p>The code above works. It lacks some features, and until a classmate codes it up int a nice function, it requires copy-pasting all of the code I wrote, and adjusting it.</p>
+<p>The code above works. It lacks some features, and until a classmate codes it up into a nice function, it requires copy-pasting all of the code I wrote, and adjusting it.</p>
 <p>As of mid-2022, someone has finally made a function that looks like a promising solution. <a class="reference external" href="https://rasbt.github.io/mlxtend/user_guide/evaluate/GroupTimeSeriesSplit/">Here is the documentation for GroupTimeSeriesSplit.</a> However, it’s new and has some quirks.</p>
 <p>Here is an illustration of how it divides up the sample. First, I’ll create a simple dataset we can look at. Notice we have several firms in many years.</p>
 <div class="cell tag_hide_input docutils container">
@@ -1381,7 +1381,7 @@ Q: Does this Fannie Mae data need special attention to how we divide it up?<div 
 <li><p>Uses every variable I give it: But if your input data had 400 variables, you’d be in danger of overfitting!</p></li>
 </ul>
 <p>At this point, you are capable of solving all of these problems. (For example, you could clean the data in pandas.)</p>
-<p>But for our models to be robust to evil monsters like “data leakage”, we need the fixes to be done within pipelines.</p>
+<p><strong>But for our models to be robust to evil monsters like “data leakage”, we need the fixes to be done within pipelines.</strong></p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="oneseries"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
