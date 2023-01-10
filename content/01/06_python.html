@@ -245,7 +245,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03a_githubworkflow.html">
-     1.4. The Github Workflow
+     1.4. The GitHub Workflow
     </a>
    </li>
    <li class="toctree-l2">
@@ -946,7 +946,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#built-in-data-structures">
-     1.7.2.8. Built in data structures
+     1.7.2.8. Built-in data structures
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -1001,7 +1001,7 @@ const thebe_selector_output = ".output, .cell_output"
 <h1><span class="section-number">1.7. </span>Digging into Py(thon)<a class="headerlink" href="#digging-into-py-thon" title="Permalink to this headline">¶</a></h1>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>This page is long, but important. It’s structured as a walkthrough - you should run the code on your computer as you read it.</p>
+<p>This page is long but important. It’s structured as a walkthrough - you should run the code on your computer as you read it.</p>
 <p>Below, I cover a curated set of topics to get us going in the class.</p>
 <p>It is not meant to be the end-all-be-all of python basics. There are <a class="reference internal" href="../about/resources.html"><span class="doc std std-doc">very good resources around the web</span></a> you should and will consult during the semester which contain more in-depth info on topics. <a class="reference external" href="https://www.pythoncheatsheet.org/">https://www.pythoncheatsheet.org/</a> is a good one.</p>
 </div>
@@ -1026,9 +1026,9 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Below, we cover 12<a class="footnote-reference brackets" href="#scope" id="id2">2</a> essential topics you’ll need to understand.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Research strongly indicates that active learning is the most effective way to learn new skills. That’s why I linked to tutorials above.</p>
+<p>Research strongly indicates that active learning is the most effective way to learn new skills. That’s why I linked to the tutorials above.</p>
 <p>This chapter works as a reference page you can return to, but - especially if you are new to Python! - <strong>I want you to try to run as much code from this page in your own notebook file</strong> so you can add your own notes about python and write and try additional things with code.</p>
-<p>To the extent possible, I want you to get comfortable typing commands yourself rather than copy-pasting. This is slightly more painful in the beginning, but much better payoff in the long-run.</p>
+<p>To the extent possible, I want you to get comfortable typing commands yourself rather than copy-pasting. This is slightly more painful in the beginning, but much better payoff in the long run.</p>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -1249,7 +1249,7 @@ False
 </div>
 </div>
 <div class="section" id="built-in-data-structures">
-<h3><span class="section-number">1.7.2.8. </span>Built in data structures<a class="headerlink" href="#built-in-data-structures" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.7.2.8. </span>Built-in data structures<a class="headerlink" href="#built-in-data-structures" title="Permalink to this headline">¶</a></h3>
 <p>Python has <code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">tuple</span></code>, <code class="docutils literal notranslate"><span class="pre">dict</span></code>, and <code class="docutils literal notranslate"><span class="pre">set</span></code>. Beginners typically rely on lists extensively, but as you progress, you will find that all four are extremely useful, because their unique traits solve different needs.</p>
 <table class="colwidths-auto table">
 <thead>
@@ -1287,7 +1287,8 @@ False
 <li><p>access elements within each type</p></li>
 <li><p>modify elements within each type</p></li>
 <li><p>add or remove elements from each type</p></li>
-<li><p>when a set is useful, when a dictionary is useful (as opposed to a list)</p></li>
+<li><p>when a set is useful</p></li>
+<li><p>when a dictionary is useful (as opposed to a list)</p></li>
 </ul>
 <p>There are LOTS of functions in python that work on the common object types and the data structures we just introduced.</p>
 <p>First, let me illustrate the use of <code class="docutils literal notranslate"><span class="pre">.extend()</span></code> vs <code class="docutils literal notranslate"><span class="pre">.append()</span></code> vs <code class="docutils literal notranslate"><span class="pre">+</span></code> for lists:</p>
@@ -1321,7 +1322,7 @@ False
 <li><p>Returns the last element.</p></li>
 <li><p>Returns the first 2 elements.</p></li>
 <li><p>Returns the last 2 elements.</p></li>
-<li><p>Returns the odd numbered elements (i.e. [8,6,7]).</p></li>
+<li><p>Returns the odd-numbered elements (i.e. [8,6,7]).</p></li>
 </ol>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -1349,7 +1350,7 @@ False
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;But I will!&#39;</span><span class="p">)</span> 
 </pre></div>
 </div>
-<p>…because in the second version the second print line isn’t indented and therefore isn’t part of the “if” statement</p>
+<p>…because in the second version, the second print line isn’t indented and therefore isn’t part of the “if” statement</p>
 <p>Conversely, how you use whitespace <em>within</em> a line is up to you. Both of these lines of code accomplish the same thing:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>      <span class="n">a</span><span class="p">)</span>
 
@@ -1495,7 +1496,7 @@ False
 <li><p>name the function,</p></li>
 <li><p>inside parentheses, list the parameters a user might pass as inputs into the function</p></li>
 <li><p>a colon</p></li>
-<li><p>then, all the code of the function is indented and begins on on the next line</p></li>
+<li><p>then, all the code of the function is indented and begins on the next line</p></li>
 <li><p>use <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">&lt;object&gt;</span></code> at the end of the function to output the object the function makes (which could be any type of object!)</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="o">&lt;</span><span class="n">nameOfYourChoice</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&lt;</span><span class="n">you</span> <span class="n">can</span> <span class="n">specify</span> <span class="n">arguments</span> <span class="n">the</span> <span class="n">function</span> <span class="n">takes</span><span class="p">,</span> <span class="ow">or</span> <span class="n">none</span><span class="o">&gt;</span><span class="p">):</span>
@@ -1517,7 +1518,7 @@ False
 <p>On outputs:</p>
 <ul class="simple">
 <li><p>Once the code <em><strong>executes</strong></em> a line starting with <code class="docutils literal notranslate"><span class="pre">return</span></code>, the function will end and output whatever is on that line.</p></li>
-<li><p><strong>Students new to functions usually want to end them with something like  <code class="docutils literal notranslate"><span class="pre">print(answer)</span></code>.</strong> Don’t! End functions with return, like <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">answer</span></code>. If you use print, you can’t use the function’s output for anything else after it finishes. If you use return, you can save the output and use it (even if its just to print it).</p></li>
+<li><p><strong>Students new to functions usually want to end them with something like  <code class="docutils literal notranslate"><span class="pre">print(answer)</span></code>.</strong> Don’t! End functions with return, like <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">answer</span></code>. If you use print, you can’t use the function’s output for anything else after it finishes. If you use return, you can save the output and use it (even if it is just to print it).</p></li>
 <li><p><strong>Any object(s) you want can be returned as outputs!</strong> The output can be a list, set, function, dictionary, string. It can be a dictionary with lists inside it, or a list with dictionaries inside it. Go wild if you want! (But only while practicing your skills. In practice, don’t be complex for the sake of it!)</p></li>
 </ul>
 <div class="admonition warning">
@@ -1673,7 +1674,7 @@ f(x, a=1, b=1)
 </div>
 <div class="section" id="stuck-on-syntax-issues-for-a-function">
 <h2><span class="section-number">1.7.4. </span>Stuck on syntax issues for a function?<a class="headerlink" href="#stuck-on-syntax-issues-for-a-function" title="Permalink to this headline">¶</a></h2>
-<p>See the tips in the <a class="reference external" href="05_jupyterlab#resources">Jupyter Lab</a> page.</p>
+<p>See the tips on the <a class="reference external" href="05_jupyterlab#resources">Jupyter Lab</a> page.</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="games"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>

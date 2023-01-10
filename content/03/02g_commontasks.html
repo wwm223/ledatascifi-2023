@@ -245,7 +245,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../01/03a_githubworkflow.html">
-     1.4. The Github Workflow
+     1.4. The GitHub Workflow
     </a>
    </li>
    <li class="toctree-l2">
@@ -1546,7 +1546,7 @@ When you get to the "assign" step, what you would do to reference a variable is 
 </ol>
 <p><img alt="" src="https://jakevdp.github.io/PythonDataScienceHandbook/figures/03.08-split-apply-combine.png" /></p>
 <p>But notice! The <code class="docutils literal notranslate"><span class="pre">.assign()</span></code> portion is working on these tiny split up pieces of the dataframe created by <code class="docutils literal notranslate"><span class="pre">df.groupby('industry')</span></code>. Those pieces are dataframe objects that don’t have names!</p>
-<p><strong>So lambda functions let us refer to an unnamed dataframe objects!</strong> When you type <code class="docutils literal notranslate"><span class="pre">&lt;some</span> <span class="pre">df</span> <span class="pre">object,</span> <span class="pre">like</span> <span class="pre">df.groupby()&gt;.assign(newVar</span> <span class="pre">=</span> <span class="pre">lambda</span> <span class="pre">x:</span> <span class="pre">someFunc(x))</span></code>, <code class="docutils literal notranslate"><span class="pre">x</span></code> is the object (“some df object”) that assign is working on. Ta da!</p>
+<p><strong>So lambda functions let us refer to an unnamed dataframe object!</strong> When you type <code class="docutils literal notranslate"><span class="pre">&lt;some</span> <span class="pre">df</span> <span class="pre">object,</span> <span class="pre">like</span> <span class="pre">df.groupby()&gt;.assign(newVar</span> <span class="pre">=</span> <span class="pre">lambda</span> <span class="pre">x:</span> <span class="pre">someFunc(x))</span></code>, <code class="docutils literal notranslate"><span class="pre">x</span></code> is the object (“some df object”) that assign is working on. Ta da!</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># common syntax within pandas</span>
 <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="o">&lt;</span><span class="n">newvarname</span><span class="o">&gt;</span> <span class="o">=</span> <span class="k">lambda</span> <span class="o">&lt;</span><span class="n">tempnameforpriorobj</span><span class="o">&gt;</span><span class="p">:</span>  <span class="o">&lt;</span><span class="n">do</span> <span class="n">stuff</span> <span class="n">to</span> <span class="n">tempnameforpriorobj</span><span class="o">&gt;</span>   <span class="p">)</span>       
 
@@ -1560,7 +1560,7 @@ When you get to the "assign" step, what you would do to reference a variable is 
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>It turns out that lambda functions are very useful in python programming, and not just within pandas. For example, some functions take functions as inputs, like <a class="reference external" href="#printing-inside-of-chains">csnap()</a>, <code class="docutils literal notranslate"><span class="pre">map()</span></code>, and <code class="docutils literal notranslate"><span class="pre">filter()</span></code>, and lambda functions lets us give them custom functions quickly.</p>
+<p>It turns out that lambda functions are very useful in python programming, and not just within pandas. For example, some functions take functions as inputs, like <a class="reference external" href="#printing-inside-of-chains">csnap()</a>, <code class="docutils literal notranslate"><span class="pre">map()</span></code>, and <code class="docutils literal notranslate"><span class="pre">filter()</span></code>, and lambda functions let us give them custom functions quickly.</p>
 <p>But pandas is where we will use lambda functions most in this class.</p>
 </div>
 </div>
@@ -2067,7 +2067,7 @@ When you get to the "assign" step, what you would do to reference a variable is 
 <li><p>Want to format the numbers shown by pandas?</p>
 <ol class="simple">
 <li><p>Permanent: Add this line of code to the top of your file: <code class="docutils literal notranslate"><span class="pre">pd.set_option('display.float',</span> <span class="pre">'{:.2f}'.format)</span></code></p></li>
-<li><p>Temp:Add <code class="docutils literal notranslate"><span class="pre">style.format</span></code> to the end of your table command. E.g.: <code class="docutils literal notranslate"><span class="pre">df.describe().style.format(&quot;{:.2f}&quot;)</span></code></p></li>
+<li><p>Temp: Add <code class="docutils literal notranslate"><span class="pre">style.format</span></code> to the end of your table command. E.g.: <code class="docutils literal notranslate"><span class="pre">df.describe().style.format(&quot;{:.2f}&quot;)</span></code></p></li>
 </ol>
 </li>
 <li><p>Want to control the number of columns / rows pandas shows?</p>

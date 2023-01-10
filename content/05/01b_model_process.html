@@ -247,7 +247,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../01/03a_githubworkflow.html">
-     1.4. The Github Workflow
+     1.4. The GitHub Workflow
     </a>
    </li>
    <li class="toctree-l2">
@@ -957,21 +957,26 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Estimate your model(s) and evaluate the output</p></li>
 </ol>
 </div>
-<p>Modeling is NOT typing <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">sklearn</span></code> and plowing into the data like Leroy Jenkins. Throughout the semester, you’ve seen that thinking about how to code a solution to a homework problem is usually easiest when you step back, and think about the challenge you’re facing, and writing down some pseudocode.</p>
-<p>Modeling (applying data science techniques to our finance problems) is that on steroids. Instead of needing to figure out how to writing code to solve a discrete problem (reshape the data to our analysis level, add a variable to our dataset), we need <em>to figure out what to do.</em></p>
+<p>It’s easy and tempting to get a ton of data, type <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">sklearn</span></code> and start plowing into the data like Leroy Jenkins. When you do that, it’s easy to get caught up in the minutia of some discrete part of your project. (How do I reshape the data to the right analysis level, or add a new variable to the dataset?)</p>
+<p>This is the path toward the dark side and will result in a ton of wasted time and effort!</p>
+<p>Throughout the semester, you’ve seen that thinking about how to find a solution to a homework problem is usually easiest when you step back, think about the challenge you’re facing, and write down some pseudocode. Similarly, when you are working on a project, a big-picture orientation is especially valuable. The main difference is that projects are bigger than our homework, so when you get stuck on irrelevant minutia for a project, you will waste 10-100x more effort and (2)</p>
+<p>The other difference between projects and homework is that, with projects, <em>you’re in charge</em>.  Instead of needing to figure out how to write some code to solve a discrete problem I gave you, you need <em>to figure out what to do.</em></p>
 <hr class="docutils" />
 <blockquote class="epigraph">
 <div><p>A few times a year, I get asked to be a judge of student statistical projects in politics or sports. While the students are very bright, <strong>they spend WAY too much time using fancy statistical methods and not enough time framing the right questions and contextualizing their answers.</strong> If you want to be a good data scientist, you should spend ~49% of your time developing your statistical intuition (i.e. how to ask good questions of the data), and ~49% of your time on domain knowledge (improving overall understanding of your field). <strong>Only ~2% on methods per se.</strong></p>
 <p class="attribution">—Nate Silver</p>
 </div></blockquote>
 <hr class="docutils" />
+<div class="admonition important">
+<p class="admonition-title">Important</p>
 <p>So, we will build up the requisite skills to do the mechanical stuff, but honestly, most interesting applied problems don’t hinge on the ability to type <code class="docutils literal notranslate"><span class="pre">knn.fit(y,X)</span></code>. The key to solving problems is seeing the context of the situation and framing the right questions.</p>
+</div>
 <div class="section" id="what-type-of-question-are-you-asking">
 <h2><span class="section-number">5.2.1. </span>What type of question are you asking?<a class="headerlink" href="#what-type-of-question-are-you-asking" title="Permalink to this headline">¶</a></h2>
 <p>Most analyses fall into one of two camps, based on the type of question:</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="8ef0079f-c050-47e5-a9fc-30abd0985469" name="c07886ab-3dba-4db5-bca6-1d2cb0c759ed" type="radio">
-</input><label class="tabbed-label" for="8ef0079f-c050-47e5-a9fc-30abd0985469">
+<input checked="checked" id="106b3e33-0ba4-4d16-805e-74250816ee70" name="9070e86c-1502-446f-b93d-d7abd604af88" type="radio">
+</input><label class="tabbed-label" for="106b3e33-0ba4-4d16-805e-74250816ee70">
 1. <strong>Questions about RELATIONSHIPS between variables</strong></label><div class="tabbed-content docutils">
 <p>Example: Do airline closures affect how VCs monitor portfolio companies?</p>
 <ul class="simple">
@@ -981,8 +986,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p>Model: You’ll probably start with regression or logit</p>
 </div>
-<input id="470a64b7-cac4-4c37-a1f5-a563731d2319" name="c07886ab-3dba-4db5-bca6-1d2cb0c759ed" type="radio">
-</input><label class="tabbed-label" for="470a64b7-cac4-4c37-a1f5-a563731d2319">
+<input id="7221432d-4db3-4d7c-a9e7-e622a8feef33" name="9070e86c-1502-446f-b93d-d7abd604af88" type="radio">
+</input><label class="tabbed-label" for="7221432d-4db3-4d7c-a9e7-e622a8feef33">
 1. 2. <strong>Questions about PREDICTING some outcome variable</strong></label><div class="tabbed-content docutils">
 <p>Example: Which loans will default?</p>
 <ul class="simple">
@@ -1055,7 +1060,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="estimate-your-model">
 <h2><span class="section-number">5.2.5. </span>Estimate your model<a class="headerlink" href="#estimate-your-model" title="Permalink to this headline">¶</a></h2>
-<p>We will talk in depth about a few models in class, but generally, these three steps always apply:</p>
+<p>We will talk in-depth about a few models in class, but generally, these three steps always apply:</p>
 <ol class="simple">
 <li><p>Select a model. (For example: find the “center” of a univariate distribution, regression, logistic)</p>
 <ul class="simple">

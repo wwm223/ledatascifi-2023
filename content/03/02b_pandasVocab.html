@@ -245,7 +245,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../01/03a_githubworkflow.html">
-     1.4. The Github Workflow
+     1.4. The GitHub Workflow
     </a>
    </li>
    <li class="toctree-l2">
@@ -964,8 +964,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <p>Data can be logically stored in many ways. Let’s start by showing one dataset, and three ways it can be stored.</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="7db08140-7f51-4363-af23-3b574b8dc40f" name="acfb423f-69fe-4afc-9b8c-6ae9d4daeed2" type="radio">
-</input><label class="tabbed-label" for="7db08140-7f51-4363-af23-3b574b8dc40f">
+<input checked="checked" id="f7b47173-a8db-44e6-8808-323f6337bab0" name="fc2779ee-e95e-45c7-858c-ecf59c120bff" type="radio">
+</input><label class="tabbed-label" for="f7b47173-a8db-44e6-8808-323f6337bab0">
 “Long” Data</label><div class="tabbed-content docutils">
 <p>Here is a <strong>long dataset.</strong> The “key” or “index” is the <em><strong>combination</strong> of year and firm.</em> This is what I’d refer to as a “firm-year” dataset.</p>
 <table class="colwidths-auto table">
@@ -1020,8 +1020,8 @@ const thebe_selector_output = ".output, .cell_output"
 </tbody>
 </table>
 </div>
-<input id="d52d07c4-5a84-4b1a-b995-437b79fb45c9" name="acfb423f-69fe-4afc-9b8c-6ae9d4daeed2" type="radio">
-</input><label class="tabbed-label" for="d52d07c4-5a84-4b1a-b995-437b79fb45c9">
+<input id="4e4f22ca-312a-4e32-940c-06ca8233bf0d" name="fc2779ee-e95e-45c7-858c-ecf59c120bff" type="radio">
+</input><label class="tabbed-label" for="4e4f22ca-312a-4e32-940c-06ca8233bf0d">
 Same data, but “Wide”</label><div class="tabbed-content docutils">
 <p>This is the exact same data, but stored as a <strong>wide dataset.</strong> Now, the “key” or “index” is <strong>just</strong> the <em>year</em>, and each variable is duplicated for each firm. So there is a Sales variable for GM, and a Sales variable for Ford.</p>
 <table class="colwidths-auto table">
@@ -1067,8 +1067,8 @@ Same data, but “Wide”</label><div class="tabbed-content docutils">
 <p>A similar case can occur for the row names/numbers. If there is one level of the row name, that’s the Index. If there are multiple levels, it is called a MultiIndex.</p>
 </div>
 </div>
-<input id="eb40dd9b-3bf7-4c38-a630-ae05cb04cf05" name="acfb423f-69fe-4afc-9b8c-6ae9d4daeed2" type="radio">
-</input><label class="tabbed-label" for="eb40dd9b-3bf7-4c38-a630-ae05cb04cf05">
+<input id="1c684b13-5082-4dcd-bb5f-92173b449538" name="fc2779ee-e95e-45c7-858c-ecf59c120bff" type="radio">
+</input><label class="tabbed-label" for="1c684b13-5082-4dcd-bb5f-92173b449538">
 Same data, but differently “Wide”</label><div class="tabbed-content docutils">
 <p>Now, the “key” or “index” is just the <em>firm</em>, and each variable is duplicated for each year. So there is a Sales variable for 2000, and a Sales variable for 2001.</p>
 <table class="colwidths-auto table">
@@ -1113,10 +1113,10 @@ Same data, but differently “Wide”</label><div class="tabbed-content docutils
 <h3><span class="section-number">3.2.2.2.1. </span>Which shape should I use?<a class="headerlink" href="#which-shape-should-i-use" title="Permalink to this headline">¶</a></h3>
 <p><strong>A, nuanced:</strong> It depends on what you’re using the data for!</p>
 <ul class="simple">
-<li><p>I try to make my data “tidy” at the start of analysis. Tidy data is quicker to analyze!</p>
+<li><p>I try to make my data “tidy” when I start analysis. Tidy data is quicker to analyze!</p>
 <ul>
 <li><p>The “long” dataset is the only one above that is tidy</p></li>
-<li><p><a class="reference external" href="https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html">This is a good description</a> of what “tidy” is, what “messy” often is, and how to tidy messy data. Focus not on the code, but the textual ideas and the data (shown as code comments)</p></li>
+<li><p><a class="reference external" href="https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html">This is a good description</a> of what “tidy” is, what “messy” often is, and how to tidy messy data. Focus not on the code, but the ideas in the text and the data (shown as code comments)</p></li>
 <li><p>On the main <a class="reference internal" href="../about/resources.html"><span class="doc std std-doc">resources page</span></a>, there is a link to a resource I highly recommend, <a class="reference external" href="https://web.stanford.edu/~gentzkow/research/CodeAndData.xhtml">Coding best practices, and project management</a>. “Chapter 5” is about tidy data, even though they never use the phrase.</p></li>
 </ul>
 </li>

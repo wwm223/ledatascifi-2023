@@ -245,7 +245,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../01/03a_githubworkflow.html">
-     1.4. The Github Workflow
+     1.4. The GitHub Workflow
     </a>
    </li>
    <li class="toctree-l2">
@@ -939,7 +939,7 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="section" id="dealing-with-outliers">
 <h1><span class="section-number">3.4.3. </span>Dealing with Outliers<a class="headerlink" href="#dealing-with-outliers" title="Permalink to this headline">¶</a></h1>
-<p>Outliers can indicate a problem with your dataset (e.g. data errors to fix or encoding choices to understand<a class="footnote-reference brackets" href="#negativeone" id="id1">1</a>). And even if they are correct data, they might skew your analysis so that it’s less useful! or example, <a class="reference external" href="04b-whyplot.html#summary-statistics-don-t-show-relationships">in the first plot on the “Role of Viz” page </a>, and outliers in dataset III and IV will cause your analysis (“What is the slope of the line describing how X and Y are related?”) to give an answer that doesn’t reflect a layman’s sense of the “typical” relationship in those datasets.</p>
+<p>Outliers can indicate a problem with your dataset (e.g. data errors to fix or encoding choices to understand<a class="footnote-reference brackets" href="#negativeone" id="id1">1</a>). And even if they are correct data, they might skew your analysis so that it’s less useful! For example, <a class="reference external" href="04b-whyplot.html#summary-statistics-don-t-show-relationships">in the first plot on the “Role of Viz” page </a>, outliers in dataset III and IV will cause your analysis (“What is the slope of the line describing how X and Y are related?”) to give an answer that doesn’t reflect a layman’s sense of the “typical” relationship in those datasets.</p>
 <div class="section" id="finding-outliers">
 <h2><span class="section-number">3.4.3.1. </span>Finding outliers<a class="headerlink" href="#finding-outliers" title="Permalink to this headline">¶</a></h2>
 <p>How can we find outliers?</p>
@@ -1610,9 +1610,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>If a value is above the 99th percentile, change it to the 99th percentile</p></li>
 </ol>
 <p>The first consideration is what “cutoff values” to use. Sometimes researchers use different values, say 5th and 95th percentiles.</p>
-<p><strong>The second consideration is whether to winsorize over the whole dataset or within subgroups?</strong></p>
+<p><strong>The second consideration is whether to winsorize over the whole dataset or within subgroups.</strong></p>
 <p>The latter is most commonly useful when the distribution of a variable changes over time. For example, the average firm does much more R&amp;D now than in 2000. So the 99th percentile of R&amp;D in 2020 and 2000 are very different.</p>
-<p>If you winsorize R&amp;D over both years at once, you’ll chop off the lower values in 2000 and the upper values in year 2020. Perhaps it makes more sense to winsorize each year separately!</p>
+<p>If you winsorize R&amp;D over both years at once, you’ll chop off the lower values in 2000 and the upper values in 2020. Perhaps it makes more sense to winsorize each year separately!</p>
 <p>Code:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># over the whole dataset:</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">winsorizer_with_missing</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="c1"># adtl options available</span>
@@ -1628,7 +1628,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="example-1">
 <h3><span class="section-number">3.4.3.3.1. </span>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h3>
-<p><strong>First let’s look at the min and max of each variable:</strong></p>
+<p><strong>First, let’s look at the min and max of each variable:</strong></p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">practice_df</span> <span class="o">=</span> <span class="n">ccm</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="c1"># don&#39;t do this &quot;copy&quot; step in your code</span>
@@ -1755,7 +1755,7 @@ const thebe_selector_output = ".output, .cell_output"
 </table>
 </div></div>
 </div>
-<p>When we winsorize by a group (here, the grouping is each year), the min no longer need equal the percentile threshold. Also notice that the 1st and 99th percentile are a little different. This is ok when we winsorize by subgroups.</p>
+<p>When we winsorize by a group (here, the grouping is each year), the minimum no longer need equal the percentile threshold we used. Also notice that the 1st and 99th percentile are a little different. This is ok when we winsorize by subgroups.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
@@ -1954,7 +1954,7 @@ var n,i=t("./lib/build-log"),a=t("./lib/epsilon"),o=t("./lib/intersecter"),s=t("
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="negativeone"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>In some datasets, a missing value might be represented by -1 or -99. If you don’t know that and start running analysis on the “numbers”, your analysis will be seriously wrong!</p>
+<dd><p>In some datasets, a missing value might be represented by -1 or -99. If you don’t know that and start analyzing the “numbers”, your analysis will be seriously wrong!</p>
 </dd>
 </dl>
 </div>

@@ -245,7 +245,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../01/03a_githubworkflow.html">
-     1.4. The Github Workflow
+     1.4. The GitHub Workflow
     </a>
    </li>
    <li class="toctree-l2">
@@ -951,7 +951,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>The <a class="reference external" href="https://github.com/LeDataSciFi/ledatascifi-2023/tree/main/community_codebook">community codebook</a> (a valuable resource!) has a file in it called “near_regex.py”. To get that file to the folder you’re working on that needs the function (e.g., your class notes folder, and the assignment) you have two options:</p>
 <ol class="simple">
 <li><p>If you already cloned the textbook’s repo (good job, you!), then the file is already on your computer. Simply find it inside <code class="docutils literal notranslate"><span class="pre">ledatascifi-2023/community_codebook/</span></code> and copy it, then paste to the folder where it is needed.</p></li>
-<li><p><a class="reference external" href="https://raw.githubusercontent.com/LeDataSciFi/ledatascifi-2023/main/community_codebook/near_regex.py">Clicking on the filename in the above link, then the “Raw” button will get you to this page</a>. If you right click on the page and then select “Save Page As” (or similar, depending on browser), you can put it in the folder where it is needed.</p></li>
+<li><p><a class="reference external" href="https://raw.githubusercontent.com/LeDataSciFi/ledatascifi-2023/main/community_codebook/near_regex.py">Clicking on the filename in the above link, then the “Raw” button will get you to this page</a>. If you right-click on the page and then select “Save Page As” (or similar, depending on your browser), you can put it in the folder where it is needed.</p></li>
 </ol>
 <p>After you copy the function to the same location as your code, load it into your code by adding this to the top of your code:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">near_regex</span> <span class="kn">import</span> <span class="n">NEAR_regex</span> <span class="c1"># yes, the font case is different</span>
@@ -959,11 +959,11 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>At the bottom of the near_regex.py file, I included examples. You don’t need to keep these and if you do, it will cause your code to print stuff. This will look silly and be confusing. So when you copy near_regex.py into a folder to use it, delete all the examples and stuff below the “return” line in the function.</p>
+<p>At the bottom of the near_regex.py file, I included examples. You don’t need to keep these and if you do, it will cause your code to print stuff. This will be confusing to someone reading the code. So when you copy near_regex.py into a folder to use it, delete all the examples and stuff below the “return” line in the function.</p>
 </div>
 <div class="section" id="demo">
 <h2><span class="section-number">4.4.4.1. </span>Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h2>
-<p>Let me start by showing you some examples. After these example, load the function and read the help documentation in it, and then we can do some practice.</p>
+<p>Let me start by showing you some examples. After these examples, load the function and read the help documentation in it, and then we can do some practice.</p>
 <p>Each example looks inside a document (here, the “document” is just a short sentence) for some words.</p>
 <p>To use this function:</p>
 <ol class="simple">
@@ -1146,7 +1146,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p class="admonition-title">Two caveats:</p>
 <ol class="simple">
 <li><p>This is a “dumb” function in the sense that it doesn’t do anything to actually detect if two words are in the same sentence or paragraph. There are ways to do that, but we’re going to keep it simple and just stick to this function as-is. Let’s assume that a sentence is about 20 words on average, and a paragraph is 200 words on average.</p></li>
-<li><p>In the next two examples: If your document has line breaks, like a newline symbol (“\n”) or return symbol (“\r”), which create paragraph breaks in a document, this this function <em>won’t</em> search both sides of it. If a document splits paragraphs like this, great: our function will do within-paragraph searching, <strong>as long as our cleaning process doesn’t delete those symbols.</strong> However, some documents have those symbols at the end of every single line and we need to delete them while cleaning, in which case, we can’t assume the function only looks within paragraphs.</p></li>
+<li><p>In the next two examples: If your document has line breaks, like a newline symbol (“\n”) or a return symbol (“\r”), which create paragraph breaks in a document, this function <em>won’t</em> search both sides of it. If a document splits paragraphs like this, great: our function will do within-paragraph searching, <strong>as long as our cleaning process doesn’t delete those symbols.</strong> However, some documents have those symbols at the end of every single line and we need to delete them while cleaning, in which case, we can’t assume the function only looks within paragraphs.</p></li>
 </ol>
 </div>
 <div class="cell docutils container">
@@ -1194,7 +1194,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">cases_matter</span></code> parameter is pretty simple. If true, then it only reports a match if the document’s case exactly match your search terms.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">cases_matter</span></code> parameter is pretty simple. If true, then it only reports a match if the string’s case exactly match how you typed your search terms.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;part&#39;</span><span class="p">,</span><span class="s1">&#39;With&#39;</span><span class="p">]</span>                     <span class="c1"># changed to Capitalized &quot;With&quot;</span>
@@ -1302,7 +1302,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ol>
 <p>But the “hey jimmy” match “uses up” “jimmy”, so “jimmy hi” can’t be found. Same with matches #3 and #4.</p>
 <p><strong>Caveat Two:</strong> The function is “greedy”. Look at the next example, where I allow there to be two words between.</p>
-<p>Starting from “hey”, it finds “jimmy” right away, but it doesn’t stop. (That would be a “lazy” regex.) It keeps looking, since it can look up to three words away. It takes the largest mechanical match possible, so when it finds james, it deems “hey jimmy hi james” a match, and because of that, “hi james” is already used and can’t be a match. So it reports 1 match, not 2.</p>
+<p>Starting from “hey”, it finds “jimmy” right away, but it doesn’t stop. (That would be a “lazy” regex.) It keeps looking since it can look up to three words away. It takes the largest mechanical match possible, so when it finds james, it deems “hey jimmy hi james” a match, and because of that, “hi james” is already used and can’t be a match. So it reports 1 match, not 2.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1334,7 +1334,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>I strongly suggest approaching this by using two terms.  You might need to have multiple words in each term.</p>
 <ol class="simple">
 <li><p>Print out the text of the hits!</p></li>
-<li><p>Play around with partial and the max parameters. Specifically look for when changing them gives you BAD results: Either way too many non-results are included, or your search to returns too few results because a single hit encompasses several hits that should be separately counted</p></li>
+<li><p>Play around with partial and the max parameters. Specifically look for when changing them gives you BAD results: Either way too many non-results are included, or your search returns too few results because a single hit encompasses several hits that should be separately counted</p></li>
 <li><p>Try to get the “most accurate” sense of</p>
 <ol class="simple">
 <li><p>Does the document discuss each issue at all? Is the number of hits 0, or &gt;0?</p></li>
@@ -1344,7 +1344,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Does the number of hits reflect the scale of the issue? Why or why not?</p></li>
 <li><p>If not, is there a way to transform the number of hits to reflect the scale? Some ideas:</p>
 <ul class="simple">
-<li><p>Going from 1 to 2 hits is probably more informative that from 99 hits to 100</p></li>
+<li><p>Going from 1 to 2 hits is probably more informative than from 99 hits to 100</p></li>
 <li><p>If you use ln(hits), ln(2)-ln(1) is more than ln(100)-ln(99)</p></li>
 <li><p>Try to use ln(hits) and see if you spot a problem! What’s a fix you can use?</p></li>
 <li><p>Binning: no discussion (hits=0), some discussion (hits&lt;=#), lots of discussion (hits&gt;#)</p></li>

@@ -245,7 +245,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../01/03a_githubworkflow.html">
-     1.4. The Github Workflow
+     1.4. The GitHub Workflow
     </a>
    </li>
    <li class="toctree-l2">
@@ -942,15 +942,15 @@ const thebe_selector_output = ".output, .cell_output"
 <h2><span class="section-number">3.3.2.1. </span>General tips<a class="headerlink" href="#general-tips" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p><strong>Start with simple graphs</strong>, and then build in and layer on “complications” and features.</p></li>
-<li><p><strong>Really</strong> compare your code with the syntax in the documentation. <strong>Understanding what each parameters does and needs is essential.</strong></p></li>
-<li><p>Triple check for typos, unclosed parentheses and the like</p></li>
+<li><p><strong>Really</strong> compare your code with the syntax in the documentation. <strong>Understanding what each parameter does and needs is essential.</strong></p></li>
+<li><p>Triple check for typos, unclosed parentheses, and the like</p></li>
 <li><p><a class="reference external" href="https://www.data-to-viz.com">What chart should I use (with <code class="docutils literal notranslate"><span class="pre">sns</span></code> examples)</a> and more help on <a class="reference external" href="https://python-graph-gallery.com">how can I make it</a></p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">seaborn</span></code> tutorial page is excellent: <a class="reference external" href="https://seaborn.pydata.org/tutorial.html">https://seaborn.pydata.org/tutorial.html</a></p></li>
 </ol>
 </div>
 <div class="section" id="syntax-tips">
 <h2><span class="section-number">3.3.2.2. </span>Syntax tips<a class="headerlink" href="#syntax-tips" title="Permalink to this headline">¶</a></h2>
-<p>With <code class="docutils literal notranslate"><span class="pre">seaborn</span></code>, I usually use this syntax that looks something like for graphing. (Delete the “&lt;” and “&gt;” and replace the inside with what you need.) Obviously, you’ll see many examples in this chapter that deviate from this. Usually this is because you don’t need to explicitly declare “data”, or because “x” is just assumed as all variables in the dataset.</p>
+<p>With <code class="docutils literal notranslate"><span class="pre">seaborn</span></code>, I usually use this syntax that looks something this like for graphing. (Delete the “&lt;” and “&gt;” and replace the inside with what you need.) Obviously, you’ll see many examples in this chapter that deviate from this. Usually, this is because you don’t need to explicitly declare “data”, or because “x” is just assumed as all variables in the dataset.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.&lt;</span><span class="n">function</span><span class="o">&gt;</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">dataframe</span><span class="o">&gt;</span> <span class="p">[</span><span class="n">optional</span> <span class="n">data</span> <span class="n">functions</span><span class="p">],</span>
                <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;&lt;varname&gt;&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;&lt;varname&gt;&#39;</span><span class="p">,</span>  
                <span class="p">[</span><span class="n">optional</span> <span class="n">arguments</span> <span class="k">for</span> <span class="n">specific</span> <span class="n">plots</span><span class="p">]</span>   <span class="p">)</span>
@@ -977,7 +977,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Format the data <a class="reference external" href="02b_pandasVocab.html#the-shape-of-data">long</a> if you want to use a <code class="docutils literal notranslate"><span class="pre">sns</span></code> function</p></li>
 <li><p>Use <code class="docutils literal notranslate"><span class="pre">pd</span></code> or <code class="docutils literal notranslate"><span class="pre">sns</span></code> plotting functions.</p>
 <ul class="simple">
-<li><p>Q: Which? A: Which ever is easiest! <code class="docutils literal notranslate"><span class="pre">panda</span></code>’s plotting functions are simple and good for early stage and some simple graphics (bar, “barh”, scatter, and density), but <code class="docutils literal notranslate"><span class="pre">seaborn</span></code> has many more built in options, has simpler syntax, and is easier to use, IMO.</p></li>
+<li><p>Q: Which? A: Whichever is easiest! <code class="docutils literal notranslate"><span class="pre">panda</span></code>’s plotting functions are simple and good for early-stage exploration and some simple graphics (bar, “barh”, scatter, and density), but <code class="docutils literal notranslate"><span class="pre">seaborn</span></code> has many more built-in options, has simpler syntax, and is easier to use, IMO.</p></li>
 <li><p><strong>Start with basic plots, then layer in features</strong></p></li>
 <li><p>Get the “gist” of the figure right</p></li>
 </ul>
@@ -995,7 +995,7 @@ const thebe_selector_output = ".output, .cell_output"
 <h2><span class="section-number">3.3.2.4. </span>“I swear the syntax is correct!”<a class="headerlink" href="#i-swear-the-syntax-is-correct" title="Permalink to this headline">¶</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>After syntax errors, <strong>most graphing pain comes from insufficient data wrangling.</strong> Most plotting functions have assumptions  about how the data is shaped. Data might be unwieldy but we can control it:</p>
+<p>After syntax errors, <strong>most graphing pain comes from insufficient data wrangling.</strong> Most plotting functions have assumptions about how the data is shaped. Data might be unwieldy but we can control it:</p>
 </div>
 <p><img alt="" src="https://media.giphy.com/media/TYvH0iRtnqYo0/giphy.gif" /></p>
 <p>How do we wrangle our data to make plot functions happy?</p>

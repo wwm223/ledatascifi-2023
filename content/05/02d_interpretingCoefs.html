@@ -247,7 +247,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../01/03a_githubworkflow.html">
-     1.4. The Github Workflow
+     1.4. The GitHub Workflow
     </a>
    </li>
    <li class="toctree-l2">
@@ -961,7 +961,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ol> 
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Regressions of y on <span class="math notranslate nohighlight">\(N\)</span> different variables takes the form</p>
+<p>Regressions of y on <span class="math notranslate nohighlight">\(N\)</span> different variables take the form</p>
 <div class="math notranslate nohighlight">
 \[
 y = a+b_1*X_1+b_2*X_2+...+b_N*X_N+u
@@ -1070,11 +1070,11 @@ y = a+b_1*X_1+b_2*X_2+...+b_N*X_N+u
 </table>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>The interpretation of <span class="math notranslate nohighlight">\(\beta_{oneLevelOfACategoricalVariable}\)</span> is the same as a binary variable (use the table above depending on if the model is using y or <span class="math notranslate nohighlight">\(\log y\)</span>), <strong>except that the it is capturing the jump from the “omitted group” (X=0 above) to whichever level that particular <span class="math notranslate nohighlight">\(\beta\)</span> captures.</strong></p>
+<p>The interpretation of <span class="math notranslate nohighlight">\(\beta_{oneLevelOfACategoricalVariable}\)</span> is the same as a binary variable (use the table above depending on if the model is using y or <span class="math notranslate nohighlight">\(\log y\)</span>), <strong>except that it is capturing the jump from the “omitted group” (X=0 above) to whichever level that particular <span class="math notranslate nohighlight">\(\beta\)</span> captures.</strong></p>
 </div>
 <hr class="docutils" />
 <p>Students often get confused by this at first, so let’s do an example.</p>
-<p>Suppose we model the price of a diamond as function of its cut and nothing else. <a class="reference external" href="02b_mechanics.html#including-categorical-variables">This is close to what we did previously</a>. This ends up looking like</p>
+<p>Suppose we model the price of a diamond as a function of its cut and nothing else. <a class="reference external" href="02b_mechanics.html#including-categorical-variables">This is close to what we did previously</a>. This ends up looking like</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \log(\text{price})=
@@ -1200,8 +1200,8 @@ Name: lprice, dtype: float64
 <ul class="simple">
 <li><p>Relationship of size on price: <span class="math notranslate nohighlight">\(1.53 + 0.18*Ideal\)</span>.</p>
 <ul>
-<li><p>A 1% increase in size is associate with a 1.53% higher price <strong>for non ideal diamonds</strong></p></li>
-<li><p>A 1% increase in size is associate with a 1.71% higher price <strong>for ideal diamonds</strong></p></li>
+<li><p>A 1% increase in size is associated with a 1.53% higher price <strong>for non ideal diamonds</strong></p></li>
+<li><p>A 1% increase in size is associated with a 1.71% higher price <strong>for ideal diamonds</strong></p></li>
 </ul>
 </li>
 <li><p>Relationship of cut on price: <span class="math notranslate nohighlight">\(0.33 + 0.18*log(carat)\)</span>.</p>
@@ -1222,7 +1222,7 @@ Name: lprice, dtype: float64
 </li>
 <li><p><span class="math notranslate nohighlight">\(\beta_3 \neq 0\)</span> implies that the relationship between <strong>cut quality</strong> and price is different for diamonds of different sizes.</p>
 <ul class="simple">
-<li><p>Mathematically: 1 carat diamonds that are ideal are 33% more expensive than non-ideal diamonds, but 2 carat ideal diamonds are 45% more expensive than non-deal diamonds</p></li>
+<li><p>Mathematically: 1 carat diamonds that are ideal are 33% more expensive than non-ideal diamonds, but 2 carat ideal diamonds are 45% more expensive than non-ideal diamonds</p></li>
 <li><p>Graphically, the difference in the slope of those cut quality-price relationships for small/large diamonds is <span class="math notranslate nohighlight">\(\beta_3\)</span></p></li>
 <li><p><em>Economically, you might say that the value of a better cut is even more valuable for larger diamonds</em></p></li>
 </ul>
@@ -1257,7 +1257,7 @@ y = a +\hat{0.5} W + \hat{-0.1} H
 </div>
 <div class="section" id="if-other-categorical-controls-are-included">
 <h2><span class="section-number">6.4.6. </span>If other categorical controls are included<a class="headerlink" href="#if-other-categorical-controls-are-included" title="Permalink to this headline">¶</a></h2>
-<p>Suppose you estimate <span class="math notranslate nohighlight">\(profits=a+b*investment+c*X+u\)</span>, and you want to focus on <span class="math notranslate nohighlight">\(b\)</span> to capture how investments translate to profits. You’ve added some control variables X, but you’re still worried that this regression will get the relationship wrong, because different industries have different profit margins for reasons that have nothing to do with investment levels.</p>
+<p>Suppose you estimate <span class="math notranslate nohighlight">\(profits=a+b*investment+c*X+u\)</span>, and you want to focus on <span class="math notranslate nohighlight">\(b\)</span> to capture how investments translate to profits. You’ve added some control variables X, but you’re still worried that this regression will get the relationship wrong because different industries have different profit margins for reasons that have nothing to do with investment levels.</p>
 <p>In other words, you want to “control for industry”. So you estimate <span class="math notranslate nohighlight">\(profits=a+b*investment+c*X+d*C(gsector)+u\)</span>, by including the firm’s industry as a categorical control.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1267,7 +1267,7 @@ y = a +\hat{0.5} W + \hat{-0.1} H
 <blockquote class="epigraph">
 <div><p>Intuitively, you can think of <span class="math notranslate nohighlight">\(b\)</span> in this model as “comparing firms in the same industry” or “controlling for industry factors”.</p>
 </div></blockquote>
-<p>This should go a decent way to  solving  your worry above.</p>
+<p>This should go a decent way towards solving  your worry above.</p>
 <hr class="docutils" />
 <p>Similarly, you might be worried that some years are at high points in the business cycle, and these years have concurrently high investment and profits simply because of the business cycle. This would cause <span class="math notranslate nohighlight">\(b\)</span> to be positive <em>even if investment does not lead to profits.</em></p>
 <p>So you might estimate <span class="math notranslate nohighlight">\(profits=a+b*investment+c*X+d*C(year)+u\)</span>. This is often referred to as “year fixed effects”, and it means that your estimate of <span class="math notranslate nohighlight">\(b\)</span> removes the impact of years, and presumably, the business cycle.</p>
@@ -1278,7 +1278,7 @@ y = a +\hat{0.5} W + \hat{-0.1} H
 <p>Here is an example to see how categorical controls can interact with “normal” continuous variables.</p>
 <p>Remember our weird result earlier? That better cut diamonds had lower average prices?</p>
 <p>The answer to that puzzle is pretty simple: Better cut diamonds tend to be smaller, and size is the most important aspect of diamond price. You can click to show the model results below.</p>
-<p>By adding carat size back to our model, we get the sensible result, that going from an Ideal cut to a Fair cut diamond (a big downgrade), as long as we compare similar sized diamonds (“control for diamond size”), is associated with a 31% decrease in price.</p>
+<p>By adding carat size back to our model, we get the sensible result, that going from an Ideal cut to a Fair cut diamond (a big downgrade), as long as we compare similarly sized diamonds (“control for diamond size”), is associated with a 31% decrease in price.</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">sm_ols</span><span class="p">(</span><span class="s1">&#39;lprice ~ lcarat + C(cut)&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">diamonds2</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
@@ -1384,7 +1384,7 @@ dtype: float64
 </div>
 </div>
 <p><strong>So a 1 standard deviation increase in <span class="math notranslate nohighlight">\(\log carat\)</span> is associated with a 98% increase in price. Compared to <span class="math notranslate nohighlight">\(ideal\)</span>, we can say that a reasonable variation in carat size is associated with a price increase about 10 times larger than the impact of cut, not 17 times larger.</strong></p>
-<p>Also, notice that the new coefficent (0.98) is about 58% of the original coefficient (1.69).</p>
+<p>Also, notice that the new coefficient (0.98) is about 58% of the original coefficient (1.69).</p>
 <details class="sphinx-bs dropdown card mb-3">
 <summary class="summary-title card-header">
 <strong>Q: Why is it 58% of the previous coefficient?</strong><div class="summary-down docutils">
