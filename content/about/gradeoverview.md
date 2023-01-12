@@ -45,7 +45,7 @@ You should aspire to
 ```
 
 ```{tabbed}  Midterm Project (10%)
-What I love about this is that it puts you on the precipice of truly large scale analysis. The deliverable for the project is something you can talk about in job interviews. At the end of the project, you'll have pieces of code that can be used within even larger and interesting projects, and more importantly, an understanding of how to break a seemingly complex task down into manageable pieces. 
+What I love about this is that it puts you on the precipice of truly large-scale analysis. The deliverable for the project is something you can talk about in job interviews. At the end of the project, you'll have pieces of code that can be used within even larger and interesting projects, and more importantly, an understanding of how to break a seemingly complex task down into manageable pieces. 
 
 It's going to be fun! 
 
@@ -54,7 +54,7 @@ See the [project description page](../assignments/mid_proj_placeholder) for more
 ```
 
 ```{tabbed}  Final Project (20%)
-Student groups write a proposal outlining a question the group is interested in and their plan to answer it. Over the course of the last month of class, we will work to break your question down into manageable subproblems and solve them one-by-one to conduct their analysis. 
+Student groups write a proposal outlining a question the group is interested in and their plan to answer it. Over the last month of class, we will work to break your question down into manageable subproblems and solve them one by one to conduct their analysis. 
 
 Students develop a website to show their results and present their work to the class. 
 

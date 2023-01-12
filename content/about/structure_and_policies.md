@@ -4,9 +4,9 @@
 This page is important - please read it all!
 ```
 
-### Github, or: How I learned to ignore Coursesite (for FIN377)
+### GitHub, or: How I learned to ignore Coursesite (for FIN377)
 
-The whole class is run off this website and GitHub. GitHub is how we'll submit assignments, provide feedback, receive grades, etc.  You'll learn how this works as the semester proceeds. Announcements will be made verbally in class and/or on Github. 
+The whole class is run off this website and GitHub. GitHub is how we'll submit assignments, provide feedback, receive grades, etc.  You'll learn how this works as the semester proceeds. Announcements will be made verbally in class and/or on GitHub. 
 
 ### Practical matters and expectations 
 
@@ -14,14 +14,14 @@ The whole class is run off this website and GitHub. GitHub is how we'll submit a
 - This course will be, in essence, "pseudo flipped." Meetings will be a mix of lecture, live demo, discussion, pair programming, code races, and tiny student presentations of pre-class problems. I'll tell you more as we move along, but I'm striving to make class sessions productive and interesting throughout. This will be a very hands-on course, with relatively little in the way of formal theory. Instead, we'll be working through lecture notes together in class and you'll be running code on your own machines.
 - **Free and open-source:** All resources and software required for this course.[^invest]
 - "Taking a step back, one of the goals of this course is to make you aware of the incredible array of instruction material that is freely available online. I also want to encourage you to be entrepreneurial. In that spirit, many of the lectures will follow a tutorial on someone's blog tutorial, or involve reproducing an existing study with open source tools." -Grant McDermott
-- In addition, you will have as resources this website, your peers via a github discussion board, the whole of the internet, and, naturally, office hours. **Which is to say: You have my utmost support, and you will succeed if you put in the time!**
+- In addition, you will have as resources this website, your peers via a GitHub discussion board, the whole of the internet, and, naturally, office hours. **Which is to say: You have my utmost support, and you will succeed if you put in the time!**
 - Attendance: not mandatory, but heavily incentivized. Optimize your own tradeoffs as you wish but take responsibility for it. 
 
 [^invest]: **I do strongly recommend investing in yourself by buying a second monitor** if you have _any_ space for it. With a second monitor, your productivity in all work and classes will be improved. You can find good new monitors for under \$75 on your go-to delivery service, and for far less if you get a used one.  _Note that everything else in class is **free and open-source** and that this class does not require you to pay for any materials, software, or subscriptions._
 
 ### Attendance
 
-Seeing students in class is fun for me, and your attendance will help you (and your classmates!) learn the content in this course. _Attendance in prior years was extremely correlated with assignment and project grades._ Plus, I sometimes make live-only announcements during class. 
+Seeing students in class is fun for me, and your attendance will help you (and your classmates!) learn the content of this course. _Attendance in prior years was extremely correlated with assignment and project grades._ Plus, I sometimes make live-only announcements during class. 
 
 With that in mind, **a [large part of the grade](gradeoverview) depends on attendance, directly or indirectly.** 
 
