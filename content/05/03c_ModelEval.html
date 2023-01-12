@@ -41,9 +41,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fin377_specialformatting.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/frontpage.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/fin377_specialformatting.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -954,24 +954,24 @@ const thebe_selector_output = ".output, .cell_output"
 </ol>
 <div class="section" id="holdout-sample">
 <h2><span class="section-number">7.5.1. </span>Holdout sample<a class="headerlink" href="#holdout-sample" title="Permalink to this headline">¶</a></h2>
-<p>So we need a way to estimate the test error. The way we do that is by creating a <strong>holdout sample</strong> (step #2 in the <a class="reference internal" href="03_ML.html"><span class="doc std std-doc">machine learning workflow</span></a>) to test the model at step #6, after our model development process is completed.</p>
+<p>So we need a way to estimate the test error. The way we do that is by creating a <strong>holdout sample</strong> (step #2 in the <a class="reference internal" href="03_ML.html"><span class="doc std std-doc">machine learning workflow</span></a>) to test the model at step #6 after our model development process is completed.</p>
 <div class="warning admonition">
 <p class="admonition-title"><strong>YOU CAN ONLY USE THE HOLDOUT SAMPLE ONCE!</strong></p>
-<p><strong>If you use the holdout during the iterative training/evaluation process (steps 3-5), it stops being a a holdout sample and effectively becomes part of the training set.</strong></p>
+<p><strong>If you use the holdout during the iterative training/evaluation process (steps 3-5), it stops being a holdout sample and effectively becomes part of the training set.</strong></p>
 </div>
 <p>After we create the holdout sample in step #2, we enter the grey box where all the ML magic happens, and pre-process the data (step #3).</p>
 </div>
 <div class="section" id="training-sample">
 <h2><span class="section-number">7.5.2. </span>Training sample<a class="headerlink" href="#training-sample" title="Permalink to this headline">¶</a></h2>
-<p>So, we are at step #3. We have the holdout sample isolated on the side, and will develop our model on the training sample.</p>
-<p>If we fit the model on the training sample, and then examine its performance against the same sample, the error will be misleadingly low. (Duh! We fit the model on it!)</p>
+<p>So, we are at step #3. We have the holdout sample isolated and will develop our model on the training sample.</p>
+<p>If we fit the model on the training sample and then examine its performance against the same sample, the error will be misleadingly low. (Duh! We fit the model on it!)</p>
 <div class="admonition-a-ha admonition">
 <p class="admonition-title">A ha!</p>
 <p>It would be nice to have an extra test set, wouldn’t it?!</p>
 <p>Great idea: So, at step #3, we split our training sample again, into a <em><strong>smaller training sample</strong></em> and a <em><strong>validation sample</strong></em>.</p>
 <ul class="simple">
 <li><p>We estimate and fit our model on the training sample</p></li>
-<li><p>We estimate make predictions in the validation sample using our fit model, and measure the “accuracy” of the prediction.</p></li>
+<li><p>We make predictions in the validation sample using our fitted model and measure the “accuracy” of the prediction.</p></li>
 </ul>
 </div>
 </div>

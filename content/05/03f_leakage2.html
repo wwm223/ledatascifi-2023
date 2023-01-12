@@ -41,9 +41,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fin377_specialformatting.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/frontpage.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/fin377_specialformatting.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -917,7 +917,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ol>
 </div>
 <p>The example on the last page falls prey to data leakage because the training data was the testing data. The model “had the answers to the test” already!</p>
-<p><a class="reference internal" href="03c_ModelEval.html"><span class="doc std std-doc">The next pages</span></a> of the book discusses the <em>main</em> (but not only) method to avoid data leakage and the <a class="reference internal" href="04a_SKLearn.html"><span class="doc std std-doc">next section</span></a> of the book will explain how <em>with code</em>, but for now, let’s just state the following warning:</p>
+<p><a class="reference internal" href="03c_ModelEval.html"><span class="doc std std-doc">The next pages</span></a> of the book discuss the <em>main</em> (but not only) method to avoid data leakage and the <a class="reference internal" href="04a_SKLearn.html"><span class="doc std std-doc">following chapter</span></a> will explain how <em>with code</em>, but for now, let’s just state the following warning:</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The absolute golden rule of prediction modeling is…</p>
@@ -933,7 +933,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <div class="tip admonition">
 <p class="admonition-title">Establish a baseline + Use the smell test!</p>
-<p>Is it too good to be true? One way to tell is to establish a baseline: Find best-in-class performance metrics for your problem. If you see dramatically better results, data leakage is a good candidate for why.</p>
+<p>Is it too good to be true? One way to tell is to establish a baseline: Find best-in-class performance metrics for your problem. If you see dramatically better results, data leakage is a good candidate for the performance.</p>
 <p>For example: Predicting stock prices is hard! The best predictive R2 for individual stocks <a class="reference external" href="https://academic.oup.com/rfs/article/33/5/2223/5758276">in this paper</a> (open access <a class="reference external" href="https://dachxiu.chicagobooth.edu/download/ML.pdf">here</a>) is just 1.80% per month. An R2 of 0.018 is WORLD CLASS.</p>
 <p>Knowing that, if someone tells you they can predict asset returns with an R2 of 2%+, you should be very skeptical.</p>
 <p>If you can’t find a baseline from prior work, create a “dummy” model to beat. For example: Predict that returns are always 0, or always 8% a year. What’s the R2 on that?</p>

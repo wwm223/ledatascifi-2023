@@ -41,9 +41,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fin377_specialformatting.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/frontpage.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/fin377_specialformatting.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -904,24 +904,24 @@ const thebe_selector_output = ".output, .cell_output"
   <div class="section" id="faster-better-stronger">
 <h1><span class="section-number">10.2. </span>Faster, better, stronger<a class="headerlink" href="#faster-better-stronger" title="Permalink to this headline">¶</a></h1>
 <p>Students often ask about how they can grow their skills after this semester.</p>
-<p>There is no one path forward, but I think people learn skills best when the skill-building is the byproduct of doing something fun/exciting that scratches your curiosity.</p>
-<p>Your projects don’t have to be finance-related. (My initial python projects weren’t!) Maybe it’s about your love of some game (e.g. basketball), or tv/movies/books, or sports. Just pick something that sounds fun.</p>
+<p>There is no one path forward, but I think people learn skills best when skill-building is the byproduct of doing something fun/exciting that scratches your curiosity.</p>
+<p>Your projects don’t have to be finance-related. (My initial python projects weren’t!) Maybe it’s about your love of some game (e.g. Sim City?), tv/movies/books, or sports. Just pick something that sounds fun.</p>
 <ul class="simple">
-<li><p>A fantasy draft wizard, powered by data scraped from multiple sites and organized by ML techniques. (<a class="reference external" href="https://github.com/jsoslow2/Fantasy-Football-Models">This repo, written in R, can be inspiration</a>.)</p></li>
+<li><p>A fantasy draft wizard, powered by data scraped from multiple sites and organized by ML techniques. (<a class="reference external" href="https://github.com/jsoslow2/Fantasy-Football-Models">This repo, written in R, might be inspiring</a>.)</p></li>
 <li><p>Build a dashboard (see below)</p></li>
 <li><p><a class="reference internal" href="05c_finpacks.html"><span class="doc std std-doc">Try to use one of the advanced finance packages here.</span></a></p></li>
-<li><p><a class="reference external" href="../about/resources.html#resources-tutorials-and-data">The website resources</a> has lots of good stuff to explore</p></li>
+<li><p><a class="reference external" href="../about/resources.html#resources-tutorials-and-data">Our resources page</a> has lots of good stuff to explore</p></li>
 <li><p>I’d also recommend meandering the links on <a class="reference external" href="https://github.com/jupyter/jupyter/wiki#economics-and-finance">this page, including “fecon”</a></p></li>
 </ul>
 <p style="font-size:2em"> Dashboards - A Really Fun Project Idea </p> 
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>One awesome thing you can do with data: Build a dashboard/”app”/webpage!</p>
-<p>Not only are dashboards cool as hell, they are also good ways to show off your skills (e.g. put them on your resume) because they can be really useful for real-world decision makers in business and government settings.</p>
+<p>Not only are dashboards cool as hell, but building them is also a good way to show off your skills (e.g. put them on your resume). Dashboards can be really useful for real-world decision-makers in business and government settings.</p>
 </div>
-<p><a class="reference external" href="https://www.perthirtysix.com/essay/nba-player-scoring-analysis">How do you think this amazing page was built?</a> Or the interactive visualizations <a class="reference external" href="https://fivethirtyeight.com/features/science-isnt-broken/">538, NYT, WaPo, WSJ and others frequently publish</a>? And look at all <a class="reference external" href="https://dash.gallery/Portal/">these freaking awesome examples!</a></p>
+<p><a class="reference external" href="https://www.perthirtysix.com/essay/nba-player-scoring-analysis">How do you think this amazing page was built?</a> Or the interactive visualizations <a class="reference external" href="https://fivethirtyeight.com/features/science-isnt-broken/">538, NYT, WaPo, WSJ, and others frequently publish</a>? And look at all <a class="reference external" href="https://dash.gallery/Portal/">these freaking awesome examples!</a></p>
 <p>What do you need? Mostly: <em>Data acquisition and formatting skills - which you have!</em></p>
-<p>The main hiccup:  GitHub Pages can create a website out of a Jupyter notebook, but it’s just a static image of the file after you ran the code. People looking at the site can’t adjust inputs and rerun it. I am not a web dev, and you probably aren’t either, so below I discuss (1) free options (2) that <em>reduce</em> the web dev pain (3) as of late 2022.</p>
+<p>The main hiccup:  GitHub Pages can create a website out of a Jupyter notebook, but it’s just a static image of the file. People looking at the site will just see whatever it looked like at the time you last saved the file, so there is no interactivity and visitors can’t adjust inputs and rerun it. I am not a web dev, and you probably aren’t either, so below I discuss (1) free options (2) that <em>reduce</em> the web dev pain (3) as of late 2022.</p>
 <p style="font-size:1.5em"> Part 1: Make it work <i> on your computer </i>  </p> 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -934,7 +934,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p class="sidebar-title"></p>
 <p>Hack: These packages will be new to you, so ask ChatGPT to help you use them to set up the dashboard!</p>
 </div>
-<p>There are many packages that are designed to produce full featured dashboards, apps, and widgets. My current rough pecking order:</p>
+<p>Many packages are designed to produce full featured dashboards, apps, and widgets. My current rough pecking order:</p>
 <ol class="simple">
 <li><p><a class="reference external" href="https://streamlit.io/"><code class="docutils literal notranslate"><span class="pre">streamlit</span></code></a> - see some <a class="reference external" href="https://streamlit.io/gallery">examples here</a>. Deploying the app to a website is easy as heck and free as long as traffic to the site is low.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">dash</span></code> - highly flexible, uses <code class="docutils literal notranslate"><span class="pre">plotly</span></code> for visuals</p></li>

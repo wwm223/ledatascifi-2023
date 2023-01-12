@@ -8,7 +8,7 @@
 
 ## Working on assignments / projects / taking notes 
  
-[Use the Github workflow!](../01/03a_githubworkflow)
+[Use the GitHub workflow!](../01/03a_githubworkflow)
 
 ```{tip} 
 **Fetch early, commit frequently, push often!**
@@ -33,7 +33,7 @@ Your graders will download your repo on their computer, try to run your code, an
 ## Tips for better grades (+ workproduct + repos)
 
 ```{dropdown}  **TIP #1:** Check out the rubric for the assignment
-Each assignment has different grading criterion, which you'll see in the rubric within each assignment's repo.  
+Each assignment has different grading criteria, which you'll see in the rubric within each assignment's repo.  
 
 Generically and briefly, I'll say the important themes are:
 - reproducibility (Your peers should be able to download the folder to their computer and execute the main analysis file and receive back the same results you generated)
@@ -46,7 +46,7 @@ Generically and briefly, I'll say the important themes are:
 
 
 ```{dropdown}  **TIP #2:** Before you push what you think are your final changes to the master repo...
-1. Delete all temporary and output files you generated, restart the kernal (and clear output), 
+1. Delete all temporary and output files you generated, restart the kernel (and clear output), 
 2. rerun the analysis/code (as though you just started from scratch),
 3. and save your notebook file when it's done running. 
 
@@ -63,7 +63,7 @@ Did it work? If not, then the code is not reproducible. Probably, you referenced
 
 Did it work? If not, then the code is not reproducible outside the directory you built it in. 
 
-Why did it fail? Probably, the code included absolute path references like "C:\Users\DonBowen\Documents\project1\code\extra_function.py". These are bad, because they only work on my computer. (You probably won't have "DonBowen" as a folder anywhere on your computer, I hope!)  
+Why did it fail? Probably, the code included absolute path references like "C:\Users\DonBowen\Documents\project1\code\extra_function.py". These are bad because they only work on my computer. (You probably won't have "DonBowen" as a folder anywhere on your computer, I hope!)  
 
 Use relative path references instead. For example, if `main_analysis.py` uses `extra_function.py`, and `main_analysis.py` is in the "project1" folder, then "code/extra_function.py" will find the function on any computer. 
 ```
@@ -73,7 +73,7 @@ Use relative path references instead. For example, if `main_analysis.py` uses `e
 
 ```{dropdown}  **TIP #4:** Make it easy for others to see the source code that executes the analysis as well as the report. 
 The biggies:
-1. The README.md in the main directory is what they will see first when they open it. Make it professional and helpful!  GitHub can format "Markdown" nicely, with headers, links, media, and more and will show visitors this. 
+1. The README.md in the main directory is what they will see first when they open it. Make it professional and helpful!  GitHub can format "Markdown" nicely (with headers, links, media, and more) and will show visitors the nicely formatted version. 
     - Create annotated links to documents graders need to access. For example, point them to your main Jupyter file, which GitHub will also render so that visitors see the output on the website without needing to run code!
     - [GitHub](https://guides.github.com/features/wikis/#Formatting-a-readme) suggests including the project name, a clear and short description (what it does and why it is important), installation tips (list packages they might need to install), and usage instructions.
 2. Make sure your final analysis code shows outputs _when viewed online_! See Tip #2 above. This will help them grade faster (and faster graders are nicer graders).

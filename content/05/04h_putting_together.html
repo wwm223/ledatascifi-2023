@@ -41,9 +41,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fin377_specialformatting.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/frontpage.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/fin377_specialformatting.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -937,15 +937,15 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Preprocessing data in a pipeline (data leakage is bad!) that utilizes what you learned via EDA (imputation, scaling, and transformations)</p></li>
 <li><p>Exploring preprocessing alternatives in your pipeline optimization</p></li>
 <li><p>Feature engineering: Creating new variables via interactions (think: X3 = X1*X2)</p></li>
-<li><p>Feature selection/reduction: Which X variables to include. Too many variables will lead to overfitting.</p>
+<li><p>Feature selection/reduction: Which X variables to include? Too many variables will lead to overfitting.</p>
 <ul>
 <li><p>Common options: <code class="docutils literal notranslate"><span class="pre">SelectFromModel</span></code>, <code class="docutils literal notranslate"><span class="pre">LassoCV</span></code>, <code class="docutils literal notranslate"><span class="pre">RFECV</span></code></p></li>
 </ul>
 </li>
 <li><p>Gradient Boosting, discussed <a class="reference external" href="https://www.kaggle.com/kashnitsky/topic-10-gradient-boosting">here</a> and <a class="reference external" href="https://www.youtube.com/watch?v=yrTW5YTmFjw">here</a>, and ensemble + stacked predictors</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">xgboost</span></code> and <code class="docutils literal notranslate"><span class="pre">lightGBM</span></code> are the go to implementations, and <code class="docutils literal notranslate"><span class="pre">HistGradientBoostingRegressor</span></code> is the analogue in sk-learn</p></li>
-<li><p>If you just sk-learn for gradient boosting, look for the “Hist” in the function name! (Newer, much faster.)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xgboost</span></code> and <code class="docutils literal notranslate"><span class="pre">lightGBM</span></code> are the go-to implementations, and <code class="docutils literal notranslate"><span class="pre">HistGradientBoostingRegressor</span></code> is the analogue in sklearn</p></li>
+<li><p>If you are using sklearn for gradient boosting, use the function with “Hist” in the name! (Newer, much faster.)</p></li>
 </ul>
 </li>
 </ul>

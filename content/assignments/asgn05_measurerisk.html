@@ -41,9 +41,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fin377_specialformatting.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/frontpage.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/fin377_specialformatting.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -912,7 +912,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p><strong>Here are the coding mechanics of this:</strong> Let’s, for example, say I’m looking for discussions of losers and I’ll save it in a new variable called <code class="docutils literal notranslate"><span class="pre">losers</span></code> added into my initial dataset:</p>
 <ul class="simple">
 <li><p>In this example, I think that if “DETROIT” is near “LIONS”, the document is talking about losers.</p></li>
-<li><p>IMPORTANT: I have to see both words near each other to be sure it is about losers! If the document is just talking about Lions, it might be about animals, and if it is just talking about Detroit, it is talking about the economic engine of our great country, but if both words are close, the document is talking about losing and losers. <em>God, why am I a Lions fan? What have I done to foresake you?</em></p></li>
+<li><p>IMPORTANT: I have to see both words near each other to be sure it is about losers! If the document is just talking about Lions, it might be about animals, and if it is just talking about Detroit, it is talking about the economic engine of our great country, but if both words are close, the document is talking about losing and losers. <em>God, why am I a Lions fan? What have I done to forsake you?</em></p></li>
 <li><p>I define a regex pattern that looks for the word “detroit” near “loser”. We talked about how to do this in class: Use <code class="docutils literal notranslate"><span class="pre">NEAR_regex</span></code>. Let’s call that pattern <code class="docutils literal notranslate"><span class="pre">loser_regex_pattern</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">hits</span> <span class="pre">=</span> <span class="pre">len(re.findall(loser_regex_pattern,&lt;clean_10_text&gt;))</span></code> will count the number of times the document discusses losing and save it to <code class="docutils literal notranslate"><span class="pre">hits</span></code>.</p></li>
 <li><p>Save <code class="docutils literal notranslate"><span class="pre">hits</span></code> inside of the variable <code class="docutils literal notranslate"><span class="pre">losers</span></code> for that document (put it in the correct row!)</p></li>
@@ -931,16 +931,16 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Repeat the steps in  step 3 above to define a second type of risk.</p>
 <ul class="simple">
 <li><p>Open some 10-Ks manually and read them to verify if your guess for how to check actually results in hits.</p></li>
-<li><p>If it doens’t work like you think (misses obvious discussions of the risk, or finds non-discussions), tweak it.</p></li>
+<li><p>If it doesn’t work like you think (misses obvious discussions of the risk, or finds non-discussions), tweak it.</p></li>
 </ul>
 </li>
 <li><p>Repeat the steps in #3 above to define a third type of risk.</p>
 <ul class="simple">
 <li><p>Open some 10-Ks manually and read them to verify if your guess for how to check actually results in hits.</p></li>
-<li><p>If it doens’t work like you think (misses obvious discussions of the risk, or finds non-discussions), tweak it.</p></li>
+<li><p>If it doesn’t work like you think (misses obvious discussions of the risk, or finds non-discussions), tweak it.</p></li>
 </ul>
 </li>
-<li><p>Now, loop over all the firms and for each, measure the risks in the corresponding 10-K. <em>Warning: Looping over rows in a pandas dataframe is a little different than normal! Look up how to do it!</em></p>
+<li><p>Now, loop over all the firms, and for each firm, measure the risks in the corresponding 10-K. <em>Warning: Looping over rows in a pandas dataframe is a little different than normal! Look up how to do it!</em></p>
 <p><strong>IMPORTANT! <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> those five variables after you’re done!</strong></p>
 <ul class="simple">
 <li><p>You should have observations for most/all firms for your new measures. <strong>Fix it - do not proceed!</strong></p></li>

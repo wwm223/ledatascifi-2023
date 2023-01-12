@@ -41,9 +41,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fin377_specialformatting.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/frontpage.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/fin377_specialformatting.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -933,7 +933,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Setting up and fitting <code class="docutils literal notranslate"><span class="pre">GridSearchCV()</span></code> to find optimal parameters</p></li>
 <li><p>Getting the best model after the grid search via <code class="docutils literal notranslate"><span class="pre">.best_estimator_</span></code></p></li>
 </ul>
-<p>Lets load the data <a class="reference internal" href="04e_pipelines.html"><span class="doc std std-doc">we’ve been using.</span></a> (The code is here but hidden.)</p>
+<p>Let’s load the data <a class="reference internal" href="04e_pipelines.html"><span class="doc std std-doc">we’ve been using.</span></a> (The code is here but hidden.)</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -1026,7 +1026,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>For example, the <code class="docutils literal notranslate"><span class="pre">Ridge()</span></code> model’s key parameter is “alpha”, and changing it will change its results. But it’s not the only parameter that can change the results of this pipeline.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Now, look how many parameters this tiny three-step model (impute, encode, ridge regression) has!</p>
+<p>Now, look at how many parameters this tiny three-step model (impute, encode, ridge regression) has!</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1123,7 +1123,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="tuning-hyperparameters">
 <h2><span class="section-number">8.6.2. </span>Tuning hyperparameters<a class="headerlink" href="#tuning-hyperparameters" title="Permalink to this headline">¶</a></h2>
-<p>The basic idea is to repeatedly run the pipeline through a cross-validation while changing the hyperparameters to improve your CV scores.</p>
+<p>The basic idea is to repeatedly run the pipeline through cross-validation while changing the hyperparameters to improve your CV scores.</p>
 <p>To use GridSearchCV</p>
 <ol>
 <li><p>Set up your parameter grids (all of the parameters you would like to test).</p>

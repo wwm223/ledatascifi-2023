@@ -41,9 +41,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fin377_specialformatting.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/frontpage.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/fin377_specialformatting.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -935,9 +935,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Per the <a class="reference internal" href="../about/gradeoverview.html"><span class="doc std std-doc">syllabus</span></a>, this project is 10% if your overall grade, which is about 2x the weight of a typical assignment. It will probably take 2-3x the time of a typical assignment.</p>
+<p>Per the <a class="reference internal" href="../about/gradeoverview.html"><span class="doc std std-doc">syllabus</span></a>, this project is 10% of your overall grade, which is about 2x the weight of a typical assignment. It will probably take 2-3x the time of a typical assignment.</p>
 <p><strong>Really fun news:</strong> This is a end-to-end data science project! You will be downloading a lot of files, parsing/exploring/cleaning those file, and then exploring the data.</p>
-<p>BUT: It will take time! If you start the day before it is due, YOU WILL NOT FINISH IT. If you start two days before it is do, you might finish it, but it will not be done well.</p>
+<p>BUT: It will take time! If you start the day before it is due, YOU WILL NOT FINISH IT. If you start two days before it is due, you might finish it, but it will not be done well.</p>
 </div>
 <div class="section" id="project-set-up">
 <h2>Project Set Up<a class="headerlink" href="#project-set-up" title="Permalink to this headline">¶</a></h2>
@@ -948,7 +948,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul>
 <li><p>This is called a “cross-sectional event study”</p></li>
 <li><p>Expected minimum output: Scatterplot (x = some “risk factors”, y = returns around March 2020) with regression lines; formatted well</p></li>
-<li><p>Discussion of the economics linking the your risk factors to the returns is expected</p></li>
+<li><p>Discussion of the economics linking your risk factors to the returns is expected</p></li>
 <li><p>Pro output: Regression tables, heatmaps, better scatterplots</p></li>
 </ul>
 </li>
@@ -977,7 +977,7 @@ const thebe_selector_output = ".output, .cell_output"
 </summary><div class="summary-content card-body docutils">
 <ul class="simple">
 <li><p class="card-text">As usual, click the link I provide in the discussion board.</p></li>
-<li><p class="card-text">But unlike before, the repo will be essentially empty. This is a start to finish project, so I’m letting you dictate the structure of the files.</p></li>
+<li><p class="card-text">But unlike before, the repo will be essentially empty. This is a start-to-finish project, so I’m letting you dictate the structure of the files.</p></li>
 <li><p class="card-text">Clone this to your computer.</p></li>
 </ul>
 </div>
@@ -988,7 +988,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="summary-up docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="summary-content card-body docutils">
-<p class="card-text">The <code class="docutils literal notranslate"><span class="pre">download_text_files.ipynb</span></code> file will create a large data structure in a subfolder called <code class="docutils literal notranslate"><span class="pre">10k_files/</span></code> with all the downloaded 10-K files. There will be several gigs of data in this folder. We don’t want to save/push all these files to github!</p>
+<p class="card-text">The <code class="docutils literal notranslate"><span class="pre">download_text_files.ipynb</span></code> file will create a large data structure in a subfolder called <code class="docutils literal notranslate"><span class="pre">10k_files/</span></code> with all the downloaded 10-K files. There will be several gigs of data in this folder. We don’t want to save/push all these files to GitHub!</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p class="card-text">So add this directory (<code class="docutils literal notranslate"><span class="pre">10k_files/</span></code>) to your gitignore before you proceed!</p>
@@ -1018,7 +1018,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ol class="simple">
 <li><p class="card-text">Delete your whole <code class="docutils literal notranslate"><span class="pre">text_files/</span></code> and <code class="docutils literal notranslate"><span class="pre">input/</span></code> subfolders on your computer so you have a “fresh start”</p></li>
 <li><p class="card-text">Rerun this from scratch.</p></li>
-<li><p class="card-text">Rerun the file AGAIN (but don’t delete the files you have). Does the file work after it’s already been run, or partially completed it’s work? Real spiders have to resume where they left off. You might need to make some conditional tweaks to the file to account for this. You don’t want the code to actually re-download the data, but the code should still run without error!</p></li>
+<li><p class="card-text">Rerun the file AGAIN (but don’t delete the files you have). Does the file work after it’s already been run, or partially completed its work? Real spiders have to resume where they left off. You might need to make some conditional tweaks to the file to account for this. You don’t want the code to actually re-download the data, but the code should still run without error!</p></li>
 </ol>
 </div>
 </div>
@@ -1030,12 +1030,12 @@ const thebe_selector_output = ".output, .cell_output"
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="summary-content card-body docutils">
 <p class="card-text">It’s not polite to upload so much data to GitHub. It takes up space on the server, and your collaborators/peer reviewers will have to download them all when they clone your repo.</p>
-<p class="card-text">That’s why you edited the gitignore before doing all those downloads. If you did it correctly and check Github Desktop, you won’t see any of the text files!</p>
+<p class="card-text">That’s why you edited the gitignore before doing all those downloads. If you did it correctly and check GitHub Desktop, you won’t see any of the text files!</p>
 <ol class="simple">
 <li><p class="card-text">Now that your <code class="docutils literal notranslate"><span class="pre">download_text_files.ipynb</span></code> is done running, push the repo. Even though your <em>computer</em> has a <code class="docutils literal notranslate"><span class="pre">/text_files/*</span></code> folder on it with many files and some hard drive space used, the repo in your browser doesn’t show this at all! Good job!</p></li>
 <li><p class="card-text"><strong>Create <code class="docutils literal notranslate"><span class="pre">screenshot.png</span></code>. The purpose of this is to upload proof of the files for your reviewers.</strong></p></li>
 </ol>
-<p class="card-text">Right click your <code class="docutils literal notranslate"><span class="pre">text_files</span></code> folder so it shows the number of files inside of it, and take a screenshot showing this. Save it as <code class="docutils literal notranslate"><span class="pre">screenshot.png</span></code> inside your repo.</p>
+<p class="card-text">Right-click your <code class="docutils literal notranslate"><span class="pre">text_files</span></code> folder so it shows the number of files inside of it, and take a screenshot showing this. Save it as <code class="docutils literal notranslate"><span class="pre">screenshot.png</span></code> inside your repo.</p>
 </div>
 </details><details class="sphinx-bs dropdown card mb-3">
 <summary class="summary-title card-header">
@@ -1053,6 +1053,14 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="summary-up docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="summary-content card-body docutils">
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p class="card-text"><a class="reference internal" href="asgn05_measurerisk.html"><span class="doc std std-doc">There is a bunch more on this file/step here.</span></a></p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p class="card-text">When you are confident the program works, delete your whole <code class="docutils literal notranslate"><span class="pre">output/</span></code> folder on your computer so you have a “fresh start” and then rerun this from scratch.</p>
+</div>
 <p class="card-text">The basic idea is to measure risks by counting the number of times a given risk topic is discussed in the 10-K.</p>
 <p class="card-text">This file (broad steps)</p>
 <ol class="simple">
@@ -1075,14 +1083,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p class="card-text">Downloads 2019 accounting data (<strong>2019 ccm_cleaned.dta</strong>) from the data folder in the class repo on S&amp;P500 firms (possibly useful in analysis) and adds them to the dataset</p></li>
 <li><p class="card-text">Save the whole thing to <code class="docutils literal notranslate"><span class="pre">output/sp500_accting_plus_textrisks.csv</span></code></p></li>
 </ol>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p class="card-text"><a class="reference internal" href="asgn05_measurerisk.html"><span class="doc std std-doc">There is a bunch more on this file/step here.</span></a></p>
-</div>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p class="card-text">When you are confident the program works, delete your whole <code class="docutils literal notranslate"><span class="pre">output/</span></code> folder on your computer so you have a “fresh start” and then rerun this from scratch.</p>
-</div>
 </div>
 </details><details class="sphinx-bs dropdown card mb-3">
 <summary class="summary-title card-header">
@@ -1091,7 +1091,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="summary-up docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="summary-content card-body docutils">
-<p class="card-text">Try to figure out how to do the analysis below, downloading and intergrating return measures. Play around in this file. No one will look at it. It’s a safe space.</p>
+<p class="card-text">Try to figure out how to do the analysis below, downloading and integrating return measures. Play around in this file. No one will look at it. It’s a safe space.</p>
 <p class="card-text">If you find issues with your risk measurements or come up with improvements you think you should make, go back and work on the previous file more.</p>
 <p class="card-text">You can and should use this file to figure out what you want to include in the final report and how you want it to appear.</p>
 </div>
@@ -1108,7 +1108,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p class="card-text">First compute the returns for the 3/9-3/13 week. This will give you a dataset with one row per firm, and one number per row (the return for that week). Then merge this into the analysis dataset. Rinse and repeat if you try for the other return measures I describe below.</p>
+<p class="card-text">First, compute the returns for the 3/9-3/13 week. This will give you a dataset with one row per firm, and one number per row (the return for that week). Then merge this into the analysis dataset. Rinse and repeat if you try for the other return measures I describe below.</p>
 </div>
 <ol class="simple">
 <li><p class="card-text">Load <code class="docutils literal notranslate"><span class="pre">output/sp500_accting_plus_textrisks.csv</span></code></p></li>
@@ -1122,7 +1122,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p class="card-text"><strong>Validation checks and discussion of the risk measurements</strong> <strong>This step (validating the measurement) is very important in production quality analysis!</strong>*</p>
 <ul class="simple">
 <li><p class="card-text">Discuss briefly whether these measurements are likely “valid” in the sense they capture what you hope.</p></li>
-<li><p class="card-text">Present some evidence they do capture your hopes. There are many ways to do this, and depend on the data you have and the risks you’re measuring.</p>
+<li><p class="card-text">Present some evidence they do capture your hopes. There are many ways to do this and depend on the data you have and the risks you’re measuring.</p>
 <ul>
 <li><p class="card-text">You might print out a few examples of matches.</p></li>
 <li><p class="card-text">One option is to show sentences that will correctly be caught by the search, and correctly not caught. And how easy is it for your search to find a sentence that matches the search but shouldn’t.. (Hopefully: not too easy!) How easy is it for your search to miss a sentence that it should match…</p></li>
@@ -1133,7 +1133,7 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li><p class="card-text">Describe the <em>final</em> sample for your tests, the set of observations where you have all the data you need.</p>
 <ul class="simple">
-<li><p class="card-text">This includes summary stats,the number of firms, and other things EDA would turn up</p></li>
+<li><p class="card-text">This includes summary stats, the number of firms, and other things EDA would turn up</p></li>
 <li><p class="card-text">Are there any caveats about the sample and/or data? If so, mention them and briefly discuss possible issues they raise with the analysis.</p></li>
 </ul>
 </li>
@@ -1188,7 +1188,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p class="card-text"><strong>The <code class="docutils literal notranslate"><span class="pre">analysis_report</span></code> file should be written and formatted like an executive report.</strong></p>
 <ul class="simple">
-<li><p class="card-text">There is no “page expectation” or “page limit”. Aim to provide sufficient analysis and explanation, but in a concise and clear way. Bullet points are fine in places, but you should have a few places with paragraph-style discussion, especially where you explain why you chose the specific risks, the way you defined them, and what issues you think they have (which points the way forward on “extensions”).</p></li>
+<li><p class="card-text">There is no “page expectation” or “page limit”. Aim to provide sufficient analysis and explanation but in a concise and clear way. Bullet points are fine in places, but you should have a few places with paragraph-style discussion, especially where you explain why you chose the specific risks, the way you defined them, and what issues you think they have (which points the way forward on “extensions”).</p></li>
 <li><p class="card-text">In other words: You will be graded on how much this looks like a professional report. Just “dumping” endless printouts is not as valuable as well-tailored tables and figures. High quality and concise reporting is an A1 emphasis. <strong>Here, pretty, smart, and effective tables and visualizations will receive higher grades.</strong></p></li>
 <li><p class="card-text"><strong>The teaching team will <em>not</em> read your measure_risk file other than to comment on code style.</strong> So:</p>
 <ol class="simple">
@@ -1203,7 +1203,7 @@ const thebe_selector_output = ".output, .cell_output"
 <h2>Cheers!<a class="headerlink" href="#cheers" title="Permalink to this headline">¶</a></h2>
 <p><strong>Give yourself a big round of applause at this point!</strong></p>
 <p>Your code is probably very flexible and powerful at this point. If you have the appetite + a larger list of EDGAR files to download + a large enough hard drive + and time, then you could download more than 100GB of 10-K filings and run textual analysis across 20+ years of data for all publicly traded firms.</p>
-<p>Seriously: You are in the ball park of pulling off any analysis you want that needs to harness the power of these filings. These four studies are variously provocative, great, and (in one case) mine:</p>
+<p>Seriously: You are in the ballpark of pulling off any analysis you want that needs to harness the power of these filings. These four studies are variously provocative, great, and (in one case) mine:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1658471">Check this claim: Identifying changes in 10-K/Q filings can generate a 20% alpha</a></p></li>
 <li><p><a class="reference external" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2792943">Prof. Hanley measured emerging risks in the financial sector</a></p></li>

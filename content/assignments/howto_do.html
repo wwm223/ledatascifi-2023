@@ -41,9 +41,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fin377_specialformatting.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/frontpage.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/fin377_specialformatting.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -920,7 +920,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="working-on-assignments-projects-taking-notes">
 <h2>Working on assignments / projects / taking notes<a class="headerlink" href="#working-on-assignments-projects-taking-notes" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="../01/03a_githubworkflow.html"><span class="doc std std-doc">Use the Github workflow!</span></a></p>
+<p><a class="reference internal" href="../01/03a_githubworkflow.html"><span class="doc std std-doc">Use the GitHub workflow!</span></a></p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p><strong>Fetch early, commit frequently, push often!</strong></p>
@@ -949,7 +949,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="summary-up docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="summary-content card-body docutils">
-<p class="card-text">Each assignment has different grading criterion, which you’ll see in the rubric within each assignment’s repo.</p>
+<p class="card-text">Each assignment has different grading criteria, which you’ll see in the rubric within each assignment’s repo.</p>
 <p class="card-text">Generically and briefly, I’ll say the important themes are:</p>
 <ul class="simple">
 <li><p class="card-text">reproducibility (Your peers should be able to download the folder to their computer and execute the main analysis file and receive back the same results you generated)</p></li>
@@ -966,7 +966,7 @@ const thebe_selector_output = ".output, .cell_output"
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="summary-content card-body docutils">
 <ol class="simple">
-<li><p class="card-text">Delete all temporary and output files you generated, restart the kernal (and clear output),</p></li>
+<li><p class="card-text">Delete all temporary and output files you generated, restart the kernel (and clear output),</p></li>
 <li><p class="card-text">rerun the analysis/code (as though you just started from scratch),</p></li>
 <li><p class="card-text">and save your notebook file when it’s done running.</p></li>
 </ol>
@@ -985,7 +985,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p class="card-text"><strong>A 100% solution</strong>: Download it to your computer (click the green button, then download the zip file) <strong>to a different spot</strong> (say a temporary folder on your desktop), and run the analysis again, there.</p></li>
 </ol>
 <p class="card-text">Did it work? If not, then the code is not reproducible outside the directory you built it in.</p>
-<p class="card-text">Why did it fail? Probably, the code included absolute path references like “C:\Users\DonBowen\Documents\project1\code\extra_function.py”. These are bad, because they only work on my computer. (You probably won’t have “DonBowen” as a folder anywhere on your computer, I hope!)</p>
+<p class="card-text">Why did it fail? Probably, the code included absolute path references like “C:\Users\DonBowen\Documents\project1\code\extra_function.py”. These are bad because they only work on my computer. (You probably won’t have “DonBowen” as a folder anywhere on your computer, I hope!)</p>
 <p class="card-text">Use relative path references instead. For example, if <code class="docutils literal notranslate"><span class="pre">main_analysis.py</span></code> uses <code class="docutils literal notranslate"><span class="pre">extra_function.py</span></code>, and <code class="docutils literal notranslate"><span class="pre">main_analysis.py</span></code> is in the “project1” folder, then “code/extra_function.py” will find the function on any computer.</p>
 </div>
 </details><details class="sphinx-bs dropdown card mb-3">
@@ -997,7 +997,7 @@ const thebe_selector_output = ".output, .cell_output"
 </summary><div class="summary-content card-body docutils">
 <p class="card-text">The biggies:</p>
 <ol class="simple">
-<li><p class="card-text">The <a class="reference external" href="http://README.md">README.md</a> in the main directory is what they will see first when they open it. Make it professional and helpful!  GitHub can format “Markdown” nicely, with headers, links, media, and more and will show visitors this.</p>
+<li><p class="card-text">The <a class="reference external" href="http://README.md">README.md</a> in the main directory is what they will see first when they open it. Make it professional and helpful!  GitHub can format “Markdown” nicely (with headers, links, media, and more) and will show visitors the nicely formatted version.</p>
 <ul class="simple">
 <li><p class="card-text">Create annotated links to documents graders need to access. For example, point them to your main Jupyter file, which GitHub will also render so that visitors see the output on the website without needing to run code!</p></li>
 <li><p class="card-text"><a class="reference external" href="https://guides.github.com/features/wikis/#Formatting-a-readme">GitHub</a> suggests including the project name, a clear and short description (what it does and why it is important), installation tips (list packages they might need to install), and usage instructions.</p></li>
