@@ -13,7 +13,7 @@ I recommend bookmarking this page as your go-to when you visit the site!
 Key links:
 - [Class announcements, assignment links, and discussion board](https://github.com/orgs/LeDataSciFi/teams/classmates-2023)
 - [Easy access to slides](https://donbowen.github.io/slides/)
-- My "Class-Notes" repo (link becomes active during class)
+- [My "Class-Notes" repo](https://github.com/donbowen/Class-Notes-1045)
 
 
 ---
